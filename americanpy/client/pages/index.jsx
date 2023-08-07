@@ -1,0 +1,6 @@
+export {default as CountryPage} from "./CountryPage"
+export {default as HomePage} from "./HomePage"
+export {default as JourneyPage} from "./JourneyPage"
+export {default as LoginPage} from "./LoginPage"
+export {default as MemoriesPage} from "./MemoriesPage"
+export {default as UserPage} from "./UserPage"
