@@ -21,8 +21,25 @@ CREATE TABLE countries (
 );
 
 CREATE TABLE rewards (
-    
-)
+    reward_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    description VARCHAR NOT NULL,
+    points_required INT NOT NULL DEFAULT 10
+);
+
+CREATE TABLE memories (
+    memory_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    user_id INT NOT NULL REFERENCES users(user_id),
+    country_id INT NOT NULL REFERENCES countries(country_id),
+    description VARCHAR,
+    drive_link VARCHAR
+);
+
+CREATE TABLE user_countries (
+    user_countries_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    user_id INT NOT NULL REFERENCES users(user_id),
+    country_id INT NOT NULL REFERENCES countries(country_id) 
+);
 
 CREATE TABLE tokens (
     token_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
