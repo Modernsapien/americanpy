@@ -1,17 +1,7 @@
-import React from "react";
-import Map from "../../components/Map";
-import "./homepage.css";
+import React from 'react'
 
-const HomePage = () => {
-  const mapId = "map-container";
-
+export default function HomePage() {
   return (
-    <>
-      <div id="map-container">
-        <Map id={mapId} />
-      </div>
-    </>
-  );
-};
-
-export default HomePage;
+    <div>HomePage</div>
+  )
+}
