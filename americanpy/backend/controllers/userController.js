@@ -50,7 +50,7 @@ class UserController {
 
     static async getUserById(req,res) {
         try {
-            const user_id = req.tokenObj.user_id
+            const user_id = parseInt(req.params.id)
             // let user_id = 1
             const user = await User.getOneById(user_id)
             delete user.password
@@ -61,10 +61,111 @@ class UserController {
         }
     }
 
-    
+    static async getCarbonPoints(req,res) {
+        try {
+            const user_id = parseInt(req.params.id)
+            const points = await User.getCarbonPoints(user_id)
+            res.status(200).send(points)
+        } catch(err) {
+            res.status(500).json({Error: err.message})
+        }
+    }
 
+    static async addCarbonPoints(req,res) {
+        try {
+            const user_id = parseInt(req.params.id)
+            const user = User.getOneById(user_id)
+            const points = req.body
+            const resp = await user.addCarbonPoints(points)
+            res.status(200).send(resp)
+        } catch (err) {
+            res.status(404).json({"Error": err.message})
+        }
+    }
 
+    static async subtractCarbonPoints(req,res) {
+        try {
+            const user_id = parseInt(req.params.id)
+            const user = User.getOneById(user_id)
+            const points = req.body
+            const resp = await user.subtractCarbonPoints(points)
+            res.status(200).send(resp)
+        } catch (err) {
+            res.status(404).json({"Error": err.message})
+        }
+    }
 
+    static async updateProfilePicture(req,res) {
+        try {
+            const user_id = parseInt(req.params.id)
+            const user = User.getOneById(user_id)
+            const data = req.body
+            const resp = await user.updateProfilePicture(data)
+            res.status(200).send(resp)
+        } catch(err) {
+            res.status(500).json({Error: err.message})
+        }
+    }
+
+    static async getUserCountries(req,res) {
+        try {
+            const user_id = parseInt(req.params.id)
+            const resp = await User.getUsersCountries(user_id)
+            res.status(200).send(resp)
+        } catch(err) {
+            res.status(404).json({Error: err.message})
+        }
+    }
+
+    static async addCountry(req,res) {
+        try{
+            const user_id = parseInt(req.params.id)
+            const country_id = req.body.country_id
+            const resp = await User.addCountry(user_id, country_id)
+            res.status(200).send(resp)
+        } catch(err) {
+            res.status(500).json({Error: err.message})
+        }
+    }
+
+    static async removeCountry(req,res) {
+        try{
+            const user_id = parseInt(req.params.id)
+            const country_id = req.body.country_id
+            const resp = await User.removeCountry(user_id, country_id)
+            res.status(200).send(resp)
+        } catch(err) {
+            res.status(500).json({Error: err.message})
+        }
+    }
+
+    static async logout(req, res) {
+        try {
+            const userToken = req.headers.authorization;
+            const token = userToken
+            if (!userToken) {
+                throw new Error('User not logged in!');
+            } else {
+                const response = await token.deleteToken();
+                res.status(202).json({ message: 'You logged out.' });
+            }
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
+
+    static async deleteUser(req,res) {
+        try {
+            const user_id = parseInt(req.params.id)
+            const tokenObj = req.tokenObj;
+            const resp = await tokenObj.deleteToken();
+            const user = await User.getOneById(user_id)
+            const resp2 = await user.deleteUser(user_id)
+            res.status(204).json(resp2);
+        } catch (err) {
+            res.status(403).json({ Error: err.message });
+        }
+    }
 
 }
 
