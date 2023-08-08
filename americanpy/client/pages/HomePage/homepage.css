@@ -11,6 +11,8 @@ html {
 }
 
 .add-pin-button {
+    
     position: relative;
     z-index: 999;
 }
+

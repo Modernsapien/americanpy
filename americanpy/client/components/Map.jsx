@@ -1,33 +1,13 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import L from "leaflet";
 import { GeoSearchControl, EsriProvider } from "leaflet-geosearch";
-import ".././pages/HomePage/homepage.css";
+import customGeoJSON from "../data/custom.geo.json"; 
 
 const Map = ({ id }) => {
   const [map, setMap] = useState(null);
   const [markers, setMarkers] = useState([]);
   const [isAddingPin, setIsAddingPin] = useState(false);
-  const clickListenerRef = useRef(null);
-
-  const handleMapClick = (event) => {
-    if (isAddingPin) {
-      const { lat, lng } = event.latlng;
-      const markerId = generateMarkerId();
-      const marker = L.marker([lat, lng], { id: markerId }).addTo(map);
-      setMarkers((prevMarkers) => [...prevMarkers, marker]);
-      console.log(
-        `Added pin with ID: ${markerId}, Longitude: ${lng}, Latitude: ${lat}`
-      );
-    }
-  };
-
-  const generateMarkerId = () => {
-    return Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
-  };
-
-  const togglePinPlacement = () => {
-    setIsAddingPin((prevState) => !prevState);
-  };
+  const [isHoveringButton, setIsHoveringButton] = useState(false);
 
   useEffect(() => {
     const mapContainer = document.getElementById(id);
@@ -43,9 +23,9 @@ const Map = ({ id }) => {
         maxBounds: L.latLngBounds(L.latLng(-90, -180), L.latLng(90, 180)),
       }).setView([51.496840937752935, -0.13539235784566644], 2.5);
 
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(
-        mapInstance
-      );
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        zIndex: 0, // Ensure the tile layer is below the GeoJSON borders
+      }).addTo(mapInstance);
 
       const provider = new EsriProvider();
       const searchControl = new GeoSearchControl({
@@ -68,22 +48,70 @@ const Map = ({ id }) => {
 
   useEffect(() => {
     if (map) {
-      if (isAddingPin) {
-        const listener = map.on("click", handleMapClick);
-        clickListenerRef.current = listener;
-      } else {
-        const listener = clickListenerRef.current;
-        if (listener) {
-          listener.off("click", handleMapClick);
+      const handleMapClick = (event) => {
+        if (isAddingPin && !isHoveringButton) {
+          const { lat, lng } = event.latlng;
+          const markerId =
+            Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+          const marker = L.marker([lat, lng], { id: markerId }).addTo(map);
+          setMarkers((prevMarkers) => [...prevMarkers, marker]);
+          console.log(
+            `Added pin with ID: ${markerId}, Longitude: ${lng}, Latitude: ${lat}`
+          );
+        } else {
+          console.log("Not adding pin because isAddingPin is false or hovering button");
         }
-      }
+      };
+
+      map.on("click", handleMapClick);
+
+      return () => {
+        map.off("click", handleMapClick);
+      };
     }
-  }, [map, isAddingPin]);
+  }, [map, isAddingPin, isHoveringButton]);
+
+  const togglePinPlacement = () => {
+    setIsAddingPin((prevState) => !prevState);
+  };
+
+  const handleButtonMouseEnter = () => {
+    setIsHoveringButton(true);
+  };
+
+  const handleButtonMouseLeave = () => {
+    setIsHoveringButton(false);
+  };
+
+  useEffect(() => {
+    if (map) {
+      // Create a GeoJSON layer for the custom borders
+      const bordersLayer = L.geoJSON(customGeoJSON, {
+        style: {
+          color: "blue", // Adjust the border color
+          weight: 0.5,
+          fillOpacity: 0,
+        },
+      }).addTo(map);
+
+      return () => {
+        bordersLayer.remove(); // Remove the borders layer when component unmounts
+      };
+    }
+  }, [map]);
 
   return (
-    <div onClick={(event) => event.stopPropagation()} className="add-pin-button">
+    <div
+      onClick={(event) => event.stopPropagation()}
+      className="add-pin-button"
+    >
       <div id={id} style={{ height: "400px", width: "100%" }}></div>
-      <button onClick={togglePinPlacement} id="cancel-pin-button">
+      <button
+        onClick={togglePinPlacement}
+        onMouseEnter={handleButtonMouseEnter}
+        onMouseLeave={handleButtonMouseLeave}
+        id="cancel-pin-button"
+      >
         {isAddingPin ? "Cancel Adding Pin" : "Add Pin"}
       </button>
     </div>
