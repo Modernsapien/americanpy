@@ -100,7 +100,6 @@ const Map = ({ id }) => {
 
         setBordersLayer(newBordersLayer);
       } else if (bordersLayer) {
-        // Remove the borders layer if colorByEpiScore is disabled
         map.removeLayer(bordersLayer);
         setBordersLayer(null);
       }

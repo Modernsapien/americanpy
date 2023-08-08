@@ -25,6 +25,9 @@ const NavbarComponent = () => {
               <NavLink className="nav-link" activeClassName="active" to="/country">Country</NavLink>
             </li>
             <li className="nav-item">
+              <NavLink className="nav-link" activeClassName="active" to="/mappage">Map</NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink className="nav-link" activeClassName="active" to="/journey">Journey</NavLink>
             </li>
             <li className="nav-item">
