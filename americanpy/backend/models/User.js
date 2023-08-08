@@ -64,7 +64,7 @@ class User {
         }
     }
 
-    static async addCarbonPoints(data) {
+    async addCarbonPoints(data) {
         const resp = await db.query("UPDATE user SET carbon_points = $1 WHERE user_id = $2 RETURNING user_id, carbon_points;",
          [this.points + data.points, this.id])
         if (resp.rows.length != 1) {
@@ -74,7 +74,7 @@ class User {
         }
     }
 
-    static async subtractCarbonPoints(data) {
+    async subtractCarbonPoints(data) {
         const resp = await db.query("UPDATE user SET carbon_points = $1 WHERE user_id = $2 RETURNING user_id, carbon_points;",
          [this.points - data.points, this.id])
         if (resp.rows.length != 1) {
@@ -84,7 +84,7 @@ class User {
         }
     }
 
-    static async updateProfilePicture(data) {
+    async updateProfilePicture(data) {
         const resp = await db.query("UPDATE user SET profile_image_url = $1 WHERE user_id = $2 RETURNING user_id, profile_image_url;",
         [data.url, this.id])
         if (resp.rows.length != 1) {
@@ -94,7 +94,7 @@ class User {
         }
     }
 
-    static async getUsersCountry(id) {
+    static async getUsersCountries(id) {
         const resp = await db.query(
             "SELECT * FROM country c LEFT JOIN users_countries u ON c.country_id = u.country_id WHERE u.user_id = $1;", [id]
         )
@@ -126,7 +126,7 @@ class User {
         
     }
 
-    static async deleteUser() {
+    async deleteUser() {
         const resp = await db.query("DELETE FROM users_countries WHERE user_id = $1",[this.user_id])
         const resp2 = await db.query("DELETE FROM users WHERE user_id = $1 RETURNING *",[this.user_id])
         return new User(resp2.rows[0])
