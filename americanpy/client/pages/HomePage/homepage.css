@@ -5,9 +5,9 @@ html {
 }
 
 #map-container {
-    height: 91vh;
+    height: 90vh;
     width: 100%;
-    margin-top: 5%;
+    
 }
 
 .add-pin-button {
