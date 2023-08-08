@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import L from "leaflet";
 import { GeoSearchControl, EsriProvider } from "leaflet-geosearch";
-import customGeoJSON from "../data/custom.geo.json"; 
+import customGeoJSON from "../data/custom.geo.json";
+import ecoData from "../data/ecoData.json";
 
 const Map = ({ id }) => {
   const [map, setMap] = useState(null);
   const [markers, setMarkers] = useState([]);
   const [isAddingPin, setIsAddingPin] = useState(false);
   const [isHoveringButton, setIsHoveringButton] = useState(false);
+  const [colorByEpiScore, setColorByEpiScore] = useState(false);
+  const [bordersLayer, setBordersLayer] = useState(null);
 
   useEffect(() => {
     const mapContainer = document.getElementById(id);
@@ -24,7 +27,7 @@ const Map = ({ id }) => {
       }).setView([51.496840937752935, -0.13539235784566644], 2.5);
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        zIndex: 0, // Ensure the tile layer is below the GeoJSON borders
+        zIndex: 0,
       }).addTo(mapInstance);
 
       const provider = new EsriProvider();
@@ -58,8 +61,6 @@ const Map = ({ id }) => {
           console.log(
             `Added pin with ID: ${markerId}, Longitude: ${lng}, Latitude: ${lat}`
           );
-        } else {
-          console.log("Not adding pin because isAddingPin is false or hovering button");
         }
       };
 
@@ -70,6 +71,51 @@ const Map = ({ id }) => {
       };
     }
   }, [map, isAddingPin, isHoveringButton]);
+
+  useEffect(() => {
+    if (map) {
+      if (colorByEpiScore) {
+        const newBordersLayer = L.geoJSON(customGeoJSON, {
+          style: (feature) => {
+            const countryName = feature.properties.name;
+            const countryData = ecoData.find((data) => data.country === countryName);
+            if (countryData) {
+              const epiScore = countryData.epi_score;
+              const fillColor = getColorBasedOnEpiScore(epiScore);
+              return {
+                color: "blue",
+                weight: 0.5,
+                fillColor: fillColor,
+                fillOpacity: 0.5,
+              };
+            } else {
+              return {
+                color: "blue",
+                weight: 0.5,
+                fillOpacity: 0.2,
+              };
+            }
+          },
+        }).addTo(map);
+
+        setBordersLayer(newBordersLayer);
+      } else if (bordersLayer) {
+        // Remove the borders layer if colorByEpiScore is disabled
+        map.removeLayer(bordersLayer);
+        setBordersLayer(null);
+      }
+    }
+  }, [map, colorByEpiScore]);
+
+  function getColorBasedOnEpiScore(epiScore) {
+    if (epiScore <= 30) {
+      return "red";
+    } else if (epiScore <= 50) {
+      return "orange";
+    } else {
+      return "green";
+    }
+  }
 
   const togglePinPlacement = () => {
     setIsAddingPin((prevState) => !prevState);
@@ -83,22 +129,9 @@ const Map = ({ id }) => {
     setIsHoveringButton(false);
   };
 
-  useEffect(() => {
-    if (map) {
-      // Create a GeoJSON layer for the custom borders
-      const bordersLayer = L.geoJSON(customGeoJSON, {
-        style: {
-          color: "blue", // Adjust the border color
-          weight: 0.5,
-          fillOpacity: 0,
-        },
-      }).addTo(map);
-
-      return () => {
-        bordersLayer.remove(); // Remove the borders layer when component unmounts
-      };
-    }
-  }, [map]);
+  const toggleColorByEpiScore = () => {
+    setColorByEpiScore((prevState) => !prevState);
+  };
 
   return (
     <div
@@ -113,6 +146,14 @@ const Map = ({ id }) => {
         id="cancel-pin-button"
       >
         {isAddingPin ? "Cancel Adding Pin" : "Add Pin"}
+      </button>
+      <button
+        onClick={toggleColorByEpiScore}
+        onMouseEnter={handleButtonMouseEnter}
+        onMouseLeave={handleButtonMouseLeave}
+        id="toggle-color-button"
+      >
+        {colorByEpiScore ? "Hide Eco colour" : "Show Eco colour"}
       </button>
     </div>
   );
