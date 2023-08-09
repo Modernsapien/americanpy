@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import L from "leaflet";
-import { GeoSearchControl, EsriProvider } from "leaflet-geosearch";
+import {
+  GeoSearchControl,
+  EsriProvider,
+} from "leaflet-geosearch";
 import customGeoJSON from "../../data/custom.geo.json";
 import ecoData from "../../data/ecoData.json";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,6 +15,9 @@ const Map = ({ id }) => {
   const [isHoveringButton, setIsHoveringButton] = useState(false);
   const [colorByEpiScore, setColorByEpiScore] = useState(false);
   const [bordersLayer, setBordersLayer] = useState(null);
+  const [startDestination, setStartDestination] = useState("");
+  const [endDestination, setEndDestination] = useState("");
+  const [routeLayer, setRouteLayer] = useState(null);
 
   useEffect(() => {
     const mapContainer = document.getElementById(id);
@@ -109,6 +115,26 @@ const Map = ({ id }) => {
     }
   }, [map, colorByEpiScore]);
 
+  useEffect(() => {
+    if (map) {
+      if (routeLayer) {
+        map.removeLayer(routeLayer);
+      }
+
+      if (startDestination && endDestination) {
+        const startMarker = L.marker([startDestination.lat, startDestination.lng]).addTo(map);
+        const endMarker = L.marker([endDestination.lat, endDestination.lng]).addTo(map);
+
+        const routeLine = L.polyline([
+          [startDestination.lat, startDestination.lng],
+          [endDestination.lat, endDestination.lng],
+        ]).addTo(map);
+
+        setRouteLayer(routeLine);
+      }
+    }
+  }, [map, startDestination, endDestination]);
+
   function getColorBasedOnEpiScore(epiScore) {
     if (epiScore <= 30) {
       return "red";
@@ -157,6 +183,29 @@ const Map = ({ id }) => {
           >
             {colorByEpiScore ? "Hide Eco colour" : "Show Eco colour"}
           </button>
+        </div>
+        <div className="destination-form">
+          <div className="input-group">
+            <input
+              type="text"
+              className="form-control"
+              id="start-destination-input" 
+              placeholder="Start Destination"
+              value={startDestination}
+              onChange={(e) => setStartDestination(e.target.value)}
+            />
+            <input
+              type="text"
+              className="form-control"
+              placeholder="End Destination"
+              id="end-destination-input"
+              value={endDestination}
+              onChange={(e) => setEndDestination(e.target.value)}
+            />
+            <button className="btn btn-primary" type="button">
+              Submit
+            </button>
+          </div>
         </div>
       </div>
       <div className="map" style={{ height: "400px", width: "100%" }}>

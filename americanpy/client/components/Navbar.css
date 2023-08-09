@@ -17,6 +17,7 @@
     height: 100px;
     font-size: 1.3rem;
     font-family: 'Manrope', sans-serif;
+    z-index: 1000;
   }
   
   #root.navbar {

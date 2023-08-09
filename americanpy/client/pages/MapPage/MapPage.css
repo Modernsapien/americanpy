@@ -9,14 +9,11 @@ html {
     width: 100%;
 }
 
-
-
 .leaflet-touch .leaflet-control-layers,
 .leaflet-touch .leaflet-bar {
     display: flex;
     align-items: center;
     background-clip: padding-box;
-
 }
 
 .leaflet-control-zoom-in,
@@ -27,9 +24,7 @@ html {
     padding: 5px;
     cursor: pointer;
     font-size: 14px;
-
 }
-
 
 .map-buttons {
     display: flex;
@@ -37,7 +32,7 @@ html {
     gap: 10px;
     margin-top: 10px;
     z-index: 999;
-    margin-left: 200px;
+    margin-left: 40%;
 }
 
 .map-container {
@@ -45,7 +40,6 @@ html {
     flex-direction: column;
     align-items: flex-start;
 }
-
 
 .map .leaflet-top {
     position: relative;
@@ -55,12 +49,12 @@ html {
     margin-left: 10px;
 }
 
-
 .top-bar {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between; /* Spaced evenly */
     padding: 10px;
+    height: 50px; /* Adjust the height as needed */
 
     position: absolute;
     top: 0;
@@ -68,3 +62,20 @@ html {
     right: 0;
     z-index: 999;
 }
+
+@media (max-width: 768px) {
+    .map-buttons {
+        margin-left: 10%;
+    }
+}
+
+@media (max-width: 630px) {
+    #start-destination-input::placeholder {
+        content: "Start"; 
+    }
+    
+    #end-destination-input::placeholder {
+        content: "End"; 
+    }
+}
+

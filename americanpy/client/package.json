@@ -18,6 +18,8 @@
     "leaflet-control-geocoder": "^2.4.0",
     "leaflet-geosearch": "^3.8.0",
     "leaflet-routing-machine": "^3.2.12",
+    "leaflet-search": "^3.0.11",
+    "node-geocoder": "^4.2.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
