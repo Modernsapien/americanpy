@@ -14,7 +14,7 @@ class User {
     }
 
     static async getUsers() {
-        const resp = await db.query("SELECT user_id, username, profile_image_url, keys, block_num,block_mins,long_break_mins,short_break_mins FROM users")
+        const resp = await db.query("SELECT * FROM users")
         if (resp.rows.length == 0) {
             throw new Error('There are no users')
         } else {
@@ -47,7 +47,7 @@ class User {
     static async createUser(data) {
         const { username, password, firstName, lastName, email } = data
         const resp = await db.query(
-            `INSERT INTO users (username,password,firstName,lastName, email)
+            `INSERT INTO users (username,password,first_name,last_name, email)
             VALUES ($1, $2,$3,$4, $5) RETURNING user_id`,[username,password,firstName,lastName, email]
         )
         const id = resp.rows[0].user_id
