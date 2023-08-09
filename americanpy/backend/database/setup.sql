@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS memories, user_countries, tokens, users, countries, rewards;
+DROP TABLE IF EXISTS users, countries, rewards, memories, users_countries, tokens;
 
 CREATE TABLE users (
     user_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -35,8 +35,8 @@ CREATE TABLE memories (
     drive_link VARCHAR
 );
 
-CREATE TABLE user_countries (
-    user_countries_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE users_countries (
+    users_countries_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     user_id INT NOT NULL REFERENCES users(user_id),
     country_id INT NOT NULL REFERENCES countries(country_id) 
 );
