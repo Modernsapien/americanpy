@@ -1,0 +1,72 @@
+body {
+    background-color: #8CD2F6 !important;
+}
+
+.intro {
+    color: white;
+    /* background-color: #B0DAFF; */
+    padding: 30px 50px 30px 50px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Lilita One', cursive;
+    font-size: 3.8rem;
+    margin-bottom: -4rem;
+    margin-top: 1rem;
+}
+
+.explain {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.4rem;
+    color: white;
+    /* background-color: #B0DAFF; */
+    padding: 30px 50px 30px 50px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: -1rem;
+}
+
+.mt-5 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.4rem;
+    color: white;
+    background-color: #B0DAFF;
+    padding: 30px 50px 30px 50px;
+    margin: 0 auto; 
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+.mb-3 {
+    font-size: 3.6rem;
+}
+
+.route {
+    padding-bottom: 13px;
+}
+
+.pass {
+    color: #00043f;
+}
+
+.route {
+    color: #DFA878;
+}
+
+.leaf {
+    color: #557A46
+}
+
+.globe {
+    color: #7A9D54;
+}
+
+.gift {
+    color: #B31312;
+}
+
+.book {
+    color: #765827
+}
