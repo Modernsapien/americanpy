@@ -9,26 +9,62 @@ html {
     width: 100%;
 }
 
-.add-pin-button {
-    position: relative;
-    z-index: 999;
+
+
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+    display: flex;
+    align-items: center;
+    background-clip: padding-box;
 
 }
 
-
-
-
-.leaflet-control-geosearch input[type="text"] {
-    width: 100%;
-    padding: 10px;
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+    background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    cursor: pointer;
+    font-size: 14px;
+
 }
 
 
-.leaflet-control-geosearch input[type="submit"] {
-    display: none;
+.map-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 10px;
+    z-index: 999;
+    margin-left: 200px;
+}
 
+.map-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+.map .leaflet-top {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
 }

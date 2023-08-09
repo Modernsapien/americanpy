@@ -22,22 +22,22 @@ const NavbarComponent = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <NavLink className="nav-link" activeClassName="active" to="/country">Country</NavLink>
+              <NavLink className="nav-link" activeclassname="active" to="/country">Country</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" activeClassName="active" to="/mappage">Map</NavLink>
+              <NavLink className="nav-link" activeclassname="active" to="/mappage">Map</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" activeClassName="active" to="/journey">Journey</NavLink>
+              <NavLink className="nav-link" activeclassname="active" to="/journey">Journey</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" activeClassName="active" to="/memories">Memories</NavLink>
+              <NavLink className="nav-link" activeclassname="active" to="/memories">Memories</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" activeClassName="active" to="/user">User</NavLink>
+              <NavLink className="nav-link" activeclassname="active" to="/user">User</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" activeClassName="active" to="/login">Login</NavLink>
+              <NavLink className="nav-link" activeclassname="active" to="/login">Login</NavLink>
             </li>
           </ul>
         </div>

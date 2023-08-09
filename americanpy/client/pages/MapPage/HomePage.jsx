@@ -1,8 +1,8 @@
 import React from "react";
 import Map from "../../components/MapComponents/Map";
-import "./MapPage.css";
+import "./homepage.css";
 
-const MapPage = () => {
+const HomePage = () => {
   const mapId = "map-container";
 
   return (
@@ -14,4 +14,4 @@ const MapPage = () => {
   );
 };
 
-export default MapPage;
+export default HomePage;

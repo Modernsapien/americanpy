@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import L from "leaflet";
 import { GeoSearchControl, EsriProvider } from "leaflet-geosearch";
-import customGeoJSON from "../data/custom.geo.json";
-import ecoData from "../data/ecoData.json";
+import customGeoJSON from "../../data/custom.geo.json";
+import ecoData from "../../data/ecoData.json";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Map = ({ id }) => {
   const [map, setMap] = useState(null);
@@ -78,7 +79,9 @@ const Map = ({ id }) => {
         const newBordersLayer = L.geoJSON(customGeoJSON, {
           style: (feature) => {
             const countryName = feature.properties.name;
-            const countryData = ecoData.find((data) => data.country === countryName);
+            const countryData = ecoData.find(
+              (data) => data.country === countryName
+            );
             if (countryData) {
               const epiScore = countryData.epi_score;
               const fillColor = getColorBasedOnEpiScore(epiScore);
@@ -133,27 +136,32 @@ const Map = ({ id }) => {
   };
 
   return (
-    <div
-      onClick={(event) => event.stopPropagation()}
-      className="add-pin-button"
-    >
-      <div id={id} style={{ height: "400px", width: "100%" }}></div>
-      <button
-        onClick={togglePinPlacement}
-        onMouseEnter={handleButtonMouseEnter}
-        onMouseLeave={handleButtonMouseLeave}
-        id="cancel-pin-button"
-      >
-        {isAddingPin ? "Cancel Adding Pin" : "Add Pin"}
-      </button>
-      <button
-        onClick={toggleColorByEpiScore}
-        onMouseEnter={handleButtonMouseEnter}
-        onMouseLeave={handleButtonMouseLeave}
-        id="toggle-color-button"
-      >
-        {colorByEpiScore ? "Hide Eco colour" : "Show Eco colour"}
-      </button>
+    <div className="map-container">
+      <div className="top-bar">
+        <div className="map-buttons">
+          <button
+            className="btn btn-primary"
+            onClick={togglePinPlacement}
+            onMouseEnter={handleButtonMouseEnter}
+            onMouseLeave={handleButtonMouseLeave}
+            id="cancel-pin-button"
+          >
+            {isAddingPin ? "Cancel Adding Pin" : "Add Pin"}
+          </button>
+          <button
+            className="btn btn-success"
+            onClick={toggleColorByEpiScore}
+            onMouseEnter={handleButtonMouseEnter}
+            onMouseLeave={handleButtonMouseLeave}
+            id="toggle-color-button"
+          >
+            {colorByEpiScore ? "Hide Eco colour" : "Show Eco colour"}
+          </button>
+        </div>
+      </div>
+      <div className="map" style={{ height: "400px", width: "100%" }}>
+        <div id={id}></div>
+      </div>
     </div>
   );
 };
