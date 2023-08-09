@@ -8,6 +8,7 @@ import { faPlane } from '@fortawesome/free-solid-svg-icons';
 
 
 
+
 const NavbarComponent = () => {
   return (
     <nav className="navbar navbar-expand-lg">

@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
 import L from "leaflet";
-import {
-  GeoSearchControl,
-  EsriProvider,
-} from "leaflet-geosearch";
+import { GeoSearchControl, EsriProvider } from "leaflet-geosearch";
 import customGeoJSON from "../../data/custom.geo.json";
 import ecoData from "../../data/ecoData.json";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-
 
 const Map = ({ id }) => {
   const [map, setMap] = useState(null);
@@ -125,8 +121,14 @@ const Map = ({ id }) => {
       }
 
       if (startDestination && endDestination) {
-        const startMarker = L.marker([startDestination.lat, startDestination.lng]).addTo(map);
-        const endMarker = L.marker([endDestination.lat, endDestination.lng]).addTo(map);
+        const startMarker = L.marker([
+          startDestination.lat,
+          startDestination.lng,
+        ]).addTo(map);
+        const endMarker = L.marker([
+          endDestination.lat,
+          endDestination.lng,
+        ]).addTo(map);
 
         const routeLine = L.polyline([
           [startDestination.lat, startDestination.lng],
@@ -146,18 +148,28 @@ const Map = ({ id }) => {
           const markerId =
             Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
           const marker = L.marker([lat, lng], { id: markerId }).addTo(map);
-      
-          // Use Nominatim API for reverse geocoding
+
           try {
             const response = await axios.get(
               `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`
             );
-      
+
             const countryName = response.data.address.country;
-            const countryDescription = "Description of the country."; // Replace with actual description if available
-            const popupContent = `<b>${countryName}</b><br>${countryDescription}`;
-            marker.bindPopup(popupContent).openPopup();
-      
+            const countryData = ecoData.find(
+              (data) => data.country === countryName
+            );
+
+            if (countryData) {
+              const countryDescription = countryData.description;
+              marker
+                .bindPopup(`<b>${countryName}</b><br>${countryDescription}`)
+                .openPopup();
+
+              marker.options.description = countryDescription;
+
+              setSelectedPin(marker);
+            }
+
             setMarkers((prevMarkers) => [...prevMarkers, marker]);
             console.log(
               `Added pin with ID: ${markerId}, Longitude: ${lng}, Latitude: ${lat}`
@@ -167,12 +179,9 @@ const Map = ({ id }) => {
           }
         }
       };
-      
 
-      
-  
       map.on("click", handleMapClick);
-  
+
       return () => {
         map.off("click", handleMapClick);
       };
@@ -180,7 +189,7 @@ const Map = ({ id }) => {
   }, [map, isAddingPin, isHoveringButton]);
 
   function getColorBasedOnEpiScore(epiScore) {
-    if (epiScore <= 30) {ÛÛ
+    if (epiScore <= 30) {
       return "red";
     } else if (epiScore <= 50) {
       return "orange";
@@ -276,7 +285,7 @@ const Map = ({ id }) => {
             <button className="close-button" onClick={handleCloseModal}>
               Close
             </button>
-            <h3>{selectedPin.options.title}</h3>
+            <h3>{selectedPin.getLatLng().toString()}</h3>
             <p>{selectedPin.options.description}</p>
           </div>
         </div>

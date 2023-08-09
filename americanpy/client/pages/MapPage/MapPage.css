@@ -79,3 +79,19 @@ html {
     }
 }
 
+.glass{
+    background-color: blue !important;
+}
+
+.leaflet-bar-part {
+    background-color: green !important;  
+}
+.reset {
+    background-color: orange !important;  
+}
+.geosearch {
+    background-color: pink !important;  
+}
+.leaflet-control-zoom{
+    background-color: red !important;  
+}
