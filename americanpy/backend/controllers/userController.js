@@ -141,13 +141,13 @@ class UserController {
 
     static async logout(req, res) {
         try {
-            const userToken = req.headers.authorization;
-            const token = userToken
+            const userToken = req.headers["authorization"];
+            const token = await Token.getOneByToken(userToken)
             if (!userToken) {
                 throw new Error('User not logged in!');
             } else {
                 const response = await token.deleteToken();
-                res.status(202).json({ message: 'You logged out.' });
+                res.status(202).json({ message: response });
             }
         } catch (error) {
             res.status(500).json({ error: error.message });
