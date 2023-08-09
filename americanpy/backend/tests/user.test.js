@@ -20,6 +20,8 @@ describe('user route', () => {
     }
     let token = ""
     let token2 = ""
+    let id = ""
+    let id2 = ""
 
     //Get users but no user
     it("should return error", async () => {
@@ -67,6 +69,7 @@ describe('user route', () => {
             .expect(200)
         
         token = response.body.token
+        id = response.body.id
         expect(token).toBeTruthy()
     })
 
@@ -107,7 +110,136 @@ describe('user route', () => {
             .send(newUser2)
             .expect(200)
         token2 = loginUser2.body.token
+        id2 = loginUser2.body.id
     })
+
+    //Get one by id
+    it("should get user by id", async() => {
+        const response = await request(app)
+            .get(`/users/user/${id}`)
+            .set({"Authorization": token})
+            .expect(200)
+
+        expect(response.body.username).toBe(username)
+        user_id = response.body.user_id
+    })
+
+    //Get one by username errors
+    //Wrong username
+    it("should return wrong username error", async () => {
+        const wrongUser = {
+            username: "beesechurger",
+            password: "deez"
+        }
+        const response = await request(app)
+            .post(`/users/login`)
+            .send(wrongUser)
+            .expect(403)
+        
+        expect(response.body.Error).toBe("User with this username does not exist.")
+    })
+
+    //Quick auth tests
+    //null
+    it("does not like null", async () => {
+        const response = await request(app)
+            .get(`/users/user`)
+            .set({"Authorization": null})
+            .expect(403)
+        expect(response.body.error).toBe('User not authenticated.')
+    })
+
+    //bad token
+    it("does not like bad tokens", async () => {
+        const response = await request(app)
+            .get(`/users/user`)
+            .set({"Authorization": "cheeseburger"})
+            .expect(403)
+        expect(response.body.error).toBe('Unable to find token.')
+    })
+
+    //Carbon points tests
+    //Get carbon points
+    it("should get the user's carbon points", async () => {
+       const response = await request(app)
+            .get(`/users/carbon/${id}`)
+            .set({"authorization": token})
+            .expect(200) 
+        expect(response.body.carbon_points).toBe(0)
+    })
+
+    //add carbon points
+    it("should add carbon points", async () => {
+        const points = {
+            points: 800
+        }
+
+        const response = await request(app)
+            .patch(`/users/carbon/add/${id}`)
+            .set({"authorization": token})
+            .send(points)
+            .expect(200) 
+        expect(response.body.carbon_points).toBe(800)
+    })
+
+    //subtract carbon points
+    it("should subtract carbon points", async () => {
+        const points = {
+            points: 600
+        }
+
+        const response = await request(app)
+            .patch(`/users/carbon/subtract/${id}`)
+            .set({"authorization": token})
+            .send(points)
+            .expect(200)
+        expect(response.body.carbon_points).toBe(200)
+    })
+
+    //try to subtract too many carbon points
+    it("should return an error and not take points", async () => {
+        const points = {
+            points: 600
+        }
+
+        const response = await request(app)
+            .patch(`/users/carbon/subtract/${id}`)
+            .set({"authorization": token})
+            .send(points)
+            .expect(500)
+        expect(response.body.Error).toBe('User cannot have negative points')
+
+        const response2 = await request(app)
+            .get(`/users/carbon/${id}`)
+            .set({"authorization": token})
+            .expect(200) 
+        expect(response2.body.carbon_points).toBe(200)
+    })
+
+    //Profile picture
+    //Try to update profile picture
+    it("should update profile picture", async () => {
+        const picture = {
+            url: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.bbc.com%2Fnews%2Fworld-us-canada-37493165&psig=AOvVaw1qLAzrH7sYuT_Qb0ttUdXn&ust=1691680928301000&source=images&cd=vfe&opi=89978449&ved=0CA0QjRxqFwoTCPj56Njwz4ADFQAAAAAdAAAAABAD"
+        }
+        const response = await request(app)
+            .patch(`/users/picture/${id}`)
+            .set({"authorization": token})
+            .send(picture)
+            .expect(200)
+        expect(response.body.profile_image_url).toBe(picture.url)
+    })
+
+    //Countries
+    //Get all countries but no countries
+    it("should return an error", async () => {
+        const response = await request(app)
+            .get(`/users/country/${id}`)
+            .set({"authorization": token})
+            .expect(404)
+        expect(response.body.Error).toBe('No countries visited!')
+    })
+
 
     //Logout
     it("should logout the user", async () => {
@@ -119,37 +251,37 @@ describe('user route', () => {
     })
 
     //Delete user
-    // it("should delete the user", async () => {
-    //     const user1 = {
-    //         username: username,
-    //         password: "test"
-    //     }
-    //     const user2 = {
-    //         username: "test2",
-    //         password: "test2"
-    //     }
+    it("should delete the user", async () => {
+        const user1 = {
+            username: username,
+            password: "test"
+        }
+        const user2 = {
+            username: "test2",
+            password: "test2"
+        }
 
-    //     const loginUser1 = await request(app)
-    //         .post("/users/login")
-    //         .send(user1)
-    //         .expect(200)
-    //     token = loginUser1.body.token
-    //     const response = await request(app)
-    //         .delete(`/users/delete/${id}`)
-    //         .set({"Authorization": token})
-    //         .expect(204)
+        const loginUser1 = await request(app)
+            .post("/users/login")
+            .send(user1)
+            .expect(200)
+        token = loginUser1.body.token
+        const response = await request(app)
+            .delete(`/users/delete/${id}`)
+            .set({"Authorization": token})
+            .expect(204)
 
-    //     const checkDelUser = await request(app)
-    //         .get("/users")
-    //         .expect(200)
-    //     expect(checkDelUser.body.length).toBe(1)
-    //     expect(checkDelUser.body[0].username).toBe(user2.username)
+        const checkDelUser = await request(app)
+            .get("/users")
+            .expect(200)
+        expect(checkDelUser.body.length).toBe(1)
+        expect(checkDelUser.body[0].username).toBe(user2.username)
 
-    //     const response2 = await request(app)
-    //         .delete(`/users/delete/${id2}`)
-    //         .set({"Authorization": token2})
-    //         .expect(204)  
+        const response2 = await request(app)
+            .delete(`/users/delete/${id2}`)
+            .set({"Authorization": token2})
+            .expect(204)
         
-    // })
+    })
 
 })
