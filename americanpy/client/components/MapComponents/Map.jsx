@@ -7,6 +7,8 @@ import {
 import customGeoJSON from "../../data/custom.geo.json";
 import ecoData from "../../data/ecoData.json";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
+
 
 const Map = ({ id }) => {
   const [map, setMap] = useState(null);
@@ -18,6 +20,7 @@ const Map = ({ id }) => {
   const [startDestination, setStartDestination] = useState("");
   const [endDestination, setEndDestination] = useState("");
   const [routeLayer, setRouteLayer] = useState(null);
+  const [selectedPin, setSelectedPin] = useState(null);
 
   useEffect(() => {
     const mapContainer = document.getElementById(id);
@@ -135,8 +138,49 @@ const Map = ({ id }) => {
     }
   }, [map, startDestination, endDestination]);
 
+  useEffect(() => {
+    if (map) {
+      const handleMapClick = async (event) => {
+        if (isAddingPin && !isHoveringButton) {
+          const { lat, lng } = event.latlng;
+          const markerId =
+            Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+          const marker = L.marker([lat, lng], { id: markerId }).addTo(map);
+      
+          // Use Nominatim API for reverse geocoding
+          try {
+            const response = await axios.get(
+              `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`
+            );
+      
+            const countryName = response.data.address.country;
+            const countryDescription = "Description of the country."; // Replace with actual description if available
+            const popupContent = `<b>${countryName}</b><br>${countryDescription}`;
+            marker.bindPopup(popupContent).openPopup();
+      
+            setMarkers((prevMarkers) => [...prevMarkers, marker]);
+            console.log(
+              `Added pin with ID: ${markerId}, Longitude: ${lng}, Latitude: ${lat}`
+            );
+          } catch (error) {
+            console.error("Error retrieving country information:", error);
+          }
+        }
+      };
+      
+
+      
+  
+      map.on("click", handleMapClick);
+  
+      return () => {
+        map.off("click", handleMapClick);
+      };
+    }
+  }, [map, isAddingPin, isHoveringButton]);
+
   function getColorBasedOnEpiScore(epiScore) {
-    if (epiScore <= 30) {
+    if (epiScore <= 30) {ÛÛ
       return "red";
     } else if (epiScore <= 50) {
       return "orange";
@@ -160,6 +204,21 @@ const Map = ({ id }) => {
   const toggleColorByEpiScore = () => {
     setColorByEpiScore((prevState) => !prevState);
   };
+  const handleMarkerClick = (marker) => {
+    setSelectedPin(marker);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedPin(null);
+  };
+
+  useEffect(() => {
+    if (map) {
+      markers.forEach((marker) => {
+        marker.on("click", () => handleMarkerClick(marker));
+      });
+    }
+  }, [map, markers]);
 
   return (
     <div className="map-container">
@@ -189,7 +248,7 @@ const Map = ({ id }) => {
             <input
               type="text"
               className="form-control"
-              id="start-destination-input" 
+              id="start-destination-input"
               placeholder="Start Destination"
               value={startDestination}
               onChange={(e) => setStartDestination(e.target.value)}
@@ -211,6 +270,17 @@ const Map = ({ id }) => {
       <div className="map" style={{ height: "400px", width: "100%" }}>
         <div id={id}></div>
       </div>
+      {selectedPin && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <button className="close-button" onClick={handleCloseModal}>
+              Close
+            </button>
+            <h3>{selectedPin.options.title}</h3>
+            <p>{selectedPin.options.description}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

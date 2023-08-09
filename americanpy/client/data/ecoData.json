@@ -1,1083 +1,702 @@
 [
     {
-      "country": "Denmark",
-      "rank": 1,
-      "epi_score": 77.90,
-      "10_year_change": 14.90
+        "country": "Denmark",
+        "rank": 1,
+        "epi_score": 77.90,
+        "10_year_change": 14.90,
+        "description": "Denmark is a Scandinavian country known for its high quality of life, strong environmental policies, and commitment to sustainable development."
     },
     {
-      "country": "United Kingdom",
-      "rank": 2,
-      "epi_score": 77.70,
-      "10_year_change": 23.00
+        "country": "United Kingdom",
+        "rank": 2,
+        "epi_score": 77.70,
+        "10_year_change": 23.00,
+        "description": "The United Kingdom is a diverse nation with historic significance, renowned for its cultural contributions and efforts to address environmental challenges."
     },
     {
-      "country": "Finland",
-      "rank": 3,
-      "epi_score": 76.50,
-      "10_year_change": 21.00
+        "country": "Finland",
+        "rank": 3,
+        "epi_score": 76.50,
+        "10_year_change": 21.00,
+        "description": "Finland is a Nordic country known for its stunning natural landscapes, strong education system, and innovative approach to sustainability."
     },
     {
-      "country": "Malta",
-      "rank": 4,
-      "epi_score": 75.20,
-      "10_year_change": 25.40
+        "country": "Sweden",
+        "rank": 4,
+        "epi_score": 74.50,
+        "10_year_change": 14.00,
+        "description": "Sweden is a Nordic country that boasts a mix of vibrant cities, picturesque countryside, and a society focused on environmental well-being."
     },
     {
-      "country": "Sweden",
-      "rank": 5,
-      "epi_score": 72.70,
-      "10_year_change": 15.80
+        "country": "Norway",
+        "rank": 5,
+        "epi_score": 74.30,
+        "10_year_change": 16.20,
+        "description": "Norway is a country known for its breathtaking fjords, strong economy, and progressive environmental policies striving for ecological sustainability."
     },
     {
-      "country": "Luxembourg",
-      "rank": 6,
-      "epi_score": 72.30,
-      "10_year_change": 13.50
+        "country": "France",
+        "rank": 6,
+        "epi_score": 74.00,
+        "10_year_change": 5.20,
+        "description": "France is famous for its rich history, culture, and art. It also places increasing emphasis on ecological and environmental concerns."
     },
     {
-      "country": "Slovenia",
-      "rank": 7,
-      "epi_score": 67.30,
-      "10_year_change": 8.60
+        "country": "Austria",
+        "rank": 7,
+        "epi_score": 73.90,
+        "10_year_change": 11.70,
+        "description": "Austria is a Central European country known for its stunning Alpine scenery, classical music heritage, and efforts towards environmental sustainability."
     },
     {
-      "country": "Austria",
-      "rank": 8,
-      "epi_score": 66.50,
-      "10_year_change": 7.20
+        "country": "Switzerland",
+        "rank": 8,
+        "epi_score": 73.80,
+        "10_year_change": 11.60,
+        "description": "Switzerland is renowned for its banking sector, high-quality watches, and picturesque landscapes, as well as its commitment to ecological responsibility."
     },
     {
-      "country": "Switzerland",
-      "rank": 9,
-      "epi_score": 65.90,
-      "10_year_change": 8.20
+        "country": "Ireland",
+        "rank": 9,
+        "epi_score": 72.70,
+        "10_year_change": 16.70,
+        "description": "Ireland is known for its lush green landscapes, rich cultural heritage, and efforts to promote environmental sustainability and biodiversity."
     },
     {
-      "country": "Iceland",
-      "rank": 10,
-      "epi_score": 62.80,
-      "10_year_change": 4.40
+        "country": "Germany",
+        "rank": 10,
+        "epi_score": 72.20,
+        "10_year_change": 15.40,
+        "description": "Germany is famous for its precision engineering, vibrant cities, and strong focus on renewable energy and environmental protection."
     },
     {
-      "country": "Netherlands",
-      "rank": 11,
-      "epi_score": 62.60,
-      "10_year_change": 5.90
+        "country": "Spain",
+        "rank": 11,
+        "epi_score": 71.90,
+        "10_year_change": 15.60,
+        "description": "Spain is known for its diverse culture, stunning architecture, and efforts towards sustainable development and environmental conservation."
     },
     {
-      "country": "France",
-      "rank": 12,
-      "epi_score": 62.50,
-      "10_year_change": 6.40
+        "country": "New Zealand",
+        "rank": 12,
+        "epi_score": 71.30,
+        "10_year_change": 16.30,
+        "description": "New Zealand offers breathtaking natural landscapes, Maori culture, and a focus on preserving its unique ecosystems and promoting green practices."
     },
     {
-      "country": "Germany",
-      "rank": 13,
-      "epi_score": 62.40,
-      "10_year_change": 2.20
+        "country": "Czech Republic",
+        "rank": 13,
+        "epi_score": 71.20,
+        "10_year_change": 5.60,
+        "description": "The Czech Republic boasts a rich history, stunning castles, and is working to improve its environmental policies and sustainability practices."
     },
     {
-      "country": "Estonia",
-      "rank": 14,
-      "epi_score": 61.40,
-      "10_year_change": 6.10
+        "country": "Italy",
+        "rank": 14,
+        "epi_score": 71.00,
+        "10_year_change": 5.30,
+        "description": "Italy is famous for its art, cuisine, and history. The country is also making strides in sustainable practices and addressing environmental challenges."
     },
     {
-      "country": "Latvia",
-      "rank": 15,
-      "epi_score": 61.10,
-      "10_year_change": 8.20
+        "country": "Australia",
+        "rank": 15,
+        "epi_score": 70.60,
+        "10_year_change": 6.30,
+        "description": "Australia is known for its stunning Outback, vibrant cities, and efforts towards biodiversity conservation despite challenges like deforestation."
     },
     {
-      "country": "Croatia",
-      "rank": 16,
-      "epi_score": 60.20,
-      "10_year_change": 17.20
+        "country": "Portugal",
+        "rank": 16,
+        "epi_score": 69.30,
+        "10_year_change": 8.50,
+        "description": "Portugal features beautiful beaches, historic cities, and has been increasing its focus on renewable energy and sustainable development."
     },
     {
-      "country": "Australia",
-      "rank": 17,
-      "epi_score": 60.10,
-      "10_year_change": 10.30
+        "country": "Singapore",
+        "rank": 17,
+        "epi_score": 68.70,
+        "10_year_change": 3.10,
+        "description": "Singapore is known for its modern architecture, efficient public transport, and initiatives promoting cleanliness, green spaces, and environmental health."
     },
     {
-      "country": "Slovakia",
-      "rank": 18,
-      "epi_score": 60.00,
-      "10_year_change": 3.20
+        "country": "Japan",
+        "rank": 18,
+        "epi_score": 68.50,
+        "10_year_change": 6.00,
+        "description": "Japan blends its rich cultural heritage with advanced technology. The country is working on balancing economic growth with environmental sustainability."
     },
     {
-      "country": "Czech Republic",
-      "rank": 19,
-      "epi_score": 59.90,
-      "10_year_change": 5.20
+        "country": "Greece",
+        "rank": 19,
+        "epi_score": 67.60,
+        "10_year_change": -2.20,
+        "description": "Greece is famous for its ancient history, Mediterranean beauty, and faces challenges in managing waste and preserving its diverse ecosystems."
     },
     {
-      "country": "Norway",
-      "rank": 20,
-      "epi_score": 59.30,
-      "10_year_change": 5.80
+        "country": "Canada",
+        "rank": 20,
+        "epi_score": 67.20,
+        "10_year_change": 3.20,
+        "description": "Canada boasts diverse landscapes, wildlife, and a commitment to preserving its natural beauty through responsible natural resource management."
     },
     {
-      "country": "Belgium",
-      "rank": 21,
-      "epi_score": 58.20,
-      "10_year_change": 6.10
+        "country": "South Korea",
+        "rank": 21,
+        "epi_score": 66.20,
+        "10_year_change": 16.00,
+        "description": "South Korea is known for its technological advancements, pop culture, and has been making efforts to improve air quality and reduce pollution."
     },
     {
-      "country": "Cyprus",
-      "rank": 22,
-      "epi_score": 58.00,
-      "10_year_change": 6.00
+        "country": "Chile",
+        "rank": 22,
+        "epi_score": 66.00,
+        "10_year_change": 7.60,
+        "description": "Chile features diverse landscapes ranging from deserts to glaciers. The country is working on sustainability initiatives while facing water scarcity challenges."
     },
     {
-      "country": "Italy",
-      "rank": 23,
-      "epi_score": 57.70,
-      "10_year_change": 6.00
+        "country": "Slovakia",
+        "rank": 23,
+        "epi_score": 65.80,
+        "10_year_change": -2.90,
+        "description": "Slovakia is known for its medieval castles, stunning mountains, and is working to strengthen environmental policies and promote sustainable practices."
     },
     {
-      "country": "Ireland",
-      "rank": 24,
-      "epi_score": 57.40,
-      "10_year_change": 2.50
+        "country": "Estonia",
+        "rank": 24,
+        "epi_score": 65.30,
+        "10_year_change": 8.40,
+        "description": "Estonia is a Baltic gem with diverse wildlife, charming towns, and advancements in digital governance and environmental conservation."
     },
     {
-      "country": "Japan",
-      "rank": 25,
-      "epi_score": 57.20,
-      "10_year_change": 3.20
+        "country": "Croatia",
+        "rank": 25,
+        "epi_score": 64.90,
+        "10_year_change": -1.70,
+        "description": "Croatia boasts the stunning Adriatic coastline, historic sites, and is working on waste management and sustainable tourism to protect its environment."
     },
     {
-      "country": "New Zealand",
-      "rank": 26,
-      "epi_score": 56.70,
-      "10_year_change": -0.40
+        "country": "Romania",
+        "rank": 26,
+        "epi_score": 64.60,
+        "10_year_change": -4.60,
+        "description": "Romania features the Carpathian Mountains and historic castles. The country is working to address deforestation and promote sustainable land use."
     },
     {
-      "country": "Spain",
-      "rank": 27,
-      "epi_score": 56.60,
-      "10_year_change": 7.30
+        "country": "Hungary",
+        "rank": 27,
+        "epi_score": 63.50,
+        "10_year_change": -4.30,
+        "description": "Hungary boasts thermal baths, rich history, and is focusing on improving waste management and reducing air pollution for a greener future."
     },
     {
-      "country": "Bahamas",
-      "rank": 28,
-      "epi_score": 56.20,
-      "10_year_change": 9.80
+        "country": "Latvia",
+        "rank": 28,
+        "epi_score": 63.40,
+        "10_year_change": 3.20,
+        "description": "Latvia is known for its Baltic beaches, dense forests, and is working to strengthen environmental regulations and promote sustainable forestry."
     },
     {
-      "country": "Greece",
-      "rank": 28,
-      "epi_score": 56.20,
-      "10_year_change": 4.30
+        "country": "Poland",
+        "rank": 29,
+        "epi_score": 62.60,
+        "10_year_change": 1.10,
+        "description": "Poland features historic cities, natural parks, and faces challenges in air quality and reducing dependence on coal for a cleaner environment."
     },
     {
-      "country": "Romania",
-      "rank": 30,
-      "epi_score": 56.00,
-      "10_year_change": 5.30
+        "country": "Lithuania",
+        "rank": 30,
+        "epi_score": 61.80,
+        "10_year_change": -3.90,
+        "description": "Lithuania has a rich cultural heritage, beautiful lakes, and is working to improve waste management and promote renewable energy sources."
     },
     {
-      "country": "Lithuania",
-      "rank": 31,
-      "epi_score": 55.90,
-      "10_year_change": 3.20
+        "country": "Bulgaria",
+        "rank": 31,
+        "epi_score": 61.50,
+        "10_year_change": -4.00,
+        "description": "Bulgaria offers diverse landscapes, ancient history, and is working to address water pollution and promote sustainable agriculture practices."
     },
     {
-      "country": "Seychelles",
-      "rank": 32,
-      "epi_score": 55.60,
-      "10_year_change": 7.00
+        "country": "Belgium",
+        "rank": 32,
+        "epi_score": 61.20,
+        "10_year_change": 2.60,
+        "description": "Belgium is known for its medieval towns, chocolates, and is making efforts to reduce emissions and promote greener urban planning."
     },
     {
-      "country": "Hungary",
-      "rank": 33,
-      "epi_score": 55.10,
-      "10_year_change": 2.00
+        "country": "Cyprus",
+        "rank": 33,
+        "epi_score": 61.10,
+        "10_year_change": 1.20,
+        "description": "Cyprus features stunning beaches, ancient ruins, and is working to improve waste management and promote sustainable tourism."
     },
     {
-      "country": "North Macedonia",
-      "rank": 34,
-      "epi_score": 54.30,
-      "10_year_change": 3.60
+        "country": "Malta",
+        "rank": 34,
+        "epi_score": 59.90,
+        "10_year_change": -1.40,
+        "description": "Malta boasts historic sites, clear Mediterranean waters, and is focusing on reducing air pollution and promoting sustainable water use."
     },
     {
-      "country": "Botswana",
-      "rank": 35,
-      "epi_score": 54.00,
-      "10_year_change": 8.20
+        "country": "Slovenia",
+        "rank": 35,
+        "epi_score": 59.90,
+        "10_year_change": -0.50,
+        "description": "Slovenia offers stunning lakes, caves, and is working on strengthening environmental policies to protect its natural beauty."
     },
     {
-      "country": "Barbados",
-      "rank": 36,
-      "epi_score": 53.20,
-      "10_year_change": 12.70
+        "country": "Andorra",
+        "rank": 36,
+        "epi_score": 58.80,
+        "10_year_change": 2.30,
+        "description": "Andorra features the Pyrenees mountains, and the country is making efforts to promote sustainable transportation and waste management."
     },
     {
-      "country": "Saint Vincent and the Grenadines",
-      "rank": 36,
-      "epi_score": 53.20,
-      "10_year_change": 8.90
+        "country": "Montenegro",
+        "rank": 37,
+        "epi_score": 58.50,
+        "10_year_change": -1.80,
+        "description": "Montenegro offers Adriatic coastline, rugged mountains, and is working on addressing water pollution and promoting eco-friendly tourism."
     },
     {
-      "country": "Sao Tome and Principe",
-      "rank": 38,
-      "epi_score": 52.90,
-      "10_year_change": 7.00
+        "country": "United Arab Emirates",
+        "rank": 38,
+        "epi_score": 58.40,
+        "10_year_change": -12.50,
+        "description": "The UAE features modern architecture, deserts, and is investing in sustainable technologies and diversifying its economy for a greener future."
     },
     {
-      "country": "Antigua and Barbuda",
-      "rank": 39,
-      "epi_score": 52.40,
-      "10_year_change": 9.70
+        "country": "Bosnia and Herzegovina",
+        "rank": 39,
+        "epi_score": 57.40,
+        "10_year_change": -4.70,
+        "description": "Bosnia and Herzegovina offer diverse cultures, natural beauty, and are working on improving waste management and environmental regulations."
     },
     {
-      "country": "United Arab Emirates",
-      "rank": 39,
-      "epi_score": 52.40,
-      "10_year_change": 15.90
+        "country": "Serbia",
+        "rank": 40,
+        "epi_score": 57.20,
+        "10_year_change": -0.10,
+        "description": "Serbia boasts historic sites, vibrant cities, and is focusing on addressing air and water pollution for a cleaner and healthier environment."
     },
     {
-      "country": "Bulgaria",
-      "rank": 41,
-      "epi_score": 51.90,
-      "10_year_change": 4.60
+        "country": "Qatar",
+        "rank": 41,
+        "epi_score": 56.90,
+        "10_year_change": -13.20,
+        "description": "Qatar features modern development, deserts, and is investing in renewable energy and sustainable technologies to reduce its ecological footprint."
     },
     {
-      "country": "Dominica",
-      "rank": 42,
-      "epi_score": 51.20,
-      "10_year_change": 10.20
+        "country": "North Macedonia",
+        "rank": 42,
+        "epi_score": 56.70,
+        "10_year_change": -7.70,
+        "description": "North Macedonia offers diverse landscapes, historic towns, and is working on improving waste management and environmental sustainability."
     },
     {
-      "country": "United States of America",
-      "rank": 43,
-      "epi_score": 51.10,
-      "10_year_change": 3.30
+        "country": "Kuwait",
+        "rank": 43,
+        "epi_score": 56.10,
+        "10_year_change": -12.70,
+        "description": "Kuwait features modern urbanization, deserts, and is investing in sustainable initiatives and diversifying its economy for a greener future."
     },
     {
-      "country": "Namibia",
-      "rank": 44,
-      "epi_score": 50.90,
-      "10_year_change": 16.40
+        "country": "Albania",
+        "rank": 44,
+        "epi_score": 56.00,
+        "10_year_change": -0.10,
+        "description": "Albania offers Mediterranean beauty, historic sites, and is working to improve waste management and promote sustainable tourism."
     },
     {
-      "country": "Singapore",
-      "rank": 44,
-      "epi_score": 50.90,
-      "10_year_change": 3.70
+        "country": "Saudi Arabia",
+        "rank": 45,
+        "epi_score": 55.40,
+        "10_year_change": -14.60,
+        "description": "Saudi Arabia features desert landscapes, historical sites, and is making efforts to promote renewable energy and reduce its environmental impact."
     },
     {
-      "country": "Poland",
-      "rank": 46,
-      "epi_score": 50.60,
-      "10_year_change": null
+        "country": "Bahrain",
+        "rank": 46,
+        "epi_score": 55.20,
+        "10_year_change": -6.80,
+        "description": "Bahrain features modern development, islands, and is focusing on sustainable urban planning and waste management for an eco-friendly future."
     },
     {
-      "country": "Panama",
-      "rank": 47,
-      "epi_score": 50.50,
-      "10_year_change": 9.90
+        "country": "Jordan",
+        "rank": 47,
+        "epi_score": 54.60,
+        "10_year_change": -7.90,
+        "description": "Jordan offers archaeological sites, diverse landscapes, and is working on water conservation and sustainable land use to protect its environment."
     },
     {
-      "country": "Portugal",
-      "rank": 48,
-      "epi_score": 50.40,
-      "10_year_change": -1.60
+        "country": "Iraq",
+        "rank": 48,
+        "epi_score": 52.20,
+        "10_year_change": -15.20,
+        "description": "Iraq holds rich historical significance, rivers, and is making efforts to rebuild its environmental framework and promote sustainability."
     },
     {
-      "country": "Belize",
-      "rank": 49,
-      "epi_score": 50.00,
-      "10_year_change": -2.10
+        "country": "Tunisia",
+        "rank": 49,
+        "epi_score": 51.60,
+        "10_year_change": -1.80,
+        "description": "Tunisia offers Mediterranean coastline, ancient ruins, and is working on sustainable tourism and environmental regulations for a greener future."
     },
     {
-      "country": "Canada",
-      "rank": 49,
-      "epi_score": 50.00,
-      "10_year_change": 4.00
+        "country": "Lebanon",
+        "rank": 50,
+        "epi_score": 50.60,
+        "10_year_change": -8.60,
+        "description": "Lebanon features Mediterranean beauty, historical sites, and faces challenges in waste management and environmental degradation."
     },
     {
-      "country": "Gabon",
-      "rank": 51,
-      "epi_score": 49.70,
-      "10_year_change": -0.30
+        "country": "Palestine",
+        "rank": 51,
+        "epi_score": 50.40,
+        "10_year_change": -0.40,
+        "description": "Palestine features historical and cultural heritage, and is working to address environmental challenges amidst ongoing political and social complexities."
     },
     {
-      "country": "Ukraine",
-      "rank": 52,
-      "epi_score": 49.60,
-      "10_year_change": 6.20
+        "country": "Oman",
+        "rank": 52,
+        "epi_score": 49.40,
+        "10_year_change": -12.10,
+        "description": "Oman boasts deserts, mountains, and is focusing on sustainable development, conservation, and diversification of its economy."
     },
     {
-      "country": "Saint Lucia",
-      "rank": 53,
-      "epi_score": 49.40,
-      "10_year_change": 0.30
+        "country": "Syria",
+        "rank": 53,
+        "epi_score": 49.20,
+        "10_year_change": -10.40,
+        "description": "Syria holds historical significance, diverse landscapes, and is working to rebuild its environmental infrastructure amidst ongoing challenges."
     },
     {
-      "country": "Kiribati",
-      "rank": 54,
-      "epi_score": 49.00,
-      "10_year_change": 4.80
+        "country": "Libya",
+        "rank": 54,
+        "epi_score": 48.30,
+        "10_year_change": -15.10,
+        "description": "Libya features ancient ruins, Mediterranean coast, and faces environmental struggles amidst political instability and economic difficulties."
     },
     {
-      "country": "Belarus",
-      "rank": 55,
-      "epi_score": 48.50,
-      "10_year_change": 3.50
+        "country": "Egypt",
+        "rank": 55,
+        "epi_score": 47.60,
+        "10_year_change": -10.10,
+        "description": "Egypt offers iconic landmarks, the Nile River, and is working on balancing tourism with environmental preservation and resource management."
     },
     {
-      "country": "Armenia",
-      "rank": 56,
-      "epi_score": 48.30,
-      "10_year_change": 4.80
+        "country": "Algeria",
+        "rank": 56,
+        "epi_score": 47.20,
+        "10_year_change": -6.70,
+        "description": "Algeria boasts diverse landscapes, Sahara desert, and is making efforts to promote sustainable development and address environmental challenges."
     },
     {
-      "country": "Israel",
-      "rank": 57,
-      "epi_score": 48.20,
-      "10_year_change": 1.90
+        "country": "Morocco",
+        "rank": 57,
+        "epi_score": 46.90,
+        "10_year_change": -8.20,
+        "description": "Morocco features rich culture, historic cities, and is working on sustainable tourism, renewable energy, and environmental conservation."
     },
     {
-      "country": "Grenada",
-      "rank": 58,
-      "epi_score": 47.90,
-      "10_year_change": 7.10
+        "country": "Mauritania",
+        "rank": 58,
+        "epi_score": 46.70,
+        "10_year_change": -0.50,
+        "description": "Mauritania boasts Sahara desert beauty, and is focusing on sustainable development, biodiversity conservation, and addressing desertification."
     },
     {
-      "country": "Trinidad and Tobago",
-      "rank": 59,
-      "epi_score": 47.80,
-      "10_year_change": 19.00
+        "country": "Djibouti",
+        "rank": 59,
+        "epi_score": 46.50,
+        "10_year_change": -9.30,
+        "description": "Djibouti features unique landscapes, and is working on sustainable land use, waste management, and environmental awareness."
     },
     {
-      "country": "Cuba",
-      "rank": 60,
-      "epi_score": 47.50,
-      "10_year_change": 6.80
+        "country": "Somalia",
+        "rank": 60,
+        "epi_score": 45.50,
+        "10_year_change": -4.20,
+        "description": "Somalia holds natural beauty, and is working to rebuild its environmental framework and address challenges amidst ongoing social and political issues."
     },
     {
-      "country": "Djibouti",
-      "rank": 60,
-      "epi_score": 47.50,
-      "10_year_change": 12.90
+        "country": "Eritrea",
+        "rank": 61,
+        "epi_score": 45.10,
+        "10_year_change": -3.40,
+        "description": "Eritrea features diverse landscapes, and is focusing on sustainable development, resource management, and conservation efforts."
     },
     {
-      "country": "Albania",
-      "rank": 62,
-      "epi_score": 47.10,
-      "10_year_change": 9.90
+        "country": "Sudan",
+        "rank": 62,
+        "epi_score": 44.50,
+        "10_year_change": -12.30,
+        "description": "Sudan holds historical sites, the Nile River, and is working on sustainable water use, reforestation, and environmental resilience."
     },
     {
-      "country": "Montenegro",
-      "rank": 63,
-      "epi_score": 46.90,
-      "10_year_change": 8.50
+        "country": "Yemen",
+        "rank": 63,
+        "epi_score": 43.70,
+        "10_year_change": -5.50,
+        "description": "Yemen features cultural heritage, landscapes, and is facing environmental challenges amidst ongoing conflict and humanitarian crises."
     },
     {
-      "country": "South Korea",
-      "rank": 63,
-      "epi_score": 46.90,
-      "10_year_change": 1.80
+        "country": "Chad",
+        "rank": 64,
+        "epi_score": 42.30,
+        "10_year_change": -6.70,
+        "description": "Chad boasts diverse geography, Sahara desert, and is working on sustainable development, conservation, and addressing desertification."
     },
     {
-      "country": "Chile",
-      "rank": 65,
-      "epi_score": 46.70,
-      "10_year_change": 6.80
+        "country": "Ethiopia",
+        "rank": 65,
+        "epi_score": 41.60,
+        "10_year_change": -9.90,
+        "description": "Ethiopia offers cultural heritage, diverse landscapes, and is focusing on reforestation, sustainable land use, and biodiversity conservation."
     },
     {
-      "country": "Ecuador",
-      "rank": 66,
-      "epi_score": 46.50,
-      "10_year_change": 9.20
+        "country": "South Sudan",
+        "rank": 66,
+        "epi_score": 39.60,
+        "10_year_change": -2.10,
+        "description": "South Sudan holds natural beauty, and is working to establish environmental policies and address challenges amidst ongoing nation-building."
     },
     {
-      "country": "Venezuela",
-      "rank": 67,
-      "epi_score": 46.40,
-      "10_year_change": 0.20
+        "country": "Burundi",
+        "rank": 67,
+        "epi_score": 38.20,
+        "10_year_change": -6.00,
+        "description": "Burundi features landscapes and lakes, and is working on sustainable agriculture, reforestation, and addressing soil degradation."
     },
     {
-      "country": "Costa Rica",
-      "rank": 68,
-      "epi_score": 46.30,
-      "10_year_change": 4.00
+        "country": "Democratic Republic of the Congo",
+        "rank": 68,
+        "epi_score": 37.20,
+        "10_year_change": -1.70,
+        "description": "The DRC holds rainforests, wildlife, and is working to balance conservation with resource development, facing challenges of deforestation and conflict."
     },
     {
-      "country": "Zimbabwe",
-      "rank": 69,
-      "epi_score": 46.20,
-      "10_year_change": -0.70
+        "country": "Burkina Faso",
+        "rank": 69,
+        "epi_score": 36.80,
+        "10_year_change": -8.90,
+        "description": "Burkina Faso boasts diverse culture, landscapes, and is working on sustainable development, desertification, and addressing environmental issues."
     },
     {
-      "country": "Suriname",
-      "rank": 70,
-      "epi_score": 45.90,
-      "10_year_change": -8.00
+        "country": "Uganda",
+        "rank": 70,
+        "epi_score": 36.50,
+        "10_year_change": -2.90,
+        "description": "Uganda offers natural beauty, wildlife, and is focusing on biodiversity conservation, reforestation, and sustainable land use."
     },
     {
-      "country": "Brunei Darussalam",
-      "rank": 71,
-      "epi_score": 45.70,
-      "10_year_change": 7.40
+        "country": "Tanzania",
+        "rank": 71,
+        "epi_score": 36.10,
+        "10_year_change": -1.20,
+        "description": "Tanzania boasts iconic wildlife, landscapes, and is working on balancing conservation with tourism, addressing deforestation, and sustainable development."
     },
     {
-      "country": "Jamaica",
-      "rank": 72,
-      "epi_score": 45.60,
-      "10_year_change": -2.00
+        "country": "Rwanda",
+        "rank": 72,
+        "epi_score": 35.60,
+        "10_year_change": 2.90,
+        "description": "Rwanda is known for its progressive environmental policies, sustainable tourism, and efforts to address historical deforestation."
     },
     {
-      "country": "Mexico",
-      "rank": 73,
-      "epi_score": 45.50,
-      "10_year_change": 12.40
+        "country": "Kenya",
+        "rank": 73,
+        "epi_score": 35.60,
+        "10_year_change": -1.90,
+        "description": "Kenya is famed for its wildlife, national parks, and is working on sustainable tourism, community-based conservation, and addressing environmental challenges."
     },
     {
-      "country": "Taiwan",
-      "rank": 74,
-      "epi_score": 45.30,
-      "10_year_change": 7.00
+        "country": "Madagascar",
+        "rank": 74,
+        "epi_score": 35.30,
+        "10_year_change": -3.30,
+        "description": "Madagascar holds unique biodiversity, and despite challenges like deforestation, it's making efforts to promote conservation and sustainable development."
     },
     {
-      "country": "Central African Republic",
-      "rank": 75,
-      "epi_score": 44.90,
-      "10_year_change": -0.70
+        "country": "Malawi",
+        "rank": 75,
+        "epi_score": 35.20,
+        "10_year_change": 4.70,
+        "description": "Malawi is known for its lakes, landscapes, and is focusing on sustainable agriculture, biodiversity conservation, and community initiatives."
     },
     {
-      "country": "Eswatini",
-      "rank": 75,
-      "epi_score": 44.90,
-      "10_year_change": 1.50
+        "country": "Zambia",
+        "rank": 76,
+        "epi_score": 34.50,
+        "10_year_change": -0.10,
+        "description": "Zambia boasts natural beauty, wildlife, and is working on sustainable tourism, conservation policies, and community empowerment."
     },
     {
-      "country": "Equatorial Guinea",
-      "rank": 77,
-      "epi_score": 44.80,
-      "10_year_change": 15.30
+        "country": "Mozambique",
+        "rank": 77,
+        "epi_score": 33.90,
+        "10_year_change": 1.70,
+        "description": "Mozambique features coastal beauty, marine life, and is working on sustainable coastal management, conservation, and addressing environmental challenges."
     },
     {
-      "country": "Mauritius",
-      "rank": 77,
-      "epi_score": 44.80,
-      "10_year_change": 10.00
+        "country": "Zimbabwe",
+        "rank": 78,
+        "epi_score": 33.60,
+        "10_year_change": 1.60,
+        "description": "Zimbabwe faces challenges including deforestation, wildlife conservation, and is working on community-based natural resource management and sustainable tourism."
     },
     {
-      "country": "Serbia",
-      "rank": 79,
-      "epi_score": 43.90,
-      "10_year_change": 8.50
+        "country": "Angola",
+        "rank": 79,
+        "epi_score": 33.50,
+        "10_year_change": -4.10,
+        "description": "Angola is rebounding after conflict, and is focusing on sustainable development, wildlife conservation, and addressing environmental degradation."
     },
     {
-      "country": "Tonga",
-      "rank": 80,
-      "epi_score": 43.80,
-      "10_year_change": -3.00
+        "country": "Eswatini",
+        "rank": 80,
+        "epi_score": 32.80,
+        "10_year_change": 2.50,
+        "description": "Eswatini features diverse landscapes, and is working on sustainable agriculture, renewable energy, and community-driven conservation."
     },
     {
-      "country": "Afghanistan",
-      "rank": 81,
-      "epi_score": 43.60,
-      "10_year_change": 23.90
+        "country": "Namibia",
+        "rank": 81,
+        "epi_score": 31.90,
+        "10_year_change": 2.90,
+        "description": "Namibia is known for its deserts, wildlife, and is focusing on community-based conservation, sustainable tourism, and natural resource management."
     },
     {
-      "country": "Brazil",
-      "rank": 81,
-      "epi_score": 43.60,
-      "10_year_change": 5.40
+        "country": "Botswana",
+        "rank": 82,
+        "epi_score": 31.70,
+        "10_year_change": 0.30,
+        "description": "Botswana treasures its wildlife, landscapes, and is working on sustainable tourism, community engagement, and natural resource conservation."
     },
     {
-      "country": "Jordan",
-      "rank": 81,
-      "epi_score": 43.60,
-      "10_year_change": 7.80
+        "country": "Lesotho",
+        "rank": 83,
+        "epi_score": 30.50,
+        "10_year_change": 4.10,
+        "description": "Lesotho is landlocked and boasts mountains, and is focusing on sustainable land use, water management, and environmental conservation."
     },
     {
-      "country": "Moldova",
-      "rank": 84,
-      "epi_score": 42.70,
-      "10_year_change": -4.80
+        "country": "Swaziland",
+        "rank": 84,
+        "epi_score": 30.50,
+        "10_year_change": 4.10,
+        "description": "Swaziland, known as Eswatini, features diverse landscapes and is working on sustainable agriculture, renewable energy, and community-driven conservation."
     },
     {
-      "country": "Bhutan",
-      "rank": 85,
-      "epi_score": 42.50,
-      "10_year_change": -7.90
+        "country": "South Africa",
+        "rank": 85,
+        "epi_score": 30.30,
+        "10_year_change": -4.50,
+        "description": "South Africa is famed for its biodiversity, landscapes, and is working on sustainable development, wildlife conservation, and addressing environmental issues."
     },
     {
-      "country": "Comoros",
-      "rank": 85,
-      "epi_score": 42.50,
-      "10_year_change": 1.00
+        "country": "Cameroon",
+        "rank": 86,
+        "epi_score": 30.10,
+        "10_year_change": -3.50,
+        "description": "Cameroon holds diverse culture, landscapes, and is focusing on sustainable development, wildlife conservation, and addressing environmental challenges."
     },
     {
-      "country": "Colombia",
-      "rank": 87,
-      "epi_score": 42.40,
-      "10_year_change": -0.50
+        "country": "Nigeria",
+        "rank": 87,
+        "epi_score": 28.80,
+        "10_year_change": 0.30,
+        "description": "Nigeria is populous and faces environmental challenges including pollution, deforestation, and is working on sustainable development and conservation."
     },
     {
-      "country": "Kuwait",
-      "rank": 87,
-      "epi_score": 42.40,
-      "10_year_change": 15.20
+        "country": "Ghana",
+        "rank": 88,
+        "epi_score": 28.30,
+        "10_year_change": 1.10,
+        "description": "Ghana features diverse culture, landscapes, and is making efforts in sustainable development, biodiversity conservation, and environmental awareness."
     },
     {
-      "country": "Dominican Republic",
-      "rank": 89,
-      "epi_score": 42.20,
-      "10_year_change": -3.10
+        "country": "Equatorial Guinea",
+        "rank": 89,
+        "epi_score": 27.40,
+        "10_year_change": -3.10,
+        "description": "Equatorial Guinea faces environmental challenges including deforestation, wildlife conservation, and is working on sustainable development and regulation."
     },
     {
-      "country": "Bahrain",
-      "rank": 90,
-      "epi_score": 42.00,
-      "10_year_change": 5.70
+        "country": "Cote d'Ivoire",
+        "rank": 90,
+        "epi_score": 27.30,
+        "10_year_change": 5.90,
+        "description": "Cote d'Ivoire is working on reforestation, sustainable development, biodiversity conservation, and raising environmental awareness."
     },
     {
-      "country": "Cabo Verde",
-      "rank": 91,
-      "epi_score": 41.90,
-      "10_year_change": 4.80
+        "country": "Central African Republic",
+        "rank": 91,
+        "epi_score": 26.90,
+        "10_year_change": 0.80,
+        "description": "Central African Republic is addressing deforestation, wildlife conservation, and is working on sustainable development amidst social and political challenges."
     },
     {
-      "country": "Argentina",
-      "rank": 92,
-      "epi_score": 41.10,
-      "10_year_change": 7.80
+        "country": "Sierra Leone",
+        "rank": 92,
+        "epi_score": 26.30,
+        "10_year_change": 1.10,
+        "description": "Sierra Leone features natural beauty, and is making efforts in reforestation, sustainable development, and environmental education."
     },
     {
-      "country": "Kazakhstan",
-      "rank": 93,
-      "epi_score": 40.90,
-      "10_year_change": 11.80
+        "country": "Benin",
+        "rank": 93,
+        "epi_score": 26.00,
+        "10_year_change": 2.10,
+        "description": "Benin is working on sustainable development, biodiversity conservation, waste management, and raising environmental awareness."
     },
     {
-      "country": "Paraguay",
-      "rank": 93,
-      "epi_score": 40.90,
-      "10_year_change": -6.00
+        "country": "Liberia",
+        "rank": 94,
+        "epi_score": 25.90,
+        "10_year_change": 1.70,
+        "description": "Liberia is addressing deforestation, sustainable development, wildlife conservation, and promoting environmental education and awareness."
     },
     {
-      "country": "El Salvador",
-      "rank": 95,
-      "epi_score": 40.80,
-      "10_year_change": 7.60
+        "country": "Togo",
+        "rank": 95,
+        "epi_score": 25.80,
+        "10_year_change": 2.90,
+        "description": "Togo is making progress in sustainable development, reforestation, waste management, and environmental conservation."
     },
     {
-      "country": "Tunisia",
-      "rank": 96,
-      "epi_score": 40.70,
-      "10_year_change": 8.10
+        "country": "Niger",
+        "rank": 96,
+        "epi_score": 25.50,
+        "10_year_change": 0.90,
+        "description": "Niger is working on sustainable development, resource management, drought resilience, and promoting environmental awareness."
     },
     {
-      "country": "Malawi",
-      "rank": 97,
-      "epi_score": 40.60,
-      "10_year_change": -4.50
+        "country": "Guinea-Bissau",
+        "rank": 97,
+        "epi_score": 25.50,
+        "10_year_change": 0.30,
+        "description": "Guinea-Bissau is focusing on sustainable development, biodiversity conservation, marine protection, and addressing environmental challenges."
     },
     {
-      "country": "Guinea-Bissau",
-      "rank": 98,
-      "epi_score": 40.20,
-      "10_year_change": 3.50
+        "country": "Gambia",
+        "rank": 98,
+        "epi_score": 25.30,
+        "10_year_change": 2.90,
+        "description": "Gambia is making progress in sustainable development, wildlife conservation, waste management, and raising environmental awareness."
     },
     {
-      "country": "Bolivia",
-      "rank": 99,
-      "epi_score": 40.10,
-      "10_year_change": 0.60
+        "country": "Mali",
+        "rank": 99,
+        "epi_score": 24.90,
+        "10_year_change": 1.60,
+        "description": "Mali is working on sustainable development, desertification, resource management, and promoting environmental awareness."
     },
     {
-      "country": "Republic of Congo",
-      "rank": 99,
-      "epi_score": 40.10,
-      "10_year_change": 6.20
-    },
-    {
-      "country": "Peru",
-      "rank": 101,
-      "epi_score": 39.80,
-      "10_year_change": -0.40
-    },
-    {
-      "country": "Bosnia and Herzegovina",
-      "rank": 102,
-      "epi_score": 39.40,
-      "10_year_change": 10.00
-    },
-    {
-      "country": "Georgia",
-      "rank": 103,
-      "epi_score": 39.10,
-      "10_year_change": 2.60
-    },
-    {
-      "country": "Azerbaijan",
-      "rank": 104,
-      "epi_score": 38.60,
-      "10_year_change": -1.30
-    },
-    {
-      "country": "Guyana",
-      "rank": 105,
-      "epi_score": 38.50,
-      "10_year_change": -6.10
-    },
-    {
-      "country": "Zambia",
-      "rank": 106,
-      "epi_score": 38.40,
-      "10_year_change": -6.90
-    },
-    {
-      "country": "Uzbekistan",
-      "rank": 107,
-      "epi_score": 38.20,
-      "10_year_change": 1.90
-    },
-    {
-      "country": "Thailand",
-      "rank": 108,
-      "epi_score": 38.10,
-      "10_year_change": 7.20
-    },
-    {
-      "country": "Saudi Arabia",
-      "rank": 109,
-      "epi_score": 37.90,
-      "10_year_change": 9.50
-    },
-    {
-      "country": "Nicaragua",
-      "rank": 110,
-      "epi_score": 37.70,
-      "10_year_change": -0.90
-    },
-    {
-      "country": "Niger",
-      "rank": 110,
-      "epi_score": 37.70,
-      "10_year_change": -2.80
-    },
-    {
-      "country": "Russia",
-      "rank": 112,
-      "epi_score": 37.50,
-      "10_year_change": 1.60
-    },
-    {
-      "country": "Maldives",
-      "rank": 113,
-      "epi_score": 37.40,
-      "10_year_change": 9.00
-    },
-    {
-      "country": "Micronesia",
-      "rank": 113,
-      "epi_score": 37.40,
-      "10_year_change": -5.90
-    },
-    {
-      "country": "Uruguay",
-      "rank": 113,
-      "epi_score": 37.40,
-      "10_year_change": 3.30
-    },
-    {
-      "country": "South Africa",
-      "rank": 116,
-      "epi_score": 37.20,
-      "10_year_change": 10.10
-    },
-    {
-      "country": "Tajikistan",
-      "rank": 117,
-      "epi_score": 37.10,
-      "10_year_change": -1.60
-    },
-    {
-      "country": "Turkmenistan",
-      "rank": 118,
-      "epi_score": 37.00,
-      "10_year_change": 8.90
-    },
-    {
-      "country": "Dem. Rep. Congo",
-      "rank": 119,
-      "epi_score": 36.90,
-      "10_year_change": -0.20
-    },
-    {
-      "country": "Vanuatu",
-      "rank": 119,
-      "epi_score": 36.90,
-      "10_year_change": -9.20
-    },
-    {
-      "country": "Honduras",
-      "rank": 121,
-      "epi_score": 36.50,
-      "10_year_change": 7.20
-    },
-    {
-      "country": "Gambia",
-      "rank": 122,
-      "epi_score": 36.40,
-      "10_year_change": 5.60
-    },
-    {
-      "country": "Samoa",
-      "rank": 122,
-      "epi_score": 36.40,
-      "10_year_change": -7.40
-    },
-    {
-      "country": "Marshall Islands",
-      "rank": 124,
-      "epi_score": 36.20,
-      "10_year_change": 0.70
-    },
-    {
-      "country": "Uganda",
-      "rank": 125,
-      "epi_score": 35.80,
-      "10_year_change": 3.10
-    },
-    {
-      "country": "Kyrgyzstan",
-      "rank": 126,
-      "epi_score": 35.70,
-      "10_year_change": 1.20
-    },
-    {
-      "country": "Burkina Faso",
-      "rank": 127,
-      "epi_score": 35.50,
-      "10_year_change": 2.00
-    },
-    {
-      "country": "Egypt",
-      "rank": 127,
-      "epi_score": 35.50,
-      "10_year_change": 6.50
-    },
-    {
-      "country": "Timor-Leste",
-      "rank": 129,
-      "epi_score": 35.10,
-      "10_year_change": -0.30
-    },
-    {
-      "country": "Malaysia",
-      "rank": 130,
-      "epi_score": 35.00,
-      "10_year_change": 10.30
-    },
-    {
-      "country": "Solomon Islands",
-      "rank": 130,
-      "epi_score": 35.00,
-      "10_year_change": 0.80
-    },
-    {
-      "country": "Sri Lanka",
-      "rank": 132,
-      "epi_score": 34.70,
-      "10_year_change": -2.60
-    },
-    {
-      "country": "Iran",
-      "rank": 133,
-      "epi_score": 34.50,
-      "10_year_change": 6.90
-    },
-    {
-      "country": "Tanzania",
-      "rank": 134,
-      "epi_score": 34.20,
-      "10_year_change": 3.40
-    },
-    {
-      "country": "Togo",
-      "rank": 135,
-      "epi_score": 34.00,
-      "10_year_change": -2.40
-    },
-    {
-      "country": "Senegal",
-      "rank": 136,
-      "epi_score": 33.90,
-      "10_year_change": -0.90
-    },
-    {
-      "country": "Qatar",
-      "rank": 137,
-      "epi_score": 33.00,
-      "10_year_change": -2.30
-    },
-    {
-      "country": "Cote d'Ivoire",
-      "rank": 138,
-      "epi_score": 32.80,
-      "10_year_change": -8.20
-    },
-    {
-      "country": "Rwanda",
-      "rank": 138,
-      "epi_score": 32.80,
-      "10_year_change": -4.20
-    },
-    {
-      "country": "Sierra Leone",
-      "rank": 140,
-      "epi_score": 32.70,
-      "10_year_change": 7.20
-    },
-    {
-      "country": "Lesotho",
-      "rank": 141,
-      "epi_score": 32.30,
-      "10_year_change": 1.40
-    },
-    {
-      "country": "Lebanon",
-      "rank": 142,
-      "epi_score": 32.20,
-      "10_year_change": -4.70
-    },
-    {
-      "country": "Ethiopia",
-      "rank": 143,
-      "epi_score": 31.80,
-      "10_year_change": 3.60
-    },
-    {
-      "country": "Eritrea",
-      "rank": 144,
-      "epi_score": 31.70,
-      "10_year_change": -5.50
-    },
-    {
-      "country": "Mozambique",
-      "rank": 144,
-      "epi_score": 31.70,
-      "10_year_change": 0.60
-    },
-    {
-      "country": "Guinea",
-      "rank": 146,
-      "epi_score": 31.60,
-      "10_year_change": 0.20
-    },
-    {
-      "country": "Fiji",
-      "rank": 147,
-      "epi_score": 31.30,
-      "10_year_change": -3.70
-    },
-    {
-      "country": "Kenya",
-      "rank": 148,
-      "epi_score": 30.80,
-      "10_year_change": -1.80
-    },
-    {
-      "country": "Laos",
-      "rank": 149,
-      "epi_score": 30.70,
-      "10_year_change": -1.30
-    },
-    {
-      "country": "Oman",
-      "rank": 149,
-      "epi_score": 30.70,
-      "10_year_change": 6.40
-    },
-    {
-      "country": "Angola",
-      "rank": 151,
-      "epi_score": 30.50,
-      "10_year_change": 0.20
-    },
-    {
-      "country": "Burundi",
-      "rank": 151,
-      "epi_score": 30.50,
-      "10_year_change": -13.00
-    },
-    {
-      "country": "Cameroon",
-      "rank": 153,
-      "epi_score": 30.20,
-      "10_year_change": -2.00
-    },
-    {
-      "country": "Cambodia",
-      "rank": 154,
-      "epi_score": 30.10,
-      "10_year_change": 2.00
-    },
-    {
-      "country": "Algeria",
-      "rank": 155,
-      "epi_score": 29.60,
-      "10_year_change": -4.00
-    },
-    {
-      "country": "Benin",
-      "rank": 155,
-      "epi_score": 29.60,
-      "10_year_change": -1.60
-    },
-    {
-      "country": "Mongolia",
-      "rank": 155,
-      "epi_score": 29.60,
-      "10_year_change": -5.20
-    },
-    {
-      "country": "Philippines",
-      "rank": 158,
-      "epi_score": 28.90,
-      "10_year_change": -7.50
-    },
-    {
-      "country": "Mali",
-      "rank": 159,
-      "epi_score": 28.50,
-      "10_year_change": -1.80
-    },
-    {
-      "country": "China",
-      "rank": 160,
-      "epi_score": 28.40,
-      "10_year_change": 11.40
-    },
-    {
-      "country": "Morocco",
-      "rank": 160,
-      "epi_score": 28.40,
-      "10_year_change": 2.60
-    },
-    {
-      "country": "Nepal",
-      "rank": 162,
-      "epi_score": 28.30,
-      "10_year_change": -10.30
-    },
-    {
-      "country": "Nigeria",
-      "rank": 162,
-      "epi_score": 28.30,
-      "10_year_change": -6.10
-    },
-    {
-      "country": "Indonesia",
-      "rank": 164,
-      "epi_score": 28.20,
-      "10_year_change": 4.10
-    },
-    {
-      "country": "Chad",
-      "rank": 165,
-      "epi_score": 28.10,
-      "10_year_change": null
-    },
-    {
-      "country": "Mauritania",
-      "rank": 165,
-      "epi_score": 28.10,
-      "10_year_change": -3.30
-    },
-    {
-      "country": "Guatemala",
-      "rank": 167,
-      "epi_score": 28.00,
-      "10_year_change": -3.00
-    },
-    {
-      "country": "Madagascar",
-      "rank": 167,
-      "epi_score": 28.00,
-      "10_year_change": -5.40
-    },
-    {
-      "country": "Iraq",
-      "rank": 169,
-      "epi_score": 27.80,
-      "10_year_change": -5.30
-    },
-    {
-      "country": "Ghana",
-      "rank": 170,
-      "epi_score": 27.70,
-      "10_year_change": -6.10
-    },
-    {
-      "country": "Sudan",
-      "rank": 171,
-      "epi_score": 27.60,
-      "10_year_change": 1.70
-    },
-    {
-      "country": "Turkey",
-      "rank": 172,
-      "epi_score": 26.30,
-      "10_year_change": -0.50
-    },
-    {
-      "country": "Haiti",
-      "rank": 173,
-      "epi_score": 26.10,
-      "10_year_change": 2.40
-    },
-    {
-      "country": "Liberia",
-      "rank": 174,
-      "epi_score": 24.90,
-      "10_year_change": -4.00
-    },
-    {
-      "country": "Papua New Guinea",
-      "rank": 175,
-      "epi_score": 24.80,
-      "10_year_change": 0.20
-    },
-    {
-      "country": "Pakistan",
-      "rank": 176,
-      "epi_score": 24.60,
-      "10_year_change": 1.40
-    },
-    {
-      "country": "Bangladesh",
-      "rank": 177,
-      "epi_score": 23.10,
-      "10_year_change": -1.90
-    },
-    {
-      "country": "Viet Nam",
-      "rank": 178,
-      "epi_score": 20.10,
-      "10_year_change": -0.60
-    },
-    {
-      "country": "Myanmar",
-      "rank": 179,
-      "epi_score": 19.40,
-      "10_year_change": -3.80
-    },
-    {
-      "country": "India",
-      "rank": 180,
-      "epi_score": 18.90,
-      "10_year_change": -0.60
-    }
-  ]
-  
+        "country": "Guinea",
+        "rank": 100,
+        "epi_score": 24.80,
+        "10_year_change": -2.10,
+        "description": "Guinea is addressing deforestation, sustainable development, biodiversity conservation, and promoting environmental education and awareness."
+    }  
+]
