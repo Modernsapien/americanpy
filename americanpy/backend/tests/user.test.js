@@ -6,6 +6,10 @@ const bcrypt = require('bcrypt')
 
 describe('user route', () => {
 
+    beforeAll(async () => {
+        await new Promise((r) => setTimeout(r, 1000));
+    })
+
     afterAll(() => {
         console.log("Stopping test server")
         db.end()
