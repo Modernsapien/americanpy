@@ -38,8 +38,21 @@ class Country {
         return new Country(response.rows[0])
     }
 
-    
+    static async createCountry() {
+        const {name, eco_stat, description, image, attractions} = data
+        const resp = await db.query(`INSERT INTO countries (name, eco_stat, description, image, attractions) VALUES ($1, $2, $3, $4, $5) RETURNING country_id`, [name, eco_stat, description, image, attractions])
+        const id = resp.rows[0].country_id
+        const newCountry = await Country.getCountryByID(id)
+        return newCountry
+    }
 
+    async deleteCoutnry() {
+        const resp = await db.query('DELETE FROM countries WHERE country_id = $1 RETURNING *;',[this.country_id]);
+        if (resp.rows.length != 1) {
+            throw new Error("Unable to delete country")
+        }
+        return new Country(resp.rows[0])
+    }
     
 
 }

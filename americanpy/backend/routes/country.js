@@ -8,5 +8,7 @@ const countryRouter = Router()
 countryRouter.get('/', countryController.getAllCountry)
 countryRouter.get('/:id', countryController.getCountryByID)
 countryRouter.patch("/:id", countryController.updateCountry)
+countryRouter.post("/:id", countryController.createCountry)
+countryRouter.delete("/:id", countryController.deleteCountry)
 
 module.exports = countryRouter
