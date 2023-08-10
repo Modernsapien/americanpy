@@ -22,7 +22,7 @@ class MemoryController {
 
     static async getOneByMemoryName(req, res) {
         try {
-            const name = req.params
+            const name = req.params.name
             const memory = await Memory.getOneByMemoryName(name);
             res.status(200).json(memory);
         } catch (err) {
@@ -52,12 +52,12 @@ class MemoryController {
 
     static async deleteMemory(req, res) {
         try {
-            const id = parseInt(req.params.memory_id);
+            const id = parseInt(req.params.id);
             const memory = await Memory.getOneById(id);
             const result = await memory.deleteMemory();
             res.status(204).end()
         } catch (err) {
-            res.status(204).send({ error: err.message })
+            res.status(500).send({ error: err.message })
         }
     }
 

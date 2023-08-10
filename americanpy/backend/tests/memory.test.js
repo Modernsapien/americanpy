@@ -34,7 +34,7 @@ describe("Memory route", () => {
             password: "test"
         }
 
-        await new Promise((r) => setTimeout(r, 3000));
+        await new Promise((r) => setTimeout(r, 10000));
         const response = await request(app)
             .post("/users/register")
             .send(newUser)
@@ -55,7 +55,7 @@ describe("Memory route", () => {
             .send(user2)
         token2 = loginUser2.body.token
 
-    })
+    }, 20000)
 
     afterAll(async () => {
 
@@ -82,8 +82,179 @@ describe("Memory route", () => {
     //Create
     it("should create a memory", async () => {
         const memory = {
-
+            user_id: id,
+            country_id: 1,
+            memory_name: "I rember",
+            memory_description: "I forgor",
+            drive_link: "i promise this is a link i swear"
         }
+        const response = await request(app)
+            .post(`/memory/`)
+            .send(memory)
+            .expect(201)
+        expect(response.body).toMatchObject(memory)
+    })
+
+    //Get all but good
+    it("should get all memories of all users", async () => {
+        const memory = {
+            user_id: id2,
+            country_id: 2,
+            memory_name: "I forgor",
+            memory_description: "I rember",
+            drive_link: "http://1227.com"
+        }
+
+        const createAnotherMemory = await request(app)
+            .post(`/memory/`)
+            .send(memory)
+            .expect(201)
+        
+        const response = await request(app)
+            .get(`/memory/`)
+            .expect(200)
+        expect(response.body.length).toBeGreaterThan(1)
+        expect(response.body[1]).toMatchObject(memory)
+        
+    })
+
+    //Get one by id
+    it("should get a memory by id", async () => {
+        const memory = {
+            user_id: id,
+            country_id: 1,
+            memory_name: "I rember",
+            memory_description: "I forgor",
+            drive_link: "i promise this is a link i swear"
+        }
+        const response = await request(app)
+            .get(`/memory/memory/1`)
+            .expect(200)
+        expect(response.body).toMatchObject(memory)
+    })
+
+    //Get one by id error
+    it("should return an error", async () => {
+        const response = await request(app)
+            .get(`/memory/memory/40`)
+            .expect(404)
+        expect(response.body.Error).toBe('Memory does not exist.')
+    })
+
+    //Get one by name
+    it("should get a memory by name", async () => {
+        const memory = {
+            user_id: id,
+            country_id: 1,
+            memory_name: "I rember",
+            memory_description: "I forgor",
+            drive_link: "i promise this is a link i swear"
+        }
+        const response = await request(app)
+            .get(`/memory/name/${memory.memory_name}`)
+            .expect(200)
+        expect(response.body).toMatchObject(memory)
+    })
+
+    //Get one by name error
+    it("should return an error", async () => {
+        const response = await request(app)
+            .get(`/memory/name/IEatBean`)
+            .expect(404)
+        expect(response.body.error).toBe('Memory does not exist.')
+    })
+
+    //Update memory
+    it("should update a memory", async () => {
+        const memoryUpdate = {
+            country_id: 2,
+            memory_name: "cheese",
+            memory_description: "burger",
+            drive_link: "beans"
+        }
+        const checkMemory = {
+            memory_id: 1,
+            user_id: 4,
+            country_id: 2,
+            memory_name: 'cheese',
+            memory_description: 'burger',
+            drive_link: 'beans'
+        }
+        const memory = {
+            user_id: id,
+            country_id: 1,
+            memory_name: "I rember",
+            memory_description: "I forgor",
+            drive_link: "i promise this is a link i swear"
+        }
+        const response1 = await request(app)
+            .get(`/memory/memory/1`)
+            .expect(200)
+        expect(response1.body).toMatchObject(memory)
+        const response2 = await request(app)
+            .patch(`/memory/1`)
+            .send(memoryUpdate)
+            .expect(200)
+        expect(response2.body).toMatchObject(checkMemory)
+        const response3 = await request(app)
+            .get(`/memory/memory/1`)
+            .expect(200)
+        expect(response3.body).toMatchObject(checkMemory)
+
+    })
+
+    //Update memory error
+    it("should return an error", async () => {
+        const memory = {
+            country_id:"burger"
+        }
+        const response2 = await request(app)
+            .patch(`/memory/1`)
+            .send(memory)
+            .expect(404)
+        expect(response2.body.error).toBe('Unable to update memory!')
+    })
+
+    //Delete
+    it("should delete a memory", async () => {
+        const memory = {
+            user_id: id2,
+            country_id: 2,
+            memory_name: "I forgor",
+            memory_description: "I rember",
+            drive_link: "http://1227.com"
+        }
+        const response = await request(app)
+            .delete(`/memory/1`)
+            .expect(204)
+        const checkDel = await request(app)
+            .get(`/memory`)
+            .expect(200)
+        expect(checkDel.body.length).toBe(1)
+        expect(checkDel.body[0]).toMatchObject(memory)
+        const response2 = await request(app)
+        .delete(`/memory/2`)
+        .expect(204)
+    })
+
+    //Delete a memory error
+    it("should return an error", async () => {
+        const response = await request(app)
+            .delete(`/memory/700`)
+            .expect(500)
+        expect(response.body.error).toBe('Memory does not exist.')
+    })
+
+    //Create memory error
+    it("should return a error", async () => {
+        const trauma = {
+            spooky: "oh no I have trauma"
+        }
+        const response = await request(app)
+            .post(`/memory/`)
+            .send(trauma)
+            .expect(404)
+        expect(response.body.error).toBe('unable to create memory')
     })
 
 })

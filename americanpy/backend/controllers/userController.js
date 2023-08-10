@@ -133,7 +133,7 @@ class UserController {
             const user_id = parseInt(req.params.id)
             const country_id = req.body.country_id
             const resp = await User.removeCountry(user_id, country_id)
-            res.status(200).send(resp)
+            res.status(200).json({message :resp})
         } catch(err) {
             res.status(500).json({Error: err.message})
         }
@@ -142,10 +142,10 @@ class UserController {
     static async logout(req, res) {
         try {
             const userToken = req.headers["authorization"];
-            const token = await Token.getOneByToken(userToken)
             if (!userToken) {
                 throw new Error('User not logged in!');
             } else {
+                const token = await Token.getOneByToken(userToken)
                 const response = await token.deleteToken();
                 res.status(202).json({ message: response });
             }

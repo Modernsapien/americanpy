@@ -29,18 +29,16 @@ class Country {
     }
 
     async updateCountry(data) {
-        const resp = await db.query("UPDATE countries SET eco_stat =$2 WHERE country_id = $1 RETURNING *;", 
-        [this.country_id,
-        data.eco_stat]);
-        if (resp.rows.length != 1) {
+        try {
+            const resp = await db.query("UPDATE countries SET eco_stat =$2 WHERE country_id = $1 RETURNING *;", 
+            [this.country_id,
+            data.eco_stat]);
+            return new Country(resp.rows[0])
+        } catch (err) {
             throw new Error("Unable to update country")
         }
-        return new Country(resp.rows[0])
     }
 
-    
-
-    
 
 }
 
