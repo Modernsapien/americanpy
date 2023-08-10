@@ -33,7 +33,7 @@ CREATE TABLE memories (
     country_id INT NOT NULL REFERENCES countries(country_id),
     memory_name VARCHAR(200),
     memory_description VARCHAR(2000),
-    drive_link VARCHAR(2000),
+    drive_link VARCHAR(2000)
 );
 
 CREATE TABLE users_countries (
@@ -52,4 +52,4 @@ INSERT INTO rewards (name, description, points_required)
 VALUES
     ('reward1', 'reward1', 5),
     ('reward2', 'reward2', 10 ),
-    ('reward3', 'reward3', 20 )
+    ('reward3', 'reward3', 20 );
