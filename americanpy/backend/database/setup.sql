@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS users, countries, rewards, memories, users_countries, tokens;
+DROP TABLE IF EXISTS users, countries, rewards, memories, users_countries, tokens CASCADE;
 
 CREATE TABLE users (
     user_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
