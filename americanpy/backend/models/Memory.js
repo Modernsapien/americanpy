@@ -20,6 +20,15 @@ class Memory {
         }
     }
 
+    static async getUserMemories(user_id) {
+        const resp = await db.query("SELECT * FROM memories WHERE user_id = $1", [user_id])
+        if (resp.rows.length > 0){
+            return resp.rows.map((m) => m)
+        } else {
+            throw new Error('User has no memories')
+        }
+    }
+
     static async getOneByMemoryName(memory_name) {
         const resp = await db.query("SELECT * FROM memories WHERE LOWER(memory_name) = $1", [memory_name])
         if (resp.rows.length == 0 ) {
