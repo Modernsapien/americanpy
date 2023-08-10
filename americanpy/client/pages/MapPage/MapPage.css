@@ -7,43 +7,124 @@ html {
 #map-container {
     height: 90vh;
     width: 100%;
-    
 }
 
-.add-pin-button {
-    
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+    display: flex;
+    align-items: center;
+    background-clip: padding-box;
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.map-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 10px;
+    z-index: 999;
+    margin-left: 83%;
+}
+
+.map-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.map .leaflet-top {
     position: relative;
+    top: 0;
+    left: 0;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 10px;
+    height: 50px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 999;
 }
 
-
-
-.journey-form-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 20px;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+@media (max-width: 768px) {
+    .map-buttons {
+        margin-left: 10%;
+    }
 }
 
-.journey-form label {
-  display: block;
-  margin-bottom: 5px;
+@media (max-width: 630px) {
+    #start-destination-input::placeholder {
+        content: "Start"; 
+    }
+    
+    #end-destination-input::placeholder {
+        content: "End"; 
+    }
 }
 
-.journey-form input {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
+.glass{
+    background-color: blue !important;
 }
 
-.journey-form button {
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
+.leaflet-bar-part {
+    background-color: green !important;  
+}
+.reset {
+    background-color: orange !important;  
+}
+.geosearch {
+    background-color: pink !important;  
+}
+.leaflet-control-zoom{
+    background-color: red !important;  
 }
 
+
+
+.key {
+    position: absolute;
+   top: 790px;
+   left: -190px;
+    z-index: 1000; 
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 200px;
+  }
+  
+  .key-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .key-color {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+  
+  .key-text {
+    font-size: 14px;
+  }
+  
