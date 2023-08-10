@@ -42,7 +42,7 @@ class MemoryController {
 
     static async deleteMemory(req, res) {
         try {
-            const id = parseInt(req.params.id);
+            const id = parseInt(req.params.memory_id);
             const memory = await Memory.getOneById(id);
             const result = await memory.deleteMemory();
             res.status(204).end()

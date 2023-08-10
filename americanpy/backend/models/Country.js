@@ -11,7 +11,7 @@ class Country {
     }
 
     static async getAllCountry(){
-        const resp = await db.query("SELECT * FROM country")
+        const resp = await db.query("SELECT * FROM countries")
         if (resp.rows.length === 0) {
             throw new Error("Unable to find country");
         }
@@ -19,7 +19,7 @@ class Country {
     }
 
     static async getCountryByID(id){
-        const resp = await db.query("SELECT * FROM country WHERE country_id = $1", [id])
+        const resp = await db.query("SELECT * FROM countries WHERE country_id = $1", [id])
         if(resp.rows.length == 1){
             const country = new Country(resp.rows[0])
             return country
@@ -29,7 +29,7 @@ class Country {
     }
 
     async updateCountry(data) {
-        const resp = await db.query("UPDATE country SET eco_stat =$1 WHERE country_id = $2 RETURNING eco_stat, country_id;", 
+        const resp = await db.query("UPDATE countries SET eco_stat =$1 WHERE country_id = $2 RETURNING eco_stat, country_id;", 
         [data.country_id,
         data.eco_stat]);
         if (response.ros.length != 1) {

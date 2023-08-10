@@ -21,7 +21,7 @@ class Memory {
     }
 
     static async getOneByMemoryName(memory_name) {
-        const resp = await db.query("SELECT * FROM memories WHERE memory_name = $1", [memory_name])
+        const resp = await db.query("SELECT * FROM memories WHERE LOWER(memory_name) = $1", [memory_name])
         if (resp.rows.length == 0 ) {
             throw new Error ("Memory does not exist.")
         } else {
@@ -29,8 +29,8 @@ class Memory {
         }
     }
 
-    static async getOneById(memory_id) {
-        const resp = await db.query("SELECT * FROM memories WHERE memory_id = $1", [memory_id])
+    static async getOneById(id) {
+        const resp = await db.query("SELECT * FROM memories WHERE memory_id = $1", [id])
         if (resp.rows.length == 0 ) {
             throw new Error ("Memory does not exist.")
         } else {
@@ -39,8 +39,8 @@ class Memory {
     }
 
     static async createMemory(data) {
-        const { memory_name, memory_description, drive_link} = data
-        const resp = await db.query(`INSERT INTO memories (memory_name, memory_description, drive_link) VALUES ($1, $2, $3) RETURNING memory_id`, [memory_name, memory_description, drive_link])
+        const { user_id, country_id, memory_name, memory_description, drive_link} = data
+        const resp = await db.query(`INSERT INTO memories (user_id, country_id,memory_name, memory_description, drive_link) VALUES ($1, $2, $3, $4, $5) RETURNING memory_id`, [user_id, country_id, memory_name, memory_description, drive_link])
 
         const id = resp.rows[0].memory_id
         const newMemory = await Memory.getOneById(id)
