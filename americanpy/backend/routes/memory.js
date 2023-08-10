@@ -10,5 +10,5 @@ memoryRouter.get("/:name", memoryController.getOneByMemoryName)
 memoryRouter.post("/", memoryController.createMemory)
 memoryRouter.delete("/:id", memoryController.deleteMemory)
 memoryRouter.patch("/:id", memoryController.updateMemory)
-
+memoryRouter.get("/user/:id", memoryController.getUserMemories)
 module.exports = memoryRouter
