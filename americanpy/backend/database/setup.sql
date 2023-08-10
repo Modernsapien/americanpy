@@ -46,3 +46,9 @@ CREATE TABLE tokens (
     token CHAR(36) NOT NULL,
     user_id INT NOT NULL REFERENCES users(user_id)
 );
+
+INSERT INTO rewards (name, description, points_required)
+VALUES
+    ('reward1', 'reward1', 5),
+    ('reward2', 'reward2', 10 ),
+    ('reward3', 'reward3', 20 )
