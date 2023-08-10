@@ -9,6 +9,7 @@ import axios from "axios";
 const Map = ({ id }) => {
   const [map, setMap] = useState(null);
   const [markers, setMarkers] = useState([]);
+  const [markerPositions, setMarkerPositions] = useState([]);
   const [isAddingPin, setIsAddingPin] = useState(false);
   const [isHoveringButton, setIsHoveringButton] = useState(false);
   const [colorByEpiScore, setColorByEpiScore] = useState(false);
@@ -17,8 +18,6 @@ const Map = ({ id }) => {
   const [endDestination, setEndDestination] = useState("");
   const [routeLayer, setRouteLayer] = useState(null);
   const [selectedPin, setSelectedPin] = useState(null);
-  
-  
 
   useEffect(() => {
     const mapContainer = document.getElementById(id);
@@ -57,6 +56,63 @@ const Map = ({ id }) => {
     }
   }, [id]);
 
+  const removeSelectedPin = (markerId) => {
+    const markerIndex = markers.findIndex((marker) => marker.options.id === markerId);
+
+    if (markerIndex !== -1) {
+      const markerToRemove = markers[markerIndex];
+      const popup = markerToRemove.getPopup();
+      if (popup) {
+        popup.remove();
+      }
+
+      map.removeLayer(markerToRemove);
+
+      setMarkers((prevMarkers) => prevMarkers.filter((_, index) => index !== markerIndex));
+      setMarkerPositions((prevPositions) =>
+        prevPositions.filter((_, index) => index !== markerIndex)
+      );
+
+      setSelectedPin(null);
+      console.log("Pin removed successfully.");
+    } else {
+      console.log("Marker not found with ID:", markerId);
+    }
+  };
+  
+  
+  
+  
+
+  useEffect(() => {
+    if (map) {
+      markers.forEach((marker) => {
+        const markerId = marker.options.id;
+        const removeButton = document.getElementById(`remove-pin-button-${markerId}`);
+        if (removeButton) {
+          const removeHandler = () => {
+            removeSelectedPin(markerId);
+          };
+          removeButton.addEventListener("click", removeHandler);
+          marker.options.removeHandler = removeHandler; 
+        }
+      });
+      return () => {
+        markers.forEach(marker => {
+          const markerId = marker.options.id;
+          const removeButton = document.getElementById(`remove-pin-button-${markerId}`);
+          if (removeButton) {
+            const removeHandler = marker.options.removeHandler;
+            if (removeHandler) {
+              removeButton.removeEventListener("click", removeHandler);
+            }
+          }
+        });
+      };
+    }
+  }, [map, markers]);
+  
+
   useEffect(() => {
     if (map) {
       const handleMapClick = (event) => {
@@ -94,9 +150,9 @@ const Map = ({ id }) => {
               const fillColor = getColorBasedOnEpiScore(epiScore);
               return {
                 color: "blue",
-                weight: 0.5,
+                weight: 1,
                 fillColor: fillColor,
-                fillOpacity: 0.5,
+                fillOpacity: 0.7,
               };
             } else {
               return {
@@ -166,6 +222,20 @@ const Map = ({ id }) => {
               marker
                 .bindPopup(`<b>${countryName}</b><br>${countryDescription}`)
                 .openPopup();
+            
+              const popupContent = marker.getPopup().getContent();
+              const newPopupContent = `
+                ${popupContent}
+                <button class="btn btn-danger" id="remove-pin-button-${marker.options.id}">Remove Pin</button>
+              `;
+              marker.getPopup().setContent(newPopupContent);
+
+              const removeButton = document.getElementById(`remove-pin-button-${marker.options.id}`);
+              if (removeButton) {
+                removeButton.addEventListener("click", () => {
+                  removeSelectedPin(markerId);
+                });
+              }
 
               marker.options.description = countryDescription;
 
@@ -192,31 +262,15 @@ const Map = ({ id }) => {
 
   function getColorBasedOnEpiScore(epiScore) {
     if (epiScore <= 30) {
-      return "red";
+      return "navy"; 
     } else if (epiScore <= 50) {
-      return "orange";
+      return "#428BCA"; 
     } else {
-      return "green";
+      return "#66B3FF"; 
     }
   }
-
-  const handleRouteSubmit = () => {
-    if (startDestination && endDestination) {
-      const startLatLng = { lat: parseFloat(startDestination.lat), lng: parseFloat(startDestination.lng) };
-      const endLatLng = { lat: parseFloat(endDestination.lat), lng: parseFloat(endDestination.lng) };
   
-      if (routeLayer) {
-        map.removeLayer(routeLayer);
-      }
   
-      const startMarker = L.marker(startLatLng).addTo(map);
-      const endMarker = L.marker(endLatLng).addTo(map);
-  
-      const routeLine = L.polyline([startLatLng, endLatLng], { color: 'purple' }).addTo(map);
-  
-      setRouteLayer(routeLine);
-    }
-  };
   
 
   const togglePinPlacement = () => {
@@ -234,13 +288,28 @@ const Map = ({ id }) => {
   const toggleColorByEpiScore = () => {
     setColorByEpiScore((prevState) => !prevState);
   };
+  
   const handleMarkerClick = (marker) => {
     setSelectedPin(marker);
   };
+  const handleRemoveButtonClick = () => {
+    if (selectedPin) {
+      removeSelectedPin(selectedPin.options.id);
+      handleCloseModal();
+    }
+  };
+  
 
   const handleCloseModal = () => {
+    if (selectedPin) {
+      const removeButton = document.getElementById(`remove-pin-button-${selectedPin.options.id}`);
+      if (removeButton) {
+        removeButton.removeEventListener("click", handleRemoveButtonClick);
+      }
+    }
     setSelectedPin(null);
   };
+  
 
   useEffect(() => {
     if (map) {
@@ -273,29 +342,7 @@ const Map = ({ id }) => {
             {colorByEpiScore ? "Hide Eco colour" : "Show Eco colour"}
           </button>
         </div>
-        <div className="destination-form">
-  <div className="input-group">
-    <input
-      type="text"
-      className="form-control"
-      id="start-destination-input"
-      placeholder="Start Destination"
-      value={startDestination}
-      onChange={(e) => setStartDestination(e.target.value)}
-    />
-    <input
-      type="text"
-      className="form-control"
-      placeholder="End Destination"
-      id="end-destination-input"
-      value={endDestination}
-      onChange={(e) => setEndDestination(e.target.value)}
-    />
-    <button className="btn btn-primary" type="button" onClick={handleRouteSubmit}>
-      Submit
-    </button>
-  </div>
-</div>
+        <div className="destination-form"></div>
       </div>
       <div className="map" style={{ height: "400px", width: "100%" }}>
         <div id={id}></div>
@@ -308,11 +355,38 @@ const Map = ({ id }) => {
             </button>
             <h3>{selectedPin.getLatLng().toString()}</h3>
             <p>{selectedPin.options.description}</p>
+            <button className="btn btn-danger" onClick={() => removeSelectedPin(selectedPin.options.id)}>
+              Remove Pin
+            </button>
           </div>
         </div>
       )}
+      <div className="key">
+        <div className="key-item">
+          <div
+            className="key-color"
+            style={{ backgroundColor: getColorBasedOnEpiScore(30) }}
+          ></div>
+          <div className="key-text">Low</div>
+        </div>
+        <div className="key-item">
+          <div
+            className="key-color"
+            style={{ backgroundColor: getColorBasedOnEpiScore(40) }}
+          ></div>
+          <div className="key-text">Medium</div>
+        </div>
+        <div className="key-item">
+          <div
+            className="key-color"
+            style={{ backgroundColor: getColorBasedOnEpiScore(60) }}
+          ></div>
+          <div className="key-text">High</div>
+        </div>
+      </div>
     </div>
   );
+  
 };
 
 export default Map;

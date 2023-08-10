@@ -32,7 +32,7 @@ html {
     gap: 10px;
     margin-top: 10px;
     z-index: 999;
-    margin-left: 40%;
+    margin-left: 83%;
 }
 
 .map-container {
@@ -52,9 +52,9 @@ html {
 .top-bar {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Spaced evenly */
+    justify-content: space-between; 
     padding: 10px;
-    height: 50px; /* Adjust the height as needed */
+    height: 50px;
 
     position: absolute;
     top: 0;
@@ -95,3 +95,36 @@ html {
 .leaflet-control-zoom{
     background-color: red !important;  
 }
+
+
+
+.key {
+    position: absolute;
+   top: 790px;
+   left: -190px;
+    z-index: 1000; 
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 200px;
+  }
+  
+  .key-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .key-color {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+  
+  .key-text {
+    font-size: 14px;
+  }
+  
