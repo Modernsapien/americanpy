@@ -12,6 +12,8 @@ userRouter.delete("/logout", userController.logout)
 userRouter.use(authenticator)
 
 userRouter.get("/user/:id", userController.getUserById)
+userRouter.patch('/picture/:id', userController.updateProfilePicture)
+
 userRouter.get("/carbon/:id", userController.getCarbonPoints)
 userRouter.patch("/carbon/add/:id", userController.addCarbonPoints)
 userRouter.patch("/carbon/subtract/:id", userController.subtractCarbonPoints)

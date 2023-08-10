@@ -65,38 +65,43 @@ class User {
     }
 
     async addCarbonPoints(data) {
-        const resp = await db.query("UPDATE user SET carbon_points = $1 WHERE user_id = $2 RETURNING user_id, carbon_points;",
-         [this.points + data.points, this.id])
+        const resp = await db.query("UPDATE users SET carbon_points = $1 WHERE user_id = $2 RETURNING user_id, carbon_points;",
+         [parseInt(this.carbon_points) + parseInt(data.points), this.user_id])
         if (resp.rows.length != 1) {
             throw new Error("unable to update points")
         } else {
-            return new User(response.rows[0])
+            return new User(resp.rows[0])
         }
     }
 
     async subtractCarbonPoints(data) {
-        const resp = await db.query("UPDATE user SET carbon_points = $1 WHERE user_id = $2 RETURNING user_id, carbon_points;",
-         [this.points - data.points, this.id])
-        if (resp.rows.length != 1) {
-            throw new Error("unable to update points")
+        if(this.carbon_points - data.points >=0) {
+            const resp = await db.query("UPDATE users SET carbon_points = $1 WHERE user_id = $2 RETURNING user_id, carbon_points;",
+             [this.carbon_points - data.points, this.user_id])
+            if (resp.rows.length != 1) {
+                throw new Error("unable to update points")
+            } else {
+                return new User(resp.rows[0])
+            }
         } else {
-            return new User(response.rows[0])
+            throw new Error("User cannot have negative points")
         }
+        
     }
 
     async updateProfilePicture(data) {
-        const resp = await db.query("UPDATE user SET profile_image_url = $1 WHERE user_id = $2 RETURNING user_id, profile_image_url;",
-        [data.url, this.id])
+        const resp = await db.query("UPDATE users SET profile_image_url = $1 WHERE user_id = $2 RETURNING user_id, profile_image_url;",
+        [data.url, this.user_id])
         if (resp.rows.length != 1) {
             throw new Error("unable to update picture")
         } else {
-            return new User(response.rows[0])
+            return new User(resp.rows[0])
         }
     }
 
     static async getUsersCountries(id) {
         const resp = await db.query(
-            "SELECT * FROM country c LEFT JOIN users_countries u ON c.country_id = u.country_id WHERE u.user_id = $1;", [id]
+            "SELECT * FROM countries c LEFT JOIN users_countries u ON c.country_id = u.country_id WHERE u.user_id = $1;", [id]
         )
         if (resp.rows.length > 0){
             return resp.rows.map((p) => p)
