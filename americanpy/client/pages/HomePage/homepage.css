@@ -1,11 +1,11 @@
 body {
     background-color: #8CD2F6 !important;
+
 }
 
 .intro {
     color: white;
-    /* background-color: #B0DAFF; */
-    padding: 30px 50px 30px 50px;
+    padding: 30px 50px 70px 50px;
     width: 100%;
     margin: 0 auto;
     text-align: center;
@@ -14,18 +14,32 @@ body {
     margin-bottom: -4rem;
     margin-top: 1rem;
 }
-
+  
+  .intro-explain-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .column-image {
+    width: 90%;
+    height: auto;
+    margin: 35px 0 0 90px;
+    border-radius: 10px;
+}
+  
+  
 .explain {
     font-family: 'Manrope', sans-serif;
-    font-size: 1.4rem;
-    color: white;
-    /* background-color: #B0DAFF; */
-    padding: 30px 50px 30px 50px;
+    font-size: 1.6rem;
+    color: #fff;
+    padding: 50px 20px 0 0;
     width: 100%;
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
     margin-top: 3rem;
     margin-bottom: -1rem;
+    font-weight: bold;
 }
 
 .mt-5 {
@@ -69,4 +83,9 @@ body {
 
 .book {
     color: #765827
+}
+
+.iconTitle {
+    color: #00043f;
+    font-size: 1.8rem;
 }
