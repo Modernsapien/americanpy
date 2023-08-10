@@ -7,7 +7,7 @@ CREATE TABLE users (
     email VARCHAR(60) NOT NULL,
     first_name VARCHAR NOT NULL,
     last_name VARCHAR NOT NULL,
-    profile_image_url VARCHAR,
+    profile_image_url VARCHAR(400),
     carbon_points INT DEFAULT 0
 );
 
@@ -24,7 +24,7 @@ CREATE TABLE rewards (
     reward_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR NOT NULL,
     description VARCHAR NOT NULL,
-    points_required INT NOT NULL DEFAULT 10
+    points_required INT 
 );
 
 CREATE TABLE memories (
@@ -53,3 +53,5 @@ VALUES
     ('reward1', 'reward1', 5),
     ('reward2', 'reward2', 10 ),
     ('reward3', 'reward3', 20 );
+
+INSERT INTO rewards (name, description) VALUES ('{}', '{}');

@@ -14,7 +14,7 @@ class RewardController {
       const { id } = req.params;
       try {
           const reward = await Reward.getRewardByID(id)
-          if (reward) {
+          if (reward.points_required) {
               res.status(200).json(reward);
           }else {
               res.status(404).json({ error: `Reward not found` });

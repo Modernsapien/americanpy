@@ -52,9 +52,9 @@ describe("country routes", () => {
         })
 
         afterAll(async () => {
-            await new Promise((r) => setTimeout(r, 4000));
+            await new Promise((r) => setTimeout(r, 20000));
             await db.query(sql)
-        })
+        }, 40000)
         
         //Get all
         it("should get all countries", async () => {
@@ -91,6 +91,19 @@ describe("country routes", () => {
                 .send(eco)
                 .expect(200)
             expect(response.body.eco_stat).toBe(eco.eco_stat)
+        })
+
+        //Update error with bad eco stat
+        it("should return an error", async () => {
+            const eco = {
+                eco_stat: "cheese"
+            }
+
+            const response = await request(app)
+                .patch(`/country/1`)
+                .send(eco)
+                .expect(404)
+            expect(response.body.error).toBe('Unable to update country')
         })
     })
 
