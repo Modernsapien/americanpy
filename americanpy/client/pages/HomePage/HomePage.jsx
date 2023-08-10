@@ -6,31 +6,38 @@ import { faPassport, faRoute, faLeaf, faGift, faBook, faGlobeAmericas, } from '@
 export default function HomePage() {
   return (
     <>
-      <h1 className='intro'>Travelling doesn't have to cost the earth!</h1>
-      <p className='explain'> Embark on a journey of discovery and conscious exploration with Travel-Wise, 
-      an innovative travel app designed to revolutionize the way we experience the world. 
-      In a time when our planet's well-being is paramount, this site sets out to empower
-       travelers with the tools and knowledge to make eco-conscious choices that leave a positive impact on the environment.</p>
+    <div className="container">
+      <div className="row intro-explain-container">
+          <h1 className='intro'>Travelling doesn't have to cost the earth!</h1>
+          <div className="col-md-8 text-column">
+          <p className='explain'>Travel is going green with Travel-Wise. <br></br> Our planet's well-being is paramount, this site sets out to empower
+            travellers with the tools and knowledge to make eco-conscious choices that leave a positive impact on the environment. <br></br> Welcome to Travel-Wise, your compass to responsible and sustainable travel!</p>
+        </div>
+        <div className="col-md-4 image-column">
+          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwebstockreview.net%2Fimages%2Fenvironment-clipart-environment-earth-5.png&f=1&nofb=1&ipt=5703284ff62d1f2c22333d093028aae0a9f4b321b1ce4928498640b16450edd0&ipo=images" alt="globe" className="column-image" />
+        </div>
+  </div>
+</div>
        <div className="container mt-5">
       <div className="row">
         <div className="col-md-4">
           <div className="feature-card text-center p-4">
           <FontAwesomeIcon icon={faPassport} size="3x" className="mb-3 pass" />
-            <h4>Explore the World</h4>
+            <h4 className='iconTitle'>Explore the World</h4>
             <p>Discover new destinations and experience cultures from around the globe.</p>
           </div>
         </div>
         <div className="col-md-4">
           <div className="feature-card text-center p-4">
           <FontAwesomeIcon icon={faRoute} size="3x" className="mb- route" />
-            <h4>Eco-Friendly Routes</h4>
+            <h4 className='iconTitle'>Eco-Friendly Routes</h4>
             <p>Find the most sustainable travel routes and reduce your carbon footprint.</p>
           </div>
         </div>
         <div className="col-md-4">
           <div className="feature-card text-center p-4">
           <FontAwesomeIcon icon={faLeaf} size="3x" className="mb-3 leaf" />
-            <h4>Sustainable Practices</h4>
+            <h4 className='iconTitle'>Sustainable Practices</h4>
             <p>Get tips on eco-friendly accommodations, transportation, and responsible tourism.</p>
           </div>
         </div>
@@ -39,21 +46,21 @@ export default function HomePage() {
         <div className="col-md-4">
           <div className="feature-card text-center p-4">
           <FontAwesomeIcon icon={faGift} size="3x" className="mb-3 gift" />
-            <h4>Eco-Friendly Rewards</h4>
+            <h4 className='iconTitle'>Eco-Friendly Rewards</h4>
             <p>Earn rewards for making environmentally conscious choices during your travels.</p>
           </div>
         </div>
         <div className="col-md-4">
           <div className="feature-card text-center p-4">
           <FontAwesomeIcon icon={faGlobeAmericas} size="3x" className="mb-3 globe" />
-            <h4>A Greener Tomorrow</h4>
+            <h4 className='iconTitle'>A Greener Tomorrow</h4>
             <p>Join us in preserving the planet for future generations through responsible travel.</p>
           </div>
         </div>
         <div className="col-md-4">
           <div className="feature-card text-center p-4">
           <FontAwesomeIcon icon={faBook} size="3x" className="mb-3 book" />
-            <h4>Personal Travel Diary</h4>
+            <h4 className='iconTitle'>Personal Travel Diary</h4>
             <p>Document your eco-friendly experiences and memories in your travel diary.</p>
           </div>
         </div>

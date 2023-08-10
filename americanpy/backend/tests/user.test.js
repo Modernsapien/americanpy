@@ -250,6 +250,14 @@ describe('user route', () => {
         expect(response.body.message).toBe('Token deleted.')
     })
 
+    //Logout error no token
+    it("should return an error", async () => {
+        const response = await request(app)
+            .delete(`/users/logout`)
+            .expect(500)
+        expect(response.body.error).toBe('Unable to find token.')
+    })
+
     //Delete user
     it("should delete the user", async () => {
         const user1 = {
