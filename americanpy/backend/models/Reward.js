@@ -25,7 +25,7 @@ class Reward {
     }
 
     static async getRewardsByPoints(points_required){
-        const query = "SELECT * FROM rewards WHERE points_required <= $1;"
+        const query = "SELECT * FROM rewards WHERE points_required >= $1;"
         const { rows } = await db.query(query, [points_required]);
         return rows;
     }
