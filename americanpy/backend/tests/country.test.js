@@ -1,6 +1,10 @@
 const request = require("supertest")
 const app = require("../api.js")
 const db = require("../database/connect")
+const fs = require('fs');
+const countrySql = fs.readFileSync('/Users/Guy 1/Desktop/liskov/lap4/project4/americanpy/americanpy/backend/tests/mockDatabase/addCountries.sql').toString();
+const sql = fs.readFileSync('/Users/Guy 1/Desktop/liskov/lap4/project4/americanpy/americanpy/backend/tests/mockDatabase/setupMock.sql').toString();
+
 
 describe("country routes", () => {
 
@@ -39,6 +43,55 @@ describe("country routes", () => {
             .patch("/country/343")
             .expect(404)
         expect(response.body.error).toBe('Unable to locate country')
+    })
+
+    describe("country routes but there are actually countries", () => {
+
+        beforeAll(async () => {
+            await db.query(countrySql)
+        })
+
+        afterAll(async () => {
+            await new Promise((r) => setTimeout(r, 4000));
+            await db.query(sql)
+        })
+        
+        //Get all
+        it("should get all countries", async () => {
+            const response = await request(app)
+                .get("/country")
+                .expect(200)
+            expect(response.body.length).toBeGreaterThan(1)
+            expect(response.body[0].name).toBe('Zimbabwe')
+        })
+
+        //Get one by id
+        it("should get one by id", async() => {
+            const zimbabwe = {
+                country_id: 1,
+                name: 'Zimbabwe',
+                eco_stat: 4,
+                description: 'country in Africa',
+                attractions: [ 'Victoria falls', 'Hwange National Park' ]
+            }
+
+            const response = await request(app)
+                .get(`/country/1`)
+                .expect(200)
+            expect(response.body).toMatchObject(zimbabwe)
+        })
+
+        //Update one
+        it("should update a country by id", async () => {
+            const eco = {
+                eco_stat: 9
+            }
+            const response = await request(app)
+                .patch(`/country/1`)
+                .send(eco)
+                .expect(200)
+            expect(response.body.eco_stat).toBe(eco.eco_stat)
+        })
     })
 
 })

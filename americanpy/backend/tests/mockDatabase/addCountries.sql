@@ -1,0 +1,3 @@
+INSERT INTO countries(name, description, eco_stat, image_url, attractions) VALUES
+('Zimbabwe', 'country in Africa', 4, 'https://upload.wikimedia.org/wikipedia/commons/6/6a/Flag_of_Zimbabwe.svg', '{ "Victoria falls", "Hwange National Park" }'),
+('France', 'terrible place', 1, 'https://panamarbakery.com/public/Image/2021/3/12951_1baguettetradicionmasamadre280gcopia_Galeria.png', '{ "Eiffel Tower", "Leave" }');
