@@ -14,7 +14,7 @@ class User {
     }
 
     static async getUsers() {
-        const resp = await db.query("SELECT user_id, username, profile_image_url, keys, block_num,block_mins,long_break_mins,short_break_mins FROM users")
+        const resp = await db.query("SELECT * FROM users")
         if (resp.rows.length == 0) {
             throw new Error('There are no users')
         } else {
@@ -47,7 +47,7 @@ class User {
     static async createUser(data) {
         const { username, password, firstName, lastName, email } = data
         const resp = await db.query(
-            `INSERT INTO users (username,password,firstName,lastName, email)
+            `INSERT INTO users (username,password,first_name,last_name, email)
             VALUES ($1, $2,$3,$4, $5) RETURNING user_id`,[username,password,firstName,lastName, email]
         )
         const id = resp.rows[0].user_id
@@ -65,38 +65,43 @@ class User {
     }
 
     async addCarbonPoints(data) {
-        const resp = await db.query("UPDATE user SET carbon_points = $1 WHERE user_id = $2 RETURNING user_id, carbon_points;",
-         [this.points + data.points, this.id])
+        const resp = await db.query("UPDATE users SET carbon_points = $1 WHERE user_id = $2 RETURNING user_id, carbon_points;",
+         [parseInt(this.carbon_points) + parseInt(data.points), this.user_id])
         if (resp.rows.length != 1) {
             throw new Error("unable to update points")
         } else {
-            return new User(response.rows[0])
+            return new User(resp.rows[0])
         }
     }
 
     async subtractCarbonPoints(data) {
-        const resp = await db.query("UPDATE user SET carbon_points = $1 WHERE user_id = $2 RETURNING user_id, carbon_points;",
-         [this.points - data.points, this.id])
-        if (resp.rows.length != 1) {
-            throw new Error("unable to update points")
+        if(this.carbon_points - data.points >=0) {
+            const resp = await db.query("UPDATE users SET carbon_points = $1 WHERE user_id = $2 RETURNING user_id, carbon_points;",
+             [this.carbon_points - data.points, this.user_id])
+            if (resp.rows.length != 1) {
+                throw new Error("unable to update points")
+            } else {
+                return new User(resp.rows[0])
+            }
         } else {
-            return new User(response.rows[0])
+            throw new Error("User cannot have negative points")
         }
+        
     }
 
     async updateProfilePicture(data) {
-        const resp = await db.query("UPDATE user SET profile_image_url = $1 WHERE user_id = $2 RETURNING user_id, profile_image_url;",
-        [data.url, this.id])
+        const resp = await db.query("UPDATE users SET profile_image_url = $1 WHERE user_id = $2 RETURNING user_id, profile_image_url;",
+        [data.url, this.user_id])
         if (resp.rows.length != 1) {
             throw new Error("unable to update picture")
         } else {
-            return new User(response.rows[0])
+            return new User(resp.rows[0])
         }
     }
 
     static async getUsersCountries(id) {
         const resp = await db.query(
-            "SELECT * FROM country c LEFT JOIN users_countries u ON c.country_id = u.country_id WHERE u.user_id = $1;", [id]
+            "SELECT * FROM countries c LEFT JOIN users_countries u ON c.country_id = u.country_id WHERE u.user_id = $1;", [id]
         )
         if (resp.rows.length > 0){
             return resp.rows.map((p) => p)

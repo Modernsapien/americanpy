@@ -31,7 +31,7 @@ class UserController {
                 throw new Error("Wrong username or password")
             } else {
                 const token = await Token.create(user["user_id"])
-                res.status(200).json({authenticated: true, token: token.token})
+                res.status(200).json({authenticated: true, token: token.token, id: user.user_id})
             }
         } catch (err) {
             res.status(403).json({Error: err.message})
@@ -74,31 +74,31 @@ class UserController {
     static async addCarbonPoints(req,res) {
         try {
             const user_id = parseInt(req.params.id)
-            const user = User.getOneById(user_id)
+            const user = await User.getOneById(user_id)
             const points = req.body
             const resp = await user.addCarbonPoints(points)
             res.status(200).send(resp)
         } catch (err) {
-            res.status(404).json({"Error": err.message})
+            res.status(500).json({"Error": err.message})
         }
     }
 
     static async subtractCarbonPoints(req,res) {
         try {
             const user_id = parseInt(req.params.id)
-            const user = User.getOneById(user_id)
+            const user = await User.getOneById(user_id)
             const points = req.body
             const resp = await user.subtractCarbonPoints(points)
             res.status(200).send(resp)
         } catch (err) {
-            res.status(404).json({"Error": err.message})
+            res.status(500).json({"Error": err.message})
         }
     }
 
     static async updateProfilePicture(req,res) {
         try {
             const user_id = parseInt(req.params.id)
-            const user = User.getOneById(user_id)
+            const user = await User.getOneById(user_id)
             const data = req.body
             const resp = await user.updateProfilePicture(data)
             res.status(200).send(resp)
@@ -141,13 +141,13 @@ class UserController {
 
     static async logout(req, res) {
         try {
-            const userToken = req.headers.authorization;
-            const token = userToken
+            const userToken = req.headers["authorization"];
+            const token = await Token.getOneByToken(userToken)
             if (!userToken) {
                 throw new Error('User not logged in!');
             } else {
                 const response = await token.deleteToken();
-                res.status(202).json({ message: 'You logged out.' });
+                res.status(202).json({ message: response });
             }
         } catch (error) {
             res.status(500).json({ error: error.message });

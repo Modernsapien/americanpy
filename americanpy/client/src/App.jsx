@@ -3,18 +3,22 @@ import { Routes, Route } from "react-router-dom";
 import {
   CountryPage,
   HomePage,
+  MapPage,
   JourneyPage,
   LoginPage,
   MemoriesPage,
   UserPage,
 } from "../pages";
+import NavbarComponent from ".././components/Navbar";
 
 function App() {
   return (
     <>
+      <NavbarComponent /> 
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<HomePage />} />
+        <Route path="/mappage" element={<MapPage />} />
         <Route path="/country" element={<CountryPage />} />
         <Route path="/journey" element={<JourneyPage />} />
         <Route path="/memories" element={<MemoriesPage />} />

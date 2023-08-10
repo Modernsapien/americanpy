@@ -20,7 +20,7 @@ api.get('/', (req,res) => {
 api.use('/users', userRouter)
 api.use('/country', countryRouter)
 api.use('/memory', memoryRouter)
-api.use('./reward', rewardRouter)
+api.use('/reward', rewardRouter)
 
 
 module.exports = api;

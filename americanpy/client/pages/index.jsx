@@ -4,3 +4,5 @@ export {default as JourneyPage} from "./JourneyPage/JourneyPage"
 export {default as LoginPage} from "./LoginPage/LoginPage"
 export {default as MemoriesPage} from "./MemoriesPage/MemoriesPage"
 export {default as UserPage} from "./UserPage/JourneyPage"
+export {default as MapPage} from "./MapPage/MapPage"
+
