@@ -17,6 +17,8 @@ const Map = ({ id }) => {
   const [endDestination, setEndDestination] = useState("");
   const [routeLayer, setRouteLayer] = useState(null);
   const [selectedPin, setSelectedPin] = useState(null);
+  
+  
 
   useEffect(() => {
     const mapContainer = document.getElementById(id);
@@ -198,6 +200,25 @@ const Map = ({ id }) => {
     }
   }
 
+  const handleRouteSubmit = () => {
+    if (startDestination && endDestination) {
+      const startLatLng = { lat: parseFloat(startDestination.lat), lng: parseFloat(startDestination.lng) };
+      const endLatLng = { lat: parseFloat(endDestination.lat), lng: parseFloat(endDestination.lng) };
+  
+      if (routeLayer) {
+        map.removeLayer(routeLayer);
+      }
+  
+      const startMarker = L.marker(startLatLng).addTo(map);
+      const endMarker = L.marker(endLatLng).addTo(map);
+  
+      const routeLine = L.polyline([startLatLng, endLatLng], { color: 'purple' }).addTo(map);
+  
+      setRouteLayer(routeLine);
+    }
+  };
+  
+
   const togglePinPlacement = () => {
     setIsAddingPin((prevState) => !prevState);
   };
@@ -253,28 +274,28 @@ const Map = ({ id }) => {
           </button>
         </div>
         <div className="destination-form">
-          <div className="input-group">
-            <input
-              type="text"
-              className="form-control"
-              id="start-destination-input"
-              placeholder="Start Destination"
-              value={startDestination}
-              onChange={(e) => setStartDestination(e.target.value)}
-            />
-            <input
-              type="text"
-              className="form-control"
-              placeholder="End Destination"
-              id="end-destination-input"
-              value={endDestination}
-              onChange={(e) => setEndDestination(e.target.value)}
-            />
-            <button className="btn btn-primary" type="button">
-              Submit
-            </button>
-          </div>
-        </div>
+  <div className="input-group">
+    <input
+      type="text"
+      className="form-control"
+      id="start-destination-input"
+      placeholder="Start Destination"
+      value={startDestination}
+      onChange={(e) => setStartDestination(e.target.value)}
+    />
+    <input
+      type="text"
+      className="form-control"
+      placeholder="End Destination"
+      id="end-destination-input"
+      value={endDestination}
+      onChange={(e) => setEndDestination(e.target.value)}
+    />
+    <button className="btn btn-primary" type="button" onClick={handleRouteSubmit}>
+      Submit
+    </button>
+  </div>
+</div>
       </div>
       <div className="map" style={{ height: "400px", width: "100%" }}>
         <div id={id}></div>
