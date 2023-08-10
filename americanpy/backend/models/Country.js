@@ -20,7 +20,7 @@ class Country {
 
     static async getCountryByID(id){
         const resp = await db.query("SELECT * FROM countries WHERE country_id = $1", [id])
-        if(resp.rows.length === 1){
+        if(resp.rows.length == 1){
             const country = new Country(resp.rows[0])
             return country
         } else {
@@ -37,6 +37,8 @@ class Country {
         }
         return new Country(response.rows[0])
     }
+
+    
 
     
 

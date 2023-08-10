@@ -31,8 +31,9 @@ CREATE TABLE memories (
     memory_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     user_id INT NOT NULL REFERENCES users(user_id),
     country_id INT NOT NULL REFERENCES countries(country_id),
-    description VARCHAR,
-    drive_link VARCHAR
+    memory_name VARCHAR(200),
+    memory_description VARCHAR(2000),
+    drive_link VARCHAR(2000),
 );
 
 CREATE TABLE users_countries (

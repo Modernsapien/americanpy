@@ -23,7 +23,7 @@ class CountryController {
 
     static async updateCountry(req, res) {
         try {
-            const id = parseInt(req.params.id);
+            const id = parseInt(req.params.country_id);
             const data = req.body;
             const country = await Country.getCountryByID(id);
             const result = await country.updateCountry(data);
