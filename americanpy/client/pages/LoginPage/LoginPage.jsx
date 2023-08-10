@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './LoginPage.css';
+import styles from './LoginPage.css';
 import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
@@ -10,6 +10,7 @@ const LoginPage = () => {
   };
 
   return (
+    <div className={styles.copntainerWrapper}>
     <div className="container-wrapper">
       <div className="top">
         <div className="logo"></div>
@@ -66,6 +67,7 @@ const LoginPage = () => {
           </span>
         </p>
       </form>
+    </div>
     </div>
   );
 };
