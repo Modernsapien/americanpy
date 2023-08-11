@@ -30,6 +30,7 @@ const UserPage = () => {
   const shopItems = [
     { name: 'Item 1', cost: 50 },
     { name: 'Item 2', cost: 75 },
+    { name: 'Item 3', cost: 100},
     // Add more items here
   ];
 
@@ -46,21 +47,23 @@ const UserPage = () => {
           <h1>User Information</h1>
           <p className='username'>Username: {username}</p>
           <p className='email'>Email: {email}</p>
-          <p className='points'>Points: {points}</p>
           <div>
-            <h3>Mini Shop / Rewards</h3>
-            <div>
+          <div className="shop-items">
+            <h3 className='rewards'>Rewards </h3>
+            <p className='points'>Points available: {points}</p>
+            <div className="shop-items-grid">
               {shopItems.map((item, index) => (
-                <div key={index}>
+                <div key={index} className='shop-item'>
                   <h4>{item.name}</h4>
                   <p>Cost: {item.cost} points</p>
-                  <button onClick={() => handlePurchase(item.cost)}>Purchase</button>
+                  <button className='purchase' onClick={() => handlePurchase(item.cost)}>Purchase</button>
                 </div>
               ))}
             </div>
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
