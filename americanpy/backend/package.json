@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "nodemon -L index.js",
     "setup-db": "node ./database/setup.js",
+    "start": "node index.js",
     "test": "npx jest --silent=false",
     "setup-mock-db": "node ./tests/mockDatabase/setupMock.js"
   },
