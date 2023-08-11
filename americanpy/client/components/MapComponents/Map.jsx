@@ -5,19 +5,81 @@ import customGeoJSON from "../../data/custom.geo.json";
 import ecoData from "../../data/ecoData.json";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import PlaceToVisitButton from "./PlaceToVisitButton";
+
 
 const Map = ({ id }) => {
+  // State variables
   const [map, setMap] = useState(null);
   const [markers, setMarkers] = useState([]);
-  const [markerPositions, setMarkerPositions] = useState([]);
   const [isAddingPin, setIsAddingPin] = useState(false);
   const [isHoveringButton, setIsHoveringButton] = useState(false);
   const [colorByEpiScore, setColorByEpiScore] = useState(false);
   const [bordersLayer, setBordersLayer] = useState(null);
-  const [startDestination, setStartDestination] = useState("");
-  const [endDestination, setEndDestination] = useState("");
-  const [routeLayer, setRouteLayer] = useState(null);
   const [selectedPin, setSelectedPin] = useState(null);
+  const removePinButtonId = `remove-pin-button-${id}`;
+  const [markerIds, setMarkerIds] = useState([]); 
+  const [isAddingPlaceToVisit, setIsAddingPlaceToVisit] = useState(false);
+
+  // function to remove a marker
+  const removeMarker = (markerId) => {
+    const markerToRemove = markers.find(
+      (marker) => marker.options.id == markerId
+    );
+
+    if (markerToRemove) {
+      if (selectedPin === markerToRemove) {
+        setSelectedPin(null);
+      }
+
+      markerToRemove.closePopup();
+      map.removeLayer(markerToRemove);
+      setMarkers((prevMarkers) =>
+        prevMarkers.filter((marker) => marker.options.id !== markerId)
+      );
+      setMarkerIds((prevMarkerIds) =>
+        prevMarkerIds.filter((id) => id !== markerId)
+      );
+      console.log("Pin removed successfully.");
+    } else {
+      console.log("Marker not found with ID:", markerId);
+    }
+  };
+
+  // Event handlers
+  const handleMarkerClick = (marker) => {
+    setSelectedPin(marker);
+  };
+
+  const handleButtonMouseEnter = () => {
+    setIsHoveringButton(true);
+  };
+
+  const handleButtonMouseLeave = () => {
+    setIsHoveringButton(false);
+  };
+
+  const handleRemoveButtonClick = () => {
+    if (selectedPin) {
+      const markerId = selectedPin.options.id;
+      setSelectedPin(null);
+      setTimeout(() => {
+        removeMarker(markerId);
+        setMarkers((prevMarkers) =>
+          prevMarkers.filter((marker) => marker.options.id !== markerId)
+        );
+        setMarkerIds((prevMarkerIds) =>
+          prevMarkerIds.filter((id) => id !== markerId)
+        );
+      }, 0);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setSelectedPin(null);
+  };
+
+  // Map setup
 
   useEffect(() => {
     const mapContainer = document.getElementById(id);
@@ -56,75 +118,108 @@ const Map = ({ id }) => {
     }
   }, [id]);
 
-  const removeSelectedPin = (markerId) => {
-    const markerIndex = markers.findIndex((marker) => marker.options.id === markerId);
-
-    if (markerIndex !== -1) {
-      const markerToRemove = markers[markerIndex];
-      const popup = markerToRemove.getPopup();
-      if (popup) {
-        popup.remove();
-      }
-
-      map.removeLayer(markerToRemove);
-
-      setMarkers((prevMarkers) => prevMarkers.filter((_, index) => index !== markerIndex));
-      setMarkerPositions((prevPositions) =>
-        prevPositions.filter((_, index) => index !== markerIndex)
-      );
-
-      setSelectedPin(null);
-      console.log("Pin removed successfully.");
-    } else {
-      console.log("Marker not found with ID:", markerId);
-    }
-  };
-  
-  
-  
-  
-
+  // Marker event listeners
   useEffect(() => {
     if (map) {
       markers.forEach((marker) => {
-        const markerId = marker.options.id;
-        const removeButton = document.getElementById(`remove-pin-button-${markerId}`);
+        marker.on("click", () => handleMarkerClick(marker));
+      });
+    }
+  }, [map, markers]);
+
+  // Add/remove marker button event listeners
+  useEffect(() => {
+    if (map) {
+      markers.forEach((marker) => {
+        const removeButtonId = `remove-pin-button-${marker.options.id}`;
+        const removeButton = document.getElementById(removeButtonId);
+
         if (removeButton) {
-          const removeHandler = () => {
-            removeSelectedPin(markerId);
-          };
-          removeButton.addEventListener("click", removeHandler);
-          marker.options.removeHandler = removeHandler; 
+          if (!marker.options.removeHandler) {
+            marker.options.removeHandler = () => {
+              removeMarker(marker.options.id);
+            };
+
+            removeButton.addEventListener(
+              "click",
+              marker.options.removeHandler
+            );
+          }
         }
       });
+
       return () => {
-        markers.forEach(marker => {
-          const markerId = marker.options.id;
-          const removeButton = document.getElementById(`remove-pin-button-${markerId}`);
-          if (removeButton) {
-            const removeHandler = marker.options.removeHandler;
-            if (removeHandler) {
-              removeButton.removeEventListener("click", removeHandler);
-            }
+        markers.forEach((marker) => {
+          const removeButtonId = `remove-pin-button-${marker.options.id}`;
+          const removeButton = document.getElementById(removeButtonId);
+
+          if (removeButton && marker.options.removeHandler) {
+            removeButton.removeEventListener(
+              "click",
+              marker.options.removeHandler
+            );
           }
         });
       };
     }
   }, [map, markers]);
-  
 
+  // Handle pin placement and color by epi score
   useEffect(() => {
     if (map) {
-      const handleMapClick = (event) => {
+      let markerCount = 1;
+
+      const handleMapClick = async (event) => {
         if (isAddingPin && !isHoveringButton) {
           const { lat, lng } = event.latlng;
-          const markerId =
-            Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+          const markerId = `marker-${markerCount}`; // Generate marker ID
+          markerCount++; // Increment the marker count
+
+          setMarkerIds((prevMarkerIds) => [...prevMarkerIds, markerId]);
+
           const marker = L.marker([lat, lng], { id: markerId }).addTo(map);
-          setMarkers((prevMarkers) => [...prevMarkers, marker]);
-          console.log(
-            `Added pin with ID: ${markerId}, Longitude: ${lng}, Latitude: ${lat}`
-          );
+
+          try {
+            const response = await axios.get(
+              `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`
+            );
+
+            const countryName = response.data.address.country;
+            const countryData = ecoData.find(
+              (data) => data.country === countryName
+            );
+
+            if (countryData) {
+              const countryDescription = countryData.description;
+              marker
+                .bindPopup(`<b>${countryName}</b><br>${countryDescription}`)
+                .openPopup();
+              const popupContent = marker.getPopup().getContent();
+              const newPopupContent = `
+                ${popupContent}
+                <button class="btn btn-danger" id="${removePinButtonId}">Remove Pin</button>
+              `;
+              marker.getPopup().setContent(newPopupContent);
+
+              const removeButton = document.getElementById(removePinButtonId);
+              if (removeButton) {
+                removeButton.addEventListener("click", () => {
+                  removeMarker(markerId); //
+                });
+              }
+
+              marker.options.description = countryDescription;
+
+              setSelectedPin(marker);
+            }
+
+            setMarkers((prevMarkers) => [...prevMarkers, marker]);
+            console.log(
+              `Added pin with ID: ${markerId}, Longitude: ${lng}, Latitude: ${lat}`
+            );
+          } catch (error) {
+            console.error("Error retrieving country information:", error);
+          }
         }
       };
 
@@ -136,6 +231,7 @@ const Map = ({ id }) => {
     }
   }, [map, isAddingPin, isHoveringButton]);
 
+  // Handle color by epi score
   useEffect(() => {
     if (map) {
       if (colorByEpiScore) {
@@ -172,157 +268,39 @@ const Map = ({ id }) => {
     }
   }, [map, colorByEpiScore]);
 
-  useEffect(() => {
-    if (map) {
-      if (routeLayer) {
-        map.removeLayer(routeLayer);
-      }
-
-      if (startDestination && endDestination) {
-        const startMarker = L.marker([
-          startDestination.lat,
-          startDestination.lng,
-        ]).addTo(map);
-        const endMarker = L.marker([
-          endDestination.lat,
-          endDestination.lng,
-        ]).addTo(map);
-
-        const routeLine = L.polyline([
-          [startDestination.lat, startDestination.lng],
-          [endDestination.lat, endDestination.lng],
-        ]).addTo(map);
-
-        setRouteLayer(routeLine);
-      }
-    }
-  }, [map, startDestination, endDestination]);
-
-  useEffect(() => {
-    if (map) {
-      const handleMapClick = async (event) => {
-        if (isAddingPin && !isHoveringButton) {
-          const { lat, lng } = event.latlng;
-          const markerId =
-            Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
-          const marker = L.marker([lat, lng], { id: markerId }).addTo(map);
-
-          try {
-            const response = await axios.get(
-              `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`
-            );
-
-            const countryName = response.data.address.country;
-            const countryData = ecoData.find(
-              (data) => data.country === countryName
-            );
-
-            if (countryData) {
-              const countryDescription = countryData.description;
-              marker
-                .bindPopup(`<b>${countryName}</b><br>${countryDescription}`)
-                .openPopup();
-            
-              const popupContent = marker.getPopup().getContent();
-              const newPopupContent = `
-                ${popupContent}
-                <button class="btn btn-danger" id="remove-pin-button-${marker.options.id}">Remove Pin</button>
-              `;
-              marker.getPopup().setContent(newPopupContent);
-
-              const removeButton = document.getElementById(`remove-pin-button-${marker.options.id}`);
-              if (removeButton) {
-                removeButton.addEventListener("click", () => {
-                  removeSelectedPin(markerId);
-                });
-              }
-
-              marker.options.description = countryDescription;
-
-              setSelectedPin(marker);
-            }
-
-            setMarkers((prevMarkers) => [...prevMarkers, marker]);
-            console.log(
-              `Added pin with ID: ${markerId}, Longitude: ${lng}, Latitude: ${lat}`
-            );
-          } catch (error) {
-            console.error("Error retrieving country information:", error);
-          }
-        }
-      };
-
-      map.on("click", handleMapClick);
-
-      return () => {
-        map.off("click", handleMapClick);
-      };
-    }
-  }, [map, isAddingPin, isHoveringButton]);
-
+  // Utility function to get color based on epi score
   function getColorBasedOnEpiScore(epiScore) {
     if (epiScore <= 30) {
-      return "navy"; 
+      return "navy";
     } else if (epiScore <= 50) {
-      return "#428BCA"; 
+      return "#428BCA";
     } else {
-      return "#66B3FF"; 
+      return "#66B3FF";
     }
   }
-  
-  
-  
-
+  // Toggle pin placement
   const togglePinPlacement = () => {
     setIsAddingPin((prevState) => !prevState);
   };
 
-  const handleButtonMouseEnter = () => {
-    setIsHoveringButton(true);
-  };
-
-  const handleButtonMouseLeave = () => {
-    setIsHoveringButton(false);
-  };
-
+  // Toggle color by epi score
   const toggleColorByEpiScore = () => {
     setColorByEpiScore((prevState) => !prevState);
   };
-  
-  const handleMarkerClick = (marker) => {
-    setSelectedPin(marker);
+  // Toggle place to visit button
+  const togglePlaceToVisit = () => {
+    setIsAddingPlaceToVisit((prevState) => !prevState);
   };
-  const handleRemoveButtonClick = () => {
-    if (selectedPin) {
-      removeSelectedPin(selectedPin.options.id);
-      handleCloseModal();
-    }
-  };
-  
-
-  const handleCloseModal = () => {
-    if (selectedPin) {
-      const removeButton = document.getElementById(`remove-pin-button-${selectedPin.options.id}`);
-      if (removeButton) {
-        removeButton.removeEventListener("click", handleRemoveButtonClick);
-      }
-    }
-    setSelectedPin(null);
-  };
-  
-
-  useEffect(() => {
-    if (map) {
-      markers.forEach((marker) => {
-        marker.on("click", () => handleMarkerClick(marker));
-      });
-    }
-  }, [map, markers]);
 
   return (
     <div className="map-container">
       <div className="top-bar">
         <div className="map-buttons">
+        <PlaceToVisitButton
+            onToggleAddPin={togglePlaceToVisit} // Use the new togglePlaceToVisit function
+            isAddingPin={isAddingPlaceToVisit}  // Use the isAddingPlaceToVisit state
+            map={map} // Pass the map instance
+          />
           <button
             className="btn btn-primary"
             onClick={togglePinPlacement}
@@ -355,12 +333,16 @@ const Map = ({ id }) => {
             </button>
             <h3>{selectedPin.getLatLng().toString()}</h3>
             <p>{selectedPin.options.description}</p>
-            <button className="btn btn-danger" onClick={() => removeSelectedPin(selectedPin.options.id)}>
+            <button
+              className="btn btn-danger"
+              id={removePinButtonId}
+              onClick={handleRemoveButtonClick}
+            >
               Remove Pin
             </button>
           </div>
         </div>
-      )}
+      )}``
       <div className="key">
         <div className="key-item">
           <div
@@ -386,7 +368,6 @@ const Map = ({ id }) => {
       </div>
     </div>
   );
-  
 };
 
 export default Map;
