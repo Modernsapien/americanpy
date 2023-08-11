@@ -1,4 +1,5 @@
 const Memory = require('../models/Memory')
+const User = require('../models/User')
 
 class MemoryController {
     static async getAllMemories(req, res) {
@@ -32,8 +33,8 @@ class MemoryController {
 
     static async getUserMemories(req, res) {
         try {
-            const user_id = req.tokenObj.user_id
-            const resp = await User.getUserMemories(user_id)
+            const user_id = req.params.id
+            const resp = await Memory.getUserMemories(user_id)
             res.status(200).send(resp)
         } catch (err) {
             res.status(404).json({Error: err.message})
