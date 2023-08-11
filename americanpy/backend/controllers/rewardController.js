@@ -6,7 +6,7 @@ class RewardController {
             const reward = await Reward.getAllRewards()
             res.status(200).send(reward)
         } catch (err) {
-            res.status(404).json({Error: err.message})
+             res.status(404).json({Error: err.message})
         }
       }
       
