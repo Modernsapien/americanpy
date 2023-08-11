@@ -4,7 +4,7 @@ body {
 }
 
 .intro {
-    color: white;
+    color: #7DB4D8 !important;
     padding: 30px 50px 70px 50px;
     width: 100%;
     margin: 0 auto;
@@ -12,8 +12,9 @@ body {
     font-family: 'Lilita One', cursive;
     font-size: 3.8rem;
     margin-bottom: -4rem;
-    margin-top: 1rem;
+    -webkit-text-stroke: 2px white;
 }
+
   
   .intro-explain-grid {
     display: grid;
@@ -22,21 +23,21 @@ body {
   }
   
   .column-image {
-    width: 90%;
+    width: 85%;
     height: auto;
-    margin: 35px 0 0 90px;
+    margin: 35px 0 0 30px;
     border-radius: 10px;
 }
   
   
 .explain {
     font-family: 'Manrope', sans-serif;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     color: #fff;
-    padding: 50px 20px 0 0;
+    padding: 10px 10px 0 0;
     width: 100%;
     margin: 0 auto;
-    text-align: left;
+    text-align: justify;
     margin-top: 3rem;
     margin-bottom: -1rem;
     font-weight: bold;
@@ -86,6 +87,6 @@ body {
 }
 
 .iconTitle {
-    color: #00043f;
+    color: #366491;
     font-size: 1.8rem;
 }
