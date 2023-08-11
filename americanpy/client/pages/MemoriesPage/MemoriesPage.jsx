@@ -48,11 +48,11 @@ const MemoriesPage = () => {
         <div className="memory-form">
           <h2 className="myMemories">My Memories</h2>
           <input className="file" type="file" accept="image/*" onChange={handleFileChange} required /> <br />
-          <label htmlFor="description">Description</label>
+          <label htmlFor="description">Title</label>
           <input
             className="inputBoxes"
             type="text"
-            placeholder="Enter Description"
+            placeholder="Enter Title"
             value={description}
             onChange={handleDescriptionChange}
             required
@@ -85,7 +85,7 @@ const MemoriesPage = () => {
         {memories.map((memory, index) => (
           <div className="memory" key={index}>
             <img src={URL.createObjectURL(memory.file)} alt={`Memory ${index}`} />
-            <p>{memory.description}</p>
+            <p>Title: {memory.description}</p>
             <p>Location: {memory.location}</p>
             <p>Date: {memory.date}</p>
           </div>
