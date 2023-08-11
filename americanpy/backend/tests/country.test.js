@@ -105,6 +105,61 @@ describe("country routes", () => {
                 .expect(404)
             expect(response.body.error).toBe('Unable to update country')
         })
+
+         //Create a country
+        it("should create a country", async () => {
+            const country = {
+                name: "Taiwan",
+                eco_stat: 2,
+                description: "yes definitely a country",
+                image: "this is a url",
+                attractions: ['Taipei', 'Definitely not being in China']
+            }
+            const countryCheck = {
+                country_id: 3,
+                name: 'Taiwan',
+                eco_stat: 2,
+                description: 'yes definitely a country',
+                attractions: [ 'Taipei', 'Definitely not being in China' ]
+              }
+            const response = await request(app)
+                .post(`/country`)
+                .send(country)
+                .expect(201)
+            expect(response.body).toMatchObject(countryCheck)
+        })
+
+        //Create country error
+        it("should return an error", async () => {
+            const country = {
+                stupidCountry: "this is stupid",
+                eco_stat: "dumb"
+            }
+            const response = await request(app)
+                .post(`/country`)
+                .send(country)
+                .expect(500)
+            expect(response.body.error).toBe('Unable to create country')
+        })
+
+        //Delete a country
+        it("should delete a country", async () => {
+            const response = await request(app)
+                .delete(`/country/3`)
+                .expect(204)
+            const checkDel = await request(app)
+                .get("/country")
+                .expect(200)
+            expect(checkDel.body.length).toBe(2)
+        })
+
+        //Delete country error
+        it("should return an error", async () => {
+            const response = await request(app)
+                .delete(`/country/700`)
+                .expect(403)
+            expect(response.body.error).toBe('Unable to locate country')
+        })
     })
 
 })
