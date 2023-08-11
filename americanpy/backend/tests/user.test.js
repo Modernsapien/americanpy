@@ -455,10 +455,7 @@ describe('user route', () => {
             .get("/users")
             .expect(200)
         expect(checkDelUser.body.length).toBe(1)
-        expect(checkDelUser.body[0].username).toBe(user2.username)
-
-        
-        
+        expect(checkDelUser.body[0].username).toBe(user2.username)  
     })
 
     //delete user error
