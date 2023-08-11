@@ -6,20 +6,19 @@ import ecoData from "../../data/ecoData.json";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import PlaceToVisitButton from "./PlaceToVisitButton";
-
+import PinComponent from "./PinComponent";
 
 const Map = ({ id }) => {
-  // State variables
   const [map, setMap] = useState(null);
   const [markers, setMarkers] = useState([]);
   const [isAddingPin, setIsAddingPin] = useState(false);
   const [isHoveringButton, setIsHoveringButton] = useState(false);
   const [colorByEpiScore, setColorByEpiScore] = useState(false);
   const [bordersLayer, setBordersLayer] = useState(null);
-  const [selectedPin, setSelectedPin] = useState(null);
   const removePinButtonId = `remove-pin-button-${id}`;
-  const [markerIds, setMarkerIds] = useState([]); 
-  const [isAddingPlaceToVisit, setIsAddingPlaceToVisit] = useState(false);
+  const [markerIds, setMarkerIds] = useState([]);
+  const [selectedPin, setSelectedPin] = useState(null); 
+
 
   // function to remove a marker
   const removeMarker = (markerId) => {
@@ -164,73 +163,6 @@ const Map = ({ id }) => {
     }
   }, [map, markers]);
 
-  // Handle pin placement and color by epi score
-  useEffect(() => {
-    if (map) {
-      let markerCount = 1;
-
-      const handleMapClick = async (event) => {
-        if (isAddingPin && !isHoveringButton) {
-          const { lat, lng } = event.latlng;
-          const markerId = `marker-${markerCount}`; // Generate marker ID
-          markerCount++; // Increment the marker count
-
-          setMarkerIds((prevMarkerIds) => [...prevMarkerIds, markerId]);
-
-          const marker = L.marker([lat, lng], { id: markerId }).addTo(map);
-
-          try {
-            const response = await axios.get(
-              `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`
-            );
-
-            const countryName = response.data.address.country;
-            const countryData = ecoData.find(
-              (data) => data.country === countryName
-            );
-
-            if (countryData) {
-              const countryDescription = countryData.description;
-              marker
-                .bindPopup(`<b>${countryName}</b><br>${countryDescription}`)
-                .openPopup();
-              const popupContent = marker.getPopup().getContent();
-              const newPopupContent = `
-                ${popupContent}
-                <button class="btn btn-danger" id="${removePinButtonId}">Remove Pin</button>
-              `;
-              marker.getPopup().setContent(newPopupContent);
-
-              const removeButton = document.getElementById(removePinButtonId);
-              if (removeButton) {
-                removeButton.addEventListener("click", () => {
-                  removeMarker(markerId); //
-                });
-              }
-
-              marker.options.description = countryDescription;
-
-              setSelectedPin(marker);
-            }
-
-            setMarkers((prevMarkers) => [...prevMarkers, marker]);
-            console.log(
-              `Added pin with ID: ${markerId}, Longitude: ${lng}, Latitude: ${lat}`
-            );
-          } catch (error) {
-            console.error("Error retrieving country information:", error);
-          }
-        }
-      };
-
-      map.on("click", handleMapClick);
-
-      return () => {
-        map.off("click", handleMapClick);
-      };
-    }
-  }, [map, isAddingPin, isHoveringButton]);
-
   // Handle color by epi score
   useEffect(() => {
     if (map) {
@@ -287,44 +219,51 @@ const Map = ({ id }) => {
   const toggleColorByEpiScore = () => {
     setColorByEpiScore((prevState) => !prevState);
   };
-  // Toggle place to visit button
-  const togglePlaceToVisit = () => {
-    setIsAddingPlaceToVisit((prevState) => !prevState);
-  };
 
   return (
     <div className="map-container">
-      <div className="top-bar">
-        <div className="map-buttons">
-        <PlaceToVisitButton
-            onToggleAddPin={togglePlaceToVisit} // Use the new togglePlaceToVisit function
-            isAddingPin={isAddingPlaceToVisit}  // Use the isAddingPlaceToVisit state
-            map={map} // Pass the map instance
-          />
-          <button
-            className="btn btn-primary"
-            onClick={togglePinPlacement}
-            onMouseEnter={handleButtonMouseEnter}
-            onMouseLeave={handleButtonMouseLeave}
-            id="cancel-pin-button"
-          >
-            {isAddingPin ? "Cancel Adding Pin" : "Add Pin"}
-          </button>
-          <button
-            className="btn btn-success"
-            onClick={toggleColorByEpiScore}
-            onMouseEnter={handleButtonMouseEnter}
-            onMouseLeave={handleButtonMouseLeave}
-            id="toggle-color-button"
-          >
-            {colorByEpiScore ? "Hide Eco colour" : "Show Eco colour"}
-          </button>
-        </div>
-        <div className="destination-form"></div>
+    <div className="top-bar">
+      <div className="map-buttons">
+      <PlaceToVisitButton
+  isAddingPlaceToVisit={isAddingPin} // Use isAddingPin instead of isAddingPlaceToVisit
+  setIsAddingPlaceToVisit={setIsAddingPin} // Use setIsAddingPin instead of setIsAddingPlaceToVisit
+  map={map}
+/>
+
+        <button
+          className="btn btn-primary"
+          onClick={togglePinPlacement}
+          onMouseEnter={handleButtonMouseEnter}
+          onMouseLeave={handleButtonMouseLeave}
+          id="cancel-pin-button"
+        >
+          {isAddingPin ? "Cancel Places to visit" : "Places to visit"}
+        </button>
+        <button
+          className="btn btn-success"
+          onClick={toggleColorByEpiScore}
+          onMouseEnter={handleButtonMouseEnter}
+          onMouseLeave={handleButtonMouseLeave}
+          id="toggle-color-button"
+        >
+          {colorByEpiScore ? "Hide Eco colour" : "Show Eco colour"}
+        </button>
       </div>
+      <div className="destination-form"></div>
+    </div>
       <div className="map" style={{ height: "400px", width: "100%" }}>
         <div id={id}></div>
       </div>
+      <PinComponent
+        map={map}
+        isAddingPin={isAddingPin}
+        isHoveringButton={isHoveringButton}
+        removeMarker={removeMarker}
+        setMarkers={setMarkers}
+        setMarkerIds={setMarkerIds}
+        setSelectedPin={setSelectedPin}
+        removePinButtonId={removePinButtonId}
+      />
       {selectedPin && (
         <div className="modal-overlay">
           <div className="modal">
@@ -342,30 +281,8 @@ const Map = ({ id }) => {
             </button>
           </div>
         </div>
-      )}``
-      <div className="key">
-        <div className="key-item">
-          <div
-            className="key-color"
-            style={{ backgroundColor: getColorBasedOnEpiScore(30) }}
-          ></div>
-          <div className="key-text">Low</div>
-        </div>
-        <div className="key-item">
-          <div
-            className="key-color"
-            style={{ backgroundColor: getColorBasedOnEpiScore(40) }}
-          ></div>
-          <div className="key-text">Medium</div>
-        </div>
-        <div className="key-item">
-          <div
-            className="key-color"
-            style={{ backgroundColor: getColorBasedOnEpiScore(60) }}
-          ></div>
-          <div className="key-text">High</div>
-        </div>
-      </div>
+      )}
+      <div className="key">{/* Key items */}</div>
     </div>
   );
 };
