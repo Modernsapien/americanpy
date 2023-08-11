@@ -29,8 +29,9 @@ const NavbarComponent = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <NavLink className="nav-link" activeclassname="active" to="/country">Country</NavLink>
+              <NavLink className="nav-link" activeclassname="active" to="/">Home</NavLink>
             </li>
+
             <li className="nav-item">
               <NavLink className="nav-link" activeclassname="active" to="/mappage">Map</NavLink>
             </li>
