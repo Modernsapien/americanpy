@@ -6,7 +6,7 @@ class RewardController {
             const reward = await Reward.getAllRewards()
             res.status(200).send(reward)
         } catch (err) {
-            res.status(404).json({Error: err.message})
+             res.status(404).json({Error: err.message})
         }
       }
       
@@ -14,7 +14,7 @@ class RewardController {
       const { id } = req.params;
       try {
           const reward = await Reward.getRewardByID(id)
-          if (reward) {
+          if (reward.points_required) {
               res.status(200).json(reward);
           }else {
               res.status(404).json({ error: `Reward not found` });

@@ -11,6 +11,9 @@ class Reward {
     static async getAllRewards(){
         const query = "SELECT * FROM rewards";
         const { rows } = await db.query(query);
+        if(rows.length == 0){
+            throw new Error("no rewards found!")
+        }
         return rows;
     }
 
@@ -25,18 +28,26 @@ class Reward {
     }
 
     static async getRewardsByPoints(points_required){
-        const query = "SELECT * FROM rewards WHERE points_required <= $1;"
-        const { rows } = await db.query(query, [points_required]);
-        return rows;
+        try {
+            const query = "SELECT * FROM rewards WHERE points_required <= $1;"
+            const { rows } = await db.query(query, [points_required]);
+            return rows;
+        } catch (err) {
+            throw new Error(`No rewards found for ${points_required} points`)
+        }
     }
 
     static async createReward(reward) {
-        const { name, description, points_required } = reward;
-        const query =
-          "INSERT INTO rewards (name, description, points_required) VALUES ($1, $2, $3) RETURNING *";
-        const values = [name, description, points_required];
-        const { rows } = await db.query(query, values);
-        return rows;
+        try {
+            const { name, description, points_required } = reward;
+            const query =
+              "INSERT INTO rewards (name, description, points_required) VALUES ($1, $2, $3) RETURNING *";
+            const values = [name, description, points_required];
+            const { rows } = await db.query(query, values);
+            return rows;
+        } catch(err) {
+            throw new Error("Failed to create reward")
+        }
       }
 
     async updatePointsRequired(data) {
@@ -55,8 +66,13 @@ class Reward {
     }
     
      static async deleteReward(id) {
-        const resp = await db.query("DELETE FROM rewards WHERE reward_id = $1 RETURNING *",[id])
-        return resp.rows[0]
+        try{
+            const resp = await db.query("DELETE FROM rewards WHERE reward_id = $1 RETURNING *",[id])
+            return resp.rows[0]
+        } catch(err) {
+            throw new Error("failed to delete reward")
+        }
+        
     }
 
 }

@@ -1,6 +1,10 @@
 const request = require("supertest")
 const app = require("../api.js")
 const db = require("../database/connect")
+const fs = require('fs');
+const rewardSql = fs.readFileSync('/Users/Guy 1/Desktop/liskov/lap4/project4/americanpy/americanpy/backend/tests/mockDatabase/removeRewards.sql').toString();
+
+
 
 describe("reward route", () => {
 
@@ -44,6 +48,14 @@ describe("reward route", () => {
         expect(response.body.error).toBe('Oops something went wrong - Error: Unable to locate reward')
     })
 
+    //Get the dodgy one
+    it("should return an error", async () => {
+        const response = await request(app)
+            .get(`/reward/reward/4`)
+            .expect(404)
+        expect(response.body.error).toBe('Reward not found')
+    })
+
     //Get one by points
     it("should get a reward by points", async () => {
         const response = await request(app)
@@ -55,6 +67,14 @@ describe("reward route", () => {
         const response2 = await request(app)
             .get(`/reward/points/20`)
         expect(response2.body.length).toBe(3)
+    })
+
+    //Get one by points error
+    it("should return an error", async () => {
+        const response = await request(app)
+            .get(`/reward/points/cheese`)
+            .expect(404)
+        expect(response.body.error).toBe('No rewards found for NaN points')
     })
 
     //Create
@@ -78,6 +98,20 @@ describe("reward route", () => {
             .get(`/reward`)
             .expect(200)
         expect(response2.body.length).toBeGreaterThan(3)
+    })
+
+    //Create dumb reward
+    it("should return an error", async () => {
+        let testReward = {
+            name: 'this is dumb',
+            description: 'thats not a valid points required',
+            points_required: 'cheese'
+        }
+        const response = await request(app)
+            .post(`/reward`)
+            .send(testReward)
+            .expect(500)
+        expect(response.body.Error).toBe('Error - Error: Failed to create reward')
     })
 
     //Update
@@ -116,5 +150,29 @@ describe("reward route", () => {
             .expect(500)
         expect(response2.body.error).toBe('Oops something went wrong - Error: Unable to locate reward')
     })
+
+    //Delete error
+    it("should return an error", async () => {
+        const response = await request(app)
+            .delete(`/reward/cheese`)
+            .expect(404)
+        expect(response.body.error).toBe('failed to delete reward')
+    })
+
+    describe("tests with no rewards", () => {
+
+        beforeAll(async() => {
+            await db.query(rewardSql)
+        })
+
+        //Get all error
+        it("should return an error", async () => {
+            const response = await request(app)
+                .get(`/reward`)
+                .expect(404)
+            expect(response.body.Error).toBe('no rewards found!')
+        })
+    })
+
 
 })
