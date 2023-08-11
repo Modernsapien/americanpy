@@ -1,14 +1,17 @@
+/* Reset default styles */
 body,
 html {
     margin: 0;
     padding: 0;
 }
 
+/* Map container styles */
 #map-container {
     height: 90vh;
     width: 100%;
 }
 
+/* Leaflet control styles */
 .leaflet-touch .leaflet-control-layers,
 .leaflet-touch .leaflet-bar {
     display: flex;
@@ -26,6 +29,7 @@ html {
     font-size: 14px;
 }
 
+/* Map buttons styles */
 .map-buttons {
     display: flex;
     flex-direction: row;
@@ -35,12 +39,14 @@ html {
     margin-left: 70%;
 }
 
+/* Map container layout */
 .map-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
+/* Leaflet map top control styles */
 .map .leaflet-top {
     position: relative;
     top: 0;
@@ -49,13 +55,13 @@ html {
     margin-left: 10px;
 }
 
+/* Top bar styles */
 .top-bar {
     display: flex;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: space-between;
     padding: 10px;
     height: 50px;
-
     position: absolute;
     top: 0;
     left: 0;
@@ -64,45 +70,67 @@ html {
 }
 
 @media (max-width: 768px) {
+    /* Adjust map buttons for smaller screens */
     .map-buttons {
         margin-left: 10%;
     }
 }
 
 @media (max-width: 630px) {
+    /* Adjust input placeholders for smaller screens */
     #start-destination-input::placeholder {
-        content: "Start"; 
+        content: "Start";
     }
-    
+
     #end-destination-input::placeholder {
-        content: "End"; 
+        content: "End";
     }
 }
 
-.glass{
-    background-color: blue !important;
+/* Glass style */
+.glass {
+    position: relative;
+    top: 20px;
+    left: 15px;
+    height: 30px;
+    /* background-color: blue !important; */
 }
 
+/* Leaflet bar part styles */
 .leaflet-bar-part {
-    background-color: green !important;  
+    display: none !important;
+    /* background-color: green !important; */
 }
+
+/* Reset button styles */
 .reset {
-    background-color: orange !important;  
+    position: relative;
+    left: 170px;
+    bottom: 30px;
+    border-radius: 20%;
+    /* background-color: orange !important; */
 }
+
+/* GeoSearch styles */
 .geosearch {
-    background-color: pink !important;  
+    position: relative;
+    width: 200px;
+    height: 40px;
+    border-radius: 10%;
+    display: none;
 }
-.leaflet-control-zoom{
-    background-color: red !important;  
+
+/* Zoom control styles */
+.leaflet-control-zoom {
+    background-color: white;
 }
 
-
-
+/* Key styles */
 .key {
     position: absolute;
-   top: 790px;
-   left: -190px;
-    z-index: 1000; 
+    top: 770px;
+    left: -190px;
+    z-index: 1000;
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -110,21 +138,33 @@ html {
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-left: 200px;
-  }
-  
-  .key-item {
+}
+
+/* Key item styles */
+.key-item {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
-  }
-  
-  .key-color {
+}
+
+/* Key color box styles */
+.key-color {
     width: 20px;
     height: 20px;
     margin-right: 5px;
-  }
-  
-  .key-text {
-    font-size: 14px;
-  }
-  
+    border: 1px solid #ccc;
+    display: inline-block; /* Display the color box inline with text */
+}
+
+/* Color definitions for EPI Score ranges */
+.navy {
+    background-color: navy;
+}
+
+.blue {
+    background-color: #428bca;
+}
+
+.light-blue {
+    background-color: #66b3ff;
+}

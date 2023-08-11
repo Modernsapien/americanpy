@@ -8,6 +8,7 @@ import axios from "axios";
 import PlaceToVisitButton from "./PlaceToVisitButton";
 import PinComponent from "./PinComponent";
 
+
 const Map = ({ id }) => {
   const [map, setMap] = useState(null);
   const [markers, setMarkers] = useState([]);
@@ -18,6 +19,7 @@ const Map = ({ id }) => {
   const removePinButtonId = `remove-pin-button-${id}`;
   const [markerIds, setMarkerIds] = useState([]);
   const [selectedPin, setSelectedPin] = useState(null); 
+  const [mapClickEnabled, setMapClickEnabled] = useState(true);
 
 
   // function to remove a marker
@@ -86,19 +88,23 @@ const Map = ({ id }) => {
       console.error(`Map container with ID '${id}' not found.`);
       return;
     }
-
+  
     if (!mapContainer._leaflet_id) {
       const mapInstance = L.map(id, {
         minZoom: 2,
         maxZoom: 18,
         maxBounds: L.latLngBounds(L.latLng(-90, -180), L.latLng(90, 180)),
+        language: 'en',
       }).setView([51.496840937752935, -0.13539235784566644], 2.5);
-
+  
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         zIndex: 0,
       }).addTo(mapInstance);
-
-      const provider = new EsriProvider();
+  
+      const provider = new EsriProvider({
+        language: 'en', 
+      });
+      
       const searchControl = new GeoSearchControl({
         provider,
         showPopup: false,
@@ -107,10 +113,10 @@ const Map = ({ id }) => {
         retainZoomLevel: false,
         animateZoom: true,
       });
-
+  
       mapInstance.addControl(searchControl);
       setMap(mapInstance);
-
+  
       return () => {
         mapInstance.remove();
       };
@@ -210,9 +216,10 @@ const Map = ({ id }) => {
       return "#66B3FF";
     }
   }
-  // Toggle pin placement
-  const togglePinPlacement = () => {
+   // Toggle pin placement
+   const togglePinPlacement = () => {
     setIsAddingPin((prevState) => !prevState);
+    setMapClickEnabled(!isAddingPin); // Toggle the map click event
   };
 
   // Toggle color by epi score
@@ -282,7 +289,21 @@ const Map = ({ id }) => {
           </div>
         </div>
       )}
-      <div className="key">{/* Key items */}</div>
+      <div className="key">
+  <div className="key-item">
+    <div className="key-color navy"></div>
+    <span className="key-text">&nbsp;&nbsp;&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  </div>
+  <div className="key-item">
+    <div className="key-color blue"></div>
+    <span className="key-text">&nbsp;&nbsp;&nbsp;&nbsp;Mid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  </div>
+  <div className="key-item">
+    <div className="key-color light-blue"></div>
+    <span className="key-text">&nbsp;&nbsp;&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  </div>
+</div>
+
     </div>
   );
 };
