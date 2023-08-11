@@ -39,7 +39,7 @@ class CountryController {
             const newCountry = await Country.createCountry(data);
             res.status(201).json(newCountry)
         } catch (err) {
-            res.status(404).json({error: err.message})
+            res.status(500).json({error: err.message})
         }
     }
 
@@ -47,10 +47,10 @@ class CountryController {
         try {
             const { id } = req.params
             const country = await Country.getCountryByID(id)
-            const result = await country.deleteCoutnry();
+            const result = await country.deleteCountry();
             res.status(204).end();
         } catch (err) {
-            res.status(404).json({error: err.message})
+            res.status(403).json({error: err.message})
         }
     }
 }

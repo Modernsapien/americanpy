@@ -1,7 +1,9 @@
+// ColorByEpiScore.jsx
 import React, { useEffect } from "react";
 import L from "leaflet";
 import customGeoJSON from "../../data/custom.geo.json";
 import ecoData from "../../data/ecoData.json";
+import { getColorBasedOnEpiScore } from "./Map"; // Import the function
 
 const ColorByEpiScore = ({ map, colorByEpiScore }) => {
   useEffect(() => {
@@ -42,16 +44,6 @@ const ColorByEpiScore = ({ map, colorByEpiScore }) => {
       }
     };
   }, [map, colorByEpiScore]);
-
-  function getColorBasedOnEpiScore(epiScore) {
-    if (epiScore <= 30) {
-      return "red";
-    } else if (epiScore <= 50) {
-      return "orange";
-    } else {
-      return "green";
-    }
-  }
 
   return null;
 };

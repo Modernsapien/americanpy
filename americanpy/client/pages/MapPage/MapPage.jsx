@@ -3,12 +3,12 @@ import Map from "../../components/MapComponents/Map";
 import "./MapPage.css";
 
 const MapPage = () => {
-  const mapId = "map-container";
+  const mapId = "map-container"; // Remove this line
 
   return (
     <>
-      <div id="map-container">
-        <Map id={mapId} />
+      <div id={mapId}> 
+        <Map id={mapId} /> 
       </div>
     </>
   );
