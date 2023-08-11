@@ -79,6 +79,14 @@ describe("Memory route", () => {
         expect(response.body.Error).toBe('There are no memories')
     })
 
+    //Get user memories but no user memories
+    it("should give an error that there are no memories", async () => {
+        const response = await request(app)
+            .get(`/memory/user/${id}`)
+            .expect(404)
+        expect(response.body.Error).toBe('User has no memories')
+    })
+
     //Create
     it("should create a memory", async () => {
         const memory = {
@@ -164,6 +172,43 @@ describe("Memory route", () => {
         expect(response.body.error).toBe('Memory does not exist.')
     })
 
+    //Get user memories
+    it("should get all a user's memories by id", async () => {
+        const memory = {
+            user_id: id,
+            country_id: 2,
+            memory_name: "deported i was",
+            memory_description: "arrested for tax evasion i have been",
+            drive_link: "oh no"
+        }
+        const memoryCheck = {
+            memory_id: 3,
+            user_id: id,
+            country_id: 2,
+            memory_name: "deported i was",
+            memory_description: "arrested for tax evasion i have been",
+            drive_link: "oh no"
+        }
+        const addOneMore = await request(app)
+            .post(`/memory/`)
+            .send(memory)
+            .expect(201)
+
+        const response = await request(app)
+            .get(`/memory/user/${memory.user_id}`)
+            .expect(200)
+        expect(response.body.length).toBeGreaterThan(1)
+        expect(response.body[1]).toMatchObject(memoryCheck)
+    })
+
+    //Get user memories error
+    it("should return an error", async () => {
+        const response = await request(app)
+            .get(`/memory/user/cheese`)
+            .expect(404)
+        expect(response.body.Error).toBe('unable to get memories')
+    })
+
     //Update memory
     it("should update a memory", async () => {
         const memoryUpdate = {
@@ -230,7 +275,7 @@ describe("Memory route", () => {
         const checkDel = await request(app)
             .get(`/memory`)
             .expect(200)
-        expect(checkDel.body.length).toBe(1)
+        expect(checkDel.body.length).toBe(2)
         expect(checkDel.body[0]).toMatchObject(memory)
         const response2 = await request(app)
         .delete(`/memory/2`)
