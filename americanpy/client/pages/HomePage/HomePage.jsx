@@ -1,5 +1,5 @@
 import React from 'react'
-import './HomePage.css'
+import './homepage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPassport, faRoute, faLeaf, faGift, faBook, faGlobeAmericas, } from '@fortawesome/free-solid-svg-icons';
 import world from './world.png'
