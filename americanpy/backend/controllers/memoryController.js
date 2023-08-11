@@ -22,11 +22,21 @@ class MemoryController {
 
     static async getOneByMemoryName(req, res) {
         try {
-            const name = req.params
+            const name = req.params.name
             const memory = await Memory.getOneByMemoryName(name);
             res.status(200).json(memory);
         } catch (err) {
             res.status(404).json({ error: err.message});
+        }
+    }
+
+    static async getUserMemories(req, res) {
+        try {
+            const user_id = req.tokenObj.user_id
+            const resp = await User.getUserMemories(user_id)
+            res.status(200).send(resp)
+        } catch (err) {
+            res.status(404).json({Error: err.message})
         }
     }
 
@@ -42,12 +52,12 @@ class MemoryController {
 
     static async deleteMemory(req, res) {
         try {
-            const id = parseInt(req.params.memory_id);
+            const id = parseInt(req.params.id);
             const memory = await Memory.getOneById(id);
             const result = await memory.deleteMemory();
             res.status(204).end()
         } catch (err) {
-            res.status(204).send({ error: err.message })
+            res.status(500).send({ error: err.message })
         }
     }
 
@@ -63,6 +73,8 @@ class MemoryController {
             res.status(404).send({ error: err.message})
         }
     }
+
+    
 
 
 }

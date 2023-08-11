@@ -20,8 +20,17 @@ class Memory {
         }
     }
 
+    static async getUserMemories(user_id) {
+        const resp = await db.query("SELECT * FROM memories WHERE user_id = $1", [user_id])
+        if (resp.rows.length > 0){
+            return resp.rows.map((m) => m)
+        } else {
+            throw new Error('User has no memories')
+        }
+    }
+
     static async getOneByMemoryName(memory_name) {
-        const resp = await db.query("SELECT * FROM memories WHERE LOWER(memory_name) = $1", [memory_name])
+        const resp = await db.query("SELECT * FROM memories WHERE memory_name = $1", [memory_name])
         if (resp.rows.length == 0 ) {
             throw new Error ("Memory does not exist.")
         } else {
@@ -39,35 +48,37 @@ class Memory {
     }
 
     static async createMemory(data) {
-        const { user_id, country_id, memory_name, memory_description, drive_link} = data
-        const resp = await db.query(`INSERT INTO memories (user_id, country_id,memory_name, memory_description, drive_link) VALUES ($1, $2, $3, $4, $5) RETURNING memory_id`, [user_id, country_id, memory_name, memory_description, drive_link])
+        try {
+            const { user_id, country_id, memory_name, memory_description, drive_link} = data
+            const resp = await db.query(`INSERT INTO memories (user_id, country_id,memory_name, memory_description, drive_link) VALUES ($1, $2, $3, $4, $5) RETURNING memory_id`, [user_id, country_id, memory_name, memory_description, drive_link])
 
-        const id = resp.rows[0].memory_id
-        const newMemory = await Memory.getOneById(id)
-        return newMemory
+            const id = resp.rows[0].memory_id
+            const newMemory = await Memory.getOneById(id)
+            return newMemory
+        } catch(err) {
+            throw new Error("unable to create memory")
+        }
     }
 
     async deleteMemory() {
         const resp = await db.query("DELETE FROM memories WHERE memory_id = $1 RETURNING *;", [this.memory_id]);
-        if (resp.rows.length != 1) {
-            throw new Error("Unable to delete memory.")
-        }
         return new Memory(resp.rows[0])
     }
 
     async updateMemory(data) {
-        const resp = await db.query("UPDATE memories SET country_id =$1, memory_name =$2, memory_description = $3, drive_link = $4 WHERE memory_id = $5 RETURNING *;",
-        [
+        try {
+            const resp = await db.query("UPDATE memories SET country_id =$1, memory_name =$2, memory_description = $3, drive_link = $4 WHERE memory_id = $5 RETURNING *;",
+            [
             data.country_id,
             data.memory_name,
             data.memory_description,
             data.drive_link,
             this.memory_id
-        ]);
-        if (resp.rows.length != 1) {
+            ]);
+            return new Memory(resp.rows[0]);
+        } catch (err) {
             throw new Error("Unable to update memory!")
         }
-        return new Memory(resp.rows[0]);
     }
 
 

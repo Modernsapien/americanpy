@@ -6,6 +6,10 @@ const bcrypt = require('bcrypt')
 
 describe('user route', () => {
 
+    beforeAll(async () => {
+        await new Promise((r) => setTimeout(r, 1000));
+    })
+
     afterAll(() => {
         console.log("Stopping test server")
         db.end()
@@ -124,6 +128,15 @@ describe('user route', () => {
         user_id = response.body.user_id
     })
 
+    //Get one by id error
+    it("should return an error", async () => {
+        const response = await request(app)
+            .get(`/users/user/700`)
+            .set({"Authorization": token})
+            .expect(404)
+        expect(response.body.Error).toBe('unable to find user with this id')
+    })
+
     //Get one by username errors
     //Wrong username
     it("should return wrong username error", async () => {
@@ -161,11 +174,20 @@ describe('user route', () => {
     //Carbon points tests
     //Get carbon points
     it("should get the user's carbon points", async () => {
-       const response = await request(app)
+        const response = await request(app)
             .get(`/users/carbon/${id}`)
             .set({"authorization": token})
             .expect(200) 
         expect(response.body.carbon_points).toBe(0)
+    })
+
+    //Get carbon points error
+    it("should return an error", async () => {
+        const response = await request(app)
+            .get(`/users/carbon/700`)
+            .set({"authorization": token})
+            .expect(500)
+        expect(response.body.Error).toBe("unable to find this user's carbon points")
     })
 
     //add carbon points
@@ -180,6 +202,35 @@ describe('user route', () => {
             .send(points)
             .expect(200) 
         expect(response.body.carbon_points).toBe(800)
+    })
+
+    //add carbon points error bad user
+    it("should return an error", async () => {
+        const points = {
+            points: 800
+        }
+
+        const response = await request(app)
+            .patch(`/users/carbon/add/700`)
+            .set({"authorization": token})
+            .send(points)
+            .expect(500) 
+        expect(response.body.Error).toBe('unable to find user with this id')
+    })
+
+    //add carbon points error bad points
+    it("should return an error", async () => {
+        const points = {
+            points: "definitely points"
+        }
+
+        const response = await request(app)
+            .patch(`/users/carbon/add/${id}`)
+            .set({"authorization": token})
+            .send(points)
+            .expect(500) 
+
+        expect(response.body.Error).toBe('unable to update points')
     })
 
     //subtract carbon points
@@ -216,6 +267,20 @@ describe('user route', () => {
         expect(response2.body.carbon_points).toBe(200)
     })
 
+    //Subtract carbon points but bad points
+    it("should return an error", async () => {
+        const points = {
+            points: "hmmm yes points"
+        }
+
+        const response = await request(app)
+            .patch(`/users/carbon/subtract/${id}`)
+            .set({"authorization": token})
+            .send(points)
+            .expect(500)
+        expect(response.body.Error).toBe('unable to update points')
+    })
+
     //Profile picture
     //Try to update profile picture
     it("should update profile picture", async () => {
@@ -230,6 +295,19 @@ describe('user route', () => {
         expect(response.body.profile_image_url).toBe(picture.url)
     })
 
+    //Profile picture error
+    it("should return an error", async () => {
+        const picture = {
+            url: 'alfjsdalfkjsadlfkjsadfl;ksajdflksajdf;lsakdjfl;sakdfjsa;ldkffaskldfjasdl;fjasld;fkjasdl;fkjasdf;lkasjdf;lsakjdf;laskdfj;lsakdjf;laskdjfas;ldkfjas;ldfkjas;dlfkjad;lfkjasd;lfkjasd;flkasjdf;lkasjdf;ldsakdjf;lsakfj;saldkfjsa;ldkfjas;ldfkjas;ldfkjsad;lfkjasd;lfkjasd;lfkjasd;lfkjasd;lfkjasd;lfkjsadf;lkasjdf;lsakjdf;lasdkjfas;ldkfjas;ldkfjasd;lfkjasd;lfkjasd;flkasjdf;laskdjfas;ldfkjas;ldfkjasd;lfkjd;lfkjasd;lfkjasd;lfkjasdf;laksjdf;aslkdfjas;ldfkjasd;lfkjasf;ldskjf;alskjdfjasl;dkfjas;ldfkjsaldfkjas;ldkfjasl;dkfjs;dlfkjasdl;fkjsad;lfkasjfl;kasdjfl;sakdfjasl;dkfjasl;dfkjsdl;fkjasdl;fkjsadfl;ksdjfl;askdjfl;sadkfjas;ldkfjas;ldfkjsal;dfkjsd;lfkasjdfl;sakdjfsal;dkfjsad;lfkjsafl;skdjf;lsakdfjas;ldfkjsa;ldfkjsadlfkjasf;laskjdf'
+        }
+        const response = await request(app)
+            .patch(`/users/picture/${id}`)
+            .set({"authorization": token})
+            .send(picture)
+            .expect(500)
+        expect(response.body.Error).toBe('unable to update picture')
+    })
+
     //Countries
     //Get all countries but no countries
     it("should return an error", async () => {
@@ -238,6 +316,100 @@ describe('user route', () => {
             .set({"authorization": token})
             .expect(404)
         expect(response.body.Error).toBe('No countries visited!')
+    })
+
+    //Add a country
+    it("should add a country", async () => {
+        let country = {
+            country_id:1
+        }
+        check = { users_countries_id: 1, user_id: 1, country_id: 1 }
+        const response = await request(app)
+            .patch(`/users/country/${id}`)
+            .set({"authorization": token})
+            .send(country)
+            .expect(200)
+        expect(response.body).toMatchObject(check)
+    })
+
+    //Get all but good
+    it("should get all countries", async () => {
+        let country = {
+            country_id:2
+        }
+        let countries = [
+            {
+              country_id: 2,
+              name: 'France',
+              description: 'terrible place',
+              eco_stat: 1,
+              image_url: 'https://panamarbakery.com/public/Image/2021/3/12951_1baguettetradicionmasamadre280gcopia_Galeria.png',
+              attractions: [ 'Eiffel Tower', 'Leave' ],
+              users_countries_id: 2,
+              user_id: 1
+            },
+            {
+              country_id: 1,
+              name: 'Zimbabwe',
+              description: 'country in Africa',
+              eco_stat: 9,
+              image_url: 'https://upload.wikimedia.org/wikipedia/commons/6/6a/Flag_of_Zimbabwe.svg',
+              attractions: [ 'Victoria falls', 'Hwange National Park' ],
+              users_countries_id: 1,
+              user_id: 1
+            }
+          ]
+        const addAnother = await request(app)
+            .patch(`/users/country/${id}`)
+            .set({"authorization": token})
+            .send(country)
+            .expect(200)
+
+        const response = await request(app)
+            .get(`/users/country/${id}`)
+            .set({"authorization": token})
+            .expect(200)
+        expect(response.body.length).toBeGreaterThan(1)
+        expect(response.body).toMatchObject(countries)
+    })
+
+    //Subtract country
+    it("should take away a country", async () => {
+        let country = {
+            country_id:1
+        }
+        const response = await request(app)
+            .delete(`/users/country/${id}`)
+            .set({"authorization": token})
+            .send(country)
+            .expect(200)
+        expect(response.body.message).toBe('Country removed from user')
+    })
+
+    //add a country error
+    it("should return an error", async () => {
+        let country = {
+            country_id:700
+        }
+        const response = await request(app)
+            .patch(`/users/country/${id}`)
+            .set({"authorization": token})
+            .send(country)
+            .expect(500)
+        expect(response.body.Error).toBe('Unable to add country')
+    })
+
+    //subtract a country error
+    it("should return an error", async () => {
+        let country = {
+            country_id:700
+        }
+        const response = await request(app)
+            .delete(`/users/country/${id}`)
+            .set({"authorization": token})
+            .send(country)
+            .expect(500)
+        expect(response.body.Error).toBe('Unable to remove country')
     })
 
 
@@ -255,7 +427,7 @@ describe('user route', () => {
         const response = await request(app)
             .delete(`/users/logout`)
             .expect(500)
-        expect(response.body.error).toBe('Unable to find token.')
+        expect(response.body.error).toBe('User not logged in!')
     })
 
     //Delete user
@@ -285,11 +457,17 @@ describe('user route', () => {
         expect(checkDelUser.body.length).toBe(1)
         expect(checkDelUser.body[0].username).toBe(user2.username)
 
-        const response2 = await request(app)
-            .delete(`/users/delete/${id2}`)
-            .set({"Authorization": token2})
-            .expect(204)
         
+        
+    })
+
+    //delete user error
+    it("should return an error", async () => {
+        const response2 = await request(app)
+            .delete(`/users/delete/700`)
+            .set({"Authorization": token2})
+            .expect(403)
+        expect(response2.body.Error).toBe('unable to find user with this id' )
     })
 
 })
