@@ -1,6 +1,10 @@
 const request = require("supertest")
 const app = require("../api.js")
 const db = require("../database/connect")
+const fs = require('fs');
+const rewardSql = fs.readFileSync('/Users/Guy 1/Desktop/liskov/lap4/project4/americanpy/americanpy/backend/tests/mockDatabase/removeRewards.sql').toString();
+
+
 
 describe("reward route", () => {
 
@@ -153,6 +157,21 @@ describe("reward route", () => {
             .delete(`/reward/cheese`)
             .expect(404)
         expect(response.body.error).toBe('failed to delete reward')
+    })
+
+    describe("tests with no rewards", () => {
+
+        beforeAll(async() => {
+            await db.query(rewardSql)
+        })
+
+        //Get all error
+        it("should return an error", async () => {
+            const response = await request(app)
+                .get(`/reward`)
+                .expect(404)
+            expect(response.body.Error).toBe('no rewards found!')
+        })
     })
 
 

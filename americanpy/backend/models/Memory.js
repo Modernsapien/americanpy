@@ -21,12 +21,21 @@ class Memory {
     }
 
     static async getUserMemories(user_id) {
-        const resp = await db.query("SELECT * FROM memories WHERE user_id = $1", [user_id])
-        if (resp.rows.length > 0){
-            return resp.rows.map((m) => m)
-        } else {
-            throw new Error('User has no memories')
+        try {
+            const resp = await db.query("SELECT * FROM memories WHERE user_id = $1", [user_id])
+            if (resp.rows.length > 0){
+                return resp.rows.map((m) => m)
+            } else {
+                throw new Error('User has no memories')
+            }
+        } catch (err) {
+            if(err.message == 'User has no memories'){
+                throw err
+            }else {
+                throw new Error("unable to get memories")
+            }
         }
+        
     }
 
     static async getOneByMemoryName(memory_name) {

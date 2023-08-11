@@ -2,6 +2,7 @@ import React from 'react'
 import './HomePage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPassport, faRoute, faLeaf, faGift, faBook, faGlobeAmericas, } from '@fortawesome/free-solid-svg-icons';
+import world from './world.png'
 
 export default function HomePage() {
   return (
@@ -10,11 +11,11 @@ export default function HomePage() {
       <div className="row intro-explain-container">
           <h1 className='intro'>Travelling doesn't have to cost the earth!</h1>
           <div className="col-md-8 text-column">
-          <p className='explain'>Travel is going green with Travel-Wise. <br></br> Our planet's well-being is paramount, this site sets out to empower
-            travellers with the tools and knowledge to make eco-conscious choices that leave a positive impact on the environment. <br></br> Welcome to Travel-Wise, your compass to responsible and sustainable travel!</p>
+          <p className='explain'>Welcome to Travel-Wise, your compass to responsible and sustainable travel! <br></br> Our planet's well-being is paramount, this site sets out to empower
+            travellers with the tools and knowledge to make eco-conscious choices that leave a positive impact on the environment.</p>
         </div>
         <div className="col-md-4 image-column">
-          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwebstockreview.net%2Fimages%2Fenvironment-clipart-environment-earth-5.png&f=1&nofb=1&ipt=5703284ff62d1f2c22333d093028aae0a9f4b321b1ce4928498640b16450edd0&ipo=images" alt="globe" className="column-image" />
+          <img src={world} alt="globe" className="column-image" />
         </div>
   </div>
 </div>

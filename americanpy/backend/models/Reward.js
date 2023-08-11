@@ -11,6 +11,9 @@ class Reward {
     static async getAllRewards(){
         const query = "SELECT * FROM rewards";
         const { rows } = await db.query(query);
+        if(rows.length == 0){
+            throw new Error("no rewards found!")
+        }
         return rows;
     }
 

@@ -33,7 +33,26 @@ class CountryController {
         }
     }
 
+    static async createCountry(req, res) {
+        try {
+            const data = req.body;
+            const newCountry = await Country.createCountry(data);
+            res.status(201).json(newCountry)
+        } catch (err) {
+            res.status(404).json({error: err.message})
+        }
+    }
 
+    static async deleteCountry(req, res) {
+        try {
+            const { id } = req.params
+            const country = await Country.getCountryByID(id)
+            const result = await country.deleteCoutnry();
+            res.status(204).end();
+        } catch (err) {
+            res.status(404).json({error: err.message})
+        }
+    }
 }
 
 module.exports = CountryController

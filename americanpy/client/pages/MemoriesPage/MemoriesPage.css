@@ -1,0 +1,109 @@
+
+
+.intro-memories {
+    color: #fff !important;
+    background-color:#90c8f9ae;
+    box-shadow: inset 0 0 50px #5dbbea;
+    padding: 40px;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 2.6rem;
+    margin-bottom: -4rem;
+    font-family: 'Manrope', sans-serif;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+
+}
+
+.myMemories {
+    color: #254d74 !important;
+    padding: 25px 50px 35px 50px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 2.6rem;
+    font-family: 'Manrope', sans-serif;
+}
+
+
+.memories-container {
+    /* background-image: url("https://cdn.pixabay.com/photo/2022/06/01/16/43/plane-7236193_1280.png"); */
+    background-size: cover;
+    height: 100%;
+    padding: 20px;
+    text-align: center;
+}
+  
+.memory-form {
+    margin: 100px auto 10px;
+    width: 50%;
+    box-shadow: inset 0 0 50px #5dbbea;
+    background-color: #90c8f9ae;
+    margin: 100px auto 10px;
+    padding: 30px 40px 50px 40px;
+    border-radius: 10px;
+    height: auto;
+    font-family: 'Manrope', sans-serif;
+    text-align: center;
+    color: #254d74  !important;
+    margin-top: 60px;
+}
+  
+  
+.memory-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+  
+.memory {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}
+  
+.memory img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+  
+.inputBoxes {
+    border: 1px solid #ffffffc3;
+    border-radius: 5px;
+    font-family: 'Manrope', sans-serif;
+    color: #366491 !important;
+
+
+}
+
+.button {
+    font-family: 'Manrope', sans-serif;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 30%;
+    border: none;
+    color: #366491 !important;
+
+}
+
+.file {
+    margin: 10px 0 30px 0;
+    color: #366491 !important;
+    font-family: 'Manrope', sans-serif;
+
+
+}
+
+.create-memory-button {
+    margin-top: 120px;
+    font-family: 'Manrope', sans-serif;
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+    border: none;
+    color: #366491 !important;
+    font-size: 1.3rem;
+}
