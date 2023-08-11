@@ -35,8 +35,8 @@ html {
     flex-direction: row;
     gap: 10px;
     margin-top: 10px;
+    justify-content: flex-end; /* Keep buttons on the right */
     z-index: 999;
-    margin-left: 70%;
 }
 
 /* Map container layout */
@@ -59,7 +59,7 @@ html {
 .top-bar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end; /* Align everything to the right */
     padding: 10px;
     height: 50px;
     position: absolute;
@@ -69,46 +69,28 @@ html {
     z-index: 999;
 }
 
-@media (max-width: 768px) {
-    /* Adjust map buttons for smaller screens */
-    .map-buttons {
-        margin-left: 10%;
-    }
-}
-
-@media (max-width: 630px) {
-    /* Adjust input placeholders for smaller screens */
-    #start-destination-input::placeholder {
-        content: "Start";
-    }
-
-    #end-destination-input::placeholder {
-        content: "End";
-    }
-}
-
 /* Glass style */
 .glass {
     position: relative;
     top: 20px;
     left: 15px;
     height: 30px;
-    /* background-color: blue !important; */
 }
 
 /* Leaflet bar part styles */
 .leaflet-bar-part {
-    display: none !important;
-    /* background-color: green !important; */
+    display: none;
 }
 
 /* Reset button styles */
 .reset {
     position: relative;
-    left: 170px;
+    right: -170px;
     bottom: 30px;
     border-radius: 20%;
-    /* background-color: orange !important; */
+    
+    background-color: red;
+    scale: 140%;
 }
 
 /* GeoSearch styles */
@@ -153,7 +135,7 @@ html {
     height: 20px;
     margin-right: 5px;
     border: 1px solid #ccc;
-    display: inline-block; /* Display the color box inline with text */
+    display: inline-block;
 }
 
 /* Color definitions for EPI Score ranges */
@@ -167,4 +149,26 @@ html {
 
 .light-blue {
     background-color: #66b3ff;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .map-buttons {
+        margin-left: 10%;
+    }
+    
+    .key {
+        position: static;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    
+    .top-bar {
+        height: auto;
+        padding: 5px;
+    }
+    
+    .top-bar h1 {
+        font-size: 1rem;
+    }
 }
