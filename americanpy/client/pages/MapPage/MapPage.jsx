@@ -1,5 +1,5 @@
 import React from "react";
-import Map from "../../components/Map";
+import Map from "../../components/MapComponents/Map";
 import "./MapPage.css";
 
 const MapPage = () => {

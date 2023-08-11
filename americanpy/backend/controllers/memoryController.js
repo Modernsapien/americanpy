@@ -30,6 +30,16 @@ class MemoryController {
         }
     }
 
+    static async getUserMemories(req, res) {
+        try {
+            const user_id = req.tokenObj.user_id
+            const resp = await User.getUserMemories(user_id)
+            res.status(200).send(resp)
+        } catch (err) {
+            res.status(404).json({Error: err.message})
+        }
+    }
+
     static async createMemory(req, res) {
         try {
             const data = req.body;
@@ -63,6 +73,8 @@ class MemoryController {
             res.status(404).send({ error: err.message})
         }
     }
+
+    
 
 
 }
