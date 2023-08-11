@@ -4,7 +4,7 @@ import { faMapPin } from "@fortawesome/free-solid-svg-icons";
 import L from "leaflet";
 import { renderToString } from "react-dom/server";
 
-const PlaceToVisitButton = ({ map }) => {
+const PlaceToVisitButton = ({ map ,isAddingPin}) => {
   const [isAddingPlaceToVisit, setIsAddingPlaceToVisit] = useState(false);
 
   useEffect(() => {
@@ -31,18 +31,28 @@ const PlaceToVisitButton = ({ map }) => {
           
             // Create a popup with your content
             const popupContent = `
-              <div>
-                <img src="your-image-url.jpg" alt="Place Image" style="max-width: 100%; height: auto;">
-                <p>Your short description goes here.</p>
-              </div>
-            `;
+    <div>
+      <img src="your-image-url.jpg" alt="Place Image" style="max-width: 100%; height: auto;">
+      <p>Your short description goes here.</p>
+      <button class="btn btn-primary popup-button">Add Memory</button>
+    </div>
+  `;
+  
           
             marker.bindPopup(popupContent).openPopup();
+          
+            // Handle the button click to navigate to the Memories page
+            const popupButton = document.querySelector(".popup-button");
+            popupButton.addEventListener("click", () => {
+              // Navigate to the Memories page
+              window.location.href = "/memories";
+            });
           
             // Remove the click event listener to stop adding pins
             map.off("click", handleMapClick);
             setIsAddingPlaceToVisit(false); // Reset the state here
           };
+          
           
 
       // Add a click event listener to the map
@@ -56,7 +66,7 @@ const PlaceToVisitButton = ({ map }) => {
   }, [isAddingPlaceToVisit, map]);
 
   const handlePlaceToVisitClick = () => {
-    setIsAddingPlaceToVisit((prevState) => !prevState);
+    setIsAddingPlaceToVisit((prevState) => !prevState); // Use correct state variable
   };
   
 
