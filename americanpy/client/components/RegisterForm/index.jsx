@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import '../../pages/LoginPage/'; 
-import { useAuth } from '../../contexts';
+import styles from '../../pages/LoginPage/LoginPage.css'; 
+import { useCredentials } from '../../contexts';
 
 export default function RegisterForm(props) {
   const navigate = useNavigate();
