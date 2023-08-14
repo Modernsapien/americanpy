@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { useAuth } from '../../contexts';
+import { useCredentials } from '../../contexts';
 import styles from '../../pages/LoginPage/LoginPage';
 
 export default function LoginForm(props) {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { token, setToken } = useAuth();
+  const { token, setToken } = useCredentials();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
