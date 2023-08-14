@@ -2,11 +2,12 @@ const db = require('../database/connect')
 
 class Memory {
 
-    constructor({ memory_id, user_id, country_id, memory_name, memory_description, drive_link}) {
+    constructor({ memory_id, user_id, country_id, memory_name, memory_date, memory_description, drive_link}) {
         this.memory_id = memory_id;
         this.user_id = user_id;
         this.country_id = country_id;
         this.memory_name = memory_name;
+        this.memory_date = memory_date;
         this.memory_description = memory_description;
         this.drive_link = drive_link;
     }
@@ -58,13 +59,14 @@ class Memory {
 
     static async createMemory(data) {
         try {
-            const { user_id, country_id, memory_name, memory_description, drive_link} = data
-            const resp = await db.query(`INSERT INTO memories (user_id, country_id,memory_name, memory_description, drive_link) VALUES ($1, $2, $3, $4, $5) RETURNING memory_id`, [user_id, country_id, memory_name, memory_description, drive_link])
+            const { user_id, country_id, memory_name, memory_date, memory_description, drive_link} = data
+            const resp = await db.query(`INSERT INTO memories (user_id, country_id, memory_name, memory_date, memory_description, drive_link) VALUES ($1, $2, $3, $4, $5, $6) RETURNING memory_id`, [user_id, country_id, memory_name, memory_date, memory_description, drive_link])
 
             const id = resp.rows[0].memory_id
             const newMemory = await Memory.getOneById(id)
             return newMemory
         } catch(err) {
+            //console.log(err)
             throw new Error("unable to create memory")
         }
     }
@@ -76,16 +78,18 @@ class Memory {
 
     async updateMemory(data) {
         try {
-            const resp = await db.query("UPDATE memories SET country_id =$1, memory_name =$2, memory_description = $3, drive_link = $4 WHERE memory_id = $5 RETURNING *;",
+            const resp = await db.query("UPDATE memories SET country_id =$1, memory_name =$2, memory_date = $3, memory_description = $4, drive_link = $5 WHERE memory_id = $6 RETURNING *;",
             [
             data.country_id,
             data.memory_name,
+            data.memory_date,
             data.memory_description,
             data.drive_link,
             this.memory_id
             ]);
             return new Memory(resp.rows[0]);
         } catch (err) {
+            //console.log(err)
             throw new Error("Unable to update memory!")
         }
     }
