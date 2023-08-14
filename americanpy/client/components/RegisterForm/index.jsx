@@ -10,7 +10,6 @@ export default function RegisterForm(props) {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
-  const { token, setToken } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -89,9 +88,11 @@ export default function RegisterForm(props) {
             required
             onChange={(e) => setEmail(e.target.value)}
           />
+           <div className="submit">
           <button type="submit" className="signinBtn">
             Register
           </button>
+          </div>
         </form>
         <button className="link-btn" onClick={() => props.onFormSwitch('LoginForm')}>
           Have an account? Log in here.
