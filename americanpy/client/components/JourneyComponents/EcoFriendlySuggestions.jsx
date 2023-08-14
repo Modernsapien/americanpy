@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../../pages/JourneyPage/JourneyPage.css'
+import { faTrain, faBus, faBicycle, faShip, faTram, faCar, faWalking, faPlane } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../../pages/JourneyPage/JourneyPage.css';
 
 const EcoFriendlySuggestions = () => {
   const [startDestination, setStartDestination] = useState('');
@@ -8,6 +10,7 @@ const EcoFriendlySuggestions = () => {
   const [ecoFriendlySuggestions, setEcoFriendlySuggestions] = useState([]);
   const [totalCarbonEmission, setTotalCarbonEmission] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [expandedCardIndex, setExpandedCardIndex] = useState(null);
 
   const handleJourneySubmit = async (event) => {
     event.preventDefault();
@@ -42,23 +45,16 @@ const EcoFriendlySuggestions = () => {
 
       response.data.choices[0].message.content.split(/\d+\./).forEach((text) => {
         if (text.trim() !== '') {
-          if (currentSuggestion !== '') {
+          currentSuggestion = text.trim();
+          if (!currentSuggestion.startsWith('There are several eco-friendly travel options')) {
             suggestions.push({
               number: suggestionNumber,
               content: currentSuggestion,
             });
             suggestionNumber++;
           }
-          currentSuggestion = text.trim();
         }
       });
-
-      if (currentSuggestion !== '') {
-        suggestions.push({
-          number: suggestionNumber,
-          content: currentSuggestion,
-        });
-      }
 
       setEcoFriendlySuggestions(suggestions);
       setTotalCarbonEmission('Estimated carbon emissions: ...');
@@ -73,49 +69,81 @@ const EcoFriendlySuggestions = () => {
   };
 
   return (
-  <div className="eco-friendly-suggestions">
-    <h2>Eco-Friendly Travel Suggestions:</h2>
-    {!submitted ? (
-      <form onSubmit={handleJourneySubmit}>
-        {/* Destination Input */}
-        <input
-          className="destination-input"
-          id="startDestination"
-          type="text"
-          value={startDestination}
-          onChange={(event) => setStartDestination(event.target.value)}
-          placeholder="Start Destination"
-          required
-        />
-        <input
-          className="destination-input"
-          id="endDestination"
-          type="text"
-          value={endDestination}
-          onChange={(event) => setEndDestination(event.target.value)}
-          placeholder="End Destination"
-          required
-        />
-        {/* "Get Suggestions" Button */}
-        <button className="get-suggestions-button" type="submit">
-          Get Suggestions
-        </button>
-      </form>
-    ) : (
-      <div className="response-container">
-        {/* Suggestion Cards */}
-        {ecoFriendlySuggestions.map((suggestion) => (
-          <div key={suggestion.number} className="suggestion-card">
-            <h3>Option {suggestion.number}</h3>
-            <p>{suggestion.content}</p>
-          </div>
-        ))}
-      </div>
-    )}
-    {/* Total Carbon Emission */}
-    <p className="total-carbon-emission">{totalCarbonEmission}</p>
-  </div>
-);
+    <div className="eco-friendly-suggestions">
+      <h2>Eco-Friendly Travel Suggestions:</h2>
+      {!submitted ? (
+        <form onSubmit={handleJourneySubmit}>
+          {/* Destination Input */}
+          <input
+            className="destination-input"
+            id="startDestination"
+            type="text"
+            value={startDestination}
+            onChange={(event) => setStartDestination(event.target.value)}
+            placeholder="Start Destination"
+            required
+          />
+          <input
+            className="destination-input"
+            id="endDestination"
+            type="text"
+            value={endDestination}
+            onChange={(event) => setEndDestination(event.target.value)}
+            placeholder="End Destination"
+            required
+          />
+          {/* "Get Suggestions" Button */}
+          <button className="get-suggestions-button" type="submit">
+            Get Suggestions
+          </button>
+        </form>
+      ) : (
+        <div className="response-container">
+          {ecoFriendlySuggestions.slice(1).map((suggestion, index) => (
+            <div
+              key={suggestion.number}
+              className={`suggestion-card ${expandedCardIndex === index ? 'expanded' : ''}`}
+            >
+              <h3>
+                {suggestion.content.includes('Train')
+                  ? <FontAwesomeIcon icon={faTrain} />
+                  : suggestion.content.includes('Bus')
+                  ? <FontAwesomeIcon icon={faBus} />
+                  : suggestion.content.includes('Bike') || suggestion.content.includes('Cycling')
+                  ? <FontAwesomeIcon icon={faBicycle} />
+                  : suggestion.content.includes('Ferry')
+                  ? <FontAwesomeIcon icon={faShip} />
+                  : suggestion.content.includes('Tram')
+                  ? <FontAwesomeIcon icon={faTram} />
+                  : suggestion.content.includes('Car')
+                  ? <FontAwesomeIcon icon={faCar} />
+                  : suggestion.content.includes('Walk')
+                  ? <FontAwesomeIcon icon={faWalking} />
+                  : suggestion.content.includes('Flight')
+                  ? <FontAwesomeIcon icon={faPlane} />
+                  : null}
+              </h3>
+              <p>
+                {expandedCardIndex === index || suggestion.content.length <= 50
+                  ? suggestion.content
+                  : `${suggestion.content.slice(0, 50)}...`}
+              </p>
+              {suggestion.content.length > 50 && (
+                <button
+                  className="read-more-button"
+                  onClick={() => setExpandedCardIndex(index)}
+                >
+                  Read more
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+      {/* Total Carbon Emission */}
+      <p className="total-carbon-emission">{totalCarbonEmission}</p>
+    </div>
+  );
 };
 
 export default EcoFriendlySuggestions;

@@ -100,3 +100,26 @@ form {
 .response-container{
   display: flex;
 }
+
+
+/* Add these styles to your CSS file */
+.suggestion-card h3 .fa-icon {
+  scale: 200%;
+  margin-top:50px;
+  color: white;
+  margin-right: 8px; /* Add some spacing between the icon and text */
+}
+
+.read-more-button {
+  background-color: #ffffffc3;
+  color: #366491;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+}
+
+.read-more-button:hover {
+  opacity: 0.9;
+}
