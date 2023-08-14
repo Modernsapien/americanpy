@@ -72,4 +72,29 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+// export default LoginPage;
+
+// import React, { useState } from 'react';
+// import { LoginForm, RegisterForm } from '../../components'; 
+// import styles from './LoginPage.css'; 
+
+// export default function LoginPage() {
+//   const [currentForm, setCurrentForm] = useState('LoginForm');
+
+//   const toggleForm = (formName) => {
+//     setCurrentForm(formName);
+//   };
+
+//   return (
+//     <div className={styles.containerWrapper}>
+//       <div className="forms">
+//         {currentForm === 'LoginForm' ? (
+//           <LoginForm onFormSwitch={toggleForm} />
+//         ) : (
+//           <RegisterForm onFormSwitch={toggleForm} />
+//         )}
+//       </div>
+//     </div>
+//   );
+// }
+
