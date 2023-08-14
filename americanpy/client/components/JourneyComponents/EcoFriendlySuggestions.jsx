@@ -8,7 +8,6 @@ const EcoFriendlySuggestions = () => {
   const [startDestination, setStartDestination] = useState('');
   const [endDestination, setEndDestination] = useState('');
   const [ecoFriendlySuggestions, setEcoFriendlySuggestions] = useState([]);
-  const [totalCarbonEmission, setTotalCarbonEmission] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [expandedCardIndex, setExpandedCardIndex] = useState(null);
 
@@ -28,7 +27,7 @@ const EcoFriendlySuggestions = () => {
             },
             {
               role: 'user',
-              content: `Suggest eco-friendly travel options from ${startDestination} to ${endDestination}.`,
+              content: `Suggest eco-friendly travel options from ${startDestination} to ${endDestination}.also return the carbon emmisions that would be caused by each mode of transport`,
             },
           ],
         },
@@ -57,14 +56,12 @@ const EcoFriendlySuggestions = () => {
       });
 
       setEcoFriendlySuggestions(suggestions);
-      setTotalCarbonEmission('Estimated carbon emissions: ...');
       setSubmitted(true);
     } catch (error) {
       console.error('Error fetching suggestions:', error);
       setEcoFriendlySuggestions([
         { number: 1, content: 'An error occurred while fetching suggestions.' },
       ]);
-      setTotalCarbonEmission('An error occurred while fetching emissions.');
     }
   };
 
@@ -140,8 +137,6 @@ const EcoFriendlySuggestions = () => {
           ))}
         </div>
       )}
-      {/* Total Carbon Emission */}
-      <p className="total-carbon-emission">{totalCarbonEmission}</p>
     </div>
   );
 };
