@@ -10,7 +10,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className={styles.copntainerWrapper}>
+    <div className={styles.containerWrapper}>
     <div className="container-wrapper">
       <div className="top">
         <div className="logo"></div>
