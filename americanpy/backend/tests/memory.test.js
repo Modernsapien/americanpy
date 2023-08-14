@@ -93,6 +93,7 @@ describe("Memory route", () => {
             user_id: id,
             country_id: 1,
             memory_name: "I rember",
+            memory_date: "yes",
             memory_description: "I forgor",
             drive_link: "i promise this is a link i swear"
         }
@@ -109,6 +110,7 @@ describe("Memory route", () => {
             user_id: id2,
             country_id: 2,
             memory_name: "I forgor",
+            memory_date: "no",
             memory_description: "I rember",
             drive_link: "http://1227.com"
         }
@@ -214,6 +216,7 @@ describe("Memory route", () => {
         const memoryUpdate = {
             country_id: 2,
             memory_name: "cheese",
+            memory_date: "frank",
             memory_description: "burger",
             drive_link: "beans"
         }
@@ -222,6 +225,7 @@ describe("Memory route", () => {
             user_id: 4,
             country_id: 2,
             memory_name: 'cheese',
+            memory_date: "frank",
             memory_description: 'burger',
             drive_link: 'beans'
         }
@@ -229,6 +233,7 @@ describe("Memory route", () => {
             user_id: id,
             country_id: 1,
             memory_name: "I rember",
+            memory_date: "yes",
             memory_description: "I forgor",
             drive_link: "i promise this is a link i swear"
         }
