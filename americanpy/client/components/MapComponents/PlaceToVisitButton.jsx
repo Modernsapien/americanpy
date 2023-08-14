@@ -6,6 +6,8 @@ import { renderToString } from "react-dom/server";
 
 const PlaceToVisitButton = ({ map }) => {
   const [isAddingPlaceToVisit, setIsAddingPlaceToVisit] = useState(false);
+  const [markerIds, setMarkerIds] = useState([]);
+  const [clickEventListener, setClickEventListener] = useState(null);
 
   useEffect(() => {
     if (isAddingPlaceToVisit) {
@@ -16,6 +18,9 @@ const PlaceToVisitButton = ({ map }) => {
 
         const { lat, lng } = event.latlng;
         const markerId = `place-to-visit-marker-${Date.now()}`;
+
+        // Store the marker ID in state
+        setMarkerIds((prevIds) => [...prevIds, markerId]);
 
         const customIcon = new L.DivIcon({
           className: "custom-icon",
@@ -50,15 +55,19 @@ const PlaceToVisitButton = ({ map }) => {
           // Navigate to the Memories page
           window.location.href = "/memories";
         });
+
+        // Log the created marker ID
+        console.log("Marker ID:", markerId);
       };
 
       // Add a click event listener to the map
-      map.on("click", handleMapClick);
-
-      return () => {
-        // Clean up by removing the click event listener when the component unmounts
-        map.off("click", handleMapClick);
-      };
+      const clickListener = map.on("click", handleMapClick);
+      setClickEventListener(clickListener);
+    } else {
+      // Remove the click event listener from the map
+      if (clickEventListener) {
+        clickEventListener.off();
+      }
     }
   }, [isAddingPlaceToVisit, map]);
 
