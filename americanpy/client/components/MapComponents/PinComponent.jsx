@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import L from "leaflet";
 import axios from "axios";
 import ecoData from "../../data/ecoData.json";
@@ -12,14 +12,18 @@ const PinComponent = ({
   setMarkerIds,
   setSelectedPin,
   removePinButtonId,
+  isAddingButton,
+  setIsAddingButton,
 }) => {
+  const buttonRef = useRef(null);
+
   useEffect(() => {
     if (map) {
       let markerCount = 1;
 
       // Event handler for clicking on the map
       const handleMapClick = async (event) => {
-        if (isAddingPin && !isHoveringButton) {
+        if (isAddingPin && !isHoveringButton && !isAddingButton) {
           const { lat, lng } = event.latlng;
           const markerId = `marker-${markerCount}`;
           markerCount++;
@@ -100,10 +104,35 @@ const PinComponent = ({
     setMarkerIds,
     setSelectedPin,
     removePinButtonId,
+    isAddingButton,
   ]);
 
-  // Return null since this component doesn't render anything directly
-  return null;
+  const handleButtonClick = () => {
+    setIsAddingButton((prevState) => !prevState);
+  };
+
+  useEffect(() => {
+    if (buttonRef.current) {
+      buttonRef.current.addEventListener("mouseenter", () => {
+        setIsHoveringButton(true);
+      });
+
+      buttonRef.current.addEventListener("mouseleave", () => {
+        setIsHoveringButton(false);
+      });
+    }
+  }, []);
+
+  // Return the button
+  return (
+    <button
+      ref={buttonRef}
+      className={`btn ${isAddingButton ? "btn-danger" : "btn-primary"}`}
+      onClick={handleButtonClick}
+    >
+      {isAddingButton ? "Cancel Adding" : "Add Pin"}
+    </button>
+  );
 };
 
 export default PinComponent;

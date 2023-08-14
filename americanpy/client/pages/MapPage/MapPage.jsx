@@ -3,7 +3,7 @@ import Map from "../../components/MapComponents/Map";
 import "./MapPage.css";
 
 const MapPage = () => {
-  const mapId = "map-container"; // Remove this line
+  const mapId = "map-container";
 
   return (
     <>
