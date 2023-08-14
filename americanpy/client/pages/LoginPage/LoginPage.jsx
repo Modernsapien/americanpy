@@ -72,7 +72,7 @@ const LoginPage = () => {
   );
 };
 
-// export default LoginPage;
+export default LoginPage;
 
 // import React, { useState } from 'react';
 // import { LoginForm, RegisterForm } from '../../components'; 
