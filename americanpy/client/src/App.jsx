@@ -1,7 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom"; 
 import {
-  CountryPage,
   HomePage,
   MapPage,
   JourneyPage,
@@ -19,7 +18,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/mappage" element={<MapPage />} />
-        <Route path="/country" element={<CountryPage />} />
+        {/* <Route path="/country" element={<CountryPage />} /> */}
         <Route path="/journey" element={<JourneyPage />} />
         <Route path="/memories" element={<MemoriesPage />} />
         <Route path="/user" element={<UserPage />} />
