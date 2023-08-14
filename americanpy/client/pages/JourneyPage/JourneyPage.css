@@ -1,0 +1,92 @@
+/* Styling for JourneyPage */
+.jp-container-wrapper {
+    background-image: url("./blue-world.jpg");
+    background-size: cover;
+    margin-top: -150px;
+    padding: 70px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .jp-signin-form {
+    box-shadow: inset 0 0 50px #5dbbea;
+    background-color: #90c8f9ae;
+    margin: 10px;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    font-family: 'Manrope', sans-serif;
+    color: #254d74;
+    text-align: center;
+  }
+  
+  .jp-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .jp-journey-form {
+    box-shadow: inset 0 0 50px #5dbbea;
+    background-color: #90c8f9ae;
+    margin: 10px;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    font-family: 'Manrope', sans-serif;
+    color: #254d74;
+    text-align: center;
+  }
+  
+  .jp-text-box {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: none;
+    background-color: #ffffffc3;
+    border-radius: 10px;
+    color: #366491 !important;
+  }
+  
+  .jp-planBtn {
+    width: 100%;
+    border-radius: 10px;
+    background-color: #ffffffc3;
+    color: #366491;
+    padding: 14px 20px;
+    margin: 20px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+  }
+  
+  .jp-planBtn:hover {
+    opacity: 1;
+  }
+  
+  .jp-inline-p {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 20px auto 0;
+  }
+  
+  .jp-signup {
+    color: #366491;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  /* Media Queries */
+  @media screen and (max-width: 600px) {
+    .jp-container-wrapper {
+      margin-top: -100px;
+    }
+  
+    .jp-signin-form, .jp-journey-form {
+      max-width: 90%;
+    }
+  }
+  
