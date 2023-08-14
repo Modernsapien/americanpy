@@ -1,79 +1,121 @@
 import React, { useState } from 'react';
-import OpenAI from 'openai-api';
+import axios from 'axios';
+import '../../pages/JourneyPage/JourneyPage.css'
 
 const EcoFriendlySuggestions = () => {
   const [startDestination, setStartDestination] = useState('');
   const [endDestination, setEndDestination] = useState('');
   const [ecoFriendlySuggestions, setEcoFriendlySuggestions] = useState([]);
-  const OPENAI_API_KEY = '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';
+  const [totalCarbonEmission, setTotalCarbonEmission] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
   const handleJourneySubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const suggestions = await generateEcoFriendlySuggestions(startDestination, endDestination);
-      setEcoFriendlySuggestions(suggestions);
-    } catch (error) {
-      console.error('Error fetching suggestions:', error);
-      setEcoFriendlySuggestions(['An error occurred while fetching suggestions.']);
-    }
-  };
+      const response = await axios.post(
+        'https://api.openai.com/v1/chat/completions',
+        {
+          model: 'gpt-3.5-turbo',
+          messages: [
+            {
+              role: 'system',
+              content:
+                'You are a helpful assistant that provides travel suggestions and carbon emissions calculations.',
+            },
+            {
+              role: 'user',
+              content: `Suggest eco-friendly travel options from ${startDestination} to ${endDestination}.`,
+            },
+          ],
+        },
+        {
+          headers: {
+            Authorization: 'Bearer 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',
+          },
+        }
+      );
 
-  const generateEcoFriendlySuggestions = async (start, end) => {
-    const openai = new OpenAI({ key: OPENAI_API_KEY });
+      const suggestions = [];
+      let currentSuggestion = '';
+      let suggestionNumber = 1;
 
-    try {
-      const prompt = `Given the start destination "${start}" and end destination "${end}", provide detailed recommendations for eco-friendly travel options with low carbon emissions. For each mode of travel (walking, biking, public transportation, carpooling), please include the following information:
-      1. Explain the specific conditions under which this mode of travel is more or less applicable.
-      2. Compare the typical travel times between this mode of travel and others.
-      3. Provide recommendations for activities during cruising on the river while using this mode of travel.
-      
-      Additionally, discuss how each mode of travel can be made more sustainable and highlight any extra environmental benefits.
-      
-      Your insights will be used to create research papers focused on practical options for maximizing carbon savings while traveling between these destinations.`;
-
-      const gptResponse = await openai.complete({
-        engine: 'davinci',
-        prompt: prompt,
-        maxTokens: 150, // Adjust the token limit based on your needs
+      response.data.choices[0].message.content.split(/\d+\./).forEach((text) => {
+        if (text.trim() !== '') {
+          if (currentSuggestion !== '') {
+            suggestions.push({
+              number: suggestionNumber,
+              content: currentSuggestion,
+            });
+            suggestionNumber++;
+          }
+          currentSuggestion = text.trim();
+        }
       });
 
-      const suggestionText = gptResponse.choices[0].text;
-      return [suggestionText];
+      if (currentSuggestion !== '') {
+        suggestions.push({
+          number: suggestionNumber,
+          content: currentSuggestion,
+        });
+      }
+
+      setEcoFriendlySuggestions(suggestions);
+      setTotalCarbonEmission('Estimated carbon emissions: ...');
+      setSubmitted(true);
     } catch (error) {
-      throw error;
+      console.error('Error fetching suggestions:', error);
+      setEcoFriendlySuggestions([
+        { number: 1, content: 'An error occurred while fetching suggestions.' },
+      ]);
+      setTotalCarbonEmission('An error occurred while fetching emissions.');
     }
   };
 
   return (
-    <div className="eco-friendly-suggestions">
-      <h2>Eco-Friendly Travel Suggestions:</h2>
+  <div className="eco-friendly-suggestions">
+    <h2>Eco-Friendly Travel Suggestions:</h2>
+    {!submitted ? (
       <form onSubmit={handleJourneySubmit}>
-        <label htmlFor="startDestination">Start Destination</label>
+        {/* Destination Input */}
         <input
+          className="destination-input"
           id="startDestination"
           type="text"
           value={startDestination}
           onChange={(event) => setStartDestination(event.target.value)}
+          placeholder="Start Destination"
           required
         />
-        <label htmlFor="endDestination">End Destination</label>
         <input
+          className="destination-input"
           id="endDestination"
           type="text"
           value={endDestination}
           onChange={(event) => setEndDestination(event.target.value)}
+          placeholder="End Destination"
           required
         />
-        <button type="submit">Get Suggestions</button>
+        {/* "Get Suggestions" Button */}
+        <button className="get-suggestions-button" type="submit">
+          Get Suggestions
+        </button>
       </form>
-      <ul>
-        {ecoFriendlySuggestions.map((suggestion, index) => (
-          <li key={index}>{suggestion}</li>
+    ) : (
+      <div className="response-container">
+        {/* Suggestion Cards */}
+        {ecoFriendlySuggestions.map((suggestion) => (
+          <div key={suggestion.number} className="suggestion-card">
+            <h3>Option {suggestion.number}</h3>
+            <p>{suggestion.content}</p>
+          </div>
         ))}
-      </ul>
-    </div>
-  );
+      </div>
+    )}
+    {/* Total Carbon Emission */}
+    <p className="total-carbon-emission">{totalCarbonEmission}</p>
+  </div>
+);
 };
 
 export default EcoFriendlySuggestions;
