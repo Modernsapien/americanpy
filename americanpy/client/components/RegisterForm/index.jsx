@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import styles from '../../pages/LoginPage/LoginPage.css'; 
+import '../../pages/LoginPage/'; 
 import { useAuth } from '../../contexts';
 
 export default function RegisterForm(props) {
