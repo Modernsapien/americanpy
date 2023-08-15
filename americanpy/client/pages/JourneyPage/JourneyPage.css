@@ -88,15 +88,15 @@ form {
   padding: 15px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #90c8f9ae;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1); /* Add the box shadow here */
+  background-color: #4da5f3ae;
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   font-family: 'Manrope', sans-serif;
-
 }
+
 
 .suggestion-card:hover {
   transform: translateY(-5px);
@@ -326,11 +326,18 @@ height: 820px;
 .donate-button{
   position: relative;
   left: 42.3%;
-  top: 480px;
-  scale: 150%;
+  /* top: -280px; */
+  scale: 100%;
   width: 300px;
 }
+
 
 .jp-container-wrapper {
   margin-top: -60px;
 }
+
+.donation-description{
+margin-top: 0;
+font-size: 1.2rem;
+}
+

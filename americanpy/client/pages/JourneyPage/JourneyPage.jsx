@@ -22,7 +22,7 @@ const JourneyPage = () => {
         <div className="jp-top">
           <div className="jp-logo"></div>
           <button onClick={openModal} className="btn btn-success donate-button">
-            Donate
+            Donate to offset your carbon footprint
           </button>
         </div>
         <div className="jp-journey-form">
