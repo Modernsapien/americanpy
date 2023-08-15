@@ -66,8 +66,6 @@
     background-color: #ffffffb0;
     margin: 50px 0 20px 5px;
     color: #366491 !important;
-
-    
 }
   
 .memory img {
@@ -108,11 +106,8 @@
 }
 
 .file {
-    margin: 10px 0 30px 0;
     color: #366491 !important;
     font-family: 'Manrope', sans-serif;
-
-
 }
 
 .create-memory-button {
@@ -131,3 +126,16 @@
 .create-memory-button:hover {
     background-color: #ffffffa2;
 }
+
+::file-selector-button {
+    font-family: 'Manrope', sans-serif;
+    padding: 9px 20px;
+    border-radius: 10px;
+    border: none;
+    color: #366491 !important;
+    width: 45%;
+    cursor: pointer;
+    font-size: 1.1rem !important;
+    margin-bottom: 20px;
+}
+  

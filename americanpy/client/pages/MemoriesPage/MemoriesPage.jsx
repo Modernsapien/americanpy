@@ -87,7 +87,7 @@ const MemoriesPage = () => {
               onChange={handleCountryChange}
               required
             >
-          <option value="" disabled>Select a country</option>
+          <option value="" disabled>Select a Country</option>
           {countriesData.map((countryData) => (
             <option key={countryData.country} value={countryData.country}>
               {countryData.country}
@@ -113,11 +113,13 @@ const MemoriesPage = () => {
 
       <div className="memory-list">
         {memories.map((memory, index) => (
+
           <div className="memory" key={index} data-testid = {`Memory_${index}`}>
             <img src={URL.createObjectURL(memory.file)} alt={`Memory ${index}`} data-testid = {`Memory_${index}_image`}/>
             <p data-testid = {`Memory_${index}_title`}>Title: {memory.description}</p>
             <p data-testid = {`Memory_${index}_location`}>Location: {memory.location}</p>
             <p data-testid = {`Memory_${index}_date`}>Date: {memory.date}</p>
+
           </div>
         ))}
       </div>

@@ -17,6 +17,21 @@
 
 }
 
+.background-user {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.waves {
+  width: 100%;
+  height: 100%;
+}
+
 .user-details {
     color: #254d74 !important;
     padding: 15px 50px 35px 50px;
@@ -217,3 +232,5 @@
     align-items: center;
     margin-top: 20px;
 }
+
+
