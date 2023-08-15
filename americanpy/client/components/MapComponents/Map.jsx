@@ -292,19 +292,19 @@ const Map = ({ id }) => {
         <div className="key-item">
           <div className="key-color navy"></div>
           <span className="key-text">
-            &nbsp;&nbsp;&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Very Eco-Friendly
           </span>
         </div>
         <div className="key-item">
           <div className="key-color blue"></div>
           <span className="key-text">
-            &nbsp;&nbsp;&nbsp;&nbsp;Mid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          Mid Eco-Friendly
           </span>
         </div>
         <div className="key-item">
           <div className="key-color light-blue"></div>
           <span className="key-text">
-            &nbsp;&nbsp;&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          Low Eco-Friendly
           </span>
         </div>
       </div>

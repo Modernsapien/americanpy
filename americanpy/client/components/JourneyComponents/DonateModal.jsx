@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import styles from '../../pages/JourneyPage/JourneyPage.css';
 
-
 Modal.setAppElement('#root');
 
 const DonateModal = ({ isOpen, onRequestClose }) => {
@@ -29,11 +28,15 @@ const DonateModal = ({ isOpen, onRequestClose }) => {
       overlayClassName={styles.modalOverlay}
     >
       <h2>Make a Donation</h2>
+      <button className="close-button" onClick={onRequestClose}>
+        X
+      </button>
       <form onSubmit={handleDonation}>
         <div className="input-container">
           <label className="input-label">Donation Amount:</label>
           <input
             type="number"
+            placeholder='The recommended donation amount is £1 for every kg CO2e. This can be found on the selected mode of travel card.'
             value={donationAmount}
             onChange={(e) => setDonationAmount(e.target.value)}
             className="input border"

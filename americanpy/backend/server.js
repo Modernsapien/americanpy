@@ -31,7 +31,7 @@ app.post('/get_eco_friendly_transportation', async (req, res) => {
       },
       {
         headers: {
-          Authorization: `Bearer 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`,
+          Authorization: `Bearer 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`,
         },
       }
     );
@@ -49,3 +49,4 @@ app.post('/get_eco_friendly_transportation', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+

@@ -20,8 +20,7 @@ const EcoFriendlySuggestions = () => {
   const [ecoFriendlySuggestions, setEcoFriendlySuggestions] = useState([]);
   const [submitted, setSubmitted] = useState(false);
   const [expandedCardIndex, setExpandedCardIndex] = useState(null);
-  const [isLoading, setIsLoading] = useState(false); 
-
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleJourneySubmit = async (event) => {
     event.preventDefault();
@@ -47,7 +46,7 @@ const EcoFriendlySuggestions = () => {
         {
           headers: {
             Authorization:
-              "Bearer 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",
+              "Bearer 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",
           },
         }
       );
@@ -92,7 +91,11 @@ const EcoFriendlySuggestions = () => {
 
   return (
     <div className="eco-friendly-suggestions">
-      <h2>Eco-Friendly Travel Suggestions:</h2>
+      <h2>
+        Eco-Friendly Travel Suggestions from{" "}
+        {startDestination.charAt(0).toUpperCase() + startDestination.slice(1)}{" "}
+        to {endDestination.charAt(0).toUpperCase() + endDestination.slice(1)}
+      </h2>
       {!submitted ? (
         <form onSubmit={handleJourneySubmit}>
           {/* Destination Input */}
@@ -169,22 +172,13 @@ const EcoFriendlySuggestions = () => {
                 >
                   Read more
                 </button>
-                
-                
               )}
             </div>
-            
           ))}
-          
         </div>
       )}
-       
-      
     </div>
-    
-    
   );
-  
 };
 
 export default EcoFriendlySuggestions;
