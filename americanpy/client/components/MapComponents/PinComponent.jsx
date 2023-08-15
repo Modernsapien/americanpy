@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import L from "leaflet";
 import axios from "axios";
 import ecoData from "../../data/ecoData.json";
+import { v4 as uuidv4 } from 'uuid';
+
 
 const PinComponent = ({
   map,
@@ -15,22 +17,20 @@ const PinComponent = ({
 }) => {
   const buttonRef = useRef(null);
   const [markers, setMarkersState] = useState([]);
+  const [markerCount, setMarkerCount] = useState(0);
   const markerRef = useRef({});
 
   useEffect(() => {
     setMarkersState([]);
 
     if (map) {
-      
-
       const handleMapClick = async (event) => {
         if (isAddingPin && !isHoveringButton && !isAddingButton) {
           const { lat, lng } = event.latlng;
-          const markerId = `marker-${markerCount}`;
-          setMarkerCount(markerCount => markerCount + 1);
-
+          const markerId = uuidv4(); 
+      
           setMarkerIds((prevMarkerIds) => [...prevMarkerIds, markerId]);
-
+      
           const marker = L.marker([lat, lng], { id: markerId }).addTo(map);
 
           try {
@@ -80,18 +80,29 @@ const PinComponent = ({
         map.off("click", handleMapClick);
       };
     }
-  }, [map, isAddingPin, isHoveringButton, setMarkerIds, setSelectedPin, isAddingButton]);
+  }, [
+    map,
+    isAddingPin,
+    isHoveringButton,
+    setMarkerIds,
+    setSelectedPin,
+    isAddingButton,
+  ]);
 
   const handleButtonClick = () => {
     setIsAddingButton((prevState) => !prevState);
-    setIsAddingPlaceToVisit(false); 
+    setIsAddingPlaceToVisit(false);
   };
 
   const handleRemovePinClick = (markerId) => {
-    const updatedMarkers = markers.filter((marker) => marker.options.id !== markerId);
+    const updatedMarkers = markers.filter(
+      (marker) => marker.options.id !== markerId
+    );
 
     setMarkersState(updatedMarkers);
-    setMarkers((prevMarkers) => prevMarkers.filter((marker) => marker.options.id !== markerId));
+    setMarkers((prevMarkers) =>
+      prevMarkers.filter((marker) => marker.options.id !== markerId)
+    );
 
     // Remove the marker from the map using Leaflet's API
     const markerToRemove = markerRef.current[markerId];
@@ -136,7 +147,6 @@ const PinComponent = ({
       </button>
     </div>
   );
-  
 };
 
 export default PinComponent;
