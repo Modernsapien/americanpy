@@ -1,23 +1,27 @@
-import React, { useState, useContext, createContext } from "react";
+import React, { createContext, useContext, useState } from 'react';
 
-const AuthContext = createContext();
+const CredentialsContext = createContext();
 
-export const AuthProvider = ({ children }) => {
-  const [usernameValue, setUsernameValue] = useState("");
-  const [passwordValue, setPasswordValue] = useState("");
-
+export function CredentialsProvider({ children }) {
+  const [usernameValue, setUsernameValue] = useState('');
+  const [passwordValue, setPasswordValue] = useState('');
+  const [token, setToken] = useState();
   return (
-    <AuthContext.Provider
+    <CredentialsContext.Provider
       value={{
         usernameValue,
         setUsernameValue,
         passwordValue,
         setPasswordValue,
+        token,
+        setToken,
       }}
     >
       {children}
-    </AuthContext.Provider>
+    </CredentialsContext.Provider>
   );
-};
+}
 
-export const useAuth = () => useContext(AuthContext);
+export function useCredentials() {
+  return useContext(CredentialsContext);
+}

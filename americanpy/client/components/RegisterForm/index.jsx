@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import '../../pages/LoginPage/'; 
-import { useAuth } from '../../contexts';
+import styles from '../../pages/LoginPage/LoginPage.css'; 
+import { useCredentials } from '../../contexts';
 
 export default function RegisterForm(props) {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ export default function RegisterForm(props) {
         email: email,
       }),
     };
-    const resp = await fetch('https://travel-wise-api.onrender.com/users/register', options);
+    const resp = await fetch('http://localhost:3000/users/register', options);
     const data = await resp.json();
     if (resp.ok) {
       console.log(data);

@@ -1,92 +1,135 @@
-/* Styling for JourneyPage */
-.jp-container-wrapper {
-    background-image: url("./blue-world.jpg");
-    background-size: cover;
-    margin-top: -150px;
-    padding: 70px;
-    height: 100vh;
+/* EcoFriendlySuggestions.css */
+
+/* Container for the eco-friendly suggestions component */
+.eco-friendly-suggestions {
+  background-color: #90c8f9ae;
+  padding: 70px;
+  border-radius: 10px;
+  box-shadow: inset 0 0 50px #5dbbea;
+  width: 80%;
+  margin: 30px auto;
+  font-family: 'Manrope', sans-serif;
+}
+
+.journey-intro {
     display: flex;
-    align-items: center;
     justify-content: center;
-  }
-  
-  .jp-signin-form {
+    height: 100%;
+    color: #fff !important;
+    background-color:#90c8f9ae;
     box-shadow: inset 0 0 50px #5dbbea;
-    background-color: #90c8f9ae;
-    margin: 10px;
-    padding: 30px;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 500px;
+    padding: 40px;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 2.6rem;
+    margin-bottom: -4rem;
     font-family: 'Manrope', sans-serif;
-    color: #254d74;
-    text-align: center;
-  }
-  
-  .jp-title {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .jp-journey-form {
-    box-shadow: inset 0 0 50px #5dbbea;
-    background-color: #90c8f9ae;
-    margin: 10px;
-    padding: 30px;
     border-radius: 10px;
-    width: 100%;
-    max-width: 500px;
-    font-family: 'Manrope', sans-serif;
-    color: #254d74;
-    text-align: center;
+    margin-top: 2.7rem;
+    margin-bottom: 50px;
+}
+
+
+/* Heading style */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #254d74;
+  font-family: 'Manrope', sans-serif;
+}
+
+/* Form style */
+form {
+  text-align: center;
+  max-width: 80%;
+  margin: 40px auto;
+  font-family: 'Manrope', sans-serif;
+
+}
+
+/* Destination input style */
+.destination-input {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 15px;
+  border: none;
+  background-color: #ffffffc3;
+  border-radius: 10px;
+  color: #366491;
+  font-family: 'Manrope', sans-serif;
+
+}
+
+/* "Get Suggestions" button style */
+.get-suggestions-button {
+  background-color: #ffffffc3;
+  color: #366491;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 40%;
+  margin: 10px 0;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Manrope', sans-serif;
+
+}
+
+.get-suggestions-button:hover {
+  opacity: 0.9;
+}
+
+/* Suggestion card style */
+.suggestion-card {
+  flex: 1;
+  width: calc(33.33% - 20px);
+  margin: 10px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #90c8f9ae;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: 'Manrope', sans-serif;
+
+}
+
+.suggestion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.suggestion-card h3 {
+  margin-top: 0;
+  color: #366491;
+}
+
+.suggestion-card p {
+  margin: 10px 0;
+  color: #555;
+  font-family: 'Manrope', sans-serif;
+
+}
+
+/* Total carbon emission style */
+.total-carbon-emission {
+  text-align: center;
+  margin-top: 20px;
+  color: #366491;
+  font-weight: bold;
+}
+
+/* Media queries and other existing styles */
+@media screen and (max-width: 600px) {
+  .suggestion-card {
+    width: 80%;
   }
-  
-  .jp-text-box {
-    width: 100%;
-    padding: 15px;
-    margin: 10px 0;
-    border: none;
-    background-color: #ffffffc3;
-    border-radius: 10px;
-    color: #366491 !important;
-  }
-  
-  .jp-planBtn {
-    width: 100%;
-    border-radius: 10px;
-    background-color: #ffffffc3;
-    color: #366491;
-    padding: 14px 20px;
-    margin: 20px 0;
-    border: none;
-    cursor: pointer;
-    opacity: 0.9;
-  }
-  
-  .jp-planBtn:hover {
-    opacity: 1;
-  }
-  
-  .jp-inline-p {
-    display: inline-block;
-    vertical-align: middle;
-    margin: 20px auto 0;
-  }
-  
-  .jp-signup {
-    color: #366491;
-    text-decoration: underline;
-    cursor: pointer;
-  }
-  
-  /* Media Queries */
-  @media screen and (max-width: 600px) {
-    .jp-container-wrapper {
-      margin-top: -100px;
-    }
-  
-    .jp-signin-form, .jp-journey-form {
-      max-width: 90%;
-    }
-  }
-  
+}
+
+.response-container{
+  display: flex;
+}

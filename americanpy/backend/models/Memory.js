@@ -60,12 +60,13 @@ class Memory {
     static async createMemory(data) {
         try {
             const { user_id, country_id, memory_name, memory_date, memory_description, drive_link} = data
-            const resp = await db.query(`INSERT INTO memories (user_id, country_id,memory_name, memory_description, drive_link) VALUES ($1, $2, $3, $4, $5, $6) RETURNING memory_id`, [user_id, country_id, memory_name, memory_date, memory_description, drive_link])
+            const resp = await db.query(`INSERT INTO memories (user_id, country_id, memory_name, memory_date, memory_description, drive_link) VALUES ($1, $2, $3, $4, $5, $6) RETURNING memory_id`, [user_id, country_id, memory_name, memory_date, memory_description, drive_link])
 
             const id = resp.rows[0].memory_id
             const newMemory = await Memory.getOneById(id)
             return newMemory
         } catch(err) {
+            //console.log(err)
             throw new Error("unable to create memory")
         }
     }
@@ -77,7 +78,7 @@ class Memory {
 
     async updateMemory(data) {
         try {
-            const resp = await db.query("UPDATE memories SET country_id =$1, memory_name =$2, memory_date = $3 memory_description = $4, drive_link = $5 WHERE memory_id = $6 RETURNING *;",
+            const resp = await db.query("UPDATE memories SET country_id =$1, memory_name =$2, memory_date = $3, memory_description = $4, drive_link = $5 WHERE memory_id = $6 RETURNING *;",
             [
             data.country_id,
             data.memory_name,
@@ -88,6 +89,7 @@ class Memory {
             ]);
             return new Memory(resp.rows[0]);
         } catch (err) {
+            //console.log(err)
             throw new Error("Unable to update memory!")
         }
     }
