@@ -1,68 +1,93 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { faTrain, faBus, faBicycle, faShip, faTram, faCar, faWalking, faPlane } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import '../../pages/JourneyPage/JourneyPage.css';
+import React, { useState } from "react";
+import axios from "axios";
+import {
+  faTrain,
+  faBus,
+  faBicycle,
+  faShip,
+  faTram,
+  faCar,
+  faWalking,
+  faPlane,
+  faGlobe,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../../pages/JourneyPage/JourneyPage.css";
 
 const EcoFriendlySuggestions = () => {
-  const [startDestination, setStartDestination] = useState('');
-  const [endDestination, setEndDestination] = useState('');
+  const [startDestination, setStartDestination] = useState("");
+  const [endDestination, setEndDestination] = useState("");
   const [ecoFriendlySuggestions, setEcoFriendlySuggestions] = useState([]);
   const [submitted, setSubmitted] = useState(false);
   const [expandedCardIndex, setExpandedCardIndex] = useState(null);
+  const [isLoading, setIsLoading] = useState(false); 
+
 
   const handleJourneySubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true); // Set loading state when submitting
 
     try {
       const response = await axios.post(
-        'https://api.openai.com/v1/chat/completions',
+        "https://api.openai.com/v1/chat/completions",
         {
-          model: 'gpt-3.5-turbo',
+          model: "gpt-3.5-turbo",
           messages: [
             {
-              role: 'system',
+              role: "system",
               content:
-                'You are a helpful assistant that provides travel suggestions and carbon emissions calculations.',
+                "You are a helpful assistant that provides travel suggestions and carbon emissions calculations.",
             },
             {
-              role: 'user',
+              role: "user",
               content: `Suggest eco-friendly travel options from ${startDestination} to ${endDestination}.also return the carbon emmisions that would be caused by each mode of transport`,
             },
           ],
         },
         {
           headers: {
-            Authorization: 'Bearer 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',
+            Authorization:
+              "Bearer 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",
           },
         }
       );
 
       const suggestions = [];
-      let currentSuggestion = '';
+      let currentSuggestion = "";
       let suggestionNumber = 1;
 
-      response.data.choices[0].message.content.split(/\d+\./).forEach((text) => {
-        if (text.trim() !== '') {
-          currentSuggestion = text.trim();
-          if (!currentSuggestion.startsWith('There are several eco-friendly travel options')) {
-            suggestions.push({
-              number: suggestionNumber,
-              content: currentSuggestion,
-            });
-            suggestionNumber++;
+      response.data.choices[0].message.content
+        .split(/\d+\./)
+        .forEach((text) => {
+          if (text.trim() !== "") {
+            currentSuggestion = text.trim();
+            if (
+              !currentSuggestion.startsWith(
+                "There are several eco-friendly travel options"
+              )
+            ) {
+              suggestions.push({
+                number: suggestionNumber,
+                content: currentSuggestion,
+              });
+              suggestionNumber++;
+            }
           }
-        }
-      });
+        });
 
       setEcoFriendlySuggestions(suggestions);
       setSubmitted(true);
     } catch (error) {
-      console.error('Error fetching suggestions:', error);
+      console.error("Error fetching suggestions:", error);
       setEcoFriendlySuggestions([
-        { number: 1, content: 'An error occurred while fetching suggestions.' },
+        { number: 1, content: "An error occurred while fetching suggestions." },
       ]);
+    } finally {
+      setIsLoading(false); // Reset loading state when request completes
     }
+  };
+  const handleCloseModal = () => {
+    setIsDonateModalOpen(false);
   };
 
   return (
@@ -89,9 +114,18 @@ const EcoFriendlySuggestions = () => {
             placeholder="End Destination"
             required
           />
-          {/* "Get Suggestions" Button */}
-          <button className="get-suggestions-button" type="submit">
-            Get Suggestions
+
+          <button
+            className={`get-suggestions-button ${isLoading ? "loading" : ""}`}
+            type="submit"
+          >
+            {isLoading ? (
+              <span>
+                <FontAwesomeIcon icon={faGlobe} spin /> Loading
+              </span>
+            ) : (
+              "Get Suggestions"
+            )}
           </button>
         </form>
       ) : (
@@ -99,26 +133,29 @@ const EcoFriendlySuggestions = () => {
           {ecoFriendlySuggestions.slice(1).map((suggestion, index) => (
             <div
               key={suggestion.number}
-              className={`suggestion-card ${expandedCardIndex === index ? 'expanded' : ''}`}
+              className={`suggestion-card ${
+                expandedCardIndex === index ? "expanded" : ""
+              }`}
             >
               <h3>
-                {suggestion.content.includes('Train')
-                  ? <FontAwesomeIcon icon={faTrain} />
-                  : suggestion.content.includes('Bus')
-                  ? <FontAwesomeIcon icon={faBus} />
-                  : suggestion.content.includes('Bike') || suggestion.content.includes('Cycling')
-                  ? <FontAwesomeIcon icon={faBicycle} />
-                  : suggestion.content.includes('Ferry')
-                  ? <FontAwesomeIcon icon={faShip} />
-                  : suggestion.content.includes('Tram')
-                  ? <FontAwesomeIcon icon={faTram} />
-                  : suggestion.content.includes('Car')
-                  ? <FontAwesomeIcon icon={faCar} />
-                  : suggestion.content.includes('Walk')
-                  ? <FontAwesomeIcon icon={faWalking} />
-                  : suggestion.content.includes('Flight')
-                  ? <FontAwesomeIcon icon={faPlane} />
-                  : null}
+                {suggestion.content.includes("Train") ? (
+                  <FontAwesomeIcon icon={faTrain} />
+                ) : suggestion.content.includes("Bus") ? (
+                  <FontAwesomeIcon icon={faBus} />
+                ) : suggestion.content.includes("Bike") ||
+                  suggestion.content.includes("Cycling") ? (
+                  <FontAwesomeIcon icon={faBicycle} />
+                ) : suggestion.content.includes("Ferry") ? (
+                  <FontAwesomeIcon icon={faShip} />
+                ) : suggestion.content.includes("Tram") ? (
+                  <FontAwesomeIcon icon={faTram} />
+                ) : suggestion.content.includes("Car") ? (
+                  <FontAwesomeIcon icon={faCar} />
+                ) : suggestion.content.includes("Walk") ? (
+                  <FontAwesomeIcon icon={faWalking} />
+                ) : suggestion.content.includes("Flight") ? (
+                  <FontAwesomeIcon icon={faPlane} />
+                ) : null}
               </h3>
               <p>
                 {expandedCardIndex === index || suggestion.content.length <= 50
@@ -132,13 +169,22 @@ const EcoFriendlySuggestions = () => {
                 >
                   Read more
                 </button>
+                
+                
               )}
             </div>
+            
           ))}
+          
         </div>
       )}
+       
+      
     </div>
+    
+    
   );
+  
 };
 
 export default EcoFriendlySuggestions;

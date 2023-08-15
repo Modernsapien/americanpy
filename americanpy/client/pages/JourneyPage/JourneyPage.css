@@ -156,3 +156,67 @@ form {
 .read-more-button:hover {
   opacity: 0.9;
 }
+
+/* Add this to your JourneyPage.css */
+/* Loading Globe Icon */
+.get-suggestions-button .fa-globe {
+  font-size: 36px; /* Adjust the size as needed */
+  color: green; /* Change the color to your preference */
+}
+
+/* Loading Spinner Animation */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.get-suggestions-button .fa-spin {
+  animation: spin 1s infinite linear;
+}
+
+
+.get-suggestions-button.loading {
+  font-weight: bold;
+  color: green;
+  gap: 10px;
+  font-size: 1.5rem;
+}
+
+/* EcoFriendlySuggestions.css */
+
+/* Styles for the modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Styles for the modal content */
+.modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+}
+
+/* Styles for the close button */
+.modal .btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal .btn-primary:hover {
+  background-color: #0056b3;
+}
+
