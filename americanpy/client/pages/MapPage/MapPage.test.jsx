@@ -6,7 +6,7 @@ import matchers from "@testing-library/jest-dom/matchers";
 expect.extend(matchers);
 import MapPage from "./MapPage";
 
-describe("MapPage", () => {
+describe("Map Page", () => {
     beforeEach(async () => {
         render (
             <MapPage />

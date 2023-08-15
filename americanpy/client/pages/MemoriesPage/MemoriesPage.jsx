@@ -46,18 +46,19 @@ const MemoriesPage = () => {
   };
 
   return (
-    <div className="memories-container">
-      <h1 className="intro-memories">Memories are better when they are made guilt free!</h1>
-      <button className="create-memory-button" onClick={() => setShowForm(true)}>
+    <div className="memories-container" data-testid="memories_container">
+      <h1 className="intro-memories" data-testid="memories_title">Memories are better when they are made guilt free!</h1>
+      <button className="create-memory-button" data-testid="memories_button" onClick={() => setShowForm(true)}>
         Create a Memory
       </button>
 
       {showForm && (
-        <div className="memory-form">
-          <h2 className="myMemories">My Memories</h2>
-          <input className="file" type="file" accept="image/*" onChange={handleFileChange} required /> <br />
-          <label htmlFor="description">Title</label>
+        <div className="memory-form" data-testid="memories_form">
+          <h2 className="myMemories" data-testid="memories_form_title">My Memories</h2>
+          <input className="file" type="file" accept="image/*" onChange={handleFileChange} data-testid="file_input" required /> <br />
+          <label htmlFor="description" data-testid="memory_title">Title</label>
           <input
+            data-testid="memory_title_input"
             className="inputBoxes"
             type="text"
             placeholder="Enter Title"
@@ -66,8 +67,9 @@ const MemoriesPage = () => {
             required
           />
           <div className="country-section">
-          <label htmlFor="location">Location</label>
+          <label htmlFor="location" data-testid="location_label">Location</label>
           <input
+            data-testid="location_input"
             className="inputBoxes"
             type="text"
             placeholder="Enter Location"
@@ -75,8 +77,9 @@ const MemoriesPage = () => {
             onChange={handleLocationChange}
             required
           />
-            <label htmlFor="country">Country</label>
+            <label htmlFor="country" data-testid="country_label">Country</label>
             <select
+              data-testid="country_input"
               className="country"
               id="country"
               name="country"
@@ -92,29 +95,31 @@ const MemoriesPage = () => {
             ))}
             </select>
           </div>
-          <label htmlFor="date">Date</label>
+          <label htmlFor="date" data-testid="memory_date">Date</label>
           <input
             className="inputBoxes"
+            data-testid="date_input"
             type="date"
             value={date}
             onChange={handleDateChange}
             required
           />
-          <button className="button" onClick={addMemory}>
+          <button className="button" onClick={addMemory} data-testid="add_button">
             Add Memory
           </button>
-          <button className="button">Save Memories</button>
+          <button className="button" data-testid="save_button">Save Memories</button>
         </div>
       )}
 
       <div className="memory-list">
         {memories.map((memory, index) => (
-          <div className="memory" key={index}>
-            <img src={URL.createObjectURL(memory.file)} alt={`Memory ${index}`} />
-            <p>Title: {memory.description}</p>
-            <p>Location: {memory.location}</p>
-            <p>Country: {country}</p>
-            <p>Date: {memory.date}</p>
+
+          <div className="memory" key={index} data-testid = {`Memory_${index}`}>
+            <img src={URL.createObjectURL(memory.file)} alt={`Memory ${index}`} data-testid = {`Memory_${index}_image`}/>
+            <p data-testid = {`Memory_${index}_title`}>Title: {memory.description}</p>
+            <p data-testid = {`Memory_${index}_location`}>Location: {memory.location}</p>
+            <p data-testid = {`Memory_${index}_date`}>Date: {memory.date}</p>
+
           </div>
         ))}
       </div>
