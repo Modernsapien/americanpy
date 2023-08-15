@@ -15,6 +15,7 @@ const JourneyPage = () => {
   };
 
   return (
+    <div className='background'>
     <div className={styles.containerWrapper}>
       <h2 className="journey-intro">Plan your eco-friendly journey now!</h2>
       <div className="jp-container-wrapper">
@@ -29,6 +30,7 @@ const JourneyPage = () => {
         </div>
       </div>
       <DonateModal isOpen={isModalOpen} onRequestClose={closeModal} />
+    </div>
     </div>
   );
 };

@@ -42,7 +42,7 @@ const NavbarComponent = () => {
               <NavLink className="nav-link" activeclassname="active" to="/memories">Memories</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" activeclassname="active" to="/user">User</NavLink>
+              <NavLink className="nav-link" activeclassname="active" to="/user">User and Rewards</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" activeclassname="active" to="/login">Login</NavLink>
