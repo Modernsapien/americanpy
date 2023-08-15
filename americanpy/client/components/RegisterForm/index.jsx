@@ -39,7 +39,7 @@ export default function RegisterForm(props) {
   };
 
   return (
-    <div className={styles.containerWrapper}>
+    <div className={styles.containerWrapper} data-testid="register_form">
       <div className="container-wrapper">
         <div className="top">
           <div className="logo"></div>
@@ -109,7 +109,7 @@ export default function RegisterForm(props) {
           </div>
         <p className="inline-p">
           Already have an account?{" "}
-          <span className="signup" onClick={() => props.onFormSwitch('LoginForm')}>
+          <span className="signup" onClick={() => props.onFormSwitch('LoginForm')} data-testid= "switch_to_login">
             Log in here.
           </span>
         </p>

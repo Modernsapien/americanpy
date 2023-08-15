@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 import matchers from "@testing-library/jest-dom/matchers";
 expect.extend(matchers);
 import MemoriesPage from "./MemoriesPage";
-console.log(userEvent)
+//console.log(userEvent)
 import world from '../HomePage/world.png'
 import { Blob } from 'buffer'
 import { title } from "process";
