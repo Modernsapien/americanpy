@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import styles from '../../pages/JourneyPage/JourneyPage.css';
 
-Modal.setAppElement('#root');
+if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 
 const DonateModal = ({ isOpen, onRequestClose }) => {
   const [donationAmount, setDonationAmount] = useState('');

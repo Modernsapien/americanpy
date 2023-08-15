@@ -96,7 +96,7 @@ const PlaceToVisitButton = ({ map }) => {
   }, [isAddingPlaceToVisit, markerIds]);
 
   return (
-    <div className="map-button">
+    <div className="map-button" data-testid="visit_button">
       <button
         className={`btn ${isAddingPlaceToVisit ? "btn-danger" : "btn-primary"}`}
         onClick={handlePlaceToVisitClick}
