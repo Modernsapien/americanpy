@@ -226,9 +226,9 @@ const Map = ({ id }) => {
   };
 
   return (
-    <div className="map-container">
+    <div className="map-container" data-testid="map_container">
       <div className="top-bar">
-        <div className="map-buttons">
+        <div className="map-buttons" data-testid="map_buttons">
           <PlaceToVisitButton
             isAddingPlaceToVisit={isAddingPin} // Use isAddingPin instead of isAddingPlaceToVisit
             setIsAddingPlaceToVisit={setIsAddingPin} // Use setIsAddingPin instead of setIsAddingPlaceToVisit
@@ -241,6 +241,7 @@ const Map = ({ id }) => {
             onMouseEnter={handleButtonMouseEnter}
             onMouseLeave={handleButtonMouseLeave}
             id="cancel-pin-button"
+            data-testid="pin_button"
           >
             {isAddingPin ? "Cancel Places to visit" : "Places to visit"}
           </button>
@@ -250,13 +251,14 @@ const Map = ({ id }) => {
             onMouseEnter={handleButtonMouseEnter}
             onMouseLeave={handleButtonMouseLeave}
             id="toggle-color-button"
+            data-testid="eco_button"
           >
             {colorByEpiScore ? "Hide Eco colour" : "Show Eco colour"}
           </button>
         </div>
         <div className="destination-form"></div>
       </div>
-      <div className="map" style={{ height: "400px", width: "100%" }}>
+      <div className="map" style={{ height: "400px", width: "100%" }} data-testid="actual_map">
         <div id={id}></div>
       </div>
       <PinComponent
