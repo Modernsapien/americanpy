@@ -29,50 +29,58 @@ const PinComponent = ({
           const { lat, lng } = event.latlng;
           const markerId = uuidv4(); 
       
-          setMarkerIds((prevMarkerIds) => [...prevMarkerIds, markerId]);
-      
-          const marker = L.marker([lat, lng], { id: markerId }).addTo(map);
-
           try {
             const response = await axios.get(
               `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`
             );
-
+      
             const countryName = response.data.address.country;
-
-            const countryData = ecoData.find(
-              (data) => data.country === countryName
-            );
-
-            if (countryData) {
-              const countryDescription = countryData.description;
-
-              marker
-                .bindPopup(`<b>${countryName}</b><br>${countryDescription}`)
-                .openPopup();
-
-              const popupContent = marker.getPopup().getContent();
-              const newPopupContent = `
-                ${popupContent}
-                <button class="btn btn-danger" id="${markerId}">Remove Pin</button>
-              `;
-              marker.getPopup().setContent(newPopupContent);
-
-              marker.options.description = countryDescription;
-
-              setSelectedPin(marker);
+      
+            if (countryName) {
+              // Check if the country is valid and not over oceans or seas
+              const countryData = ecoData.find(
+                (data) => data.country === countryName
+              );
+      
+              if (countryData) {
+                const marker = L.marker([lat, lng], { id: markerId }).addTo(map);
+      
+                const countryDescription = countryData.description;
+      
+                marker
+                  .bindPopup(`<b>${countryName}</b><br>${countryDescription}`)
+                  .openPopup();
+      
+                const popupContent = marker.getPopup().getContent();
+                const newPopupContent = `
+                  ${popupContent}
+                  <button class="btn btn-danger" id="${markerId}">Remove Pin</button>
+                `;
+                marker.getPopup().setContent(newPopupContent);
+      
+                marker.options.description = countryDescription;
+      
+                setSelectedPin(marker);
+      
+                setMarkerIds((prevMarkerIds) => [...prevMarkerIds, markerId]);
+                setMarkersState((prevMarkers) => [...prevMarkers, marker]);
+                markerRef.current[markerId] = marker;
+      
+                console.log(
+                  `Added pin with ID: ${markerId}, Longitude: ${lng}, Latitude: ${lat}`
+                );
+              } else {
+                console.log("Clicked over oceans or seas, not adding pin.");
+              }
+            } else {
+              console.log("No country information available for clicked location.");
             }
-
-            setMarkersState((prevMarkers) => [...prevMarkers, marker]);
-            markerRef.current[markerId] = marker;
-            console.log(
-              `Added pin with ID: ${markerId}, Longitude: ${lng}, Latitude: ${lat}`
-            );
           } catch (error) {
             console.error("Error retrieving country information:", error);
           }
         }
       };
+      
 
       map.on("click", handleMapClick);
 

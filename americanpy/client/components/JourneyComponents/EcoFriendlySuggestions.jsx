@@ -89,6 +89,8 @@ const EcoFriendlySuggestions = () => {
     setIsDonateModalOpen(false);
   };
 
+  
+
   return (
     <div className="eco-friendly-suggestions">
       <h2>
