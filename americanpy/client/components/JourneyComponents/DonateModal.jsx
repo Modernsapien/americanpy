@@ -33,7 +33,7 @@ const DonateModal = ({ isOpen, onRequestClose }) => {
       </button>
       <form onSubmit={handleDonation}>
         <div className="input-container">
-          <label className="input-label">Donation Amount:</label>
+          <label className="input-label">Donation Amount in £:</label>
           <input
             type="number"
             placeholder='The recommended donation amount is £1 for every kg CO2e. This can be found on the selected mode of travel card.'

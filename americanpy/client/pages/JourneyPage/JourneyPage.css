@@ -318,4 +318,10 @@ form {
   background-color: #0056b3;
 }
 
-/* Add more specific styles if needed */
+.donate-button{
+  position: relative;
+  left: 42.3%;
+  top: 480px;
+  scale: 150%;
+  width: 300px;
+}
