@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './UserPage.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import defaultUserPhoto from './user-photo.png';
+import waves from './waves.png';
 
 const UserPage = () => {
   const [username, setUsername] = useState("Example Name");
@@ -50,13 +51,16 @@ const UserPage = () => {
 
   return (
     <div className="user-page">
+    <div className="background-user">
+      <img className='waves' src={waves} alt="Waves" />
+    </div>
       <h1 className="user">Welcome to your Passport, {capitaliseWords(username)}!</h1>
       <div className="row">
         <div className="col-md-6 edit-section">
           <h2>Profile Photo</h2>
           <div className="profile-photo">
             <img src={userPhoto || defaultUserPhoto} alt="User" />
-            <input type="file" accept="image/*" onChange={handlePhotoChange} />
+            <input className='file' type="file" accept="image/*" onChange={handlePhotoChange} />
           </div>
         </div>
         <div className="col-md-6 info-section">
@@ -89,15 +93,19 @@ const UserPage = () => {
           ))}
         </div>
         <div className="purchased-rewards">
-          <h3 className='purchased-item'>Purchased Items</h3>
+        <h3 className='purchased-item'>Purchased Items</h3>
+        {purchasedItems.length > 0 ? (
           <ul>
             {purchasedItems.map((item, index) => (
               <li key={index}>{item.name}</li>
             ))}
           </ul>
+        ) : (
+          <p>No items purchased</p>
+        )}
+      </div>
         </div>
       </div>
-    </div>
   );
 };
 
