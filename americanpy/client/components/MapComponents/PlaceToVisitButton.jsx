@@ -6,23 +6,16 @@ import { renderToString } from "react-dom/server";
 
 const PlaceToVisitButton = ({ map }) => {
   const [isAddingPlaceToVisit, setIsAddingPlaceToVisit] = useState(false);
-  const [markerIds, setMarkerIds] = useState([]);
   const [clickEventListener, setClickEventListener] = useState(null);
   const [isMouseOverButton, setIsMouseOverButton] = useState(false);
 
-  // Use a ref to target the "Add Memory" button within the popup
-  const popupButtonRef = useRef(null); // Initialize with null
+  
 
   useEffect(() => {
-    if (isAddingPlaceToVisit && !isMouseOverButton) {
-      const handleMapClick = (event) => {
-        if (!isAddingPlaceToVisit) {
-          return;
-        }
-
+    const handleMapClick = (event) => {
+      if (isAddingPlaceToVisit && !isMouseOverButton) {
         const { lat, lng } = event.latlng;
         const markerId = `place-to-visit-marker-${Date.now()}`;
-        setMarkerIds((prevIds) => [...prevIds, markerId]);
 
         const customIcon = new L.DivIcon({
           className: "custom-icon",
@@ -41,19 +34,20 @@ const PlaceToVisitButton = ({ map }) => {
         }).addTo(map);
 
         const popupContent = `
-          <div>
-            <img src="your-image-url.jpg" alt="Place Image" style="max-width: 100%; height: auto;">
-            <p>Your short description goes here.</p>
-            <button class="btn btn-primary popup-button">Add Memory</button>
-          </div>
-        `;
+        <div>
+          <img src="your-image-url.jpg" alt="Place Image" style="max-width: 100%; height: auto;">
+          <p>Your short description goes here.</p>
+          <a href="/memories" class="popup-memory-button">Add Memory</a>
+        </div>
+      `;
 
         marker.bindPopup(popupContent).openPopup();
 
-        // Log the created marker ID
         console.log("Marker ID:", markerId);
-      };
+      }
+    };
 
+    if (isAddingPlaceToVisit) {
       const clickListener = map.on("click", handleMapClick);
       setClickEventListener(clickListener);
     } else {
@@ -66,6 +60,7 @@ const PlaceToVisitButton = ({ map }) => {
   const handlePlaceToVisitClick = (event) => {
     event.stopPropagation();
     setIsAddingPlaceToVisit((prevState) => !prevState);
+    setIsAddingButton(false);
   };
 
   const handleMouseEnterButton = () => {
@@ -75,25 +70,6 @@ const PlaceToVisitButton = ({ map }) => {
   const handleMouseLeaveButton = () => {
     setIsMouseOverButton(false);
   };
-
-  // Handle the "Add Memory" button click within the popup
-  useEffect(() => {
-    if (!isAddingPlaceToVisit && markerIds.length > 0) {
-      const handlePopupButtonClick = () => {
-        // Navigate to the Memories page
-        window.location.href = "/memories";
-      };
-
-      const popupButton = popupButtonRef.current;
-      if (popupButton) {
-        popupButton.addEventListener("click", handlePopupButtonClick);
-
-        return () => {
-          popupButton.removeEventListener("click", handlePopupButtonClick);
-        };
-      }
-    }
-  }, [isAddingPlaceToVisit, markerIds]);
 
   return (
     <div className="map-button">
@@ -108,7 +84,6 @@ const PlaceToVisitButton = ({ map }) => {
           ? "Cancel Places I've Visited"
           : "Places I've Visited"}
       </button>
-      <div ref={popupButtonRef} style={{ display: "none" }}></div>
     </div>
   );
 };

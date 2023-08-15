@@ -39,7 +39,7 @@ const EcoFriendlySuggestions = () => {
             },
             {
               role: "user",
-              content: `Suggest eco-friendly travel options from ${startDestination} to ${endDestination}.also return the carbon emmisions that would be caused by each mode of transport`,
+              content: `Suggest eco-friendly travel options from ${startDestination} to ${endDestination}.also return the carbon emmisions that would be caused by each mode of transport and an estimated cost for this travel in £.`,
             },
           ],
         },
@@ -158,7 +158,9 @@ const EcoFriendlySuggestions = () => {
                   <FontAwesomeIcon icon={faWalking} />
                 ) : suggestion.content.includes("Flight") ? (
                   <FontAwesomeIcon icon={faPlane} />
-                ) : null}
+                ) : (
+                  <FontAwesomeIcon icon={faGlobe} />
+                )}
               </h3>
               <p>
                 {expandedCardIndex === index || suggestion.content.length <= 50
