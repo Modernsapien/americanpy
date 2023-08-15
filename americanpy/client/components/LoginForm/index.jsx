@@ -22,7 +22,7 @@ export default function LoginForm(props) {
         password: password,
       }),
     };
-    const resp = await fetch('https://travel-wise-api.onrender.com/users/login', options);
+    const resp = await fetch('http://localhost:3000/users/login', options);
     const data = await resp.json();
     if (resp.ok) {
       localStorage.setItem('token', data.token);

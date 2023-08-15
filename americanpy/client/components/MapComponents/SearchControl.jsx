@@ -7,7 +7,7 @@ const SearchControl = ({ map }) => {
     const provider = new EsriProvider();
     const searchControl = new GeoSearchControl({
       provider,
-      showPopup: false,
+      showPopup: false, 
       popupFormat: ({ query, result }) => result.label,
       maxMarkers: 1,
       retainZoomLevel: false,
