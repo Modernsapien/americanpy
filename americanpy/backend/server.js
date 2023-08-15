@@ -31,13 +31,13 @@ app.post('/get_eco_friendly_transportation', async (req, res) => {
       },
       {
         headers: {
-          Authorization: `Bearer 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`, // Replace with your actual OpenAI API key
+          Authorization: `Bearer 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`,
         },
       }
     );
 
     const suggestion = response.data.choices[0].message.content;
-    const totalCarbonEmission = 'Estimated carbon emissions: ...'; // Replace with actual calculations
+    const totalCarbonEmission = 'Estimated carbon emissions: ...';
 
     res.json({ suggestion, totalCarbonEmission });
   } catch (error) {
@@ -49,3 +49,4 @@ app.post('/get_eco_friendly_transportation', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+

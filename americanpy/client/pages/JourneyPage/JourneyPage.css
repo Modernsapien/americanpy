@@ -133,3 +133,195 @@ form {
 .response-container{
   display: flex;
 }
+
+
+/* Add these styles to your CSS file */
+.suggestion-card h3 .fa-icon {
+  scale: 200%;
+  margin-top:50px;
+  color: white;
+  margin-right: 8px; /* Add some spacing between the icon and text */
+}
+
+.read-more-button {
+  background-color: #ffffffc3;
+  color: #366491;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+}
+
+.read-more-button:hover {
+  opacity: 0.9;
+}
+
+/* Add this to your JourneyPage.css */
+/* Loading Globe Icon */
+.get-suggestions-button .fa-globe {
+  font-size: 36px; /* Adjust the size as needed */
+  color: green; /* Change the color to your preference */
+}
+
+/* Loading Spinner Animation */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.get-suggestions-button .fa-spin {
+  animation: spin 1s infinite linear;
+}
+
+
+.get-suggestions-button.loading {
+  font-weight: bold;
+  color: green;
+  gap: 10px;
+  font-size: 1.5rem;
+}
+
+/* EcoFriendlySuggestions.css */
+
+/* DonateModal.css */
+
+/* Container for the donation modal */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin: 0 auto;
+  font-family: 'Manrope', sans-serif;
+}
+
+/* Input container style */
+.input-container {
+  margin-bottom: 15px;
+}
+
+/* Input label style */
+.input-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #366491;
+}
+
+/* Input style */
+.input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  color: #495057;
+  font-family: 'Manrope', sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Button style */
+.submitButton {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Manrope', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background-color: #0056b3;
+}
+
+/* Card input container style */
+.card-input-container {
+  display: flex;
+  flex-direction: column; /* Display inputs vertically */
+  gap: 15px; /* Add spacing between inputs */
+}
+
+/* Card input style */
+.card-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  color: #495057;
+  font-family: 'Manrope', sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+.card-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* CVV input style */
+.cvv-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  color: #495057;
+  font-family: 'Manrope', sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+.cvv-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Use Bootstrap classes for button styling */
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.button-container .submitButton {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Manrope', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.button-container .submitButton:hover {
+  background-color: #0056b3;
+}
+
+.donate-button{
+  position: relative;
+  left: 42.3%;
+  top: 480px;
+  scale: 150%;
+  width: 300px;
+}

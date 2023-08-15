@@ -80,7 +80,9 @@ const PinComponent = ({
 
             // Update markers state with the new marker
             setMarkers((prevMarkers) => [...prevMarkers, marker]);
-            console.log(`Added pin with ID: ${markerId}, Longitude: ${lng}, Latitude: ${lat}`);
+            console.log(
+              `Added pin with ID: ${markerId}, Longitude: ${lng}, Latitude: ${lat}`
+            );
           } catch (error) {
             console.error("Error retrieving country information:", error);
           }
