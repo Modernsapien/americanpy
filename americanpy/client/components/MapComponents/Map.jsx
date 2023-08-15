@@ -19,12 +19,15 @@ const Map = ({ id }) => {
   const [markerIds, setMarkerIds] = useState([]);
   const [selectedPin, setSelectedPin] = useState(null);
   const [mapClickEnabled, setMapClickEnabled] = useState(true);
+  const [markerCount, setMarkerCount] = useState(1)
 
   // function to remove a marker
   const removeMarker = (markerId) => {
     const markerToRemove = markers.find(
-      (marker) => marker.options.id == markerId
-    );
+      (marker) => {
+        marker.options.id == markerId
+        console.log(marker)
+      });
 
     if (markerToRemove) {
       if (selectedPin === markerToRemove) {
@@ -266,10 +269,13 @@ const Map = ({ id }) => {
         isAddingPin={isAddingPin}
         isHoveringButton={isHoveringButton}
         removeMarker={removeMarker}
+        markers={markers}
         setMarkers={setMarkers}
         setMarkerIds={setMarkerIds}
         setSelectedPin={setSelectedPin}
         removePinButtonId={removePinButtonId}
+        markerCount = {markerCount}
+        setMarkerCount={setMarkerCount}
       />
       {selectedPin && (
         <div className="modal-overlay">

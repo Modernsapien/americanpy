@@ -21,13 +21,13 @@ const PinComponent = ({
     setMarkersState([]);
 
     if (map) {
-      let markerCount = 1;
+      
 
       const handleMapClick = async (event) => {
         if (isAddingPin && !isHoveringButton && !isAddingButton) {
           const { lat, lng } = event.latlng;
           const markerId = `marker-${markerCount}`;
-          markerCount++;
+          setMarkerCount(markerCount => markerCount + 1);
 
           setMarkerIds((prevMarkerIds) => [...prevMarkerIds, markerId]);
 
