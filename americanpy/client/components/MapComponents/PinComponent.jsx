@@ -8,9 +8,12 @@ const PinComponent = ({
   isAddingPin,
   isHoveringButton,
   removeMarker,
+  markers,
   setMarkers,
   setMarkerIds,
   setSelectedPin,
+  markerCount,
+  setMarkerCount,
   removePinButtonId,
   isAddingButton,
   setIsAddingButton,
@@ -19,14 +22,14 @@ const PinComponent = ({
 
   useEffect(() => {
     if (map) {
-      let markerCount = 1;
+      
 
       // Event handler for clicking on the map
       const handleMapClick = async (event) => {
         if (isAddingPin && !isHoveringButton && !isAddingButton) {
           const { lat, lng } = event.latlng;
           const markerId = `marker-${markerCount}`;
-          markerCount++;
+          setMarkerCount(markerCount => markerCount + 1);
 
           // Update the marker IDs
           setMarkerIds((prevMarkerIds) => [...prevMarkerIds, markerId]);
@@ -59,12 +62,12 @@ const PinComponent = ({
               const popupContent = marker.getPopup().getContent();
               const newPopupContent = `
                 ${popupContent}
-                <button class="btn btn-danger" id="${removePinButtonId}">Remove Pin</button>
+                <button class="btn btn-danger" id="${markerId}">Remove Pin</button>
               `;
               marker.getPopup().setContent(newPopupContent);
 
               // Add a click event listener to the "Remove Pin" button
-              const removeButton = document.getElementById(removePinButtonId);
+              const removeButton = document.getElementById(markerId);
               if (removeButton) {
                 removeButton.addEventListener("click", () => {
                   removeMarker(markerId);
@@ -80,6 +83,7 @@ const PinComponent = ({
 
             // Update markers state with the new marker
             setMarkers((prevMarkers) => [...prevMarkers, marker]);
+            console.log(markers[0].options)
             console.log(
               `Added pin with ID: ${markerId}, Longitude: ${lng}, Latitude: ${lat}`
             );
