@@ -7,8 +7,8 @@ const MapPage = () => {
 
   return (
     <>
-      <div id={mapId}> 
-        <Map id={mapId} /> 
+      <div id={mapId}>
+        <Map id={mapId} />
       </div>
     </>
   );

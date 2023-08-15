@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapPin } from "@fortawesome/free-solid-svg-icons";
 import L from "leaflet";
@@ -10,17 +10,18 @@ const PlaceToVisitButton = ({ map }) => {
   const [clickEventListener, setClickEventListener] = useState(null);
   const [isMouseOverButton, setIsMouseOverButton] = useState(false);
 
+  // Use a ref to target the "Add Memory" button within the popup
+  const popupButtonRef = useRef(null); // Initialize with null
+
   useEffect(() => {
     if (isAddingPlaceToVisit && !isMouseOverButton) {
       const handleMapClick = (event) => {
         if (!isAddingPlaceToVisit) {
-          return; // Return if isAddingPlaceToVisit is false
+          return;
         }
 
         const { lat, lng } = event.latlng;
         const markerId = `place-to-visit-marker-${Date.now()}`;
-
-        // Store the marker ID in state
         setMarkerIds((prevIds) => [...prevIds, markerId]);
 
         const customIcon = new L.DivIcon({
@@ -39,7 +40,6 @@ const PlaceToVisitButton = ({ map }) => {
           icon: customIcon,
         }).addTo(map);
 
-        // Create a popup with your content
         const popupContent = `
           <div>
             <img src="your-image-url.jpg" alt="Place Image" style="max-width: 100%; height: auto;">
@@ -50,22 +50,13 @@ const PlaceToVisitButton = ({ map }) => {
 
         marker.bindPopup(popupContent).openPopup();
 
-        // Handle the button click to navigate to the Memories page
-        const popupButton = document.querySelector(".popup-button");
-        popupButton.addEventListener("click", () => {
-          // Navigate to the Memories page
-          window.location.href = "/memories";
-        });
-
         // Log the created marker ID
         console.log("Marker ID:", markerId);
       };
 
-      // Add a click event listener to the map
       const clickListener = map.on("click", handleMapClick);
       setClickEventListener(clickListener);
     } else {
-      // Remove the click event listener from the map
       if (clickEventListener) {
         clickEventListener.off();
       }
@@ -73,7 +64,7 @@ const PlaceToVisitButton = ({ map }) => {
   }, [isAddingPlaceToVisit, isMouseOverButton, map]);
 
   const handlePlaceToVisitClick = (event) => {
-    event.stopPropagation(); // Prevent click event from propagating to the map
+    event.stopPropagation();
     setIsAddingPlaceToVisit((prevState) => !prevState);
   };
 
@@ -84,6 +75,25 @@ const PlaceToVisitButton = ({ map }) => {
   const handleMouseLeaveButton = () => {
     setIsMouseOverButton(false);
   };
+
+  // Handle the "Add Memory" button click within the popup
+  useEffect(() => {
+    if (!isAddingPlaceToVisit && markerIds.length > 0) {
+      const handlePopupButtonClick = () => {
+        // Navigate to the Memories page
+        window.location.href = "/memories";
+      };
+
+      const popupButton = popupButtonRef.current;
+      if (popupButton) {
+        popupButton.addEventListener("click", handlePopupButtonClick);
+
+        return () => {
+          popupButton.removeEventListener("click", handlePopupButtonClick);
+        };
+      }
+    }
+  }, [isAddingPlaceToVisit, markerIds]);
 
   return (
     <div className="map-button">
@@ -98,6 +108,7 @@ const PlaceToVisitButton = ({ map }) => {
           ? "Cancel Places I've Visited"
           : "Places I've Visited"}
       </button>
+      <div ref={popupButtonRef} style={{ display: "none" }}></div>
     </div>
   );
 };

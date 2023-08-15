@@ -1,4 +1,3 @@
-/* Reset default styles */
 body,
 html {
     margin: 0;
@@ -35,7 +34,7 @@ html {
     flex-direction: row;
     gap: 10px;
     margin-top: 10px;
-    justify-content: flex-end; /* Keep buttons on the right */
+    justify-content: flex-end;
     z-index: 999;
 }
 
@@ -59,7 +58,7 @@ html {
 .top-bar {
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Align everything to the right */
+    justify-content: flex-end;
     padding: 10px;
     height: 50px;
     position: absolute;
@@ -85,10 +84,10 @@ html {
 /* Reset button styles */
 .reset {
     position: relative;
-    right: -170px;
+    right: -100px;
     bottom: 30px;
     border-radius: 20%;
-    
+
     background-color: red;
     scale: 140%;
 }
@@ -140,15 +139,20 @@ html {
 
 /* Color definitions for EPI Score ranges */
 .navy {
-    background-color: navy;
+    background-color: #82E0AA;
 }
 
 .blue {
-    background-color: #428bca;
+    background-color: #2ECC71;
 }
 
 .light-blue {
-    background-color: #66b3ff;
+    background-color: #1E8449;
+}
+
+.keytitle {
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 /* Media Queries */
@@ -156,18 +160,18 @@ html {
     .map-buttons {
         margin-left: 10%;
     }
-    
+
     .key {
         position: static;
         margin-left: 0;
         margin-top: 10px;
     }
-    
+
     .top-bar {
         height: auto;
         padding: 5px;
     }
-    
+
     .top-bar h1 {
         font-size: 1rem;
     }
