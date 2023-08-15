@@ -74,9 +74,9 @@ const LoginPage = () => {
 
 export default LoginPage;
 
-// import React, { useState } from 'react';
-// import { LoginForm, RegisterForm } from '../../components'; 
-// import styles from './LoginPage.css'; 
+import React, { useState } from 'react';
+import { LoginForm, RegisterForm } from '../../components'; 
+import styles from './LoginPage.css'; 
 
 // export default function LoginPage() {
 //   const [currentForm, setCurrentForm] = useState('LoginForm');
