@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './MemoriesPage.css';
+import countriesData from '../../data/ecoData.json';
 
 const MemoriesPage = () => {
   const [memories, setMemories] = useState([]);
@@ -8,6 +9,8 @@ const MemoriesPage = () => {
   const [location, setLocation] = useState('');
   const [date, setDate] = useState('');
   const [showForm, setShowForm] = useState(false);
+  const [country, setCountry] = useState("");
+
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -24,6 +27,11 @@ const MemoriesPage = () => {
   const handleDateChange = (e) => {
     setDate(e.target.value);
   };
+
+  const handleCountryChange = (event) => {
+    setCountry(event.target.value);
+  };
+  
 
   const addMemory = () => {
     if (file && description && location && date) {
@@ -57,6 +65,7 @@ const MemoriesPage = () => {
             onChange={handleDescriptionChange}
             required
           />
+          <div className="country-section">
           <label htmlFor="location">Location</label>
           <input
             className="inputBoxes"
@@ -66,6 +75,23 @@ const MemoriesPage = () => {
             onChange={handleLocationChange}
             required
           />
+            <label htmlFor="country">Country</label>
+            <select
+              className="country"
+              id="country"
+              name="country"
+              value={country}
+              onChange={handleCountryChange}
+              required
+            >
+          <option value="" disabled>Select a country</option>
+          {countriesData.map((countryData) => (
+            <option key={countryData.country} value={countryData.country}>
+              {countryData.country}
+            </option>
+            ))}
+            </select>
+          </div>
           <label htmlFor="date">Date</label>
           <input
             className="inputBoxes"

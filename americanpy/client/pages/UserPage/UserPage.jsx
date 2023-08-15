@@ -9,20 +9,25 @@ const UserPage = () => {
   const [points, setPoints] = useState(100);
   const [userPhoto, setUserPhoto] = useState(null);
   const [editingInfo, setEditingInfo] = useState(false);
+  const [purchasedItems, setPurchasedItems] = useState([]);
 
-  const capitalizeWords = (string) => {
+  const capitaliseWords = (string) => {
     return string
       .split(' ')
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
   };
 
-  const handlePurchase = (cost) => {
-    if (points >= cost) {
-      setPoints(points - cost);
-      alert('Purchase successful!');
-    } else {
-      alert('Insufficient points');
+  const confirmPurchase = (item) => {
+    const confirmed = window.confirm(`Are you sure you want to purchase this item for ${item.cost} points?`);
+    if (confirmed) {
+      if (points >= item.cost) {
+        setPoints(points - item.cost);
+        setPurchasedItems([...purchasedItems, { name: item.name }]);
+        alert('Purchase successful!');
+      } else {
+        alert('Insufficient points');
+      }
     }
   };
 
@@ -38,14 +43,14 @@ const UserPage = () => {
   };
 
   const shopItems = [
-    { name: 'Item 1', cost: 50 },
-    { name: 'Item 2', cost: 75 },
-    { name: 'Item 3', cost: 100 },
+    { name: 'Hat', cost: 50 },
+    { name: 'Socks', cost: 75 },
+    { name: 'Jacket', cost: 100 },
   ];
 
   return (
-    <div className="user-container">
-      <h1 className="user">Welcome to your Passport, {capitalizeWords(username)}!</h1>
+    <div className="user-page">
+      <h1 className="user">Welcome to your Passport, {capitaliseWords(username)}!</h1>
       <div className="row">
         <div className="col-md-6 edit-section">
           <h2>Profile Photo</h2>
@@ -64,7 +69,7 @@ const UserPage = () => {
             ) : (
               <div className="display-info">
                 <h2>User Information</h2>
-                <p className='username'>Username: {capitalizeWords(username)}</p>
+                <p className='username'>Username: {capitaliseWords(username)}</p>
                 <p className='email'>Email: {email}</p>
                 <button onClick={() => setEditingInfo(true)}>Edit Info</button>
               </div>
@@ -79,9 +84,17 @@ const UserPage = () => {
             <div key={index} className='shop-item'>
               <h4>{item.name}</h4>
               <p>Cost: {item.cost} points</p>
-              <button className='purchase' onClick={() => handlePurchase(item.cost)}>Purchase</button>
+              <button className='purchase' onClick={() => confirmPurchase(item)}>Purchase</button>
             </div>
           ))}
+        </div>
+        <div className="purchased-rewards">
+          <h3 className='purchased-item'>Purchased Items</h3>
+          <ul>
+            {purchasedItems.map((item, index) => (
+              <li key={index}>{item.name}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

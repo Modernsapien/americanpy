@@ -12,8 +12,8 @@
     margin-bottom: -4rem;
     font-family: 'Manrope', sans-serif;
     border-radius: 10px;
-    margin-top: 1.5rem;
-    margin-bottom: 50px;
+    margin-top: 2.5rem;
+    margin-bottom: 40px;
 
 }
 
@@ -48,7 +48,6 @@
 
 .shop-items-grid {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between; 
   }
   
@@ -197,9 +196,8 @@
   .shop-section {
     width: 97%;
     margin: 0 auto;
-    margin-top: 20px;
+    margin: 20px;
     padding: 10px;
-    border-radius: 5px;
     background-color:#90c8f9ae;
     box-shadow: inset 0 0 50px #5dbbea; 
     color: #366491 !important;
@@ -211,4 +209,11 @@
     margin-left: 10px;
     text-align: center;
     color: #254d74;
+}
+
+.purchased-rewards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
 }
