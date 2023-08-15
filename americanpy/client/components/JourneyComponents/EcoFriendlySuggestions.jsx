@@ -92,7 +92,7 @@ const EcoFriendlySuggestions = () => {
   
 
   return (
-    <div className="eco-friendly-suggestions">
+    <div className="eco-friendly-suggestions" data-testid="eco_suggestions">
       <h2>
         Eco-Friendly Travel Suggestions from{" "}
         {startDestination.charAt(0).toUpperCase() + startDestination.slice(1)}{" "}

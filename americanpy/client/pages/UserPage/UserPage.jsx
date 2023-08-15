@@ -51,57 +51,57 @@ const UserPage = () => {
 
   return (
     <div className="user-page">
-    <div className="background-user">
+    <div className="background-user" data-testid="user_background">
       <img className='waves' src={waves} alt="Waves" />
     </div>
-      <h1 className="user">Welcome to your Passport, {capitaliseWords(username)}!</h1>
+      <h1 className="user" data-testid="user_title">Welcome to your Passport, {capitaliseWords(username)}!</h1>
       <div className="row">
         <div className="col-md-6 edit-section">
-          <h2>Profile Photo</h2>
+          <h2 data-testid="user_photo_title">Profile Photo</h2>
           <div className="profile-photo">
-            <img src={userPhoto || defaultUserPhoto} alt="User" />
-            <input className='file' type="file" accept="image/*" onChange={handlePhotoChange} />
+            <img src={userPhoto || defaultUserPhoto} alt="User" data-testid="user_photo"/>
+            <input data-testid="user_photo_input" className='file' type="file" accept="image/*" onChange={handlePhotoChange} />
           </div>
         </div>
         <div className="col-md-6 info-section">
             {editingInfo ? (
               <div className="edit-info">
-                <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
-                <input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-                <button onClick={() => setEditingInfo(false)}>Save Changes</button>
+                <input data-testid="username_input" type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
+                <input data-testid="email_input" type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+                <button data-testid="edit_button" onClick={() => setEditingInfo(false)}>Save Changes</button>
               </div>
             ) : (
               <div className="display-info">
-                <h2>User Information</h2>
-                <p className='username'>Username: {capitaliseWords(username)}</p>
-                <p className='email'>Email: {email}</p>
-                <button onClick={() => setEditingInfo(true)}>Edit Info</button>
+                <h2 data-testid="user_info_title">User Information</h2>
+                <p data-testid="username" className='username'>Username: {capitaliseWords(username)}</p>
+                <p data-testid="email" className='email'>Email: {email}</p>
+                <button data-testid="info_button" onClick={() => setEditingInfo(true)}>Edit Info</button>
               </div>
             )}
         </div>
       </div>
       <div className="shop-section">
-        <h3 className='rewards'>Rewards</h3>
-        <p className='points'>Points available: {points}</p>
-        <div className="shop-items-grid">
+        <h3 data-testid="rewards_title" className='rewards'>Rewards</h3>
+        <p data-testid="points_available" className='points'>Points available: {points}</p>
+        <div data-testid="shop_items" className="shop-items-grid">
           {shopItems.map((item, index) => (
             <div key={index} className='shop-item'>
-              <h4>{item.name}</h4>
-              <p>Cost: {item.cost} points</p>
-              <button className='purchase' onClick={() => confirmPurchase(item)}>Purchase</button>
+              <h4 data-testid={`${item.name}_title`}>{item.name}</h4>
+              <p data-testid={`${item.name}_cost`}>Cost: {item.cost} points</p>
+              <button data-testid={`${item.name}_button`} className='purchase' onClick={() => confirmPurchase(item)}>Purchase</button>
             </div>
           ))}
         </div>
         <div className="purchased-rewards">
-        <h3 className='purchased-item'>Purchased Items</h3>
+        <h3 className='purchased-item' data-testid="purchased_title">Purchased Items</h3>
         {purchasedItems.length > 0 ? (
           <ul>
             {purchasedItems.map((item, index) => (
-              <li key={index}>{item.name}</li>
+              <li data-testid={`${item.name}_purchased`} key={index}>{item.name}</li>
             ))}
           </ul>
         ) : (
-          <p>No items purchased</p>
+          <p data-testid="no_purchases" >No items purchased</p>
         )}
       </div>
         </div>

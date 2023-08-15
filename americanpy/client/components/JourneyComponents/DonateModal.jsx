@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import styles from '../../pages/JourneyPage/JourneyPage.css';
 
-Modal.setAppElement('#root');
+if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 
 const DonateModal = ({ isOpen, onRequestClose }) => {
   const [donationAmount, setDonationAmount] = useState('');
@@ -52,8 +52,8 @@ const DonateModal = ({ isOpen, onRequestClose }) => {
       className={styles.modalContent}
       overlayClassName={styles.modalOverlay}
     >
-      <h2>Make a Donation</h2>
-      <button className="close-button" onClick={onRequestClose}>
+      <h2 data-testid="modal_title">Make a Donation</h2>
+      <button data-testid="close_button" className="close-button" onClick={onRequestClose}>
         X
       </button>
       {isLoading ? (

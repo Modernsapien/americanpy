@@ -35,7 +35,7 @@ export default function LoginForm(props) {
   };
 
   return (
-    <div className={styles.containerWrapper}>
+    <div className={styles.containerWrapper} data-testid="login_form">
       <div className="container-wrapper">
         <div className="top">
           <div className="logo"></div>
@@ -79,7 +79,7 @@ export default function LoginForm(props) {
           </div>
           <p className="inline-p">
             Not a member?{" "}
-            <span className="signup"  onClick={() => props.onFormSwitch('registerForm')}>
+            <span data-testid="switch_to_register" className="signup"  onClick={() => props.onFormSwitch('registerForm')}>
               Sign up
             </span>
           </p>
