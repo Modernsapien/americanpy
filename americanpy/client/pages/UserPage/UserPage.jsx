@@ -1,16 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './UserPage.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import defaultUserPhoto from './user-photo.png';
 import waves from './waves.png';
+import { usePoints } from '../../components/MemoriesComponents/PointsContext';
 
 const UserPage = () => {
-  const [username, setUsername] = useState("Example Name");
-  const [email, setEmail] = useState("@example.com");
-  const [points, setPoints] = useState(100);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [userPhoto, setUserPhoto] = useState(null);
   const [editingInfo, setEditingInfo] = useState(false);
   const [purchasedItems, setPurchasedItems] = useState([]);
+  const { points, setPoints } = usePoints();
+
+
+useEffect(() => {
+  const fetchedUserInfo = {
+    username: '',
+    email: ''
+  };
+
+  setUsername(fetchedUserInfo.username);
+  setEmail(fetchedUserInfo.email);
+}, []);
+
 
   const capitaliseWords = (string) => {
     return string
@@ -44,9 +57,9 @@ const UserPage = () => {
   };
 
   const shopItems = [
-    { name: 'Hat', cost: 50 },
-    { name: 'Socks', cost: 75 },
-    { name: 'Jacket', cost: 100 },
+    { name: 'Plant a tree', cost: 50 },
+    { name: 'Plant 10 trees', cost: 75 },
+    { name: '10% off zero carbon travel', cost: 100 },
   ];
 
   return (
@@ -108,5 +121,7 @@ const UserPage = () => {
       </div>
   );
 };
+
+
 
 export default UserPage;

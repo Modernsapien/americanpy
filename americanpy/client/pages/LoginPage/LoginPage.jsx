@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './LoginPage.css';
-import { Link } from 'react-router-dom';
+import blob from './blob.png';
 
 const LoginPage = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -11,6 +11,9 @@ const LoginPage = () => {
 
   return (
     <div className={styles.containerWrapper}>
+          <div className="background-login">
+      <img className='blob' src={blob} alt="Waves" />
+    </div>
     <div className="container-wrapper">
       <div className="top">
         <div className="logo"></div>

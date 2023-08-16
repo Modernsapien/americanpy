@@ -3,6 +3,23 @@ body {
 
 }
 
+
+.background-home {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .peaks {
+    width: 100%;
+    height: 100%;
+  }
+  
+
 .intro {
     color: #7DB4D8 !important;
     padding: 30px 50px 70px 50px;
@@ -10,10 +27,22 @@ body {
     margin: 0 auto;
     text-align: center;
     font-family: 'Lilita One', cursive;
-    font-size: 3.8rem;
+    font-size: 4rem;
     margin-bottom: -4rem;
     -webkit-text-stroke: 2px white;
 }
+
+.explain {
+    box-shadow: inset 0 0 50px #7bbfe1db !important;
+    background-color: #b0daffc3;
+    margin: 30px auto 10px;
+    padding: 30px;
+    border-radius: 10px;
+    font-family: 'Manrope', sans-serif;
+    color: #366491;
+    text-align: center;
+    font-size: 1.7rem;
+  }
 
   
   .intro-explain-grid {
@@ -29,25 +58,14 @@ body {
     border-radius: 10px;
 }
   
-  
-.explain {
-    font-family: 'Manrope', sans-serif;
-    font-size: 1.5rem;
-    color: #fff;
-    padding: 10px 10px 0 0;
-    width: 100%;
-    margin: 0 auto;
-    text-align: justify;
-    margin-top: 3rem;
-    margin-bottom: -1rem;
-    font-weight: bold;
-}
+
 
 .mt-5 {
     font-family: 'Manrope', sans-serif;
+    box-shadow: inset 0 0 50px #7bbfe1db !important;
     font-size: 1.4rem;
     color: white;
-    background-color: #B0DAFF;
+    background-color: #b0daffc3;
     padding: 30px 50px 30px 50px;
     margin: 0 auto; 
     text-align: center;
