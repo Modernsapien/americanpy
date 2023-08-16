@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './MemoriesPage.css';
 import countriesData from '../../data/ecoData.json';
 
+
 const MemoriesPage = () => {
   const [memories, setMemories] = useState([]);
   const [file, setFile] = useState(null);
