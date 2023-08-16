@@ -29,7 +29,7 @@ const DonateModal = ({ isOpen, onRequestClose }) => {
    
     setTimeout(() => {
       const formattedAmount = parseFloat(donationAmount).toFixed(2);
-      const thankYouMessage = `Thank you for donating £${formattedAmount}!`;
+      const thankYouMessage = `Thank you for donating £${formattedAmount}! You have planted ${formattedAmount} trees ! `;
       alert(thankYouMessage);
 
       setDonationAmount('');
