@@ -10,6 +10,7 @@ const PinComponent = ({
   isAddingPin,
   markers,
   isHoveringButton,
+  removeMarker,
   setMarkers,
   setMarkerIds,
   setSelectedPin,
@@ -62,7 +63,7 @@ const PinComponent = ({
                 const popupContent = marker.getPopup().getContent();
                 const newPopupContent = `
                   ${popupContent}
-                  <button class="btn btn-danger" id="${markerId}">Remove Pin</button>
+                  <button class="btn btn-danger" id="${markerId}" >Remove Pin</button>
                 `;
                 marker.getPopup().setContent(newPopupContent);
       
@@ -152,13 +153,13 @@ const PinComponent = ({
     <div>
       {markers.map((marker) => (
         <div key={marker.options.id}>
-          <button
+          {/* <button
             className="btn btn-danger"
-            onClick={() => handleRemovePinClick(marker)}
+            onClick={() => removeMarker(marker)}
             id={`remove-pin-button-${marker.options.id}`}
           >
             Remove Pin
-          </button>
+          </button> */}
         </div>
       ))}
       <button
