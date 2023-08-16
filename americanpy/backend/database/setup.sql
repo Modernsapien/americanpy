@@ -17,7 +17,7 @@ CREATE TABLE countries (
     description VARCHAR NOT NULL,
     eco_stat INT NOT NULL,
     image_url VARCHAR NOT NULL,
-    attractions VARCHAR ARRAY
+    attractions VARCHAR
 );
 
 CREATE TABLE rewards (
