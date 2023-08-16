@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import styles from '../../pages/LoginPage/LoginPage'; 
+import blob from '../../pages/LoginPage/blob.png';
 import { useCredentials } from '../../contexts';
 
 export default function RegisterForm(props) {
@@ -44,6 +45,9 @@ export default function RegisterForm(props) {
         <div className="top">
           <div className="logo"></div>
         </div>
+        <div className="background-login">
+      <img className='blob' src={blob} alt="Waves" />
+    </div>
         <form id="signin-form" className="signin-form" onSubmit={handleSubmit}>
           <div className="container sign">
             <h1 data-testid="register_title">
