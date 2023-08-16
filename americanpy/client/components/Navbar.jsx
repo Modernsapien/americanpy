@@ -1,42 +1,40 @@
-import React, {useState, useEffect} from 'react';
-import { NavLink } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './Navbar.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlane } from '@fortawesome/free-solid-svg-icons';
-import { useCredentials } from '../contexts';
-
+import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./Navbar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlane } from "@fortawesome/free-solid-svg-icons";
+import { useCredentials } from "../contexts";
 
 const NavbarComponent = () => {
-
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [shouldReload, setShouldReload] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     setIsSignedIn(!!token);
   }, []);
 
   const handleLogout = async () => {
     try {
-      const response = await fetch('http://localhost:3000/users/logout', {
-        method: 'DELETE',
+      const response = await fetch("http://localhost:3000/users/logout", {
+        method: "DELETE",
         headers: {
-          Authorization: localStorage.getItem('token'), 
+          Authorization: localStorage.getItem("token"),
         },
       });
 
       if (response.status === 202) {
-        localStorage.removeItem('token'); 
-        setIsSignedIn(false); 
+        localStorage.removeItem("token");
+        setIsSignedIn(false);
       } else {
-        console.error('Logout failed');
+        console.error("Logout failed");
       }
     } catch (error) {
-      console.error('Error during logout:', error);
+      console.error("Error during logout:", error);
     }
   };
-  
+
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container">
@@ -63,17 +61,29 @@ const NavbarComponent = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" activeClassName="active" to="/mappage">
+              <NavLink
+                className="nav-link"
+                activeClassName="active"
+                to="/mappage"
+              >
                 Map
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" activeClassName="active" to="/journey">
+              <NavLink
+                className="nav-link"
+                activeClassName="active"
+                to="/journey"
+              >
                 Journey
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" activeClassName="active" to="/memories">
+              <NavLink
+                className="nav-link"
+                activeClassName="active"
+                to="/memories"
+              >
                 Memories
               </NavLink>
             </li>
@@ -84,11 +94,15 @@ const NavbarComponent = () => {
             </li>
             <li className="nav-item">
               {isSignedIn ? (
-                <NavLink className="nav-link" activeClassName="active" onClick={handleLogout} to="/login">
+                <button className="nav-link" onClick={handleLogout}>
                   Logout
-                </NavLink>
+                </button>
               ) : (
-                <NavLink className="nav-link" activeClassName="active" to="/login">
+                <NavLink
+                  className="nav-link"
+                  activeClassName="active"
+                  to="/login"
+                >
                   Login
                 </NavLink>
               )}
