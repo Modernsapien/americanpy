@@ -35,33 +35,56 @@ export default function LoginForm(props) {
   };
 
   return (
-    <div className={styles.containerWrapper}>
-      <div className="auth-form-container" data-testid="formContainer">
-        <h2 className="form-title">Login</h2>
-
-        <form className="auth-form-login" onSubmit={handleSubmit} role="loginForm" data-testid="loginForm">
-          <input
-            placeholder="Username"
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            placeholder="Password"
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button data-testid="logInLogIn" type="submit" className="signinBtn">
-            Log in
-          </button>
+    <div className={styles.containerWrapper} data-testid="login_form">
+      <div className="container-wrapper">
+        <div className="top">
+          <div className="logo"></div>
+        </div>
+        <form id="signin-form" className="signin-form" action="" onSubmit={handleSubmit}>
+          <div className="container sign">
+            <h1>Login</h1>
+            <p>
+              Please fill in this form to log in.
+            </p>
+            <br />
+            <label htmlFor="username">User Name</label>
+            <input
+              id="username"
+              className="text-box"
+              type="text"
+              placeholder="Enter User Name"
+              name="username"
+              required
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              placeholder="Enter Password"
+              name="password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <label>
+              <input type="checkbox" checked="checked" name="remember" /> Remember me
+            </label>
+            <div className="submit">
+              <button type="submit" className="signinBtn">
+                Log in
+              </button>
+            </div>
+          </div>
+          <p className="inline-p">
+            Not a member?{" "}
+            <span data-testid="switch_to_register" className="signup"  onClick={() => props.onFormSwitch('registerForm')}>
+              Sign up
+            </span>
+          </p>
         </form>
-        <button className="link-btn" onClick={() => props.onFormSwitch('registerForm')}>
-          Don't have an account? Register here.
-        </button>
       </div>
     </div>
   );
-}
+ }
