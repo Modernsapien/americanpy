@@ -31,7 +31,10 @@ export default function RegisterForm(props) {
     const data = await resp.json();
     if (resp.ok) {
       console.log(data);
-      window.location.href = '/login';
+      if (process.env.NODE_ENV === 'test'){
+        localStorage.setItem('user_id', data.user_id)
+      }
+      props.onFormSwitch('LoginForm')
     } else {
       console.log(data);
       alert('Username already exists');
@@ -46,12 +49,13 @@ export default function RegisterForm(props) {
         </div>
         <form id="signin-form" className="signin-form" onSubmit={handleSubmit}>
           <div className="container sign">
-            <h1>
+            <h1 data-testid="register_title">
               Register
             </h1>
             <br />
-            <label htmlFor="username">User Name</label>
+            <label htmlFor="username" data-testid="username_label">User Name</label>
             <input
+              data-testid="username_input"
               id="username"
               className="text-box"
               type="text"
@@ -61,8 +65,9 @@ export default function RegisterForm(props) {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password" data-testid="password_label">Password</label>
             <input
+              data-testid="password_input"
               id="password"
               type="password"
               placeholder="Password"
@@ -71,8 +76,9 @@ export default function RegisterForm(props) {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <label htmlFor="firstName">First Name</label>
+            <label htmlFor="firstName" data-testid="firstname_label">First Name</label>
             <input
+              data-testid="firstname_input"
               id="firstName"
               type="text"
               placeholder="First Name"
@@ -81,8 +87,9 @@ export default function RegisterForm(props) {
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
             />
-            <label htmlFor="lastName">Last Name</label>
+            <label htmlFor="lastName" data-testid="lastname_label">Last Name</label>
             <input
+              data-testid="lastname_input"
               id="lastName"
               type="text"
               placeholder="Last Name"
@@ -91,8 +98,9 @@ export default function RegisterForm(props) {
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
             />
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email" data-testid="email_label">Email</label>
             <input
+              data-testid="email_input"
               id="email"
               type="text"
               placeholder="Email"
@@ -102,7 +110,7 @@ export default function RegisterForm(props) {
               onChange={(e) => setEmail(e.target.value)}
             />
             <div className="submit">
-              <button type="submit" className="signinBtn">
+              <button data-testid="register_button" type="submit" className="signinBtn">
                 Register
               </button>
             </div>
