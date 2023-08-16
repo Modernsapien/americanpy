@@ -23,6 +23,7 @@ const Map = ({ id }) => {
 
   // function to remove a marker
   const removeMarker = (markerId) => {
+    console.log("here")
     const markerToRemove = markers.find(
       (marker) => {
         marker.options.id == markerId

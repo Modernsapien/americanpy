@@ -27,6 +27,7 @@ const NavbarComponent = () => {
       if (response.status === 202) {
         localStorage.removeItem("token");
         setIsSignedIn(false);
+        window.location.reload()
       } else {
         console.error("Logout failed");
       }
@@ -56,14 +57,14 @@ const NavbarComponent = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <NavLink className="nav-link" activeClassName="active" to="/">
+              <NavLink className="nav-link" activeclassname="active" to="/">
                 Home
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink
                 className="nav-link"
-                activeClassName="active"
+                activeclassname="active"
                 to="/mappage"
               >
                 Map
@@ -72,7 +73,7 @@ const NavbarComponent = () => {
             <li className="nav-item">
               <NavLink
                 className="nav-link"
-                activeClassName="active"
+                activeclassname="active"
                 to="/journey"
               >
                 Journey
@@ -81,14 +82,14 @@ const NavbarComponent = () => {
             <li className="nav-item">
               <NavLink
                 className="nav-link"
-                activeClassName="active"
+                activeclassname="active"
                 to="/memories"
               >
                 Memories
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" activeClassName="active" to="/user">
+              <NavLink className="nav-link" activeclassname="active" to="/user">
                 User and Rewards
               </NavLink>
             </li>
@@ -100,7 +101,7 @@ const NavbarComponent = () => {
               ) : (
                 <NavLink
                   className="nav-link"
-                  activeClassName="active"
+                  activeclassname="active"
                   to="/login"
                 >
                   Login
