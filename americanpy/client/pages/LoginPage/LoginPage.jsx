@@ -51,9 +51,9 @@ const LoginPage = () => {
               />
             </div>
           )}
-          <label>
+          {/* <label>
             <input type="checkbox" checked="checked" name="remember" /> Remember me
-          </label>
+          </label> */}
           <div className="submit">
             <button type="submit" className="signinBtn">
               {isSignIn ? 'Log in' : 'Sign up'}
