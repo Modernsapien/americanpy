@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './MemoriesPage.css';
 import countriesData from '../../data/ecoData.json';
+import { usePoints } from '../../components/MemoriesComponents/PointsContext';
 
 
 const MemoriesPage = () => {
@@ -11,6 +12,7 @@ const MemoriesPage = () => {
   const [date, setDate] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [country, setCountry] = useState("");
+  const { points, setPoints } = usePoints();
 
 
   const handleFileChange = (e) => {
@@ -44,6 +46,8 @@ const MemoriesPage = () => {
       setDate('');
       setShowForm(false);
     }
+    setPoints(points + 10);
+    alert('Memory added successfully, 10 Points added!');
   };
 
   return (
