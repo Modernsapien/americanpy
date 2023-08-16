@@ -5,9 +5,10 @@ import userEvent from "@testing-library/user-event";
 import matchers from "@testing-library/jest-dom/matchers";
 expect.extend(matchers);
 import LoginPage from "./LoginPage";
-import { CredentialsProvider } from '../../contexts';
+import { CredentialsProvider, PointsProvider } from '../../contexts';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useNavigate } from 'react-router';
+import ComponentUsingPoints from "../../components/MemoriesComponents/ComponentUsingPoints";
 
 
 describe("Login Page", () => {
@@ -16,11 +17,15 @@ describe("Login Page", () => {
     let user_id 
     beforeEach(async () => {
         render (
-            <Router>
+            
+            <PointsProvider>
+              <ComponentUsingPoints />
+              <Router>
                 <CredentialsProvider>
                     <LoginPage />
                 </CredentialsProvider>
-             </Router>    
+             </Router>  
+          </PointsProvider>  
         )
     })
 

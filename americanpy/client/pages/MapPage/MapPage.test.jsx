@@ -5,11 +5,17 @@ import userEvent from "@testing-library/user-event";
 import matchers from "@testing-library/jest-dom/matchers";
 expect.extend(matchers);
 import MapPage from "./MapPage";
+import { PointsProvider } from "../../components/MemoriesComponents/PointsContext";
+import ComponentUsingPoints from "../../components/MemoriesComponents/ComponentUsingPoints";
+
 
 describe("Map Page", () => {
     beforeEach(async () => {
         render (
-            <MapPage />
+            <PointsProvider>
+                <ComponentUsingPoints />
+                <MapPage />
+            </PointsProvider>
         )
     })
 
