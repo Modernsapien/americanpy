@@ -4,13 +4,18 @@ import { screen, render, cleanup, fireEvent, getByTestId, getAllByRole, getByRol
 import userEvent from "@testing-library/user-event";
 import matchers from "@testing-library/jest-dom/matchers";
 expect.extend(matchers);
+import { PointsProvider } from "../../components/MemoriesComponents/PointsContext";
+import ComponentUsingPoints from "../../components/MemoriesComponents/ComponentUsingPoints";
 
 import JourneyPage from "./JourneyPage";
 
 describe("Journey Page", () => {
     beforeEach(async () => {
         render (
-            <JourneyPage />
+            <PointsProvider>
+                <ComponentUsingPoints />
+                <JourneyPage />
+            </PointsProvider>
         )
     })
 

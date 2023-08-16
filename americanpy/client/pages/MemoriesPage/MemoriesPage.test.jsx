@@ -10,11 +10,17 @@ import world from '../HomePage/world.png'
 import { Blob } from 'buffer'
 import { title } from "process";
 globalThis.Blob = Blob 
+import { PointsProvider } from "../../components/MemoriesComponents/PointsContext";
+import ComponentUsingPoints from "../../components/MemoriesComponents/ComponentUsingPoints";
 
 describe("Memories Page", () => {
     beforeEach(async () => {
         render (
-            <MemoriesPage />
+            
+            <PointsProvider>
+                <ComponentUsingPoints />
+                <MemoriesPage />
+            </PointsProvider>
         )
     })
 

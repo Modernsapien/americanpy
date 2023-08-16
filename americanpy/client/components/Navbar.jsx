@@ -9,7 +9,7 @@ import { useCredentials } from "../contexts";
 const NavbarComponent = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [shouldReload, setShouldReload] = useState(false);
-
+  
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsSignedIn(!!token);
