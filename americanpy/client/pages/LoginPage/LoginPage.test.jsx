@@ -7,7 +7,6 @@ expect.extend(matchers);
 import LoginPage from "./LoginPage";
 import { CredentialsProvider, PointsProvider } from '../../contexts';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { useNavigate } from 'react-router';
 import ComponentUsingPoints from "../../components/MemoriesComponents/ComponentUsingPoints";
 
 
@@ -17,15 +16,11 @@ describe("Login Page", () => {
     let user_id 
     beforeEach(async () => {
         render (
-            
-            <PointsProvider>
-              <ComponentUsingPoints />
               <Router>
                 <CredentialsProvider>
                     <LoginPage />
                 </CredentialsProvider>
              </Router>  
-          </PointsProvider>  
         )
     })
 

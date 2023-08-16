@@ -82,7 +82,7 @@ export default function LoginForm(props) {
           </div>
           <p className="inline-p">
             Not a member?{" "}
-            <span data-testid="switch_to_register" className="signup"  onClick={() => props.onFormSwitch('registerForm')}>
+            <span className="signup"  onClick={() => props.onFormSwitch('registerForm')} data-testid="switch_to_register">
               Sign up
             </span>
           </p>
