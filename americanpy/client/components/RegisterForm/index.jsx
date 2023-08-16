@@ -31,6 +31,9 @@ export default function RegisterForm(props) {
     const data = await resp.json();
     if (resp.ok) {
       console.log(data);
+      if (process.env.NODE_ENV === 'test'){
+        localStorage.setItem('user_id', data.user_id)
+      }
       props.onFormSwitch('LoginForm')
     } else {
       console.log(data);

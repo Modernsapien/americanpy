@@ -24,6 +24,7 @@ export default function LoginForm(props) {
     };
     const resp = await fetch('http://localhost:3000/users/login', options);
     const data = await resp.json();
+    console.log(data)
     if (resp.ok) {
       localStorage.setItem('token', data.token);
       setToken(data.token);

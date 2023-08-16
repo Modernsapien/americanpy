@@ -7,7 +7,7 @@ expect.extend(matchers);
 
 import JourneyPage from "./JourneyPage";
 
-describe("Map Page", () => {
+describe("Journey Page", () => {
     beforeEach(async () => {
         render (
             <JourneyPage />
