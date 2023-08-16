@@ -29,6 +29,7 @@ export default function LoginForm(props) {
       localStorage.setItem('token', data.token);
       setToken(data.token);
       navigate('/');
+      window.location.reload()
     } else {
       console.log(data);
       alert('Incorrect username or password');
