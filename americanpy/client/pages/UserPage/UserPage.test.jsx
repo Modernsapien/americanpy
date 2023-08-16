@@ -6,12 +6,18 @@ import matchers from "@testing-library/jest-dom/matchers";
 expect.extend(matchers);
 import UserPage from "./UserPage";
 global.confirm = () => true
+import { PointsProvider } from "../../components/MemoriesComponents/PointsContext";
+import ComponentUsingPoints from "../../components/MemoriesComponents/ComponentUsingPoints";
 
 
 describe("User Page", () => {
     beforeEach(async () => {
         render (
-            <UserPage />
+            <PointsProvider>
+                <ComponentUsingPoints />
+                <UserPage />
+            </PointsProvider>
+            
         )
     })
 
@@ -22,7 +28,7 @@ describe("User Page", () => {
     it("should render the user page title", () => {
         const title = screen.getByTestId("user_title")
         expect(title).toBeInTheDocument()
-        expect(title.textContent).toBe('Welcome to your Passport, Example Name!')
+        expect(title.textContent).toBe('Welcome to your Passport, !')
     })
 
     it("should render profile photo section", () => {
@@ -45,9 +51,9 @@ describe("User Page", () => {
         expect(infoTitle).toBeInTheDocument()
         expect(infoTitle.textContent).toBe('User Information')
         expect(username).toBeInTheDocument()
-        expect(username.textContent).toBe('Username: Example Name')
+        expect(username.textContent).toBe('Username: ')
         expect(email).toBeInTheDocument()
-        expect(email.textContent).toBe('Email: @example.com')
+        expect(email.textContent).toBe('Email: ')
         expect(infoButton).toBeInTheDocument()
         expect(infoButton.textContent).toBe('Edit Info')
     })
@@ -63,33 +69,33 @@ describe("User Page", () => {
         expect(title.textContent).toBe('Rewards')
         expect(points.textContent).toBe('Points available: 100')
 
-        const item1Title = screen.getByTestId("Hat_title")
-        const item1Cost = screen.getByTestId("Hat_cost")
-        const item1Button = screen.getByTestId("Hat_button")
+        const item1Title = screen.getByTestId("Plant a tree_title")
+        const item1Cost = screen.getByTestId("Plant a tree_cost")
+        const item1Button = screen.getByTestId("Plant a tree_button")
         expect(item1Title).toBeInTheDocument()
         expect(item1Cost).toBeInTheDocument()
         expect(item1Button).toBeInTheDocument()
-        expect(item1Title.textContent).toBe('Hat')
+        expect(item1Title.textContent).toBe('Plant a tree')
         expect(item1Cost.textContent).toBe('Cost: 50 points')
         expect(item1Button.textContent).toBe('Purchase')
 
-        const item2Title = screen.getByTestId("Socks_title")
-        const item2Cost = screen.getByTestId("Socks_cost")
-        const item2Button = screen.getByTestId("Socks_button")
+        const item2Title = screen.getByTestId("Plant 10 trees_title")
+        const item2Cost = screen.getByTestId("Plant 10 trees_cost")
+        const item2Button = screen.getByTestId("Plant 10 trees_button")
         expect(item2Title).toBeInTheDocument()
         expect(item2Cost).toBeInTheDocument()
         expect(item2Button).toBeInTheDocument()
-        expect(item2Title.textContent).toBe('Socks')
+        expect(item2Title.textContent).toBe('Plant 10 trees')
         expect(item2Cost.textContent).toBe('Cost: 75 points')
         expect(item2Button.textContent).toBe('Purchase')
 
-        const item3Title = screen.getByTestId("Jacket_title")
-        const item3Cost = screen.getByTestId("Jacket_cost")
-        const item3Button = screen.getByTestId("Jacket_button")
+        const item3Title = screen.getByTestId("10% off zero carbon travel_title")
+        const item3Cost = screen.getByTestId("10% off zero carbon travel_cost")
+        const item3Button = screen.getByTestId("10% off zero carbon travel_button")
         expect(item3Title).toBeInTheDocument()
         expect(item3Cost).toBeInTheDocument()
         expect(item3Button).toBeInTheDocument()
-        expect(item3Title.textContent).toBe('Jacket')
+        expect(item3Title.textContent).toBe('10% off zero carbon travel')
         expect(item3Cost.textContent).toBe('Cost: 100 points')
         expect(item3Button.textContent).toBe('Purchase')
 
@@ -140,19 +146,19 @@ describe("User Page", () => {
 
     it("should allow purchase if one can afford it", async () => {
         window.alert = () => {}
-        expect(screen.queryByTestId("Socks_purchased")).not.toBeInTheDocument()
-        const socksButton = screen.getByTestId("Socks_button")
+        expect(screen.queryByTestId("Plant 10 trees_purchased")).not.toBeInTheDocument()
+        const socksButton = screen.getByTestId("Plant 10 trees_button")
         await userEvent.click(socksButton)
 
         const points = screen.getByTestId("points_available")
         expect(points.textContent).toBe('Points available: 25')
-        const socks = screen.getByTestId("Socks_purchased")
+        const socks = screen.getByTestId("Plant 10 trees_purchased")
         expect(socks).toBeInTheDocument
-        expect(socks.textContent).toBe("Socks")
+        expect(socks.textContent).toBe("Plant 10 trees")
 
-        const hatButton = screen.getByTestId("Hat_button")
+        const hatButton = screen.getByTestId("Plant a tree_button")
         await userEvent.click(hatButton)
-        expect(screen.queryByTestId("Hat_purchased")).not.toBeInTheDocument()
+        expect(screen.queryByTestId("Plant a tree_purchased")).not.toBeInTheDocument()
 
 
     })
