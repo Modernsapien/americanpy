@@ -13,7 +13,7 @@ const NavbarComponent = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsSignedIn(!!token);
-  }, []);
+  }, [isSignedIn]);
 
   const handleLogout = async () => {
     try {
