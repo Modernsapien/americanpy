@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useCredentials } from '../../contexts';
 import styles from '../../pages/LoginPage/LoginPage';
+import blob from '../../pages/LoginPage/blob.png';
 
 export default function LoginForm(props) {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { token, setToken } = useCredentials();
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,7 +31,8 @@ export default function LoginForm(props) {
       localStorage.setItem('token', data.token);
       setToken(data.token);
       navigate('/');
-      window.location.reload()
+      window.location.reload()  
+
     } else {
       console.log(data);
       alert('Incorrect username or password');
@@ -42,6 +45,9 @@ export default function LoginForm(props) {
         <div className="top">
           <div className="logo"></div>
         </div>
+        <div className="background-login">
+      <img className='blob' src={blob} alt="Waves" />
+    </div>
         <form id="signin-form" className="signin-form" action="" onSubmit={handleSubmit}>
           <div className="container sign">
             <h1 data-testid="login_title">Login</h1>
