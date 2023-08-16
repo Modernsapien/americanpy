@@ -42,13 +42,14 @@ export default function LoginForm(props) {
         </div>
         <form id="signin-form" className="signin-form" action="" onSubmit={handleSubmit}>
           <div className="container sign">
-            <h1>Login</h1>
-            <p>
+            <h1 data-testid="login_title">Login</h1>
+            <p data-testid="login_subtitle">
               Please fill in this form to log in.
             </p>
             <br />
-            <label htmlFor="username">User Name</label>
+            <label htmlFor="username" data-testid="username_label">User Name</label>
             <input
+              data-testid="username_input"
               id="username"
               className="text-box"
               type="text"
@@ -58,8 +59,9 @@ export default function LoginForm(props) {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password" data-testid="password_label">Password</label>
             <input
+              data-testid="password_input"
               id="password"
               type="password"
               placeholder="Enter Password"
@@ -69,10 +71,10 @@ export default function LoginForm(props) {
               onChange={(e) => setPassword(e.target.value)}
             />
             <label>
-              <input type="checkbox" checked="checked" name="remember" /> Remember me
+              <input data-testid="check_box" type="checkbox" checked="checked" name="remember" /> Remember me
             </label>
             <div className="submit">
-              <button type="submit" className="signinBtn">
+              <button type="submit" className="signinBtn" data-testid="login_button">
                 Log in
               </button>
             </div>

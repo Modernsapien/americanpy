@@ -51,4 +51,50 @@ describe("Login Page", () => {
         expect(loginForm).toBeInTheDocument()
 
     })
+
+    it("should create a new user", async () => {
+        const switchButton = screen.getByTestId("switch_to_register")
+        await userEvent.click(switchButton)
+
+        const usernameInput = screen.getByTestId('username_input')
+        const passwordInput = screen.getByTestId('password_input')
+        const firstNameInput = screen.getByTestId('firstname_input')
+        const lastNameInput = screen.getByTestId('lastname_input')
+        const emailInput = screen.getByTestId('email_input')
+        const registerButton = screen.getByTestId('register_button')
+
+        await userEvent.type(usernameInput, "cheese")
+        await userEvent.type(passwordInput, "burger")
+        await userEvent.type(firstNameInput, "cheese")
+        await userEvent.type(lastNameInput, "burger")
+        await userEvent.type(emailInput, "iamanemail@email.com")
+        await userEvent.click(registerButton)
+        await new Promise((r) => setTimeout(r, 3000));
+
+        const loginForm = screen.getByTestId('login_form')
+        expect(loginForm).toBeInTheDocument()
+    })
+
+    it("should fail to create a user", async () => {
+        vi.spyOn(window, 'alert')
+        const switchButton = screen.getByTestId("switch_to_register")
+        await userEvent.click(switchButton)
+
+        const usernameInput = screen.getByTestId('username_input')
+        const passwordInput = screen.getByTestId('password_input')
+        const firstNameInput = screen.getByTestId('firstname_input')
+        const lastNameInput = screen.getByTestId('lastname_input')
+        const emailInput = screen.getByTestId('email_input')
+        const registerButton = screen.getByTestId('register_button')
+
+        await userEvent.type(usernameInput, "cheese")
+        await userEvent.type(passwordInput, "burger")
+        await userEvent.type(firstNameInput, "cheese")
+        await userEvent.type(lastNameInput, "burger")
+        await userEvent.type(emailInput, "iamanemail@email.com")
+        await userEvent.click(registerButton)
+        await new Promise((r) => setTimeout(r, 3000));
+
+        expect(window.alert).toHaveBeenCalled()
+    })
 })
