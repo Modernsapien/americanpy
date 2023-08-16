@@ -205,7 +205,7 @@ height: 820px;
 
 .modalContent {
   background-color: #fff;
-  padding: 30px;
+  padding: 300px;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   max-width: 400px;
@@ -340,4 +340,6 @@ height: 820px;
 margin-top: 0;
 font-size: 1.2rem;
 }
+
+
 

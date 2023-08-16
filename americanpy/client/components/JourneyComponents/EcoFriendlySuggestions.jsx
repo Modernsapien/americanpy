@@ -46,7 +46,7 @@ const EcoFriendlySuggestions = () => {
         {
           headers: {
             Authorization:
-              "Bearer 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",
+              "Bearer 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",
           },
         }
       );

@@ -25,6 +25,7 @@ const PinComponent = ({
 
     if (map) {
       const handleMapClick = async (event) => {
+        console.log("Map clicked");
         if (isAddingPin && !isHoveringButton && !isAddingButton) {
           const { lat, lng } = event.latlng;
           const markerId = uuidv4(); 
@@ -103,22 +104,24 @@ const PinComponent = ({
   };
 
   const handleRemovePinClick = (markerId) => {
+    console.log("Clicked Remove Pin button for marker with ID:", markerId);
+    console.log("Markers array:", markers);
+  
     const updatedMarkers = markers.filter(
       (marker) => marker.options.id !== markerId
     );
-
     setMarkersState(updatedMarkers);
     setMarkers((prevMarkers) =>
       prevMarkers.filter((marker) => marker.options.id !== markerId)
     );
-
-    // Remove the marker from the map using Leaflet's API
+  
     const markerToRemove = markerRef.current[markerId];
     if (markerToRemove) {
       map.removeLayer(markerToRemove);
       delete markerRef.current[markerId];
     }
   };
+  
 
   useEffect(() => {
     if (buttonRef.current) {

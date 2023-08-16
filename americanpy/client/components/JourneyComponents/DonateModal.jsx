@@ -16,7 +16,7 @@ const DonateModal = ({ isOpen, onRequestClose }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading delay
+  
     const loadingTimeout = setTimeout(() => {
       setIsLoading(false);
     }, 1000);
@@ -26,17 +26,12 @@ const DonateModal = ({ isOpen, onRequestClose }) => {
 
   const handleDonation = (e) => {
     e.preventDefault();
-    // Handle the donation submission here
-    // You can use an API call or any other method to process the donation
-
-    // For demonstration purposes, we'll simulate the donation processing
-    // and show a thank-you alert using the browser's built-in alert function
+   
     setTimeout(() => {
       const formattedAmount = parseFloat(donationAmount).toFixed(2);
-      const thankYouMessage = `Thank you for donating £${formattedAmount}!`;
+      const thankYouMessage = `Thank you for donating £${formattedAmount}! You have planted ${formattedAmount} trees ! `;
       alert(thankYouMessage);
 
-      // Clear the form fields and close the modal
       setDonationAmount('');
       setCardNumber('');
       setExpiryDate('');
