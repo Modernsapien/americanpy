@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import "./MemoriesPage.css";
-import { useCredentials } from "../../contexts";
-import countriesData from "../../data/ecoData.json";
-import { usePoints } from "../../components/MemoriesComponents/PointsContext";
+import React, { useState, useEffect } from 'react';
+import './MemoriesPage.css';
+import { useCredentials } from '../../contexts';
+import countriesData from '../../data/ecoData.json';
+import { usePoints } from '../../components/MemoriesComponents/PointsContext';
 
 const MemoriesPage = () => {
-  const [memories, setMemories] = useState([{}]);
+  const [memories, setMemories] = useState([]);
   const [drive_link, setLink] = useState(null);
   const [memory_name, setName] = useState("");
   const [memory_description, setDescription] = useState("");
@@ -15,17 +15,17 @@ const MemoriesPage = () => {
   const [country, setCountry] = useState("");
   const { points, setPoints } = usePoints();
   const { token } = useCredentials();
-  const isLoggedIn = token || localStorage.getItem("token");
+  const isLoggedIn = token || localStorage.getItem('token');
 
   const getUserMemories = async () => {
-    const resp = await fetch("http://localhost:3000/memory");
+    const resp = await fetch('http://localhost:3000/memory');
     const data = await resp.json();
     if (resp.ok) {
       setMemories(data);
     } else {
       console.log(data);
     }
-  };
+  }
 
   const handleFileChange = (e) => {
     setLink(e.target.files[0]);
@@ -34,6 +34,7 @@ const MemoriesPage = () => {
   const handleDescriptionChange = (e) => {
     setDescription(e.target.value);
   };
+
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -52,7 +53,7 @@ const MemoriesPage = () => {
 
   async function addMemory(e) {
     e.preventDefault();
-    console.log("hello");
+
     if (drive_link && memory_description && memory_location && memory_date) {
       const memory = {
         drive_link,
@@ -60,10 +61,37 @@ const MemoriesPage = () => {
         memory_description,
         memory_location,
         country,
-        memory_date,
+        memory_date
       };
-      console.log(memory);
+
       setMemories([...memories, memory]);
+
+      const options = {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          memory_name,
+          memory_date,
+          memory_description,
+          memory_location,
+          country,
+          drive_link
+        }),
+      };
+
+      const resp = await fetch('http://localhost:3000/memory', options);
+      const data = await resp.json();
+      
+      if (resp.ok) {
+        setPoints(points + 10);
+        alert('Memory added successfully, 10 Points added!');
+      } else {
+        console.log(data);
+      }
+
       setLink(null);
       setName("");
       setDescription("");
@@ -124,7 +152,7 @@ const MemoriesPage = () => {
             onChange={handleFileChange}
             data-testid="file_input"
             required
-          />{" "}
+          />
           <br />
           <label htmlFor="description" data-testid="memory_title">
             Title
@@ -210,18 +238,15 @@ const MemoriesPage = () => {
       <div className="memory-list">
         {memories.map((memory, index) => (
           <div className="memory" key={index} data-testid={`Memory_${index}`}>
+            {/* Assuming you have a 'drive_link' property */}
             <img
-              src={memory.file ? URL.createObjectURL(memory.file) : ""}
+              src={memory.drive_link ? URL.createObjectURL(memory.drive_link) : ''}
               alt={`Memory ${index}`}
               data-testid={`Memory_${index}_image`}
             />
-            <p data-testid={`Memory_${index}_title`}>
-              Title: {memory.description}
-            </p>
-            <p data-testid={`Memory_${index}_location`}>
-              Location: {memory.location}
-            </p>
-            <p data-testid={`Memory_${index}_date`}>Date: {memory.date}</p>
+            <p data-testid={`Memory_${index}_title`}>Title: {memory.memory_description}</p>
+            <p data-testid={`Memory_${index}_location`}>Location: {memory.memory_location}</p>
+            <p data-testid={`Memory_${index}_date`}>Date: {memory.memory_date}</p>
           </div>
         ))}
       </div>

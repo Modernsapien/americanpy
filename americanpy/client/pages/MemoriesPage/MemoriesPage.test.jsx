@@ -11,16 +11,21 @@ import { Blob } from 'buffer'
 import { title } from "process";
 globalThis.Blob = Blob 
 import { PointsProvider } from "../../components/MemoriesComponents/PointsContext";
+import { CredentialsProvider } from '../../contexts';
 import ComponentUsingPoints from "../../components/MemoriesComponents/ComponentUsingPoints";
+import { BrowserRouter as Router } from 'react-router-dom';
 
 describe("Memories Page", () => {
     beforeEach(async () => {
         render (
-            
-            <PointsProvider>
+            <CredentialsProvider>
+                <PointsProvider>
+                
                 <ComponentUsingPoints />
                 <MemoriesPage />
-            </PointsProvider>
+                
+                </PointsProvider>
+            </CredentialsProvider>
         )
     })
 
