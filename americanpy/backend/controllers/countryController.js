@@ -33,7 +33,7 @@ class CountryController {
     }
 
     static async setUpCountries(req,res) {
-        for(let i=1; i<countriesToAdd.length; i++){
+        for(let i=0; i<countriesToAdd.length; i++){
             let name = countriesToAdd[i].country
             let description = countriesToAdd[i].description
             let data = { name, description}
