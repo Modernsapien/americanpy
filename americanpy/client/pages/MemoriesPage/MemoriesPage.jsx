@@ -31,7 +31,8 @@ const MemoriesPage = () => {
   };
 
   const handleFileChange = (e) => {
-    setLink(e.target.files[0]);
+    setLink(URL.createObjectURL(e.target.files[0]));
+    
   };
 
   const handleDescriptionChange = (e) => {
@@ -257,9 +258,6 @@ const MemoriesPage = () => {
           >
             Add Memory <FontAwesomeIcon icon={faCamera} />
           </button>
-          <button className="button" data-testid="save_button">
-            Save Memories
-          </button>
         </div>
       )}
 
@@ -267,7 +265,7 @@ const MemoriesPage = () => {
         {memories.map((memory, index) => (
           <div className="memory" key={index} data-testid={`Memory_${index}`}>
             <img
-              src={URL.createObjectURL(memory.drive_link)}
+              src={memory.drive_link}
               alt={`Memory ${index}`}
               data-testid={`Memory_${index}_image`}
             />

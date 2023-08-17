@@ -52,7 +52,6 @@ form {
 /* Destination input style */
 .destination-input {
   display: block;
-  width: 100%;
   margin: 10px 0;
   padding: 15px;
   border: none;
@@ -168,7 +167,7 @@ height: 820px;
 /* Loading Globe Icon */
 .get-suggestions-button .fa-globe {
   font-size: 36px; /* Adjust the size as needed */
-  color: green; /* Change the color to your preference */
+  color: #366491; /* Change the color to your preference */
 }
 
 /* Loading Spinner Animation */
@@ -183,7 +182,7 @@ height: 820px;
 
 .get-suggestions-button.loading {
   font-weight: bold;
-  color: green;
+  color: #366491;
   gap: 10px;
   font-size: 1.5rem;
 }
@@ -331,7 +330,7 @@ height: 820px;
   /* top: -280px; */
   scale: 100%;
   width: 14%;
-  margin-top: -210px !important;
+  /* margin-top: -100px !important; */
 }
 
 .jp-container-wrapper {
