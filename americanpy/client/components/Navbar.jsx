@@ -9,7 +9,7 @@ import { useCredentials } from "../contexts";
 const NavbarComponent = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [shouldReload, setShouldReload] = useState(false);
-  
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsSignedIn(!!token);
@@ -20,13 +20,14 @@ const NavbarComponent = () => {
       const response = await fetch("http://localhost:3000/users/logout", {
         method: "DELETE",
         headers: {
-          Authorization: localStorage.getItem("token"),
+          Authorization: localStorage.getItem("token"), 
         },
       });
 
       if (response.status === 202) {
-        localStorage.removeItem("token");
-        setIsSignedIn(false);
+        localStorage.removeItem("token"); 
+        localStorage.removeItem("user_id")
+        setIsSignedIn(false); 
         window.location.reload()
       } else {
         console.error("Logout failed");
@@ -35,7 +36,7 @@ const NavbarComponent = () => {
       console.error("Error during logout:", error);
     }
   };
-
+  
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container">
@@ -62,7 +63,7 @@ const NavbarComponent = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink
+            <NavLink
                 className="nav-link"
                 activeclassname="active"
                 to="/mappage"
@@ -71,7 +72,7 @@ const NavbarComponent = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink
+            <NavLink
                 className="nav-link"
                 activeclassname="active"
                 to="/journey"
@@ -80,7 +81,7 @@ const NavbarComponent = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink
+            <NavLink
                 className="nav-link"
                 activeclassname="active"
                 to="/memories"
@@ -96,8 +97,8 @@ const NavbarComponent = () => {
             <li className="nav-item">
               {isSignedIn ? (
                 <button className="nav-link" onClick={handleLogout}>
-                  Logout
-                </button>
+                Logout
+              </button>
               ) : (
                 <NavLink
                   className="nav-link"

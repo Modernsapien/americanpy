@@ -16,29 +16,34 @@ const UserPage = () => {
   const [purchasedItems, setPurchasedItems] = useState([]);
   const { points, setPoints } = usePoints();
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+    if (isLoggedIn) {
+      fetchUserData();
+    }
+  }, [isLoggedIn]);
 
   async function fetchUserData() {
     try {
-      const token = JSON.parse(localStorage.getItem("token"));
-      const id = token.user_id;
-      
-      console.log(id)
-      const response = await fetch(`http://localhost:3000/users/user/${id}`);
+      const user_id = JSON.parse(localStorage.getItem("user_id"));
+      const options = {
+        headers:  {
+            'Authorization': localStorage.getItem("token")
+        }
+    }
+      const response = await fetch(`http://localhost:3000/users/user/${user_id}`, options);
       const userData = await response.json();
-      
       setUsername(userData.username);
-
       setEmail(userData.email);
     } catch (error) {
       console.error(error);
     }
   }
   
-  useEffect(() => {
-    if(isLoggedIn)
-    fetchUserData();
-  }, [isLoggedIn]);
-
+ 
 // useEffect(() => {
 //   const fetchedUserInfo = {
 //     username: '',
