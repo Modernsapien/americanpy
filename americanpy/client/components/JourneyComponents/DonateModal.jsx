@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import styles from '../../pages/JourneyPage/JourneyPage.css';
+// import styles from '../../pages/JourneyPage/JourneyPage.css';
+import styles from './donate.css';
 
 if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 
@@ -47,10 +48,10 @@ const DonateModal = ({ isOpen, onRequestClose }) => {
       className={styles.modalContent}
       overlayClassName={styles.modalOverlay}
     >
-      <h2 data-testid="modal_title">Make a Donation</h2>
-      <button data-testid="close_button" className="close-button" onClick={onRequestClose}>
-        X
-      </button>
+            <button data-testid="close_button" className="close-button" onClick={onRequestClose}> X
+            </button>
+      <h2 className="donation" data-testid="modal_title">Make a Donation</h2>
+        
       {isLoading ? (
         <div className="loading-container">
           <FontAwesomeIcon icon={faSpinner} spin size="3x" /> {/* Spinning loading icon from Font Awesome */}

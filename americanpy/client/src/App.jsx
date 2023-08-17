@@ -13,6 +13,7 @@ import { PointsProvider } from "../components/MemoriesComponents/PointsContext";
 import ComponentUsingPoints from "../components/MemoriesComponents/ComponentUsingPoints";
 import ProtectedRoute from "../pages/protectedRoute/protectedRoute";
 
+
 function App() {
   return (
     <>
