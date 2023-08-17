@@ -166,8 +166,9 @@ const MemoriesPage = () => {
             onChange={handleNameChange}
             required
           />
-          <label htmlFor="memory_description">Description</label>
+          <label htmlFor="memory_description" data-testid="memory_description_label">Description</label>
           <input
+            data-testid="memory_description_input"
             className="inputBoxes"
             type="text"
             placeholder="About the memory"
