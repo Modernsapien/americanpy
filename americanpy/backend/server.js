@@ -31,7 +31,7 @@ app.post('/get_eco_friendly_transportation', async (req, res) => {
       },
       {
         headers: {
-          Authorization: `Bearer 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`,
+          Authorization: `Bearer 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`,
         },
       }
     );
