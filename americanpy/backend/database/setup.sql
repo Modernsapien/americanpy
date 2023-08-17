@@ -15,9 +15,9 @@ CREATE TABLE countries (
     country_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR UNIQUE NOT NULL,
     description VARCHAR NOT NULL,
-    eco_stat INT NOT NULL,
-    image_url VARCHAR NOT NULL,
-    attractions VARCHAR ARRAY
+    eco_stat INT,
+    image_url VARCHAR,
+    attractions VARCHAR
 );
 
 CREATE TABLE rewards (

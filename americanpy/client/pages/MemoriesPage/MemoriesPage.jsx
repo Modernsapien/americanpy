@@ -48,21 +48,21 @@ const MemoriesPage = () => {
     setCountry(event.target.value);
   };
 
-  const addMemory = () => {
+   async function addMemory(e) {
+    e.preventDefault()
+    console.log('hello')
     if (drive_link && memory_description && memory_location && memory_date) {
-      const memory = { drive_link, memory_name, memory_description, memory_location, memory_date};
+      const memory = { drive_link, memory_name, memory_description, memory_location, country, memory_date};
+      console.log(memory)
       setMemories([...memories, memory]);
       setLink(null);
       setName('');
       setDescription('');
       setLocation('');
       setDate('');
+      setCountry('');
       setShowForm(false);
     }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
     const options = {
       method: 'POST',
       headers: {
@@ -77,10 +77,34 @@ const MemoriesPage = () => {
         country: country,
         drive_link: drive_link
       }),
-    };
-  
-  };
+    
+  }
+  const resp = await fetch('http://localhost:3000/memory', options)
+  const data = await resp.json()
+};
 
+   const handleSubmit = async (e) => {
+     e.preventDefault();
+     const options = {
+       method: 'POST',
+       headers: {
+         Accept: 'application/json',
+         'Content-Type': 'application/json',
+       },
+       body: JSON.stringify({
+         memory_name: memory_name,
+         memory_date: memory_date,
+         memory_description: memory_description,
+         memory_location: memory_location,
+         country: country,
+         drive_link: drive_link
+      
+   })
+  }
+     const resp = await fetch('http://localhost:3000/memory', options)
+     const data = await resp.json()
+   
+  }
 
   useEffect(() => {
     if(isLoggedIn){
@@ -171,7 +195,7 @@ const MemoriesPage = () => {
             onChange={handleDateChange}
             required
           />
-          <button type='submit' className="button" onClick={addMemory}>
+          <button type='button' className="button" onClick={addMemory}>
             Add Memory
           </button>
         </form>

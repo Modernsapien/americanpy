@@ -1,5 +1,6 @@
 const Memory = require('../models/Memory')
 const User = require('../models/User')
+const Country = require('../models/Country')
 
 class MemoryController {
     static async getAllMemories(req, res) {
@@ -44,6 +45,7 @@ class MemoryController {
     static async createMemory(req, res) {
         try {
             const data = req.body;
+            const country = await Country.getCountryByCountry(data.country)
             const newMemory = await Memory.createMemory(data);
             res.status(201).json(newMemory)
         } catch (err) {
