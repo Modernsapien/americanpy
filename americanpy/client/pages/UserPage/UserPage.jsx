@@ -55,12 +55,12 @@ const UserPage = () => {
 // }, []);
 
 
-  const capitaliseWords = (string) => {
-    return string
-      .split(' ')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
-  };
+  // const capitaliseWords = (string) => {
+  //   return string
+  //     .split(' ')
+  //     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+  //     .join(' ');
+  // };
 
   const confirmPurchase = (item) => {
     const confirmed = window.confirm(`Are you sure you want to purchase this item for ${item.cost} points?`);
@@ -98,7 +98,7 @@ const UserPage = () => {
     <div className="background-user" data-testid="user_background">
       <img className='waves' src={waves} alt="Waves" />
     </div>
-      <h1 className="user" data-testid="user_title">Welcome to your Passport, {capitaliseWords(username)}!</h1>
+      <h1 className="user" data-testid="user_title">Welcome to your Passport, {(username)}!</h1>
       <div className="row row-user">
         <div className="col-md-6 edit-section">
           <h2 data-testid="user_photo_title">Profile Photo</h2>
@@ -117,7 +117,7 @@ const UserPage = () => {
             ) : (
               <div className="display-info">
                 <h2 data-testid="user_info_title">User Information</h2>
-                <p data-testid="username" className='username'>Username: {capitaliseWords(username)}</p>
+                <p data-testid="username" className='username'>Username: {(username)}</p>
                 <p data-testid="email" className='email'>Email: {email}</p>
                 <button data-testid="info_button" onClick={() => setEditingInfo(true)}>Edit Info</button>
               </div>
