@@ -1,4 +1,5 @@
 const Country = require('../models/Country')
+const countriesToAdd = require('../../client/data/ecoData.json')
 
 class CountryController {
 
@@ -28,6 +29,15 @@ class CountryController {
             res.status(200).send(country)
         } catch (err) {
             res.status(404).json({Error: err.message})
+        }
+    }
+
+    static async setUpCountries(req,res) {
+        for(let i=1; i<countriesToAdd.length; i++){
+            let name = countriesToAdd[i].country
+            let description = countriesToAdd[i].description
+            let data = { name, description}
+            const result = await Country.createCountry(data)
         }
     }
 

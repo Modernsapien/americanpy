@@ -87,6 +87,7 @@ describe("Memories Page", () => {
 
         const fileInput = screen.getByTestId("file_input")
         const memoryTitleInput = screen.getByTestId("memory_title_input")
+        const memoryDescriptionInput = screen.getByTestId("memory_description_input")
         const locationInput = screen.getByTestId("location_input")
         const countryInput = screen.getByTestId("country_input")
         const dateInput = screen.getByTestId("date_input")
@@ -97,12 +98,14 @@ describe("Memories Page", () => {
 
         await userEvent.type(memoryTitleInput, "cheese")
         await userEvent.type(locationInput, "burger")
+        await userEvent.type(memoryDescriptionInput, "yes")
         await userEvent.selectOptions(countryInput, "Denmark")
         await userEvent.upload(fileInput, blob)
         await userEvent.clear(dateInput)
         await userEvent.type(dateInput, "2020-02-01")
 
         await userEvent.click(addButton)
+        await new Promise((r) => setTimeout(r, 3000));
         expect(screen.queryByTestId("memories_form")).not.toBeInTheDocument()
 
         it("should display the memories", async () => {
@@ -111,6 +114,7 @@ describe("Memories Page", () => {
 
             const fileInput = screen.getByTestId("file_input")
             const memoryTitleInput = screen.getByTestId("memory_title_input")
+            const memoryDescriptionInput = screen.getByTestId("memory_description_input")
             const locationInput = screen.getByTestId("location_input")
             const countryInput = screen.getByTestId("country_input")
             const dateInput = screen.getByTestId("date_input")
@@ -119,6 +123,7 @@ describe("Memories Page", () => {
             let blob = new Blob(["ahoy there"], {type: 'image/png'})
 
             await userEvent.type(memoryTitleInput, "cheese")
+            await userEvent.type(memoryDescriptionInput, "yes")
             await userEvent.type(locationInput, "burger")
             await userEvent.selectOptions(countryInput, "Denmark")
             await userEvent.upload(fileInput, blob)
