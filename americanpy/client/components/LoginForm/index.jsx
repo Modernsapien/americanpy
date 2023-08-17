@@ -9,7 +9,7 @@ export default function LoginForm(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { token, setToken } = useCredentials();
-  
+  const [userId, setUserId] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,17 +27,19 @@ export default function LoginForm(props) {
     const resp = await fetch('http://localhost:3000/users/login', options);
     const data = await resp.json();
     console.log(data)
-    if (resp.ok) {
-      localStorage.setItem('token', data.token);
-      setToken(data.token);
-      navigate('/');
-      window.location.reload()  
-
-    } else {
-      console.log(data);
-      alert('Incorrect username or password');
-    }
-  };
+  if (resp.ok) {
+    
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('user_id', data.id); 
+    setToken(data.token);
+    setUserId(data.user_id)
+    navigate('/');
+    window.location.reload();
+  } else {
+    console.log(data);
+    alert('Incorrect username or password');
+  }
+};
 
   return (
     <div className={styles.containerWrapper} data-testid="login_form">
