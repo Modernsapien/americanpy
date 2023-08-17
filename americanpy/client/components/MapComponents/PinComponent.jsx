@@ -1,98 +1,101 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import L from "leaflet";
 import axios from "axios";
 import ecoData from "../../data/ecoData.json";
+import { v4 as uuidv4 } from 'uuid';
+
 
 const PinComponent = ({
   map,
   isAddingPin,
+  markers,
   isHoveringButton,
   removeMarker,
   setMarkers,
   setMarkerIds,
   setSelectedPin,
-  removePinButtonId,
   isAddingButton,
   setIsAddingButton,
 }) => {
   const buttonRef = useRef(null);
+  // const [markers, setMarkersState] = useState([]);
+  const markerRef = useRef({});
 
   useEffect(() => {
-    if (map) {
-      let markerCount = 1;
+    setMarkers([]);
 
-      // Event handler for clicking on the map
+    if (map) {
       const handleMapClick = async (event) => {
+        console.log("Map clicked");
         if (isAddingPin && !isHoveringButton && !isAddingButton) {
           const { lat, lng } = event.latlng;
-          const markerId = `marker-${markerCount}`;
-          markerCount++;
-
-          // Update the marker IDs
-          setMarkerIds((prevMarkerIds) => [...prevMarkerIds, markerId]);
-
-          // Create a new marker and add it to the map
-          const marker = L.marker([lat, lng], { id: markerId }).addTo(map);
-
+          const markerId = uuidv4(); 
+      
           try {
-            // Retrieve country information based on coordinates
             const response = await axios.get(
               `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`
             );
-
+      
             const countryName = response.data.address.country;
+      
+            if (countryName) {
+              // Check if the country is valid and not over oceans or seas
+              const countryData = ecoData.find(
+                (data) => data.country === countryName
+              );
+      
+              if (countryData) {
+                const marker = L.marker([lat, lng], { id: markerId }).addTo(map);
+                
+              // const markers = []
+              // const marker = L.marker(marker.latLng, { id: markerId }).addTo(map);
+              // markers.push(marker);
+              marker._icon.id = markerId;
 
-            // Find corresponding data for the country from ecoData
-            const countryData = ecoData.find(
-              (data) => data.country === countryName
-            );
 
-            if (countryData) {
-              const countryDescription = countryData.description;
-
-              // Bind a popup to the marker with country information
-              marker
-                .bindPopup(`<b>${countryName}</b><br>${countryDescription}`)
-                .openPopup();
-
-              // Add a "Remove Pin" button to the popup content
-              const popupContent = marker.getPopup().getContent();
-              const newPopupContent = `
-                ${popupContent}
-                <button class="btn btn-danger" id="${removePinButtonId}">Remove Pin</button>
-              `;
-              marker.getPopup().setContent(newPopupContent);
-
-              // Add a click event listener to the "Remove Pin" button
-              const removeButton = document.getElementById(removePinButtonId);
-              if (removeButton) {
-                removeButton.addEventListener("click", () => {
-                  removeMarker(markerId);
-                });
+      
+                const countryDescription = countryData.description;
+      
+                marker
+                  .bindPopup(`<b>${countryName}</b><br>${countryDescription}`)
+                  .openPopup();
+      
+                const popupContent = marker.getPopup().getContent();
+                const newPopupContent = `
+                  ${popupContent}
+                  <button class="btn btn-danger" id="${markerId}" >Remove Pin</button>
+                `;
+                marker.getPopup().setContent(newPopupContent);
+      
+                marker.options.description = countryDescription;
+      
+                setSelectedPin(marker);
+      
+                setMarkerIds((prevMarkerIds) => [...prevMarkerIds, markerId]);
+                setMarkers((prevMarkers) => [...prevMarkers, marker]);
+                markerRef.current[markerId] = marker;
+      
+                console.log(
+                  `Added pin with ID: ${markerId}, Longitude: ${lng}, Latitude: ${lat}`
+                );
+                setMarkers([...markers,marker])
+                console.log(markers)
+              } else {
+                console.log("Clicked over oceans or seas, not adding pin.");
               }
-
-              // Store country description in marker options
-              marker.options.description = countryDescription;
-
-              // Set the selected pin to the current marker
-              setSelectedPin(marker);
+            } else {
+              console.log("No country information available for clicked location.");
             }
-
-            // Update markers state with the new marker
-            setMarkers((prevMarkers) => [...prevMarkers, marker]);
-            console.log(
-              `Added pin with ID: ${markerId}, Longitude: ${lng}, Latitude: ${lat}`
-            );
           } catch (error) {
             console.error("Error retrieving country information:", error);
           }
         }
+        console.log(markers)
       };
+      
 
-      // Add a "click" event listener to the map
       map.on("click", handleMapClick);
 
-      // Clean up by removing the "click" event listener when the component unmounts
       return () => {
         map.off("click", handleMapClick);
       };
@@ -101,17 +104,38 @@ const PinComponent = ({
     map,
     isAddingPin,
     isHoveringButton,
-    removeMarker,
-    setMarkers,
     setMarkerIds,
     setSelectedPin,
-    removePinButtonId,
     isAddingButton,
   ]);
 
   const handleButtonClick = () => {
     setIsAddingButton((prevState) => !prevState);
+    setIsAddingPlaceToVisit(false);
   };
+
+  const handleRemovePinClick = (marker) => {
+
+    console.log(markerId);
+    console.log("Clicked Remove Pin button for marker with ID:", markerId);
+    console.log("Markers array:", markers);
+  
+    const updatedMarkers = markers.filter(
+      (el) => el !== marker,
+      console.log(marker)
+    );
+    setMarkers(updatedMarkers);
+    // setMarkers((prevMarkers) =>
+    //   prevMarkers.filter((marker) => marker.options.id !== markerId)
+    // );
+  
+    const markerToRemove = markerRef.current[markerId];
+    if (markerToRemove) {
+      map.removeLayer(markerToRemove);
+      delete markerRef.current[markerId];
+    }
+  };
+  
 
   useEffect(() => {
     if (buttonRef.current) {
@@ -125,15 +149,28 @@ const PinComponent = ({
     }
   }, []);
 
-  // Return the button
   return (
-    <button
-      ref={buttonRef}
-      className={`btn ${isAddingButton ? "btn-danger" : "btn-primary"}`}
-      onClick={handleButtonClick}
-    >
-      {isAddingButton ? "Cancel Adding" : "Add Pin"}
-    </button>
+    <div>
+      {markers.map((marker) => (
+        <div key={marker.options.id}>
+          {/* <button
+            className="btn btn-danger"
+            onClick={() => removeMarker(marker)}
+            id={`remove-pin-button-${marker.options.id}`}
+          >
+            Remove Pin
+          </button> */}
+        </div>
+      ))}
+      <button
+        ref={buttonRef}
+        className={`btn ${isAddingButton ? "btn-danger" : "btn-primary"}`}
+        onClick={handleButtonClick}
+        id={`add-pin-button-${markers.length}`}
+      >
+        {isAddingButton ? "Cancel Adding" : "Add Pin"}
+      </button>
+    </div>
   );
 };
 

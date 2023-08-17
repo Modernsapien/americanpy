@@ -1,28 +1,47 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './UserPage.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import defaultUserPhoto from './user-photo.png';
+import waves from './waves.png';
+import { usePoints } from '../../components/MemoriesComponents/PointsContext';
 
 const UserPage = () => {
-  const [username, setUsername] = useState("Example Name");
-  const [email, setEmail] = useState("@example.com");
-  const [points, setPoints] = useState(100);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [userPhoto, setUserPhoto] = useState(null);
   const [editingInfo, setEditingInfo] = useState(false);
+  const [purchasedItems, setPurchasedItems] = useState([]);
+  const { points, setPoints } = usePoints();
 
-  const capitalizeWords = (string) => {
+
+useEffect(() => {
+  const fetchedUserInfo = {
+    username: '',
+    email: ''
+  };
+
+  setUsername(fetchedUserInfo.username);
+  setEmail(fetchedUserInfo.email);
+}, []);
+
+
+  const capitaliseWords = (string) => {
     return string
       .split(' ')
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
   };
 
-  const handlePurchase = (cost) => {
-    if (points >= cost) {
-      setPoints(points - cost);
-      alert('Purchase successful!');
-    } else {
-      alert('Insufficient points');
+  const confirmPurchase = (item) => {
+    const confirmed = window.confirm(`Are you sure you want to purchase this item for ${item.cost} points?`);
+    if (confirmed) {
+      if (points >= item.cost) {
+        setPoints(points - item.cost);
+        setPurchasedItems([...purchasedItems, { name: item.name }]);
+        alert('Purchase successful!');
+      } else {
+        alert('Insufficient points');
+      }
     }
   };
 
@@ -38,54 +57,71 @@ const UserPage = () => {
   };
 
   const shopItems = [
-    { name: 'Item 1', cost: 50 },
-    { name: 'Item 2', cost: 75 },
-    { name: 'Item 3', cost: 100 },
+    { name: 'Plant a tree', cost: 50 },
+    { name: 'Plant 10 trees', cost: 75 },
+    { name: '10% off zero carbon travel', cost: 100 },
   ];
 
   return (
-    <div className="user-container">
-      <h1 className="user">Welcome to your Passport, {capitalizeWords(username)}!</h1>
+    <div className="user-page">
+    <div className="background-user" data-testid="user_background">
+      <img className='waves' src={waves} alt="Waves" />
+    </div>
+      <h1 className="user" data-testid="user_title">Welcome to your Passport, {capitaliseWords(username)}!</h1>
       <div className="row">
         <div className="col-md-6 edit-section">
-          <h2>Profile Photo</h2>
+          <h2 data-testid="user_photo_title">Profile Photo</h2>
           <div className="profile-photo">
-            <img src={userPhoto || defaultUserPhoto} alt="User" />
-            <input type="file" accept="image/*" onChange={handlePhotoChange} />
+            <img src={userPhoto || defaultUserPhoto} alt="User" data-testid="user_photo"/>
+            <input data-testid="user_photo_input" className='file' type="file" accept="image/*" onChange={handlePhotoChange} />
           </div>
         </div>
         <div className="col-md-6 info-section">
             {editingInfo ? (
               <div className="edit-info">
-                <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
-                <input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-                <button onClick={() => setEditingInfo(false)}>Save Changes</button>
+                <input data-testid="username_input" type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
+                <input data-testid="email_input" type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+                <button data-testid="edit_button" onClick={() => setEditingInfo(false)}>Save Changes</button>
               </div>
             ) : (
               <div className="display-info">
-                <h2>User Information</h2>
-                <p className='username'>Username: {capitalizeWords(username)}</p>
-                <p className='email'>Email: {email}</p>
-                <button onClick={() => setEditingInfo(true)}>Edit Info</button>
+                <h2 data-testid="user_info_title">User Information</h2>
+                <p data-testid="username" className='username'>Username: {capitaliseWords(username)}</p>
+                <p data-testid="email" className='email'>Email: {email}</p>
+                <button data-testid="info_button" onClick={() => setEditingInfo(true)}>Edit Info</button>
               </div>
             )}
         </div>
       </div>
       <div className="shop-section">
-        <h3 className='rewards'>Rewards</h3>
-        <p className='points'>Points available: {points}</p>
-        <div className="shop-items-grid">
+        <h3 data-testid="rewards_title" className='rewards'>Rewards</h3>
+        <p data-testid="points_available" className='points'>Points available: {points}</p>
+        <div data-testid="shop_items" className="shop-items-grid">
           {shopItems.map((item, index) => (
             <div key={index} className='shop-item'>
-              <h4>{item.name}</h4>
-              <p>Cost: {item.cost} points</p>
-              <button className='purchase' onClick={() => handlePurchase(item.cost)}>Purchase</button>
+              <h4 data-testid={`${item.name}_title`}>{item.name}</h4>
+              <p data-testid={`${item.name}_cost`}>Cost: {item.cost} points</p>
+              <button data-testid={`${item.name}_button`} className='purchase' onClick={() => confirmPurchase(item)}>Purchase</button>
             </div>
           ))}
         </div>
+        <div className="purchased-rewards">
+        <h3 className='purchased-item' data-testid="purchased_title">Purchased Items</h3>
+        {purchasedItems.length > 0 ? (
+          <ul>
+            {purchasedItems.map((item, index) => (
+              <li data-testid={`${item.name}_purchased`} key={index}>{item.name}</li>
+            ))}
+          </ul>
+        ) : (
+          <p data-testid="no_purchases" >No items purchased</p>
+        )}
       </div>
-    </div>
+        </div>
+      </div>
   );
 };
+
+
 
 export default UserPage;

@@ -3,11 +3,15 @@ import './homepage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPassport, faRoute, faLeaf, faGift, faBook, faGlobeAmericas, } from '@fortawesome/free-solid-svg-icons';
 import world from './world.png'
+import peaks from './peaks.png'
 
 export default function HomePage() {
   return (
     <>
     <div className="container" data-testid="title_container">
+    <div className="background-home">
+      <img className='peaks' src={peaks} alt="Waves" />
+    </div>
       <div className="row intro-explain-container">
           <h1 className='intro' data-testid = "home_title">Travelling doesn't have to cost the earth!</h1>
           <div className="col-md-8 text-column">

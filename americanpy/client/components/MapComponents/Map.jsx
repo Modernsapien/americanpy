@@ -19,12 +19,15 @@ const Map = ({ id }) => {
   const [markerIds, setMarkerIds] = useState([]);
   const [selectedPin, setSelectedPin] = useState(null);
   const [mapClickEnabled, setMapClickEnabled] = useState(true);
+  const [markerCount, setMarkerCount] = useState(1)
 
   // function to remove a marker
-  const removeMarker = (markerId) => {
-    const markerToRemove = markers.find(
-      (marker) => marker.options.id == markerId
-    );
+  const removeMarker = (marker) => {
+    console.log("here")
+    const markerToRemove = markers.find((el) => {
+        el == marker
+        console.log(marker)
+      });
 
     if (markerToRemove) {
       if (selectedPin === markerToRemove) {
@@ -59,6 +62,7 @@ const Map = ({ id }) => {
   };
 
   const handleRemoveButtonClick = () => {
+    console.log("here")
     if (selectedPin) {
       const markerId = selectedPin.options.id;
       setSelectedPin(null);
@@ -136,6 +140,7 @@ const Map = ({ id }) => {
       markers.forEach((marker) => {
         const removeButtonId = `remove-pin-button-${marker.options.id}`;
         const removeButton = document.getElementById(removeButtonId);
+        console.log(removeButton)
 
         if (removeButton) {
           if (!marker.options.removeHandler) {
@@ -226,9 +231,9 @@ const Map = ({ id }) => {
   };
 
   return (
-    <div className="map-container">
+    <div className="map-container" data-testid="map_container">
       <div className="top-bar">
-        <div className="map-buttons">
+        <div className="map-buttons" data-testid="map_buttons">
           <PlaceToVisitButton
             isAddingPlaceToVisit={isAddingPin} // Use isAddingPin instead of isAddingPlaceToVisit
             setIsAddingPlaceToVisit={setIsAddingPin} // Use setIsAddingPin instead of setIsAddingPlaceToVisit
@@ -241,6 +246,7 @@ const Map = ({ id }) => {
             onMouseEnter={handleButtonMouseEnter}
             onMouseLeave={handleButtonMouseLeave}
             id="cancel-pin-button"
+            data-testid="pin_button"
           >
             {isAddingPin ? "Cancel Places to visit" : "Places to visit"}
           </button>
@@ -250,13 +256,14 @@ const Map = ({ id }) => {
             onMouseEnter={handleButtonMouseEnter}
             onMouseLeave={handleButtonMouseLeave}
             id="toggle-color-button"
+            data-testid="eco_button"
           >
             {colorByEpiScore ? "Hide Eco colour" : "Show Eco colour"}
           </button>
         </div>
         <div className="destination-form"></div>
       </div>
-      <div className="map" style={{ height: "400px", width: "100%" }}>
+      <div className="map" style={{ height: "400px", width: "100%" }} data-testid="actual_map">
         <div id={id}></div>
       </div>
       <PinComponent
@@ -264,15 +271,18 @@ const Map = ({ id }) => {
         isAddingPin={isAddingPin}
         isHoveringButton={isHoveringButton}
         removeMarker={removeMarker}
+        markers={markers}
         setMarkers={setMarkers}
         setMarkerIds={setMarkerIds}
         setSelectedPin={setSelectedPin}
         removePinButtonId={removePinButtonId}
+        markerCount = {markerCount}
+        setMarkerCount={setMarkerCount}
       />
       {selectedPin && (
         <div className="modal-overlay">
           <div className="modal">
-            <button className="close-button" onClick={handleCloseModal}>
+            {/* <button className="close-button" onClick={handleCloseModal}>
               Close
             </button>
             <h3>{selectedPin.getLatLng().toString()}</h3>
@@ -283,7 +293,7 @@ const Map = ({ id }) => {
               onClick={handleRemoveButtonClick}
             >
               Remove Pin
-            </button>
+            </button> */}
           </div>
         </div>
       )}

@@ -39,14 +39,14 @@ const EcoFriendlySuggestions = () => {
             },
             {
               role: "user",
-              content: `Suggest eco-friendly travel options from ${startDestination} to ${endDestination}.also return the carbon emmisions that would be caused by each mode of transport`,
+              content: `Suggest eco-friendly travel options from ${startDestination} to ${endDestination}.also return the carbon emmisions that would be caused by each mode of transport and an estimated cost for this travel in £.`,
             },
           ],
         },
         {
           headers: {
             Authorization:
-              "Bearer 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",
+              "Bearer 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",
           },
         }
       );
@@ -82,15 +82,14 @@ const EcoFriendlySuggestions = () => {
         { number: 1, content: "An error occurred while fetching suggestions." },
       ]);
     } finally {
-      setIsLoading(false); // Reset loading state when request completes
+      setIsLoading(false); 
     }
   };
-  const handleCloseModal = () => {
-    setIsDonateModalOpen(false);
-  };
+
+  
 
   return (
-    <div className="eco-friendly-suggestions">
+    <div className="eco-friendly-suggestions" data-testid="eco_suggestions">
       <h2>
         Eco-Friendly Travel Suggestions from{" "}
         {startDestination.charAt(0).toUpperCase() + startDestination.slice(1)}{" "}
@@ -143,7 +142,7 @@ const EcoFriendlySuggestions = () => {
               <h3>
                 {suggestion.content.includes("Train") ? (
                   <FontAwesomeIcon icon={faTrain} />
-                ) : suggestion.content.includes("Bus") ? (
+                ) : suggestion.content.includes("Bus")||suggestion.content.includes("Coach") ? (
                   <FontAwesomeIcon icon={faBus} />
                 ) : suggestion.content.includes("Bike") ||
                   suggestion.content.includes("Cycling") ? (
@@ -158,7 +157,9 @@ const EcoFriendlySuggestions = () => {
                   <FontAwesomeIcon icon={faWalking} />
                 ) : suggestion.content.includes("Flight") ? (
                   <FontAwesomeIcon icon={faPlane} />
-                ) : null}
+                ) : (
+                  <FontAwesomeIcon icon={faGlobe} />
+                )}
               </h3>
               <p>
                 {expandedCardIndex === index || suggestion.content.length <= 50

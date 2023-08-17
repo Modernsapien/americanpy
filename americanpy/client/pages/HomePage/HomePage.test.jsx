@@ -5,11 +5,17 @@ import userEvent from "@testing-library/user-event";
 import matchers from "@testing-library/jest-dom/matchers";
 expect.extend(matchers);
 import HomePage from "./HomePage";
+import { PointsProvider } from "../../components/MemoriesComponents/PointsContext";
+import ComponentUsingPoints from "../../components/MemoriesComponents/ComponentUsingPoints";
 
 describe("HomePage", () => {
     beforeEach(async () => {
         render (
-            <HomePage />
+            
+            <PointsProvider>
+                <ComponentUsingPoints />
+                <HomePage />
+            </PointsProvider>
         )
     })
 

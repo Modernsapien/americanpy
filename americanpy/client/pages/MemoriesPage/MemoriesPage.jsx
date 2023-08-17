@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './MemoriesPage.css';
 import { useCredentials } from '../../contexts';
 import countriesData from '../../data/ecoData.json';
+import { usePoints } from '../../components/MemoriesComponents/PointsContext';
+
 
 const MemoriesPage = () => {
   const [memories, setMemories] = useState([{}]);
@@ -12,6 +14,7 @@ const MemoriesPage = () => {
   const [memory_date, setDate] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [country, setCountry] = useState("");
+ const { points, setPoints } = usePoints();
   const { token } = useCredentials()
   const isLoggedIn = token || localStorage.getItem('token')
 
@@ -24,6 +27,7 @@ const MemoriesPage = () => {
       console.log(data)
     }
   }
+
 
   const handleFileChange = (e) => {
     setLink(e.target.files[0]);
@@ -81,30 +85,10 @@ const MemoriesPage = () => {
   }
   const resp = await fetch('http://localhost:3000/memory', options)
   const data = await resp.json()
+   setPoints(points + 10);
+    alert('Memory added successfully, 10 Points added!');
 };
 
-   const handleSubmit = async (e) => {
-     e.preventDefault();
-     const options = {
-       method: 'POST',
-       headers: {
-         Accept: 'application/json',
-         'Content-Type': 'application/json',
-       },
-       body: JSON.stringify({
-         memory_name: memory_name,
-         memory_date: memory_date,
-         memory_description: memory_description,
-         memory_location: memory_location,
-         country: country,
-         drive_link: drive_link
-      
-   })
-  }
-     const resp = await fetch('http://localhost:3000/memory', options)
-     const data = await resp.json()
-   
-  }
 
   useEffect(() => {
     if(isLoggedIn){
@@ -112,38 +96,23 @@ const MemoriesPage = () => {
     }
   },[])
 
+
   return (
-    
-    
-    <div className="memories-container">
-      <h1 className="intro-memories">Memories are better when they are made guilt free!</h1>
-      {/* <div>
-      {memories.map((m,i) => {
-        <div key={i}>
-          <h2>{m.memory_name}</h2>
-          <img
-           src={m.drive_link}
-           alt={m.memory_name}
-         />
-         <p>{m.memory_description}</p>
-         <p>{m.memory_location}</p>
-         <p>{m.memory_date}</p>
-        </div>
-      })}
-     </div>  */}
-       
-      <button className="create-memory-button" onClick={() => setShowForm(true)}>
+    <div className="memories-container" data-testid="memories_container">
+      <h1 className="intro-memories" data-testid="memories_title">Memories are better when they are made guilt free!</h1>
+      <button className="create-memory-button" data-testid="memories_button" onClick={() => setShowForm(true)}>
         Create a Memory
       </button>
 
     
 
       {showForm && (
-        <form className="memory-form" onSubmit={handleSubmit}>
-          <h2 className="myMemories">My Memories</h2>
-          <input className="file" type="file" accept="image/*" onChange={handleFileChange} /> <br />
-          <label htmlFor="memory_name">Title</label>
+        <div className="memory-form" data-testid="memories_form">
+          <h2 className="myMemories" data-testid="memories_form_title">My Memories</h2>
+          <input className="file" type="file" accept="image/*" onChange={handleFileChange} data-testid="file_input" required /> <br />
+          <label htmlFor="description" data-testid="memory_title">Title</label>
           <input
+            data-testid="memory_title_input"
             className="inputBoxes"
             type="text"
             placeholder="Enter Title"
@@ -160,8 +129,11 @@ const MemoriesPage = () => {
             onChange={handleDescriptionChange}
             required
           />
-          <label htmlFor="memory_location">Location</label>
+
+          <div className="country-section">
+          <label htmlFor="location" data-testid="location_label">Location</label>
           <input
+            data-testid="location_input"
             className="inputBoxes"
             type="text"
             placeholder="Enter Location"
@@ -169,7 +141,8 @@ const MemoriesPage = () => {
             onChange={handleLocationChange}
             required
           />
-           <label htmlFor="country" data-testid="country_label">Country</label>
+
+            <label htmlFor="country" data-testid="country_label">Country</label>
             <select
               data-testid="country_input"
               className="country"
@@ -186,35 +159,35 @@ const MemoriesPage = () => {
             </option>
             ))}
             </select>
-          <label htmlFor="date">Date</label>
+
+          </div>
+          <label htmlFor="date" data-testid="memory_date">Date</label>
           <input
             className="inputBoxes"
-            type="text"
-            placeholder='dd/mm/yyyy'
-            value={memory_date}
+            data-testid="date_input"
+            type="date"
+            value={date}
             onChange={handleDateChange}
             required
           />
-          <button type='button' className="button" onClick={addMemory}>
+          <button className="button" onClick={addMemory} data-testid="add_button">
             Add Memory
           </button>
-        </form>
+          <button className="button" data-testid="save_button">Save Memories</button>
+        </div>
       )}
 
-      {/* {/* <div className="memory-list">
+       <div className="memory-list">
         {memories.map((memory, index) => (
-          <div className="memory" key={index}>
-            <img src={URL.createObjectURL(memory.drive_link)} alt={`Memory ${index}`} />
-            <p>Title: {memory.memory_name}</p>
-            <p>Description: {memory.memory_description}</p>
-            <p>Location: {memory.memory_location}</p>
-            <p>Date: {memory.memory_date}</p>
-          </div> */}
-        
+          <div className="memory" key={index} data-testid = {`Memory_${index}`}>
+            <img src={URL.createObjectURL(memory.file)} alt={`Memory ${index}`} data-testid = {`Memory_${index}_image`}/>
+            <p data-testid = {`Memory_${index}_title`}>Title: {memory.description}</p>
+            <p data-testid = {`Memory_${index}_location`}>Location: {memory.location}</p>
+            <p data-testid = {`Memory_${index}_date`}>Date: {memory.date}</p>
+          </div>
+        ))}
       </div>
-    
-    
-    
+     </div>
   );
 };
 
