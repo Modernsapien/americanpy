@@ -33,6 +33,7 @@ CREATE TABLE memories (
     country_id INT NOT NULL REFERENCES countries(country_id),
     memory_name VARCHAR(200),
     memory_date VARCHAR(10),
+    memory_location VARCHAR(200),
     memory_description VARCHAR(2000),
     drive_link VARCHAR(2000)
 );
