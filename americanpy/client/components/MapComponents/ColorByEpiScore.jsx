@@ -36,8 +36,9 @@ const ColorByEpiScore = ({ map, colorByEpiScore }) => {
       }
     };
 
+    
     handleColorByEpiScore();
-
+    console.log(    newBordersLayer   )›
     return () => {
       if (colorByEpiScore) {
         map.removeLayer(newBordersLayer);
@@ -46,6 +47,7 @@ const ColorByEpiScore = ({ map, colorByEpiScore }) => {
   }, [map, colorByEpiScore]);
 
   return null;
+
 };
 
 export default ColorByEpiScore;
