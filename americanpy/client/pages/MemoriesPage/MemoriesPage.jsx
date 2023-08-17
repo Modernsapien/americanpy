@@ -1,34 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import './MemoriesPage.css';
-import { useCredentials } from '../../contexts';
-import countriesData from '../../data/ecoData.json';
-import { usePoints } from '../../components/MemoriesComponents/PointsContext';
-import { faCamera } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState, useEffect } from "react";
+import "./MemoriesPage.css";
+import { useCredentials } from "../../contexts";
+import countriesData from "../../data/ecoData.json";
+import { usePoints } from "../../components/MemoriesComponents/PointsContext";
+import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const MemoriesPage = () => {
   const [memories, setMemories] = useState([]);
   const [drive_link, setLink] = useState(null);
-  const [memory_name, setName] = useState('');
-  const [memory_description, setDescription] = useState('');
-  const [memory_location, setLocation] = useState('');
-  const [memory_date, setDate] = useState('');
+  const [memory_name, setName] = useState("");
+  const [memory_description, setDescription] = useState("");
+  const [memory_location, setLocation] = useState("");
+  const [memory_date, setDate] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [country, setCountry] = useState("");
   const { points, setPoints } = usePoints();
 
   const { token } = useCredentials();
-  const isLoggedIn = token || localStorage.getItem('token');
+  const isLoggedIn = token || localStorage.getItem("token");
 
   const getUserMemories = async () => {
-    const resp = await fetch('http://localhost:3000/memory');
+    const resp = await fetch("http://localhost:3000/memory");
     const data = await resp.json();
     if (resp.ok) {
       setMemories(data);
     } else {
       console.log(data);
     }
-  }
+  };
 
   const handleFileChange = (e) => {
     setLink(e.target.files[0]);
@@ -64,16 +64,16 @@ const MemoriesPage = () => {
         memory_description,
         memory_location,
         country,
-        memory_date
+        memory_date,
       };
 
       setMemories([...memories, memory]);
 
       const options = {
-        method: 'POST',
+        method: "POST",
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           memory_name,
@@ -81,38 +81,37 @@ const MemoriesPage = () => {
           memory_description,
           memory_location,
           country,
-          drive_link
+          drive_link,
         }),
       };
 
-      const resp = await fetch('http://localhost:3000/memory', options);
+      const resp = await fetch("http://localhost:3000/memory", options);
       const data = await resp.json();
-      
+
       if (resp.ok) {
         setPoints(points + 10);
-        alert('Memory added successfully, 10 Points added!');
+        alert("Memory added successfully, 10 Points added!");
       } else {
         console.log(data);
       }
 
       setLink(null);
-      setName('');
-      setDescription('');
-      setLocation('');
-      setDate('');
-      setCountry('');
+      setName("");
+      setDescription("");
+      setLocation("");
+      setDate("");
+      setCountry("");
       setShowForm(false);
     }
     setPoints(points + 10);
-    alert('Memory added successfully, 10 Points added!');
-  };
-
+    alert("Memory added successfully, 10 Points added!");
+  }
 
   const [editingIndex, setEditingIndex] = useState(-1);
-  const [editedDescription, setEditedDescription] = useState('');
-  const [editedLocation, setEditedLocation] = useState('');
-  const [editedDate, setEditedDate] = useState('');
-  const [editedCountry, setEditedCountry] = useState('');
+  const [editedDescription, setEditedDescription] = useState("");
+  const [editedLocation, setEditedLocation] = useState("");
+  const [editedDate, setEditedDate] = useState("");
+  const [editedCountry, setEditedCountry] = useState("");
 
   const startEditing = (index, memory) => {
     setEditingIndex(index);
@@ -138,7 +137,6 @@ const MemoriesPage = () => {
     setMemories(updatedMemories);
     setEditingIndex(-1);
   };
-  }
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -146,11 +144,9 @@ const MemoriesPage = () => {
     }
   }, []);
 
-
   const cancelEditing = () => {
     setEditingIndex(-1);
   };
-
 
   return (
     <div className="memories-container" data-testid="memories_container">
@@ -191,7 +187,12 @@ const MemoriesPage = () => {
             onChange={handleNameChange}
             required
           />
-          <label htmlFor="memory_description" data-testid="memory_description_label">Description</label>
+          <label
+            htmlFor="memory_description"
+            data-testid="memory_description_label"
+          >
+            Description
+          </label>
           <input
             data-testid="memory_description_input"
             className="inputBoxes"
@@ -228,7 +229,9 @@ const MemoriesPage = () => {
               onChange={handleCountryChange}
               required
             >
-              <option value="" disabled>Select a Country</option>
+              <option value="" disabled>
+                Select a Country
+              </option>
               {countriesData.map((countryData) => (
                 <option key={countryData.country} value={countryData.country}>
                   {countryData.country}
@@ -247,74 +250,106 @@ const MemoriesPage = () => {
             onChange={handleDateChange}
             required
           />
-          <button className="button" onClick={addMemory} data-testid="add_button">
+          <button
+            className="button"
+            onClick={addMemory}
+            data-testid="add_button"
+          >
             Add Memory <FontAwesomeIcon icon={faCamera} />
           </button>
           <button className="button" data-testid="save_button">
             Save Memories
           </button>
-
         </div>
       )}
 
       <div className="memory-list">
         {memories.map((memory, index) => (
-          <div className="memory" key={index} data-testid = {`Memory_${index}`}>
-            <img src={URL.createObjectURL(memory.file)} alt={`Memory ${index}`} data-testid = {`Memory_${index}_image`}/>
-            <p data-testid = {`Memory_${index}_title`}>Title: {memory.description}</p>
-            <p data-testid = {`Memory_${index}_location`}>Location: {memory.location}</p>
-            <p data-testid = {`Memory_${index}_country`}>Country: {memory.country || country}</p>
-            <p data-testid = {`Memory_${index}_date`}>Date: {memory.date}</p>
-
-            {editingIndex === index ? (
-          <div className="memory-edit">
-            <input type="text" value={editedDescription} onChange={(e) => setEditedDescription(e.target.value)} />
-            <input type="text" value={editedLocation} onChange={(e) => setEditedLocation(e.target.value)} />
-            <input type="text" value={editedDate} onChange={(e) => setEditedDate(e.target.value)} />
-            <label htmlFor="editedCountry">Country</label>
-            <select
-              id="editedCountry"
-              value={editedCountry}
-              onChange={(e) => setEditedCountry(e.target.value)}
-            >
-              <option value="" disabled>Select a Country</option>
-              {countriesData.map((countryData) => (
-                <option key={countryData.country} value={countryData.country}>
-                  {countryData.country}
-                </option>
-              ))}
-            </select>
-            <button className="button" onClick={() => saveChanges(index)}>Save</button>
-            <button className="button" onClick={cancelEditing}>Cancel</button>
-          </div>
-
-
-            ):(
-              <div className="memory-buttons">
-                <button className="button" onClick={() => startEditing(index, memory)}>Edit</button>
-                <button className="button" onClick={() => setMemories(memories.filter((_, i) => i !== index))}>Delete</button>
-              </div>
-            )}
           <div className="memory" key={index} data-testid={`Memory_${index}`}>
-            {/* Assuming you have a 'drive_link' property */}
             <img
-              src={memory.drive_link ? URL.createObjectURL(memory.drive_link) : ''}
+              src={URL.createObjectURL(memory.drive_link)}
               alt={`Memory ${index}`}
               data-testid={`Memory_${index}_image`}
             />
-            <p data-testid={`Memory_${index}_title`}>Title: {memory.memory_description}</p>
-            <p data-testid={`Memory_${index}_location`}>Location: {memory.memory_location}</p>
-            <p data-testid={`Memory_${index}_date`}>Date: {memory.memory_date}</p>
+            <p data-testid={`Memory_${index}_title`}>
+              Title: {memory.memory_description}
+            </p>
+            <p data-testid={`Memory_${index}_location`}>
+              Location: {memory.memory_location}
+            </p>
+            <p data-testid={`Memory_${index}_country`}>
+              Country: {memory.country || country}
+            </p>
+            <p data-testid={`Memory_${index}_date`}>
+              Date: {memory.memory_date}
+            </p>
+
+            {editingIndex === index ? (
+              <div className="memory-edit">
+                <input
+                  type="text"
+                  value={editedDescription}
+                  onChange={(e) => setEditedDescription(e.target.value)}
+                />
+                <input
+                  type="text"
+                  value={editedLocation}
+                  onChange={(e) => setEditedLocation(e.target.value)}
+                />
+                <input
+                  type="text"
+                  value={editedDate}
+                  onChange={(e) => setEditedDate(e.target.value)}
+                />
+                <label htmlFor="editedCountry">Country</label>
+                <select
+                  id="editedCountry"
+                  value={editedCountry}
+                  onChange={(e) => setEditedCountry(e.target.value)}
+                >
+                  <option value="" disabled>
+                    Select a Country
+                  </option>
+                  {countriesData.map((countryData) => (
+                    <option
+                      key={countryData.country}
+                      value={countryData.country}
+                    >
+                      {countryData.country}
+                    </option>
+                  ))}
+                </select>
+                <button className="button" onClick={() => saveChanges(index)}>
+                  Save
+                </button>
+                <button className="button" onClick={cancelEditing}>
+                  Cancel
+                </button>
+              </div>
+            ) : (
+              <div className="memory-buttons">
+                <button
+                  className="button"
+                  onClick={() => startEditing(index, memory)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="button"
+                  onClick={() =>
+                    setMemories(memories.filter((_, i) => i !== index))
+                  }
+                >
+                  Delete
+                </button>
+              </div>
+            )}
           </div>
         ))}
+        ;
       </div>
     </div>
   );
 };
-
-
-
-
-
 
 export default MemoriesPage;

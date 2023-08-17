@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const UserPage = () => {
   const [username, setUsername] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
   const [userPhoto, setUserPhoto] = useState(null);
   const [editingInfo, setEditingInfo] = useState(false);
@@ -16,15 +17,37 @@ const UserPage = () => {
   const { points, setPoints } = usePoints();
 
 
-useEffect(() => {
-  const fetchedUserInfo = {
-    username: '',
-    email: ''
-  };
+  async function fetchUserData() {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const id = token.user_id;
+      
+      console.log(id)
+      const response = await fetch(`http://localhost:3000/users/user/${id}`);
+      const userData = await response.json();
+      
+      setUsername(userData.username);
 
-  setUsername(fetchedUserInfo.username);
-  setEmail(fetchedUserInfo.email);
-}, []);
+      setEmail(userData.email);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  
+  useEffect(() => {
+    if(isLoggedIn)
+    fetchUserData();
+  }, [isLoggedIn]);
+
+// useEffect(() => {
+//   const fetchedUserInfo = {
+//     username: '',
+//     email: ''
+//   };
+
+//   setUsername(fetchedUserInfo.username);
+//   setEmail(fetchedUserInfo.email);
+// }, []);
 
 
   const capitaliseWords = (string) => {
