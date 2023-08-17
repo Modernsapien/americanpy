@@ -46,7 +46,7 @@ const EcoFriendlySuggestions = () => {
         {
           headers: {
             Authorization:
-              "Bearer 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",
+              "Bearer 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",
           },
         }
       );
@@ -82,11 +82,8 @@ const EcoFriendlySuggestions = () => {
         { number: 1, content: "An error occurred while fetching suggestions." },
       ]);
     } finally {
-      setIsLoading(false); // Reset loading state when request completes
+      setIsLoading(false); 
     }
-  };
-  const handleCloseModal = () => {
-    setIsDonateModalOpen(false);
   };
 
   
@@ -145,7 +142,7 @@ const EcoFriendlySuggestions = () => {
               <h3>
                 {suggestion.content.includes("Train") ? (
                   <FontAwesomeIcon icon={faTrain} />
-                ) : suggestion.content.includes("Bus") ? (
+                ) : suggestion.content.includes("Bus")||suggestion.content.includes("Coach") ? (
                   <FontAwesomeIcon icon={faBus} />
                 ) : suggestion.content.includes("Bike") ||
                   suggestion.content.includes("Cycling") ? (

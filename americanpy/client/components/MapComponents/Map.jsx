@@ -22,10 +22,10 @@ const Map = ({ id }) => {
   const [markerCount, setMarkerCount] = useState(1)
 
   // function to remove a marker
-  const removeMarker = (markerId) => {
-    const markerToRemove = markers.find(
-      (marker) => {
-        marker.options.id == markerId
+  const removeMarker = (marker) => {
+    console.log("here")
+    const markerToRemove = markers.find((el) => {
+        el == marker
         console.log(marker)
       });
 
@@ -62,6 +62,7 @@ const Map = ({ id }) => {
   };
 
   const handleRemoveButtonClick = () => {
+    console.log("here")
     if (selectedPin) {
       const markerId = selectedPin.options.id;
       setSelectedPin(null);
@@ -139,6 +140,7 @@ const Map = ({ id }) => {
       markers.forEach((marker) => {
         const removeButtonId = `remove-pin-button-${marker.options.id}`;
         const removeButton = document.getElementById(removeButtonId);
+        console.log(removeButton)
 
         if (removeButton) {
           if (!marker.options.removeHandler) {
@@ -280,7 +282,7 @@ const Map = ({ id }) => {
       {selectedPin && (
         <div className="modal-overlay">
           <div className="modal">
-            <button className="close-button" onClick={handleCloseModal}>
+            {/* <button className="close-button" onClick={handleCloseModal}>
               Close
             </button>
             <h3>{selectedPin.getLatLng().toString()}</h3>
@@ -291,7 +293,7 @@ const Map = ({ id }) => {
               onClick={handleRemoveButtonClick}
             >
               Remove Pin
-            </button>
+            </button> */}
           </div>
         </div>
       )}

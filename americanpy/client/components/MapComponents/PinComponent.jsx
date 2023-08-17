@@ -8,7 +8,9 @@ import { v4 as uuidv4 } from 'uuid';
 const PinComponent = ({
   map,
   isAddingPin,
+  markers,
   isHoveringButton,
+  removeMarker,
   setMarkers,
   setMarkerIds,
   setSelectedPin,
@@ -16,12 +18,11 @@ const PinComponent = ({
   setIsAddingButton,
 }) => {
   const buttonRef = useRef(null);
-  const [markers, setMarkersState] = useState([]);
-  const [markerCount, setMarkerCount] = useState(0);
+  // const [markers, setMarkersState] = useState([]);
   const markerRef = useRef({});
 
   useEffect(() => {
-    setMarkersState([]);
+    setMarkers([]);
 
     if (map) {
       const handleMapClick = async (event) => {
@@ -45,6 +46,13 @@ const PinComponent = ({
       
               if (countryData) {
                 const marker = L.marker([lat, lng], { id: markerId }).addTo(map);
+                
+              // const markers = []
+              // const marker = L.marker(marker.latLng, { id: markerId }).addTo(map);
+              // markers.push(marker);
+              marker._icon.id = markerId;
+
+
       
                 const countryDescription = countryData.description;
       
@@ -55,7 +63,7 @@ const PinComponent = ({
                 const popupContent = marker.getPopup().getContent();
                 const newPopupContent = `
                   ${popupContent}
-                  <button class="btn btn-danger" id="${markerId}">Remove Pin</button>
+                  <button class="btn btn-danger" id="${markerId}" >Remove Pin</button>
                 `;
                 marker.getPopup().setContent(newPopupContent);
       
@@ -64,12 +72,14 @@ const PinComponent = ({
                 setSelectedPin(marker);
       
                 setMarkerIds((prevMarkerIds) => [...prevMarkerIds, markerId]);
-                setMarkersState((prevMarkers) => [...prevMarkers, marker]);
+                setMarkers((prevMarkers) => [...prevMarkers, marker]);
                 markerRef.current[markerId] = marker;
       
                 console.log(
                   `Added pin with ID: ${markerId}, Longitude: ${lng}, Latitude: ${lat}`
                 );
+                setMarkers([...markers,marker])
+                console.log(markers)
               } else {
                 console.log("Clicked over oceans or seas, not adding pin.");
               }
@@ -80,6 +90,7 @@ const PinComponent = ({
             console.error("Error retrieving country information:", error);
           }
         }
+        console.log(markers)
       };
       
 
@@ -103,17 +114,20 @@ const PinComponent = ({
     setIsAddingPlaceToVisit(false);
   };
 
-  const handleRemovePinClick = (markerId) => {
+  const handleRemovePinClick = (marker) => {
+
+    console.log(markerId);
     console.log("Clicked Remove Pin button for marker with ID:", markerId);
     console.log("Markers array:", markers);
   
     const updatedMarkers = markers.filter(
-      (marker) => marker.options.id !== markerId
+      (el) => el !== marker,
+      console.log(marker)
     );
-    setMarkersState(updatedMarkers);
-    setMarkers((prevMarkers) =>
-      prevMarkers.filter((marker) => marker.options.id !== markerId)
-    );
+    setMarkers(updatedMarkers);
+    // setMarkers((prevMarkers) =>
+    //   prevMarkers.filter((marker) => marker.options.id !== markerId)
+    // );
   
     const markerToRemove = markerRef.current[markerId];
     if (markerToRemove) {
@@ -139,13 +153,13 @@ const PinComponent = ({
     <div>
       {markers.map((marker) => (
         <div key={marker.options.id}>
-          <button
+          {/* <button
             className="btn btn-danger"
-            onClick={() => handleRemovePinClick(marker.options.id)}
+            onClick={() => removeMarker(marker)}
             id={`remove-pin-button-${marker.options.id}`}
           >
             Remove Pin
-          </button>
+          </button> */}
         </div>
       ))}
       <button

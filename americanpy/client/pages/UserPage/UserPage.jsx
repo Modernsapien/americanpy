@@ -7,7 +7,6 @@ import { usePoints } from '../../components/MemoriesComponents/PointsContext';
 import { faTree, faBicycle, faTrain, faFerry } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-
 const UserPage = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");

@@ -15,9 +15,9 @@ CREATE TABLE countries (
     country_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR UNIQUE NOT NULL,
     description VARCHAR NOT NULL,
-    eco_stat INT NOT NULL,
-    image_url VARCHAR NOT NULL,
-    attractions VARCHAR ARRAY
+    eco_stat INT,
+    image_url VARCHAR,
+    attractions VARCHAR
 );
 
 CREATE TABLE rewards (
@@ -29,10 +29,12 @@ CREATE TABLE rewards (
 
 CREATE TABLE memories (
     memory_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    user_id INT NOT NULL REFERENCES users(user_id),
-    country_id INT NOT NULL REFERENCES countries(country_id),
+    user_id INT REFERENCES users(user_id),
+    country_id INT REFERENCES countries(country_id),
     memory_name VARCHAR(200),
     memory_date VARCHAR(10),
+    memory_location VARCHAR(100),
+    country VARCHAR(100),
     memory_description VARCHAR(2000),
     drive_link VARCHAR(2000)
 );

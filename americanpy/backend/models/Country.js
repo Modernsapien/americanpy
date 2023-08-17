@@ -28,6 +28,16 @@ class Country {
         }
     }
 
+    static async getCountryByCountry(country) {
+        const resp = await db.query("SELECT * FROM countries WHERE country = $1", [country])
+        if(resp.rows.length == 1){
+            const country = new Country(resp.rows[0])
+            return country
+        } else {
+            throw new Error("Unable to locate country")
+        }
+    }
+
     async updateCountry(data) {
         try {
             const resp = await db.query("UPDATE countries SET eco_stat =$2 WHERE country_id = $1 RETURNING *;", 
