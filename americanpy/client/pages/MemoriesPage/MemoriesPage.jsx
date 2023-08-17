@@ -1,26 +1,43 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './MemoriesPage.css';
+import { useCredentials } from '../../contexts';
 import countriesData from '../../data/ecoData.json';
 import { usePoints } from '../../components/MemoriesComponents/PointsContext';
 
 
 const MemoriesPage = () => {
-  const [memories, setMemories] = useState([]);
-  const [file, setFile] = useState(null);
-  const [description, setDescription] = useState('');
-  const [location, setLocation] = useState('');
-  const [date, setDate] = useState('');
+  const [memories, setMemories] = useState([{}]);
+  const [drive_link, setLink] = useState(null);
+  const [memory_name, setName] = useState('');
+  const [memory_description, setDescription] = useState('');
+  const [memory_location, setLocation] = useState('');
+  const [memory_date, setDate] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [country, setCountry] = useState("");
-  const { points, setPoints } = usePoints();
+ const { points, setPoints } = usePoints();
+  const { token } = useCredentials()
+  const isLoggedIn = token || localStorage.getItem('token')
+
+  const getUserMemories = async() =>{
+    const resp = await fetch('http://localhost:3000/memory')
+    const data = await resp.json()
+    if (resp.ok){
+      setMemories(data)
+    } else {
+      console.log(data)
+    }
+  }
 
 
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+    setLink(e.target.files[0]);
   };
 
   const handleDescriptionChange = (e) => {
     setDescription(e.target.value);
+  };
+  const handleNameChange = (e) => {
+    setName(e.target.value);
   };
 
   const handleLocationChange = (e) => {
@@ -34,21 +51,51 @@ const MemoriesPage = () => {
   const handleCountryChange = (event) => {
     setCountry(event.target.value);
   };
-  
 
-  const addMemory = () => {
-    if (file && description && location && date) {
-      const memory = { file, description, location, date };
+   async function addMemory(e) {
+    e.preventDefault()
+    console.log('hello')
+    if (drive_link && memory_description && memory_location && memory_date) {
+      const memory = { drive_link, memory_name, memory_description, memory_location, country, memory_date};
+      console.log(memory)
       setMemories([...memories, memory]);
-      setFile(null);
+      setLink(null);
+      setName('');
       setDescription('');
       setLocation('');
       setDate('');
+      setCountry('');
       setShowForm(false);
     }
-    setPoints(points + 10);
+    const options = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        memory_name: memory_name,
+        memory_date: memory_date,
+        memory_description: memory_description,
+        memory_location: memory_location,
+        country: country,
+        drive_link: drive_link
+      }),
+    
+  }
+  const resp = await fetch('http://localhost:3000/memory', options)
+  const data = await resp.json()
+   setPoints(points + 10);
     alert('Memory added successfully, 10 Points added!');
-  };
+};
+
+
+  useEffect(() => {
+    if(isLoggedIn){
+      getUserMemories()
+    }
+  },[])
+
 
   return (
     <div className="memories-container" data-testid="memories_container">
@@ -56,6 +103,8 @@ const MemoriesPage = () => {
       <button className="create-memory-button" data-testid="memories_button" onClick={() => setShowForm(true)}>
         Create a Memory
       </button>
+
+    
 
       {showForm && (
         <div className="memory-form" data-testid="memories_form">
@@ -67,10 +116,20 @@ const MemoriesPage = () => {
             className="inputBoxes"
             type="text"
             placeholder="Enter Title"
-            value={description}
+            value={memory_name}
+            onChange={handleNameChange}
+            required
+          />
+          <label htmlFor="memory_description">Description</label>
+          <input
+            className="inputBoxes"
+            type="text"
+            placeholder="About the memory"
+            value={memory_description}
             onChange={handleDescriptionChange}
             required
           />
+
           <div className="country-section">
           <label htmlFor="location" data-testid="location_label">Location</label>
           <input
@@ -78,10 +137,11 @@ const MemoriesPage = () => {
             className="inputBoxes"
             type="text"
             placeholder="Enter Location"
-            value={location}
+            value={memory_location}
             onChange={handleLocationChange}
             required
           />
+
             <label htmlFor="country" data-testid="country_label">Country</label>
             <select
               data-testid="country_input"
@@ -99,6 +159,7 @@ const MemoriesPage = () => {
             </option>
             ))}
             </select>
+
           </div>
           <label htmlFor="date" data-testid="memory_date">Date</label>
           <input
@@ -116,19 +177,17 @@ const MemoriesPage = () => {
         </div>
       )}
 
-      <div className="memory-list">
+       <div className="memory-list">
         {memories.map((memory, index) => (
-
           <div className="memory" key={index} data-testid = {`Memory_${index}`}>
             <img src={URL.createObjectURL(memory.file)} alt={`Memory ${index}`} data-testid = {`Memory_${index}_image`}/>
             <p data-testid = {`Memory_${index}_title`}>Title: {memory.description}</p>
             <p data-testid = {`Memory_${index}_location`}>Location: {memory.location}</p>
             <p data-testid = {`Memory_${index}_date`}>Date: {memory.date}</p>
-
           </div>
         ))}
       </div>
-    </div>
+     </div>
   );
 };
 

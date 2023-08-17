@@ -5,10 +5,10 @@
 
 // const LoginPage = () => {
 //   const [isSignIn, setIsSignIn] = useState(true);
-
 //   const toggleForm = () => {
 //     setIsSignIn(!isSignIn);
 //   };
+
 
 //   return (
 //     <div className={styles.containerWrapper}>
