@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './MemoriesPage.css';
 import { useCredentials } from '../../contexts';
+import countriesData from '../../data/ecoData.json';
 
 const MemoriesPage = () => {
   const [memories, setMemories] = useState([{}]);
@@ -10,11 +11,12 @@ const MemoriesPage = () => {
   const [memory_location, setLocation] = useState('');
   const [memory_date, setDate] = useState('');
   const [showForm, setShowForm] = useState(false);
+  const [country, setCountry] = useState("");
   const { token } = useCredentials()
   const isLoggedIn = token || localStorage.getItem('token')
 
   const getUserMemories = async() =>{
-    const resp = await fetch('http://localhost:3000/memories')
+    const resp = await fetch('http://localhost:3000/memory')
     const data = await resp.json()
     if (resp.ok){
       setMemories(data)
@@ -40,6 +42,10 @@ const MemoriesPage = () => {
 
   const handleDateChange = (e) => {
     setDate(e.target.value);
+  };
+
+  const handleCountryChange = (event) => {
+    setCountry(event.target.value);
   };
 
   const addMemory = () => {
@@ -68,6 +74,7 @@ const MemoriesPage = () => {
         memory_date: memory_date,
         memory_description: memory_description,
         memory_location: memory_location,
+        country: country,
         drive_link: drive_link
       }),
     };
@@ -138,6 +145,23 @@ const MemoriesPage = () => {
             onChange={handleLocationChange}
             required
           />
+           <label htmlFor="country" data-testid="country_label">Country</label>
+            <select
+              data-testid="country_input"
+              className="country"
+              id="country"
+              name="country"
+              value={country}
+              onChange={handleCountryChange}
+              required
+            >
+          <option value="" disabled>Select a Country</option>
+          {countriesData.map((countryData) => (
+            <option key={countryData.country} value={countryData.country}>
+              {countryData.country}
+            </option>
+            ))}
+            </select>
           <label htmlFor="date">Date</label>
           <input
             className="inputBoxes"

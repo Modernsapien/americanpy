@@ -10,6 +10,7 @@ class Memory {
         this.memory_date = memory_date;
         this.memory_description = memory_description;
         this.memory_location = memory_location;
+        this.country = country
         this.drive_link = drive_link;
     }
 
@@ -58,10 +59,12 @@ class Memory {
         }
     }
 
+    
+
     static async createMemory(data) {
         try {
-            const { user_id, country_id, memory_name, memory_date, memory_description, memory_location, drive_link} = data
-            const resp = await db.query(`INSERT INTO memories (user_id, country_id, memory_name, memory_date, memory_description, memory_location, drive_link) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING memory_id`, [user_id, country_id, memory_name, memory_date, memory_description, memory_location, drive_link])
+            const { user_id, country_id, memory_name, memory_date, memory_description, memory_location, country, drive_link} = data
+            const resp = await db.query(`INSERT INTO memories (user_id, country_id, memory_name, memory_date, memory_description, memory_location, country, drive_link) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING memory_id`, [user_id, country_id, memory_name, memory_date, memory_description, memory_location, country, drive_link])
 
             const id = resp.rows[0].memory_id
             const newMemory = await Memory.getOneById(id)
@@ -79,13 +82,14 @@ class Memory {
 
     async updateMemory(data) {
         try {
-            const resp = await db.query("UPDATE memories SET country_id =$1, memory_name =$2, memory_date = $3, memory_description = $4, memory_location = $5 drive_link = $6 WHERE memory_id = $7 RETURNING *;",
+            const resp = await db.query("UPDATE memories SET country_id =$1, memory_name =$2, memory_date = $3, memory_description = $4, memory_location = $5, country = $6 drive_link = $7 WHERE memory_id = $8 RETURNING *;",
             [
             data.country_id,
             data.memory_name,
             data.memory_date,
             data.memory_description,
             data.memory_location,
+            data.country,
             data.drive_link,
             this.memory_id
             ]);

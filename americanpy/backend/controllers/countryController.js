@@ -21,6 +21,16 @@ class CountryController {
         }
     }
 
+    static async getCountryByCountry(req, res) {
+        try {
+            const name = req.params
+            const country = await Country.getCountryByCountry(name)
+            res.status(200).send(country)
+        } catch (err) {
+            res.status(404).json({Error: err.message})
+        }
+    }
+
     static async updateCountry(req, res) {
         try {
             const id = parseInt(req.params.id);
