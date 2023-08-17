@@ -54,9 +54,11 @@ class Country {
             const {name, eco_stat, description, image, attractions} = data
             const resp = await db.query(`INSERT INTO countries (name, eco_stat, description, image_url, attractions) VALUES ($1, $2, $3, $4, $5) RETURNING country_id`, [name, eco_stat, description, image, attractions])
             const id = resp.rows[0].country_id
+            console.log(id)
             const newCountry = await Country.getCountryByID(id)
             return newCountry
         } catch (err){
+            console.log(err)
             throw new Error('Unable to create country')
         }
         

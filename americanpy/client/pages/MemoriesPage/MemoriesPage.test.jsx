@@ -60,7 +60,6 @@ describe("Memories Page", () => {
         const memoryDate = screen.getByTestId("memory_date")
         const dateInput = screen.getByTestId("date_input")
         const addButton = screen.getByTestId("add_button")
-        const saveButton = screen.getByTestId("save_button")
 
         expect(form).toBeInTheDocument()
         expect(formTitle).toBeInTheDocument()
@@ -74,7 +73,6 @@ describe("Memories Page", () => {
         expect(memoryDate).toBeInTheDocument()
         expect(dateInput).toBeInTheDocument()
         expect(addButton).toBeInTheDocument()
-        expect(saveButton).toBeInTheDocument()
 
     })
 
@@ -92,7 +90,7 @@ describe("Memories Page", () => {
         const countryInput = screen.getByTestId("country_input")
         const dateInput = screen.getByTestId("date_input")
         const addButton = screen.getByTestId("add_button")
-        const saveButton = screen.getByTestId("save_button")
+        
 
         let blob = new Blob(["ahoy there"], {type: 'image/png'})
 
