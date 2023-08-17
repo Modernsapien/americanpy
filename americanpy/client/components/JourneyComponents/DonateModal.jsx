@@ -87,6 +87,7 @@ const DonateModal = ({ isOpen, onRequestClose }) => {
             <div className="input-container">
               <label className="input-label" data-testid="expiry_label">Expiry Date:</label>
               <input
+                data-testid="expiry_input"
                 type="text"
                 value={expiryDate}
                 onChange={(e) => setExpiryDate(e.target.value)}
@@ -94,8 +95,9 @@ const DonateModal = ({ isOpen, onRequestClose }) => {
               />
             </div>
             <div className="input-container">
-              <label className="input-label">CVV:</label>
+              <label className="input-label" data-testid="cvv_label">CVV:</label>
               <input
+                data-testid="cvv_input"
                 type="text"
                 value={cvv}
                 onChange={(e) => setCvv(e.target.value)}
@@ -104,7 +106,7 @@ const DonateModal = ({ isOpen, onRequestClose }) => {
             </div>
           </div>
           <div className="button-container">
-            <button type="submit" className="submitButton">
+            <button type="submit" className="submitButton" data-testid="donation_button">
               Donate
             </button>
           </div>

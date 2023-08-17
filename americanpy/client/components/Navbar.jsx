@@ -30,10 +30,10 @@ const NavbarComponent = () => {
         setIsSignedIn(false); 
         window.location.reload()
       } else {
-        console.error("Logout failed");
+        throw new error("Logout failed");
       }
     } catch (error) {
-      console.error("Error during logout:", error);
+      alert("Error during logout:", error);
     }
   };
   
@@ -63,7 +63,9 @@ const NavbarComponent = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-            <NavLink
+
+              <NavLink
+                data-testid="map_nav_link"
                 className="nav-link"
                 activeclassname="active"
                 to="/mappage"
@@ -96,9 +98,11 @@ const NavbarComponent = () => {
             </li>
             <li className="nav-item">
               {isSignedIn ? (
-                <button className="nav-link" onClick={handleLogout}>
-                Logout
-              </button>
+
+                <button data-testid="logout_button"  className="nav-link" onClick={handleLogout}>
+                  Logout
+                </button>
+
               ) : (
                 <NavLink
                   className="nav-link"
