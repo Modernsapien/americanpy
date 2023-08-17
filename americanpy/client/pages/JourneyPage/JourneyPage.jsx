@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styles from "./JourneyPage.css";
 import EcoFriendlySuggestions from "../../components/JourneyComponents/EcoFriendlySuggestions";
 import DonateModal from "../../components/JourneyComponents/DonateModal";
+import { faMoneyCheckDollar } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const JourneyPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,12 +23,12 @@ const JourneyPage = () => {
       <div className="jp-container-wrapper">
         <div className="jp-top">
           <div className="jp-logo"></div>
-          <button onClick={openModal} className="btn btn-success donate-button" data-testid = "donate_button">
-            Donate to offset your carbon footprint
-          </button>
         </div>
         <div className="jp-journey-form">
           <EcoFriendlySuggestions />
+          <button onClick={openModal} className="btn btn-success donate-button" data-testid = "donate_button">
+            Donate to offset your carbon footprint <FontAwesomeIcon icon={faMoneyCheckDollar} />
+          </button>
         </div>
       </div>
       <DonateModal isOpen={isModalOpen} onRequestClose={closeModal} />

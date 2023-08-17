@@ -29,12 +29,12 @@ body {
     font-family: 'Lilita One', cursive;
     font-size: 4rem;
     margin-bottom: -4rem;
-    -webkit-text-stroke: 2px white;
+    -webkit-text-stroke: 1.4px white;
 }
 
 .explain {
-    box-shadow: inset 0 0 50px #7bbfe1db !important;
-    background-color: #b0daffc3;
+    box-shadow: inset 0 0 50px #c3e3f3db !important;
+    background-color: #eff2f5c3;
     margin: 30px auto 10px;
     padding: 30px;
     border-radius: 10px;
@@ -62,10 +62,10 @@ body {
 
 .mt-5 {
     font-family: 'Manrope', sans-serif;
-    box-shadow: inset 0 0 50px #7bbfe1db !important;
     font-size: 1.4rem;
-    color: white;
-    background-color: #b0daffc3;
+    color: #366491;
+    box-shadow: inset 0 0 50px #c3e3f3db !important;
+    background-color: #eff2f5c3;
     padding: 30px 50px 30px 50px;
     margin: 0 auto; 
     text-align: center;
@@ -105,6 +105,6 @@ body {
 }
 
 .iconTitle {
-    color: #366491;
+    color: #5394d4;
     font-size: 1.8rem;
 }

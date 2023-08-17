@@ -1,9 +1,9 @@
 
 
 .intro-memories {
-    color: #fff !important;
-    background-color:#90c8f9ae;
-    box-shadow: inset 0 0 50px #5dbbea;
+    color: #366491;
+    box-shadow: inset 0 0 50px #c3e3f3db !important;
+    background-color: #eff2f5c3;
     padding: 40px;
     width: 80%;
     margin: 0 auto;
@@ -23,10 +23,14 @@
     text-align: center;
     font-size: 2.6rem;
     font-family: 'Manrope', sans-serif;
-
 }
 
- .memories-container {
+.memory-buttons button {
+    background-color: #90c8f946;
+    font-family: 'Manrope', sans-serif;
+}
+
+.memories-container {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%2390c8f9' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%23b0daff' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%2387c5f6' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%2397c1e8' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%237dc3f3' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%237ea9d2' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%2373c0f0' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%236691bc' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%2368beed' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%234e7aa6' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%235dbbea' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%23366491' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
     background-size: cover;
     height: 100%;
@@ -34,11 +38,15 @@
     text-align: center;
 }
 
+.memory-edit {
+padding: 20px;}
+
 
 .memory-form {
     width: 50%;
-    box-shadow: inset 0 0 50px #5dbbea;
-    background-color: #90c8f9ae;
+    color: #366491;
+    box-shadow: inset 0 0 50px #c3e3f3db !important;
+    background-color: #eff2f5c3;
     margin: 100px auto 10px;
     padding: 30px 40px 50px 40px;
     border-radius: 10px;
@@ -55,6 +63,11 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 82%;
+    font-family: 'Manrope', sans-serif;
+
 }
   
 .memory {
@@ -63,7 +76,7 @@
     padding: 10px;
     text-align: center;
     font-family: 'Manrope', sans-serif;
-    background-color: #ffffffb0;
+    background-color: #ffffffd0;
     margin: 50px 0 20px 5px;
     color: #366491 !important;
 }
