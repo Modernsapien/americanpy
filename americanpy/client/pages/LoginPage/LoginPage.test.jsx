@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 import matchers from "@testing-library/jest-dom/matchers";
 expect.extend(matchers);
 import LoginPage from "./LoginPage";
-import { CredentialsProvider, PointsProvider } from '../../contexts';
+import { CredentialsProvider } from '../../contexts';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ComponentUsingPoints from "../../components/MemoriesComponents/ComponentUsingPoints";
 
