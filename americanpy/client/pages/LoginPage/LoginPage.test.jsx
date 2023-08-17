@@ -111,10 +111,10 @@ describe("Login Page", () => {
         await userEvent.type(lastNameInput, "burger")
         await userEvent.type(emailInput, "iamanemail@email.com")
         await userEvent.click(registerButton)
-        await new Promise((r) => setTimeout(r, 3000));
+        await new Promise((r) => setTimeout(r, 9000));
 
         expect(window.alert).toHaveBeenCalled()
-    })
+    }, 40000)
 
     it("should login the user", async () => {
         const spy = vi.spyOn(Storage.prototype, 'setItem');

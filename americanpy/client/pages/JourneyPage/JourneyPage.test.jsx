@@ -34,7 +34,7 @@ describe("Journey Page", () => {
         expect(donateButton).toBeInTheDocument()
         expect(ecoSuggestions).toBeInTheDocument()
         expect(title.textContent).toBe('Plan your eco-friendly journey now!')
-        expect(donateButton.textContent).toBe('Donate to offset your carbon footprint')
+        expect(donateButton.textContent).toBe('Donate to offset your carbon footprint ')
     })
 
     it("should open the donate modal", async () => {

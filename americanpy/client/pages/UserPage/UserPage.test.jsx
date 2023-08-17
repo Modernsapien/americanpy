@@ -79,23 +79,23 @@ describe("User Page", () => {
         expect(item1Cost.textContent).toBe('Cost: 50 points')
         expect(item1Button.textContent).toBe('Purchase')
 
-        const item2Title = screen.getByTestId("Plant 10 trees_title")
-        const item2Cost = screen.getByTestId("Plant 10 trees_cost")
-        const item2Button = screen.getByTestId("Plant 10 trees_button")
+        const item2Title = screen.getByTestId("10% off bike hire voucher_title")
+        const item2Cost = screen.getByTestId("10% off bike hire voucher_cost")
+        const item2Button = screen.getByTestId("10% off bike hire voucher_button")
         expect(item2Title).toBeInTheDocument()
         expect(item2Cost).toBeInTheDocument()
         expect(item2Button).toBeInTheDocument()
-        expect(item2Title.textContent).toBe('Plant 10 trees')
+        expect(item2Title.textContent).toBe('10% off bike hire voucher')
         expect(item2Cost.textContent).toBe('Cost: 75 points')
         expect(item2Button.textContent).toBe('Purchase')
 
-        const item3Title = screen.getByTestId("10% off zero carbon travel_title")
-        const item3Cost = screen.getByTestId("10% off zero carbon travel_cost")
-        const item3Button = screen.getByTestId("10% off zero carbon travel_button")
+        const item3Title = screen.getByTestId("10% off train tickets_title")
+        const item3Cost = screen.getByTestId("10% off train tickets_cost")
+        const item3Button = screen.getByTestId("10% off train tickets_button")
         expect(item3Title).toBeInTheDocument()
         expect(item3Cost).toBeInTheDocument()
         expect(item3Button).toBeInTheDocument()
-        expect(item3Title.textContent).toBe('10% off zero carbon travel')
+        expect(item3Title.textContent).toBe('10% off train tickets')
         expect(item3Cost.textContent).toBe('Cost: 100 points')
         expect(item3Button.textContent).toBe('Purchase')
 
@@ -146,15 +146,15 @@ describe("User Page", () => {
 
     it("should allow purchase if one can afford it", async () => {
         window.alert = () => {}
-        expect(screen.queryByTestId("Plant 10 trees_purchased")).not.toBeInTheDocument()
-        const socksButton = screen.getByTestId("Plant 10 trees_button")
+        expect(screen.queryByTestId("10% off bike hire voucher_purchased")).not.toBeInTheDocument()
+        const socksButton = screen.getByTestId("10% off bike hire voucher_button")
         await userEvent.click(socksButton)
 
         const points = screen.getByTestId("points_available")
         expect(points.textContent).toBe('Points available: 25')
-        const socks = screen.getByTestId("Plant 10 trees_purchased")
+        const socks = screen.getByTestId("10% off bike hire voucher_purchased")
         expect(socks).toBeInTheDocument
-        expect(socks.textContent).toBe("Plant 10 trees")
+        expect(socks.textContent).toBe(" 10% off bike hire voucher ")
 
         const hatButton = screen.getByTestId("Plant a tree_button")
         await userEvent.click(hatButton)
