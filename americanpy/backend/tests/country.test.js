@@ -4,12 +4,15 @@ const db = require("../database/connect")
 const fs = require('fs');
 const countrySql = fs.readFileSync('/Users/Guy 1/Desktop/liskov/lap4/project4/americanpy/americanpy/backend/tests/mockDatabase/addCountries.sql').toString();
 const sql = fs.readFileSync('/Users/Guy 1/Desktop/liskov/lap4/project4/americanpy/americanpy/backend/tests/mockDatabase/setupMock.sql').toString();
+const setupCountriesSql = fs.readFileSync('/Users/Guy 1/Desktop/liskov/lap4/project4/americanpy/americanpy/backend/tests/mockDatabase/setupCountries.sql').toString();
+const countryController = require('../controllers/countryController.js')
 
 
 describe("country routes", () => {
 
 
-    afterAll(() => {
+    afterAll( async() => {
+        await db.query(sql)
         console.log("Stopping test server")
         db.end()
     })
@@ -45,16 +48,13 @@ describe("country routes", () => {
         expect(response.body.error).toBe('Unable to locate country')
     })
 
+
     describe("country routes but there are actually countries", () => {
 
         beforeAll(async () => {
             await db.query(countrySql)
         })
 
-        afterAll(async () => {
-            await new Promise((r) => setTimeout(r, 20000));
-            await db.query(sql)
-        }, 40000)
         
         //Get all
         it("should get all countries", async () => {
@@ -184,6 +184,24 @@ describe("country routes", () => {
                 .expect(403)
             expect(response.body.error).toBe('Unable to locate country')
         })
+
+        //testing the setup countries function
+        describe("should populate the database with countries", () => {
+
+            it("should add all the countries", async () => {
+                await new Promise((r) => setTimeout(r, 15000));
+                await db.query(setupCountriesSql) 
+                await countryController.setUpCountries()
+                await new Promise((r) => setTimeout(r, 15000));
+                const response = await request(app)
+                    .get("/country")
+                    .expect(200)
+                expect(response.body.length).toBe(181)
+                expect(response.body[0].name).toBe('Denmark')
+            },40000)
+
+        })
+
     })
 
 })

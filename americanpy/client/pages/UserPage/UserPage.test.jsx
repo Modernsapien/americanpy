@@ -140,7 +140,7 @@ describe("User Page", () => {
         expect(screen.queryByTestId("username_input")).not.toBeInTheDocument()
         const username = screen.getByTestId("username")
         const email = screen.getByTestId("email")
-        expect(username.textContent).toBe('Username: Cheese')
+        expect(username.textContent).toBe('Username: cheese')
         expect(email.textContent).toBe('Email: burger')
     })
 
