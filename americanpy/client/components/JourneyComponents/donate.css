@@ -1,0 +1,65 @@
+.donation {
+    font-family: 'Manrope', sans-serif;
+}
+
+.donation-description {
+    font-family: 'Manrope', sans-serif;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.close-button {
+    border-radius: 10px;
+    padding: 5px;
+    width: 50px !important;
+    height: 50px;
+}
+  
+.input-label {
+    font-family: 'Manrope', sans-serif;
+}
+
+.input {
+    border: 1px solid #ffffffc3;
+    border-radius: 10px;
+    font-family: 'Manrope', sans-serif;
+    color: #366491 !important;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+  
+  
+.card-input, .border  {
+    border: 1px solid #ffffffc3;
+    border-radius: 10px;
+    font-family: 'Manrope', sans-serif;
+    color: #366491 !important;
+}
+
+.card-input:focus {
+    background-color: #fff !important;
+    outline: none;
+}
+  
+.button-container {
+    border-radius: 10px;
+}
+  
+.submitButton {
+    font-family: 'Manrope', sans-serif;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+    border: none;
+    width: 40%;
+}
+  
+
+.ReactModal__Content {
+    background-color: #90c8f9 !important;
+    border-radius: 10px !important;
+    width: 90% !important;
+    margin: 0 auto !important;
+    height: 80% !important;
+    margin-top: 100px !important;
+}
