@@ -257,9 +257,6 @@ const MemoriesPage = () => {
           >
             Add Memory <FontAwesomeIcon icon={faCamera} />
           </button>
-          <button className="button" data-testid="save_button">
-            Save Memories
-          </button>
         </div>
       )}
 
