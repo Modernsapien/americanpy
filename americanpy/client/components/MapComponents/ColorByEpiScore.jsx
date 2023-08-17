@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import L from "leaflet";
 import customGeoJSON from "../../data/custom.geo.json";
 import ecoData from "../../data/ecoData.json";
-import { getColorBasedOnEpiScore } from "./Map"; // Import the function
+import { getColorBasedOnEpiScore } from "./Map"; 
 
 const ColorByEpiScore = ({ map, colorByEpiScore }) => {
   useEffect(() => {
