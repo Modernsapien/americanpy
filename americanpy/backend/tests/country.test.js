@@ -81,6 +81,30 @@ describe("country routes", () => {
             expect(response.body).toMatchObject(zimbabwe)
         })
 
+        //Get one by country
+        it("should get one by country", async () => {
+            const zimbabwe = {
+                country_id: 1,
+                name: 'Zimbabwe',
+                eco_stat: 4,
+                description: 'country in Africa',
+                attractions: [ 'Victoria falls', 'Hwange National Park' ]
+            }
+
+            const response = await request(app)
+                .get(`/country/country/${zimbabwe.name}`)
+                .expect(200)
+            expect(response.body).toMatchObject(zimbabwe)
+        })
+
+        //Get one by country error
+        it("should return an error", async () => {
+            const response = await request(app)
+                .get(`/country/country/burger`)
+                .expect(404)
+            expect(response.body.Error).toBe('Unable to locate country')
+        })
+
         //Update one
         it("should update a country by id", async () => {
             const eco = {

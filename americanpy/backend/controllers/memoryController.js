@@ -44,8 +44,16 @@ class MemoryController {
 
     static async createMemory(req, res) {
         try {
-            const data = req.body;
-            const country = await Country.getCountryByCountry(data.country)
+            const rawData = req.body;
+            const country = await Country.getCountryByCountry(rawData.country)
+            const user_id = rawData.user_id
+            const memory_name = rawData.memory_name
+            const memory_date = rawData.memory_date
+            const memory_description = rawData.memory_description
+            const memory_location = rawData.memory_location
+            const country_id = country.country_id
+            const drive_link = rawData.drive_link
+            const data = { user_id, memory_date, memory_name, memory_description, country_id, memory_location, drive_link}
             const newMemory = await Memory.createMemory(data);
             res.status(201).json(newMemory)
         } catch (err) {

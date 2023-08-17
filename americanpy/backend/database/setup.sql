@@ -34,7 +34,6 @@ CREATE TABLE memories (
     memory_name VARCHAR(200),
     memory_date VARCHAR(10),
     memory_location VARCHAR(100),
-    country VARCHAR(100),
     memory_description VARCHAR(2000),
     drive_link VARCHAR(2000)
 );

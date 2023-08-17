@@ -91,26 +91,49 @@ describe("Memory route", () => {
     it("should create a memory", async () => {
         const memory = {
             user_id: id,
-            country_id: 1,
+            country: "France",
             memory_name: "I rember",
             memory_date: "yes",
             memory_description: "I forgor",
+            memory_location: "test",
+            drive_link: "i promise this is a link i swear"
+        }
+
+        const checkMemory = {
+            user_id: id,
+            country_id: 2,
+            memory_name: "I rember",
+            memory_date: "yes",
+            memory_description: "I forgor",
+            memory_location: "test",
             drive_link: "i promise this is a link i swear"
         }
         const response = await request(app)
             .post(`/memory/`)
             .send(memory)
             .expect(201)
-        expect(response.body).toMatchObject(memory)
+        console.log(response.body)
+        expect(response.body).toMatchObject(checkMemory)
     })
 
     //Get all but good
     it("should get all memories of all users", async () => {
         const memory = {
             user_id: id2,
-            country_id: 2,
+            country: "Zimbabwe",
             memory_name: "I forgor",
             memory_date: "no",
+            memory_location: "test",
+            memory_description: "I rember",
+            drive_link: "http://1227.com"
+        }
+
+        const checkMemory = {
+            user_id: id2,
+            country_id: 1,
+            memory_name: "I forgor",
+            memory_date: "no",
+            memory_location: "test",
             memory_description: "I rember",
             drive_link: "http://1227.com"
         }
@@ -124,7 +147,7 @@ describe("Memory route", () => {
             .get(`/memory/`)
             .expect(200)
         expect(response.body.length).toBeGreaterThan(1)
-        expect(response.body[1]).toMatchObject(memory)
+        expect(response.body[1]).toMatchObject(checkMemory)
         
     })
 
@@ -132,9 +155,10 @@ describe("Memory route", () => {
     it("should get a memory by id", async () => {
         const memory = {
             user_id: id,
-            country_id: 1,
+            country_id: 2,
             memory_name: "I rember",
             memory_description: "I forgor",
+            memory_location: "test",
             drive_link: "i promise this is a link i swear"
         }
         const response = await request(app)
@@ -155,9 +179,10 @@ describe("Memory route", () => {
     it("should get a memory by name", async () => {
         const memory = {
             user_id: id,
-            country_id: 1,
+            country_id: 2,
             memory_name: "I rember",
             memory_description: "I forgor",
+            memory_location: "test",
             drive_link: "i promise this is a link i swear"
         }
         const response = await request(app)
@@ -178,9 +203,10 @@ describe("Memory route", () => {
     it("should get all a user's memories by id", async () => {
         const memory = {
             user_id: id,
-            country_id: 2,
+            country: "France",
             memory_name: "deported i was",
             memory_description: "arrested for tax evasion i have been",
+            memory_location: "test",
             drive_link: "oh no"
         }
         const memoryCheck = {
@@ -189,6 +215,7 @@ describe("Memory route", () => {
             country_id: 2,
             memory_name: "deported i was",
             memory_description: "arrested for tax evasion i have been",
+            memory_location: "test",
             drive_link: "oh no"
         }
         const addOneMore = await request(app)
@@ -214,26 +241,29 @@ describe("Memory route", () => {
     //Update memory
     it("should update a memory", async () => {
         const memoryUpdate = {
-            country_id: 2,
+            country_id: 1,
             memory_name: "cheese",
             memory_date: "frank",
             memory_description: "burger",
+            memory_location: "test",
             drive_link: "beans"
         }
         const checkMemory = {
             memory_id: 1,
             user_id: 4,
-            country_id: 2,
+            country_id: 1,
             memory_name: 'cheese',
             memory_date: "frank",
             memory_description: 'burger',
+            memory_location: "test",
             drive_link: 'beans'
         }
         const memory = {
             user_id: id,
-            country_id: 1,
+            country_id: 2,
             memory_name: "I rember",
             memory_date: "yes",
+            memory_location: "test",
             memory_description: "I forgor",
             drive_link: "i promise this is a link i swear"
         }
@@ -269,8 +299,9 @@ describe("Memory route", () => {
     it("should delete a memory", async () => {
         const memory = {
             user_id: id2,
-            country_id: 2,
+            country_id: 1,
             memory_name: "I forgor",
+            memory_location: "test",
             memory_description: "I rember",
             drive_link: "http://1227.com"
         }
@@ -295,7 +326,7 @@ describe("Memory route", () => {
         expect(response.body.error).toBe('Memory does not exist.')
     })
 
-    //Create memory error
+    //Create memory error no country
     it("should return a error", async () => {
         const trauma = {
             spooky: "oh no I have trauma"
@@ -304,7 +335,19 @@ describe("Memory route", () => {
             .post(`/memory/`)
             .send(trauma)
             .expect(404)
-        expect(response.body.error).toBe('unable to create memory')
+        expect(response.body.error).toBe('Unable to locate country')
     })
 
+    //Create memory error no memory
+    it("should return an error", async () => {
+        const trauma = {
+            spooky: "oh no I have trauma",
+            country: "Zimbabwe"
+        }
+        const response = await request(app)
+            .post(`/memory/`)
+            .send(trauma)
+            .expect(404)
+        expect(response.body.error).toBe('unable to create memory')
+    })
 })
