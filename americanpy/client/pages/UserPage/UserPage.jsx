@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import defaultUserPhoto from './user-photo.png';
 import waves from './waves.png';
 import { usePoints } from '../../components/MemoriesComponents/PointsContext';
+import { faTree, faBicycle, faTrain, faFerry } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const UserPage = () => {
   const [username, setUsername] = useState("");
@@ -60,7 +62,7 @@ const UserPage = () => {
     if (confirmed) {
       if (points >= item.cost) {
         setPoints(points - item.cost);
-        setPurchasedItems([...purchasedItems, { name: item.name }]);
+        setPurchasedItems([...purchasedItems, { name: item.name, icon: item.icon }]);
         alert('Purchase successful!');
       } else {
         alert('Insufficient points');
@@ -80,9 +82,10 @@ const UserPage = () => {
   };
 
   const shopItems = [
-    { name: 'Plant a tree', cost: 50 },
-    { name: 'Plant 10 trees', cost: 75 },
-    { name: '10% off zero carbon travel', cost: 100 },
+    { name: 'Plant a tree', cost: 50, icon: faTree },
+    { name: '10% off bike hire voucher', cost: 75, icon: faBicycle },
+    { name: '10% off train tickets', cost: 100, icon: faTrain },
+    { name: '20% off ferry tickets', cost: 130, icon: faFerry },
   ];
 
   return (
@@ -91,7 +94,7 @@ const UserPage = () => {
       <img className='waves' src={waves} alt="Waves" />
     </div>
       <h1 className="user" data-testid="user_title">Welcome to your Passport, {capitaliseWords(username)}!</h1>
-      <div className="row">
+      <div className="row row-user">
         <div className="col-md-6 edit-section">
           <h2 data-testid="user_photo_title">Profile Photo</h2>
           <div className="profile-photo">
@@ -104,7 +107,7 @@ const UserPage = () => {
               <div className="edit-info">
                 <input data-testid="username_input" type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
                 <input data-testid="email_input" type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-                <button data-testid="edit_button" onClick={() => setEditingInfo(false)}>Save Changes</button>
+                <button className='edit-info-btn' data-testid="edit_button" onClick={() => setEditingInfo(false)}>Save Changes</button>
               </div>
             ) : (
               <div className="display-info">
@@ -122,6 +125,7 @@ const UserPage = () => {
         <div data-testid="shop_items" className="shop-items-grid">
           {shopItems.map((item, index) => (
             <div key={index} className='shop-item'>
+              <FontAwesomeIcon icon={item.icon} />
               <h4 data-testid={`${item.name}_title`}>{item.name}</h4>
               <p data-testid={`${item.name}_cost`}>Cost: {item.cost} points</p>
               <button data-testid={`${item.name}_button`} className='purchase' onClick={() => confirmPurchase(item)}>Purchase</button>
@@ -133,7 +137,8 @@ const UserPage = () => {
         {purchasedItems.length > 0 ? (
           <ul>
             {purchasedItems.map((item, index) => (
-              <li data-testid={`${item.name}_purchased`} key={index}>{item.name}</li>
+              <li data-testid={`${item.name}_purchased`} key={index}> {item.name} <FontAwesomeIcon icon={item.icon} />
+              </li> 
             ))}
           </ul>
         ) : (
