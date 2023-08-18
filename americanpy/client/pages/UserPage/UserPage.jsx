@@ -36,8 +36,12 @@ const UserPage = () => {
     }
       const response = await fetch(`http://localhost:3000/users/user/${user_id}`, options);
       const userData = await response.json();
-      setUsername(userData.username);
-      setEmail(userData.email);
+      if(response.ok){
+        setUsername(userData.username);
+        setEmail(userData.email);
+      } else {
+        throw new error("user not found")
+      }
     } catch (error) {
       console.error(error);
     }

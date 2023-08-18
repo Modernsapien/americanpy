@@ -85,16 +85,21 @@ const MemoriesPage = () => {
           drive_link,
         }),
       };
+      try {
+        const resp = await fetch("http://localhost:3000/memory", options);
+        const data = await resp.json();
+        console.log(data)
 
-      const resp = await fetch("http://localhost:3000/memory", options);
-      const data = await resp.json();
-
-      if (resp.ok) {
-        setPoints(points + 10);
-        alert("Memory added successfully, 10 Points added!");
-      } else {
-        console.log(data);
+        if (resp.ok) {
+          setPoints(points + 10);
+          alert("Memory added successfully, 10 Points added!");
+        } else {
+          throw new Error("failed to add memory")
+        }
+      } catch(err){
+        console.log(err)
       }
+      
 
       setLink(null);
       setName("");
@@ -104,8 +109,8 @@ const MemoriesPage = () => {
       setCountry("");
       setShowForm(false);
     }
-    setPoints(points + 10);
-    alert("Memory added successfully, 10 Points added!");
+    // setPoints(points + 10);
+    // alert("Memory added successfully, 10 Points added!");
   }
 
   const [editingIndex, setEditingIndex] = useState(-1);
@@ -283,24 +288,28 @@ const MemoriesPage = () => {
             </p>
 
             {editingIndex === index ? (
-              <div className="memory-edit">
+              <div className="memory-edit" data-testid="edit_menu">
                 <input
+                  data-testid="edit_memory"
                   type="text"
                   value={editedDescription}
                   onChange={(e) => setEditedDescription(e.target.value)}
                 />
                 <input
+                  data-testid="edit_location"
                   type="text"
                   value={editedLocation}
                   onChange={(e) => setEditedLocation(e.target.value)}
                 />
                 <input
+                  data-testid="edit_date"
                   type="text"
                   value={editedDate}
                   onChange={(e) => setEditedDate(e.target.value)}
                 />
                 <label htmlFor="editedCountry">Country</label>
                 <select
+                  data-testid="edit_country"
                   id="editedCountry"
                   value={editedCountry}
                   onChange={(e) => setEditedCountry(e.target.value)}
@@ -317,22 +326,24 @@ const MemoriesPage = () => {
                     </option>
                   ))}
                 </select>
-                <button className="button" onClick={() => saveChanges(index)}>
+                <button data-testid="save_button" className="button" onClick={() => saveChanges(index)}>
                   Save
                 </button>
-                <button className="button" onClick={cancelEditing}>
+                <button data-testid="cancel_button" className="button" onClick={cancelEditing}>
                   Cancel
                 </button>
               </div>
             ) : (
               <div className="memory-buttons">
                 <button
+                  data-testid={`${index}_edit`}
                   className="button"
                   onClick={() => startEditing(index, memory)}
                 >
                   Edit
                 </button>
                 <button
+                  data-testid={`${index}_delete`}
                   className="button"
                   onClick={() =>
                     setMemories(memories.filter((_, i) => i !== index))

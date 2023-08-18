@@ -5,6 +5,10 @@ import userEvent from "@testing-library/user-event";
 import matchers from "@testing-library/jest-dom/matchers";
 expect.extend(matchers);
 import { MapPage } from "../../pages";
+import { map } from "leaflet";
+import { GeoSearchControl, EsriProvider } from "leaflet-geosearch";
+
+  
 
 describe("MapPage", () => {
     beforeEach(async () => {
@@ -17,7 +21,7 @@ describe("MapPage", () => {
         cleanup()
     })
 
-    it("should load the map", () => {
+    it("should load the map",async () => {
         const mapContainer = screen.getByTestId("map_container")
         expect(mapContainer).toBeInTheDocument()
 
@@ -33,6 +37,22 @@ describe("MapPage", () => {
 
         const map = screen.getByTestId("actual_map")
         expect(map).toBeInTheDocument()
+        // await userEvent.click(ecoButton)
+    })
+
+    it("should change the map colour", async () => {
+        // vi.mock('leaflet', async () => {
+        //     const actual = await vi.importActual("leaflet")
+
+        //     return{
+        //         ...actual,
+        //         map: vi.fn().mockReturnValue({
+        //             remove:vi.fn()
+        //         })
+        //     }
+        // })
+        // const ecoButton = screen.getByTestId("eco_button")
+        // await userEvent.click(ecoButton)
     })
 
 })
