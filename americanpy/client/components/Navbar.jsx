@@ -84,6 +84,7 @@ const NavbarComponent = () => {
             </li>
             <li className="nav-item">
             <NavLink
+                data-testid="memory_nav_link"
                 className="nav-link"
                 activeclassname="active"
                 to="/memories"
@@ -92,7 +93,7 @@ const NavbarComponent = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" activeclassname="active" to="/user">
+              <NavLink className="nav-link" activeclassname="active" to="/user" data-testid="user_nav_link">
                 User and Rewards
               </NavLink>
             </li>

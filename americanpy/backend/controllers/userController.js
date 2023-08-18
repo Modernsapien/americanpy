@@ -150,6 +150,7 @@ class UserController {
                 res.status(202).json({ message: response });
             }
         } catch (error) {
+            console.log(error)
             res.status(500).json({ error: error.message });
         }
     }

@@ -29,6 +29,7 @@ describe("Login Page", () => {
     })
 
     afterAll(async() => {
+        await new Promise((r) => setTimeout(r, 13000));
         const options = {
             method: 'DELETE',
             headers: {
@@ -38,7 +39,7 @@ describe("Login Page", () => {
             }
         }
         const response = await fetch(`http://localhost:3000/users/delete/${user_id}`, options)
-    })
+    },100000)
 
     it("should render login form first", () => {
         const loginForm = screen.getByTestId('login_form')
@@ -111,7 +112,7 @@ describe("Login Page", () => {
         await userEvent.type(lastNameInput, "burger")
         await userEvent.type(emailInput, "iamanemail@email.com")
         await userEvent.click(registerButton)
-        await new Promise((r) => setTimeout(r, 9000));
+        await new Promise((r) => setTimeout(r, 30000));
 
         expect(window.alert).toHaveBeenCalled()
     }, 40000)
