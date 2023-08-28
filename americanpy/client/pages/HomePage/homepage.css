@@ -1,0 +1,112 @@
+body {
+    background-color: #8CD2F6 !important;
+
+}
+
+
+.background-home {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .peaks {
+    width: 100%;
+    height: 100%;
+  }
+  
+
+.intro {
+    color: #7DB4D8 !important;
+    padding: 30px 50px 70px 50px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Lilita One', cursive;
+    font-size: 4rem;
+    margin-bottom: -4rem;
+    -webkit-text-stroke: 1.4px white;
+}
+
+.explain {
+
+    box-shadow: inset 0 0 50px #c3e3f3db !important;
+    background-color: #eff2f5c3;
+    margin: 30px auto 10px;
+    padding: 30px;
+    border-radius: 10px;
+    font-family: 'Manrope', sans-serif;
+    color: #366491;
+    text-align: center;
+    font-size: 1.7rem;
+  }
+
+  
+  .intro-explain-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .column-image {
+    width: 85%;
+    height: auto;
+    margin: 35px 0 0 30px;
+    border-radius: 10px;
+}
+  
+
+
+.mt-5 {
+    font-family: 'Manrope', sans-serif;
+    box-shadow: inset 0 0 50px #7bbfe1db !important;
+    font-size: 1.4rem;
+    color: #366491;
+    box-shadow: inset 0 0 50px #c3e3f3db !important;
+    background-color: #eff2f5c3;
+    padding: 30px 50px 30px 50px;
+    margin: 0 auto; 
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+.mb-3 {
+    font-size: 3.6rem;
+}
+
+.route {
+    padding-bottom: 13px;
+}
+
+.pass {
+    color: #00043f;
+}
+
+.route {
+    color: #DFA878;
+}
+
+.leaf {
+    color: #557A46
+}
+
+.globe {
+    color: #7A9D54;
+}
+
+.gift {
+    color: #B31312;
+}
+
+.book {
+    color: #765827
+}
+
+.iconTitle {
+    color: #5394d4;
+    font-size: 1.8rem;
+}

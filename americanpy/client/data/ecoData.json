@@ -1,0 +1,1293 @@
+[
+
+    {
+        "country": "Denmark",
+        "rank": 1,
+        "epi_score": 77.90,
+        "10_year_change": 14.90,
+        "description": "Denmark is a leader in environmental sustainability, focusing on renewable energy, waste reduction, and efficient resource management to ensure a green and vibrant future."
+    },
+    
+    {
+        "country": "United Kingdom",
+        "rank": 2,
+        "epi_score": 77.70,
+        "10_year_change": 23.00,
+        "description": "The United Kingdom is dedicated to ecological preservation and combating climate change through policies supporting clean energy adoption, conservation efforts, and carbon footprint reduction."
+    },
+    
+    {
+        "country": "Finland",
+        "rank": 3,
+        "epi_score": 76.50,
+        "10_year_change": 21.00,
+        "description": "Finland excels in sustainable practices, emphasizing forest conservation, water quality, and eco-friendly technologies to create a balanced and resilient environment for present and future generations."
+    },
+    
+    {
+        "country": "Malta",
+        "rank": 4,
+        "epi_score": 75.20,
+        "10_year_change": 25.40,
+        "description": "Malta is committed to preserving its unique ecosystems and marine life by promoting responsible tourism, marine conservation, and waste management, ensuring a pristine natural heritage."
+    },
+    
+    {
+        "country": "Sweden",
+        "rank": 5,
+        "epi_score": 72.70,
+        "10_year_change": 15.80,
+        "description": "Sweden's strong dedication to sustainable urban development, renewable energy integration, and waste reduction reflects its mission to create a harmonious coexistence between its citizens and nature."
+    },
+    
+    {
+        "country": "Luxembourg",
+        "rank": 6,
+        "epi_score": 72.30,
+        "10_year_change": 13.50,
+        "description": "Luxembourg is a champion of green finance and sustainable living, channeling investments into eco-friendly projects, and promoting biodiversity conservation within its borders."
+    },
+    
+    {
+        "country": "Slovenia",
+        "rank": 7,
+        "epi_score": 67.30,
+        "10_year_change": 8.60,
+        "description": "Slovenia embraces its diverse landscapes, focusing on eco-tourism, reforestation, and renewable energy initiatives, fostering a close bond between its people and the natural world."
+    },
+    
+    {
+        "country": "Austria",
+        "rank": 8,
+        "epi_score": 66.50,
+        "10_year_change": 7.20,
+        "description": "Austria values its alpine ecosystems and pristine water bodies, implementing policies to reduce emissions, promote sustainable agriculture, and ensure a resilient environment for future generations."
+    },
+    
+    {
+        "country": "Switzerland",
+        "rank": 9,
+        "epi_score": 65.90,
+        "10_year_change": 8.20,
+        "description": "Switzerland's commitment to sustainable development is evident through its efforts in renewable energy, waste management, and conservation, creating a picturesque and environmentally-conscious nation."
+    },
+    
+    {
+        "country": "Iceland",
+        "rank": 10,
+        "epi_score": 62.80,
+        "10_year_change": 4.40,
+        "description": "Iceland's pristine landscapes and geothermal energy strategies showcase a nation dedicated to preserving its unique environment, emphasizing clean energy, and protecting its untouched natural beauty."
+    },
+    
+    {
+        "country": "Netherlands",
+        "rank": 11,
+        "epi_score": 62.60,
+        "10_year_change": 5.90,
+        "description": "The Netherlands is at the forefront of innovative solutions for flood control, water management, and sustainable urban development, demonstrating a commitment to environmental resilience."
+    },
+    
+    {
+        "country": "France",
+        "rank": 12,
+        "epi_score": 62.50,
+        "10_year_change": 6.40,
+        "description": "France's diverse landscapes and rich cultural heritage converge with its dedication to renewable energy, reforestation, and sustainable agriculture, shaping a harmonious relationship between people and nature."
+    },
+    
+    {
+        "country": "Germany",
+        "rank": 13,
+        "epi_score": 62.40,
+        "10_year_change": 2.20,
+        "description": "Germany's commitment to eco-friendly technologies, waste reduction, and carbon neutrality exemplifies its pursuit of an environmentally-conscious society for current and future generations."
+    },
+    
+    {
+        "country": "Estonia",
+        "rank": 14,
+        "epi_score": 61.40,
+        "10_year_change": 6.10,
+        "description": "Estonia places a strong emphasis on clean air, sustainable forestry, and green transportation, fostering a balance between modern living and nature preservation."
+    },
+    
+    {
+        "country": "Latvia",
+        "rank": 15,
+        "epi_score": 61.10,
+        "10_year_change": 8.20,
+        "description": "Latvia's commitment to biodiversity conservation, wetland protection, and sustainable agriculture showcases its dedication to preserving its natural heritage and promoting eco-friendly practices."
+    },
+    
+    {
+        "country": "Croatia",
+        "rank": 16,
+        "epi_score": 60.20,
+        "10_year_change": 17.20,
+        "description": "Croatia's stunning coastal beauty is safeguarded through efforts in marine conservation, sustainable tourism, and environmental education, ensuring its unique ecosystems thrive for generations to come."
+    },
+    
+    {
+        "country": "Australia",
+        "rank": 17,
+        "epi_score": 60.10,
+        "10_year_change": 10.30,
+        "description": "Australia is committed to preserving its diverse landscapes, protecting its unique wildlife, and adopting renewable energy sources, striving for a resilient and ecologically balanced nation."
+    },
+    
+    {
+        "country": "Slovakia",
+        "rank": 18,
+        "epi_score": 60.00,
+        "10_year_change": 3.20,
+        "description": "Slovakia's focus on forest conservation, sustainable agriculture, and renewable energy showcases a nation striving for a harmonious coexistence between its citizens and the natural world."
+    },
+    
+    {
+        "country": "Czech Republic",
+        "rank": 19,
+        "epi_score": 59.90,
+        "10_year_change": 5.20,
+        "description": "The Czech Republic's efforts in waste management, air quality improvement, and green transportation highlight its commitment to enhancing the well-being of its people and the environment."
+    },
+    
+    {
+        "country": "Norway",
+        "rank": 20,
+        "epi_score": 59.30,
+        "10_year_change": 5.80,
+        "description": "Norway's dedication to carbon neutrality, renewable energy, and sustainable fisheries underscores its mission to safeguard its pristine natural landscapes and promote responsible resource management."
+    },
+    
+    {
+        "country": "Belgium",
+        "rank": 21,
+        "epi_score": 58.20,
+        "10_year_change": 6.10,
+        "description": "Belgium's focus on urban green spaces, waste reduction, and sustainable mobility reflects its commitment to creating a livable environment that balances modern urban living with ecological conservation."
+    },
+    
+    {
+        "country": "Cyprus",
+        "rank": 22,
+        "epi_score": 58.00,
+        "10_year_change": 6.00,
+        "description": "Cyprus values its unique ecosystems and coastal biodiversity, promoting marine conservation, sustainable tourism, and clean energy adoption to ensure the long-term vitality of its natural treasures."
+    },
+    
+    {
+        "country": "Italy",
+        "rank": 23,
+        "epi_score": 57.70,
+        "10_year_change": 6.00,
+        "description": "Italy's cultural heritage intertwines with its commitment to renewable energy, reforestation, and waste reduction, nurturing a sustainable relationship between its people and the environment."
+    },
+    {
+        "country": "Ireland",
+        "rank": 24,
+        "epi_score": 57.40,
+        "10_year_change": 2.50,
+        "description": "Ireland places a strong emphasis on renewable energy, sustainable agriculture, and biodiversity conservation, fostering a deep connection between its people and the natural world."
+    },
+    {
+        "country": "Japan",
+        "rank": 25,
+        "epi_score": 57.20,
+        "10_year_change": 3.20,
+        "description": "Japan's innovative technologies, waste reduction efforts, and conservation initiatives showcase its commitment to creating a sustainable and harmonious coexistence with its unique environment."
+    },
+    {
+        "country": "New Zealand",
+        "rank": 26,
+        "epi_score": 56.70,
+        "10_year_change": -0.40,
+        "description": "New Zealand is dedicated to protecting its stunning landscapes, promoting sustainable tourism, and combating climate change through renewable energy and carbon reduction strategies."
+    },
+    {
+        "country": "Spain",
+        "rank": 27,
+        "epi_score": 56.60,
+        "10_year_change": 7.30,
+        "description": "Spain's vibrant culture aligns with its commitment to renewable energy, marine conservation, and sustainable agriculture, showcasing a nation that cherishes both its heritage and environment."
+    },
+    {
+        "country": "Bahamas",
+        "rank": 28,
+        "epi_score": 56.20,
+        "10_year_change": 9.80,
+        "description": "The Bahamas' pristine marine ecosystems are safeguarded through policies promoting sustainable tourism, marine protection, and climate resilience, preserving its natural beauty for future generations."
+    },
+    {
+        "country": "Greece",
+        "rank": 28,
+        "epi_score": 56.20,
+        "10_year_change": 4.30,
+        "description": "Greece's rich history is intertwined with its commitment to clean energy, biodiversity conservation, and sustainable agriculture, reflecting a nation that honors its past while embracing a green future."
+    },
+    {
+        "country": "Romania",
+        "rank": 30,
+        "epi_score": 56.00,
+        "10_year_change": 5.30,
+        "description": "Romania's diverse landscapes are cherished through initiatives promoting forest protection, clean air, and eco-friendly practices, fostering a balanced and resilient environment."
+    },
+    {
+        "country": "Lithuania",
+        "rank": 31,
+        "epi_score": 55.90,
+        "10_year_change": 3.20,
+        "description": "Lithuania places a strong emphasis on renewable energy adoption, waste reduction, and sustainable transportation, creating a sustainable foundation for its future development."
+    },
+    {
+        "country": "Seychelles",
+        "rank": 32,
+        "epi_score": 55.60,
+        "10_year_change": 7.00,
+        "description": "Seychelles is a pioneer in marine conservation and sustainable tourism, protecting its vibrant coral reefs and unique wildlife while promoting responsible travel and ecological preservation."
+    },
+    {
+        "country": "Hungary",
+        "rank": 33,
+        "epi_score": 55.10,
+        "10_year_change": 2.00,
+        "description": "Hungary's commitment to green urban planning, sustainable agriculture, and clean energy showcases its dedication to a balanced and thriving environment for its citizens."
+    },
+    {
+        "country": "North Macedonia",
+        "rank": 34,
+        "epi_score": 54.30,
+        "10_year_change": 3.60,
+        "description": "North Macedonia is devoted to enhancing air quality, protecting its natural landscapes, and promoting eco-friendly practices, fostering a strong bond between its people and nature."
+    },
+    {
+        "country": "Botswana",
+        "rank": 35,
+        "epi_score": 54.00,
+        "10_year_change": 8.20,
+        "description": "Botswana's efforts in wildlife conservation, sustainable tourism, and community engagement reflect its commitment to preserving its rich biodiversity and promoting environmental harmony."
+    },
+    {
+        "country": "Barbados",
+        "rank": 36,
+        "epi_score": 53.20,
+        "10_year_change": 12.70,
+        "description": "Barbados is dedicated to marine conservation, renewable energy, and waste reduction, fostering a resilient and sustainable paradise for both its citizens and visitors."
+    },
+    {
+        "country": "Saint Vincent and the Grenadines",
+        "rank": 36,
+        "epi_score": 53.20,
+        "10_year_change": 8.90,
+        "description": "Saint Vincent and the Grenadines cherish their pristine beaches and marine life through marine conservation efforts, sustainable tourism, and clean energy initiatives, ensuring a vibrant future."
+    },
+    {
+        "country": "Sao Tome and Principe",
+        "rank": 38,
+        "epi_score": 52.90,
+        "10_year_change": 7.00,
+        "description": "Sao Tome and Principe's commitment to forest protection, sustainable agriculture, and biodiversity conservation highlights its dedication to preserving its unique ecosystems and promoting responsible development."
+    },
+    {
+        "country": "Antigua and Barbuda",
+        "rank": 39,
+        "epi_score": 52.40,
+        "10_year_change": 9.70,
+        "description": "Antigua and Barbuda's picturesque landscapes are safeguarded through marine conservation, eco-friendly tourism, and sustainable practices, ensuring the longevity of its natural beauty."
+    },
+    {
+        "country": "United Arab Emirates",
+        "rank": 39,
+        "epi_score": 52.40,
+        "10_year_change": 15.90,
+        "description": "The United Arab Emirates' innovative sustainable initiatives, clean energy projects, and desert conservation efforts reflect its commitment to creating an ecologically balanced future."
+    },
+    {
+        "country": "Bulgaria",
+        "rank": 41,
+        "epi_score": 51.90,
+        "10_year_change": 4.60,
+        "description": "Bulgaria's efforts in forest protection, air quality improvement, and sustainable development showcase a nation working towards a harmonious coexistence between its people and nature."
+    },
+    {
+        "country": "Dominica",
+        "rank": 42,
+        "epi_score": 51.20,
+        "10_year_change": 10.20,
+        "description": "Dominica's lush landscapes are preserved through sustainable agriculture, renewable energy, and eco-tourism, creating a resilient and vibrant haven for nature enthusiasts."
+    },
+    {
+        "country": "United States of America",
+        "rank": 43,
+        "epi_score": 51.10,
+        "10_year_change": 3.30,
+        "description": "The United States of America's diverse conservation efforts, renewable energy investments, and sustainable policies reflect a nation's commitment to addressing environmental challenges and securing a greener future."
+    },
+    {
+        "country": "Namibia",
+        "rank": 44,
+        "epi_score": 50.90,
+        "10_year_change": 16.40,
+        "description": "Namibia's focus on desert conservation, wildlife protection, and community engagement showcases its dedication to preserving its unique landscapes and promoting sustainable development."
+    },
+    {
+        "country": "Singapore",
+        "rank": 44,
+        "epi_score": 50.90,
+        "10_year_change": 3.70,
+        "description": "Singapore's compact urban living coexists with its commitment to green architecture, clean energy, and sustainable transportation, creating a modern and environmentally-conscious metropolis."
+    },
+    {
+        "country": "Poland",
+        "rank": 46,
+        "epi_score": 50.60,
+        "10_year_change": "NA",
+        "description": "Poland's ongoing efforts to improve air quality, transition to renewable energy, and enhance waste management contribute to a more sustainable and resilient environment for its citizens."
+    },
+    {
+        "country": "Panama",
+        "rank": 47,
+        "epi_score": 50.50,
+        "10_year_change": 9.90,
+        "description": "Panama's commitment to sustainable tourism, rainforest conservation, and marine protection showcases its dedication to preserving its rich biodiversity and natural beauty for generations to come."
+    },
+    {
+        "country": "Portugal",
+        "rank": 48,
+        "epi_score": 50.40,
+        "10_year_change": -1.60,
+        "description": "Portugal's renewable energy initiatives, coastal conservation efforts, and waste management strategies reflect its commitment to a green future while embracing its maritime heritage."
+    },
+    {
+        "country": "Belize",
+        "rank": 49,
+        "epi_score": 50.00,
+        "10_year_change": -2.10,
+        "description": "Belize's dedication to protecting its coral reefs, promoting eco-tourism, and sustainable development creates a balanced and resilient environment where nature and communities thrive together."
+    },
+    {
+        "country": "Canada",
+        "rank": 49,
+        "epi_score": 50.00,
+        "10_year_change": 4.00,
+        "description": "Canada's vast landscapes are safeguarded through policies promoting renewable energy, wilderness conservation, and indigenous stewardship, reflecting a commitment to environmental sustainability and diversity."
+    },
+    {
+        "country": "Gabon",
+        "rank": 51,
+        "epi_score": 49.70,
+        "10_year_change": -0.30,
+        "description": "Gabon's pristine rainforests and wildlife are protected through conservation efforts, sustainable forestry practices, and wildlife management, preserving its natural heritage and fostering a harmonious coexistence."
+    },
+    {
+        "country": "Ukraine",
+        "rank": 52,
+        "epi_score": 49.60,
+        "10_year_change": 6.20,
+        "description": "Ukraine's commitment to energy efficiency, reforestation, and wetland preservation showcases its dedication to creating a greener and more sustainable future for its citizens."
+    },
+    {
+        "country": "Saint Lucia",
+        "rank": 53,
+        "epi_score": 49.40,
+        "10_year_change": 0.30,
+        "description": "Saint Lucia's stunning landscapes and marine ecosystems are protected through marine conservation, sustainable tourism, and community engagement, ensuring a vibrant and resilient environment."
+    },
+    {
+        "country": "Kiribati",
+        "rank": 54,
+        "epi_score": 49.00,
+        "10_year_change": 4.80,
+        "description": "Kiribati's focus on climate adaptation, marine protection, and sustainable development reflects its determination to preserve its low-lying islands and culture in the face of environmental challenges."
+    },
+    {
+        "country": "Belarus",
+        "rank": 55,
+        "epi_score": 48.50,
+        "10_year_change": 3.50,
+        "description": "Belarus' commitment to clean air, sustainable agriculture, and renewable energy showcases its dedication to creating an environmentally-friendly nation where nature and modern living coexist in harmony."
+    },
+    {
+        "country": "Armenia",
+        "rank": 56,
+        "epi_score": 48.30,
+        "10_year_change": 4.80,
+        "description": "Armenia's efforts in reforestation, water conservation, and eco-friendly practices reflect its commitment to preserving its unique landscapes and cultural heritage while promoting environmental sustainability."
+    },
+    {
+        "country": "Israel",
+        "rank": 57,
+        "epi_score": 48.20,
+        "10_year_change": 1.90,
+        "description": "Israel's innovative water management, desert reclamation, and renewable energy initiatives showcase a nation striving for environmental resilience and a harmonious relationship with its arid landscapes."
+    },
+    {
+        "country": "Grenada",
+        "rank": 58,
+        "epi_score": 47.90,
+        "10_year_change": 7.10,
+        "description": "Grenada's marine conservation efforts, sustainable agriculture practices, and renewable energy initiatives highlight its commitment to safeguarding its pristine natural beauty and promoting eco-friendly living."
+    },
+    {
+        "country": "Trinidad and Tobago",
+        "rank": 59,
+        "epi_score": 47.80,
+        "10_year_change": 19.00,
+        "description": "Trinidad and Tobago's dedication to sustainable energy, waste management, and marine conservation reflects its goal of preserving its rich biodiversity and vibrant culture for future generations."
+    },
+    {
+        "country": "Cuba",
+        "rank": 60,
+        "epi_score": 47.50,
+        "10_year_change": 6.80,
+        "description": "Cuba's diverse ecosystems, from tropical forests to coral reefs, are protected through conservation efforts, sustainable tourism, and renewable energy initiatives, fostering a sustainable and vibrant nation."
+    },
+    {
+        "country": "Djibouti",
+        "rank": 60,
+        "epi_score": 47.50,
+        "10_year_change": 12.90,
+        "description": "Djibouti's focus on renewable energy adoption, waste reduction, and environmental education reflects its commitment to addressing environmental challenges and promoting a sustainable future."
+    },
+    {
+        "country": "Albania",
+        "rank": 62,
+        "epi_score": 47.10,
+        "10_year_change": 9.90,
+        "description": "Albania's efforts in air quality improvement, sustainable tourism, and water management showcase its dedication to enhancing its natural beauty and creating an ecologically balanced nation."
+    },
+    {
+        "country": "Montenegro",
+        "rank": 63,
+        "epi_score": 46.90,
+        "10_year_change": 8.50,
+        "description": "Montenegro's commitment to marine protection, forest conservation, and sustainable development reflects its determination to preserve its stunning landscapes and promote responsible environmental practices."
+    },
+    {
+        "country": "South Korea",
+        "rank": 63,
+        "epi_score": 46.90,
+        "10_year_change": 1.80,
+        "description": "South Korea's innovative technologies, waste reduction initiatives, and green transportation showcase a nation striving for a greener future while maintaining its economic vitality and cultural richness."
+    },
+    {
+        "country": "Chile",
+        "rank": 65,
+        "epi_score": 46.70,
+        "10_year_change": 6.80,
+        "description": "Chile's commitment to renewable energy, desert conservation, and marine protection reflects its determination to balance economic growth with environmental preservation for the benefit of its citizens and nature."
+    },
+    {
+        "country": "Ecuador",
+        "rank": 66,
+        "epi_score": 46.50,
+        "10_year_change": 9.20,
+        "description": "Ecuador's diverse ecosystems, from the Amazon rainforest to the Galápagos Islands, are protected through conservation efforts, sustainable tourism, and environmental education, creating a harmonious relationship between nature and people."
+    },
+    {
+        "country": "Venezuela",
+        "rank": 67,
+        "epi_score": 46.40,
+        "10_year_change": 0.20,
+        "description": "Venezuela's commitment to biodiversity conservation, renewable energy, and eco-tourism showcases its dedication to preserving its unique landscapes and promoting responsible environmental practices."
+    },
+    {
+        "country": "Costa Rica",
+        "rank": 68,
+        "epi_score": 46.30,
+        "10_year_change": 4.00,
+        "description": "Costa Rica's leadership in conservation, renewable energy, and sustainable tourism reflects its dedication to creating a lush and biodiverse haven where humans and nature thrive in harmony."
+    },
+    {
+        "country": "Zimbabwe",
+        "rank": 69,
+        "epi_score": 46.20,
+        "10_year_change": -0.70,
+        "description": "Zimbabwe's focus on wildlife conservation, sustainable agriculture, and community engagement showcases its commitment to safeguarding its unique landscapes and promoting eco-friendly practices."
+    },
+    {
+        "country": "Suriname",
+        "rank": 70,
+        "epi_score": 45.90,
+        "10_year_change": -8.00,
+        "description": "Suriname's efforts in forest conservation, sustainable mining, and wildlife protection showcase its commitment to preserving its diverse ecosystems and promoting responsible natural resource management."
+    },
+    {
+        "country": "Brunei Darussalam",
+        "rank": 71,
+        "epi_score": 45.70,
+        "10_year_change": 7.40,
+        "description": "Brunei Darussalam's commitment to forest conservation, renewable energy, and waste reduction reflects its dedication to creating a sustainable and resilient nation where natural beauty and modern living coexist."
+    },
+    {
+        "country": "Jamaica",
+        "rank": 72,
+        "epi_score": 45.60,
+        "10_year_change": -2.00,
+        "description": "Jamaica's vibrant culture aligns with its commitment to marine protection, sustainable tourism, and environmental education, fostering a balance between its people and the stunning Caribbean environment."
+    },
+    {
+        "country": "Mexico",
+        "rank": 73,
+        "epi_score": 45.50,
+        "10_year_change": 12.40,
+        "description": "Mexico's rich biodiversity is protected through conservation initiatives, sustainable agriculture, and eco-friendly tourism, reflecting a nation's determination to safeguard its natural heritage for generations."
+    },
+    {
+        "country": "Taiwan",
+        "rank": 74,
+        "epi_score": 45.30,
+        "10_year_change": 7.00,
+        "description": "Taiwan's focus on air quality improvement, renewable energy, and green transportation showcases its dedication to creating a clean, vibrant, and sustainable environment for its citizens."
+    },
+    {
+        "country": "Central African Republic",
+        "rank": 75,
+        "epi_score": 44.90,
+        "10_year_change": -0.70,
+        "description": "The Central African Republic's commitment to wildlife protection, forest conservation, and sustainable development reflects its determination to overcome challenges and create a resilient and harmonious nation."
+    },
+    {
+        "country": "Eswatini",
+        "rank": 75,
+        "epi_score": 44.90,
+        "10_year_change": 1.50,
+        "description": "Eswatini's efforts in sustainable agriculture, renewable energy, and water management showcase its dedication to creating a greener and more self-sufficient nation while preserving its cultural heritage."
+    },
+    {
+        "country": "Equatorial Guinea",
+        "rank": 77,
+        "epi_score": 44.80,
+        "10_year_change": 15.30,
+        "description": "Equatorial Guinea's focus on marine protection, sustainable forestry, and renewable energy highlights its commitment to preserving its natural resources and promoting a green and prosperous future."
+    },
+    {
+        "country": "Mauritius",
+        "rank": 77,
+        "epi_score": 44.80,
+        "10_year_change": 10.00,
+        "description": "Mauritius' picturesque landscapes and marine ecosystems are safeguarded through marine conservation, sustainable tourism, and clean energy initiatives, ensuring a vibrant and resilient environment."
+    },
+    {
+        "country": "Serbia",
+        "rank": 79,
+        "epi_score": 43.90,
+        "10_year_change": 8.50,
+        "description": "Serbia's efforts in waste reduction, air quality improvement, and sustainable urban development showcase its commitment to creating an environmentally-conscious and livable nation for its people."
+    },
+    {
+        "country": "Tonga",
+        "rank": 80,
+        "epi_score": 43.80,
+        "10_year_change": -3.00,
+        "description": "Tonga's commitment to marine conservation, sustainable fisheries, and waste reduction showcases its determination to protect its pristine islands and promote responsible environmental practices."
+    },
+    {
+        "country": "Afghanistan",
+        "rank": 81,
+        "epi_score": 43.60,
+        "10_year_change": 23.90,
+        "description": "Afghanistan's efforts in reforestation, water management, and environmental education reflect its determination to rebuild and restore its natural landscapes while promoting sustainable development."
+    },
+    {
+        "country": "Brazil",
+        "rank": 81,
+        "epi_score": 43.60,
+        "10_year_change": 5.40,
+        "description": "Brazil's diverse ecosystems, from the Amazon rainforest to its stunning coastlines, are protected through conservation efforts, sustainable development, and renewable energy initiatives, fostering a green and vibrant nation."
+    },
+    {
+        "country": "Jordan",
+        "rank": 81,
+        "epi_score": 43.60,
+        "10_year_change": 7.80,
+        "description": "Jordan's commitment to water conservation, renewable energy adoption, and eco-friendly practices reflects its determination to create a sustainable and resilient nation amid its arid landscapes."
+    },
+    {
+        "country": "Moldova",
+        "rank": 84,
+        "epi_score": 42.70,
+        "10_year_change": -4.80,
+        "description": "Moldova's efforts in sustainable agriculture, waste reduction, and renewable energy reflect its commitment to enhancing its natural beauty and promoting responsible environmental practices."
+    },
+    {
+        "country": "Bhutan",
+        "rank": 85,
+        "epi_score": 42.50,
+        "10_year_change": -7.90,
+        "description": "Bhutan's focus on forest conservation, clean energy, and sustainable tourism reflects its unique commitment to Gross National Happiness, ensuring the well-being of its people and its natural environment."
+    },
+    {
+        "country": "Comoros",
+        "rank": 85,
+        "epi_score": 42.50,
+        "10_year_change": 1.00,
+        "description": "Comoros' efforts in marine conservation, waste reduction, and sustainable development showcase its dedication to preserving its stunning coastal landscapes and promoting responsible living."
+    },
+    {
+        "country": "Colombia",
+        "rank": 87,
+        "epi_score": 42.40,
+        "10_year_change": -0.50,
+        "description": "Colombia's diverse ecosystems, from the Andes mountains to the Amazon rainforest, are protected through conservation initiatives, sustainable agriculture, and eco-tourism, fostering a balance between nature and people."
+    },
+    {
+        "country": "Kuwait",
+        "rank": 87,
+        "epi_score": 42.40,
+        "10_year_change": 15.20,
+        "description": "Kuwait's efforts in renewable energy, waste reduction, and air quality improvement reflect its commitment to creating a sustainable and ecologically balanced nation while embracing its desert landscapes."
+    },
+    {
+        "country": "Dominican Republic",
+        "rank": 89,
+        "epi_score": 42.20,
+        "10_year_change": -3.10,
+        "description": "The Dominican Republic's commitment to marine protection, sustainable tourism, and reforestation showcases its dedication to preserving its vibrant culture and natural beauty for future generations."
+    },
+    {
+        "country": "Bahrain",
+        "rank": 90,
+        "epi_score": 42.00,
+        "10_year_change": 5.70,
+        "description": "Bahrain's efforts in marine conservation, waste reduction, and sustainable urban planning reflect its determination to create an environmentally-conscious and thriving nation on its desert island landscapes."
+    },
+    {
+        "country": "Cabo Verde",
+        "rank": 91,
+        "epi_score": 41.90,
+        "10_year_change": 4.80,
+        "description": "Cabo Verde's commitment to marine protection, renewable energy, and sustainable tourism showcases its dedication to preserving its unique archipelago and promoting eco-friendly practices."
+    },
+    {
+        "country": "Argentina",
+        "rank": 92,
+        "epi_score": 41.10,
+        "10_year_change": 7.80,
+        "description": "Argentina's efforts in renewable energy, wildlife conservation, and sustainable agriculture showcase its commitment to preserving its diverse landscapes and promoting responsible environmental practices."
+    },
+    {
+        "country": "Kazakhstan",
+        "rank": 93,
+        "epi_score": 40.90,
+        "10_year_change": 11.80,
+        "description": "Kazakhstan's focus on renewable energy adoption, waste management, and ecological restoration reflects its determination to create a sustainable and thriving nation amid its vast steppe and desert regions."
+    },
+    {
+        "country": "Paraguay",
+        "rank": 93,
+        "epi_score": 40.90,
+        "10_year_change": -6.00,
+        "description": "Paraguay's commitment to forest conservation, sustainable energy production, and waste reduction showcases its dedication to protecting its natural resources and promoting responsible development."
+    },
+    {
+        "country": "El Salvador",
+        "rank": 95,
+        "epi_score": 40.80,
+        "10_year_change": 7.60,
+        "description": "El Salvador's efforts in reforestation, water management, and sustainable urban development reflect its determination to create a greener and more resilient nation while preserving its cultural heritage."
+    },
+    {
+        "country": "Tunisia",
+        "rank": 96,
+        "epi_score": 40.70,
+        "10_year_change": 8.10,
+        "description": "Tunisia's commitment to renewable energy, waste reduction, and sustainable tourism showcases its dedication to creating an environmentally-conscious and vibrant nation along its stunning Mediterranean coast."
+    },
+    {
+        "country": "Greenland",
+        "rank": null,
+        "epi_score": null,
+        "10_year_change": null,
+        "description": "Greenland's commitment to glacier conservation, renewable energy, and indigenous knowledge preservation showcases its dedication to preserving its unique Arctic environment and promoting sustainable development within its vast icy landscapes."
+    },
+    {
+        "country": "Malawi",
+        "rank": 97,
+        "epi_score": 40.60,
+        "10_year_change": -4.50,
+        "description": "Malawi's focus on sustainable agriculture, clean water access, and conservation initiatives reflects its determination to overcome environmental challenges and promote a healthier and more prosperous nation."
+    },
+    {
+        "country": "Guinea-Bissau",
+        "rank": 98,
+        "epi_score": 40.20,
+        "10_year_change": 3.50,
+        "description": "Guinea-Bissau's commitment to marine protection, sustainable fishing, and environmental education showcases its dedication to preserving its coastal beauty and promoting responsible living."
+    },
+    {
+        "country": "Bolivia",
+        "rank": 99,
+        "epi_score": 40.10,
+        "10_year_change": 0.60,
+        "description": "Bolivia's diverse landscapes, from the Andes mountains to the Amazon rainforest, are protected through conservation efforts, sustainable development, and renewable energy initiatives, fostering a greener and vibrant nation."
+    },
+    {
+        "country": "Republic of Congo",
+        "rank": 99,
+        "epi_score": 40.10,
+        "10_year_change": 6.20,
+        "description": "The Republic of Congo's commitment to forest conservation, wildlife protection, and sustainable development reflects its determination to preserve its natural resources and promote a resilient and harmonious nation."
+    },
+    {
+        "country": "Peru",
+        "rank": 101,
+        "epi_score": 39.80,
+        "10_year_change": -0.40,
+        "description": "Peru's rich biodiversity, from the Amazon rainforest to the Andes mountains, is safeguarded through conservation initiatives, sustainable agriculture, and eco-friendly tourism, creating a green and diverse nation."
+    },
+    {
+        "country": "Bosnia and Herzegovina",
+        "rank": 102,
+        "epi_score": 39.40,
+        "10_year_change": 10.00,
+        "description": "Bosnia and Herzegovina's focus on air quality improvement, waste reduction, and sustainable urban planning reflects its determination to create an environmentally-conscious and livable nation for its people."
+    },
+    {
+        "country": "Georgia",
+        "rank": 103,
+        "epi_score": 39.10,
+        "10_year_change": 2.60,
+        "description": "Georgia's efforts in biodiversity conservation, renewable energy, and sustainable agriculture showcase its commitment to preserving its unique landscapes and promoting responsible environmental practices."
+    },
+    {
+        "country": "Azerbaijan",
+        "rank": 104,
+        "epi_score": 38.60,
+        "10_year_change": -1.30,
+        "description": "Azerbaijan's focus on forest protection, renewable energy, and waste management showcases its dedication to creating an environmentally-friendly nation while embracing its diverse natural beauty."
+    },
+    {
+        "country": "Guyana",
+        "rank": 105,
+        "epi_score": 38.50,
+        "10_year_change": -6.10,
+        "description": "Guyana's commitment to rainforest conservation, sustainable mining, and eco-tourism showcases its determination to protect its pristine landscapes and promote responsible environmental practices."
+    },
+    {
+        "country": "Zambia",
+        "rank": 106,
+        "epi_score": 38.40,
+        "10_year_change": -6.90,
+        "description": "Zambia's efforts in wildlife protection, sustainable agriculture, and renewable energy reflect its commitment to preserving its rich biodiversity and promoting a greener and more prosperous nation."
+    },
+    {
+        "country": "Uzbekistan",
+        "rank": 107,
+        "epi_score": 38.20,
+        "10_year_change": 1.90,
+        "description": "Uzbekistan's commitment to reforestation, water conservation, and sustainable development reflects its determination to create an environmentally-conscious and thriving nation while preserving its cultural heritage."
+    },
+    {
+        "country": "Thailand",
+        "rank": 108,
+        "epi_score": 38.10,
+        "10_year_change": 7.20,
+        "description": "Thailand's efforts in marine protection, clean energy adoption, and sustainable tourism showcase its dedication to preserving its stunning coastal landscapes and promoting eco-friendly living."
+    },
+    {
+        "country": "Saudi Arabia",
+        "rank": 109,
+        "epi_score": 37.90,
+        "10_year_change": 9.50,
+        "description": "Saudi Arabia's commitment to renewable energy, desert reclamation, and environmental education reflects its determination to create a sustainable and ecologically balanced nation amid its arid landscapes."
+    },
+    {
+        "country": "Nicaragua",
+        "rank": 110,
+        "epi_score": 37.70,
+        "10_year_change": -0.90,
+        "description": "Nicaragua's focus on forest conservation, renewable energy, and sustainable agriculture showcases its dedication to creating a greener and more resilient nation while preserving its natural beauty."
+    },
+    {
+        "country": "Niger",
+        "rank": 110,
+        "epi_score": 37.70,
+        "10_year_change": -2.80,
+        "description": "Niger's efforts in desertification control, water management, and sustainable agriculture reflect its determination to overcome environmental challenges and promote a healthier and more prosperous nation."
+    },
+    {
+        "country": "Russia",
+        "rank": 112,
+        "epi_score": 37.50,
+        "10_year_change": 1.60,
+        "description": "Russia's vast landscapes, from tundra to taiga, are protected through conservation initiatives, sustainable development, and biodiversity conservation, fostering a balance between nature and modern living."
+    },
+    {
+        "country": "Maldives",
+        "rank": 113,
+        "epi_score": 37.40,
+        "10_year_change": 9.00,
+        "description": "Maldives' efforts in marine conservation, renewable energy, and climate adaptation reflect its determination to protect its low-lying islands and promote responsible environmental practices."
+    },
+    {
+        "country": "Micronesia",
+        "rank": 113,
+        "epi_score": 37.40,
+        "10_year_change": -5.90,
+        "description": "Micronesia's focus on marine protection, sustainable fishing, and climate resilience showcases its dedication to preserving its unique island ecosystems and promoting responsible living."
+    },
+    {
+        "country": "Uruguay",
+        "rank": 113,
+        "epi_score": 37.40,
+        "10_year_change": 3.30,
+        "description": "Uruguay's commitment to renewable energy, waste management, and sustainable agriculture reflects its determination to create a green and thriving nation while preserving its cultural heritage."
+    },
+    {
+        "country": "South Africa",
+        "rank": 116,
+        "epi_score": 37.20,
+        "10_year_change": 10.10,
+        "description": "South Africa's efforts in wildlife conservation, renewable energy, and sustainable tourism showcase its dedication to preserving its diverse landscapes and promoting responsible environmental practices."
+    },
+    {
+        "country": "Tajikistan",
+        "rank": 117,
+        "epi_score": 37.10,
+        "10_year_change": -1.60,
+        "description": "Tajikistan's focus on water conservation, renewable energy, and sustainable development reflects its determination to create an environmentally-conscious and resilient nation amid its mountainous terrain."
+    },
+    {
+        "country": "Turkmenistan",
+        "rank": 118,
+        "epi_score": 37.00,
+        "10_year_change": 8.90,
+        "description": "Turkmenistan's efforts in renewable energy adoption, water management, and waste reduction reflect its commitment to creating a sustainable and prosperous nation while preserving its cultural heritage."
+    },
+    {
+        "country": "Dem. Rep. Congo",
+        "rank": 119,
+        "epi_score": 36.90,
+        "10_year_change": -0.20,
+        "description": "The Democratic Republic of Congo's focus on wildlife conservation, forest protection, and sustainable development showcases its dedication to preserving its vast natural resources and promoting responsible environmental practices."
+    },
+    {
+        "country": "Vanuatu",
+        "rank": 119,
+        "epi_score": 36.90,
+        "10_year_change": -9.20,
+        "description": "Vanuatu's commitment to marine protection, renewable energy, and climate adaptation reflects its determination to protect its unique island ecosystems and promote responsible living."
+    },
+    {
+        "country": "Honduras",
+        "rank": 121,
+        "epi_score": 36.50,
+        "10_year_change": 7.20,
+        "description": "Honduras' efforts in forest conservation, sustainable agriculture, and environmental education showcase its dedication to preserving its diverse landscapes and promoting responsible natural resource management."
+    },
+    {
+        "country": "Gambia",
+        "rank": 122,
+        "epi_score": 36.40,
+        "10_year_change": 5.60,
+        "description": "Gambia's focus on wildlife conservation, sustainable tourism, and waste reduction showcases its commitment to protecting its natural beauty and promoting eco-friendly practices."
+    },
+    {
+        "country": "Samoa",
+        "rank": 122,
+        "epi_score": 36.40,
+        "10_year_change": -7.40,
+        "description": "Samoa's commitment to marine conservation, renewable energy, and climate resilience reflects its dedication to preserving its stunning island ecosystems and promoting responsible living."
+    },
+    {
+        "country": "Marshall Islands",
+        "rank": 124,
+        "epi_score": 36.20,
+        "10_year_change": 0.70,
+        "description": "The Marshall Islands' efforts in marine protection, renewable energy adoption, and climate adaptation showcase its determination to protect its low-lying islands and promote responsible environmental practices."
+    },
+    {
+        "country": "Uganda",
+        "rank": 125,
+        "epi_score": 35.80,
+        "10_year_change": 3.10,
+        "description": "Uganda's focus on wildlife conservation, sustainable agriculture, and clean water access reflects its commitment to preserving its rich biodiversity and promoting a greener and more prosperous nation."
+    },
+    {
+        "country": "Kyrgyzstan",
+        "rank": 126,
+        "epi_score": 35.70,
+        "10_year_change": 1.20,
+        "description": "Kyrgyzstan's commitment to water conservation, renewable energy, and sustainable development reflects its determination to create an environmentally-conscious and thriving nation amid its mountainous terrain."
+    },
+    {
+        "country": "Burkina Faso",
+        "rank": 127,
+        "epi_score": 35.50,
+        "10_year_change": 2.00,
+        "description": "Burkina Faso's efforts in sustainable agriculture, clean water access, and environmental education reflect its determination to overcome environmental challenges and promote a healthier and more prosperous nation."
+    },
+    {
+        "country": "Egypt",
+        "rank": 127,
+        "epi_score": 35.50,
+        "10_year_change": 6.50,
+        "description": "Egypt's focus on air quality improvement, waste reduction, and sustainable urban development showcases its commitment to creating an environmentally-conscious and livable nation amid its historic landscapes."
+    },
+    {
+        "country": "Timor-Leste",
+        "rank": 129,
+        "epi_score": 35.10,
+        "10_year_change": -0.30,
+        "description": "Timor-Leste's commitment to marine protection, sustainable agriculture, and eco-tourism reflects its dedication to preserving its stunning coastal landscapes and promoting responsible living."
+    },
+    {
+        "country": "Malaysia",
+        "rank": 130,
+        "epi_score": 35.00,
+        "10_year_change": 10.30,
+        "description": "Malaysia's efforts in rainforest conservation, renewable energy, and biodiversity protection showcase its commitment to preserving its unique ecosystems and promoting responsible environmental practices."
+    },
+    {
+        "country": "Solomon Islands",
+        "rank": 130,
+        "epi_score": 35.00,
+        "10_year_change": 0.80,
+        "description": "Solomon Islands' focus on marine conservation, sustainable fishing, and climate adaptation showcases its determination to protect its unique island ecosystems and promote responsible living."
+    },
+    {
+        "country": "Sri Lanka",
+        "rank": 132,
+        "epi_score": 34.70,
+        "10_year_change": -2.60,
+        "description": "Sri Lanka's commitment to wildlife conservation, sustainable tourism, and environmental education reflects its dedication to preserving its diverse landscapes and promoting responsible natural resource management."
+    },
+    {
+        "country": "Iran",
+        "rank": 133,
+        "epi_score": 34.50,
+        "10_year_change": 6.90,
+        "description": "Iran's focus on renewable energy, water management, and sustainable development showcases its commitment to creating a green and resilient nation while preserving its cultural heritage."
+    },
+    {
+        "country": "Tanzania",
+        "rank": 134,
+        "epi_score": 34.20,
+        "10_year_change": 3.40,
+        "description": "Tanzania's efforts in wildlife conservation, sustainable tourism, and reforestation reflect its commitment to preserving its rich biodiversity and promoting eco-friendly practices."
+    },
+    {
+        "country": "Togo",
+        "rank": 135,
+        "epi_score": 34.00,
+        "10_year_change": -2.40,
+        "description": "Togo's commitment to forest protection, renewable energy, and waste reduction showcases its dedication to preserving its natural beauty and promoting responsible environmental practices."
+    },
+    {
+        "country": "Senegal",
+        "rank": 136,
+        "epi_score": 33.90,
+        "10_year_change": -0.90,
+        "description": "Senegal's focus on marine protection, sustainable agriculture, and environmental education showcases its commitment to preserving its coastal beauty and promoting eco-friendly practices."
+    },
+    {
+        "country": "Qatar",
+        "rank": 137,
+        "epi_score": 33.00,
+        "10_year_change": -2.30,
+        "description": "Qatar's efforts in air quality improvement, waste reduction, and sustainable urban planning reflect its determination to create an environmentally-conscious and livable nation on its desert landscapes."
+    },
+    {
+        "country": "Cote d'Ivoire",
+        "rank": 138,
+        "epi_score": 32.80,
+        "10_year_change": -8.20,
+        "description": "Cote d'Ivoire's commitment to reforestation, wildlife protection, and sustainable development reflects its determination to overcome environmental challenges and promote a greener and more prosperous nation."
+    },
+    {
+        "country": "Rwanda",
+        "rank": 138,
+        "epi_score": 32.80,
+        "10_year_change": -4.20,
+        "description": "Rwanda's efforts in forest conservation, renewable energy, and eco-tourism showcase its dedication to preserving its natural beauty and promoting responsible environmental practices."
+    },
+    {
+        "country": "Sierra Leone",
+        "rank": 140,
+        "epi_score": 32.70,
+        "10_year_change": 7.20,
+        "description": "Sierra Leone's commitment to reforestation, marine protection, and sustainable development reflects its determination to create a greener and more resilient nation while preserving its cultural heritage."
+    },
+    {
+        "country": "Lesotho",
+        "rank": 141,
+        "epi_score": 32.30,
+        "10_year_change": 1.40,
+        "description": "Lesotho's focus on water conservation, sustainable agriculture, and climate adaptation showcases its dedication to creating a resilient and thriving nation amid its mountainous landscapes."
+    },
+    {
+        "country": "Lebanon",
+        "rank": 142,
+        "epi_score": 32.20,
+        "10_year_change": -4.70,
+        "description": "Lebanon's efforts in air quality improvement, waste reduction, and cultural heritage preservation showcase its commitment to creating an environmentally-conscious and livable nation amid its historic landscapes."
+    },
+    {
+        "country": "Ethiopia",
+        "rank": 143,
+        "epi_score": 31.80,
+        "10_year_change": 3.60,
+        "description": "Ethiopia's commitment to afforestation, renewable energy, and sustainable development reflects its determination to create a green and prosperous nation while preserving its diverse landscapes."
+    },
+    {
+        "country": "Eritrea",
+        "rank": 144,
+        "epi_score": 31.70,
+        "10_year_change": -5.50,
+        "description": "Eritrea's focus on reforestation, water management, and sustainable agriculture showcases its dedication to overcoming environmental challenges and promoting a more resilient and prosperous nation."
+    },
+    {
+        "country": "Mozambique",
+        "rank": 144,
+        "epi_score": 31.70,
+        "10_year_change": 0.60,
+        "description": "Mozambique's efforts in marine protection, sustainable development, and climate resilience reflect its commitment to preserving its coastal beauty and promoting eco-friendly practices."
+    },
+    {
+        "country": "Guinea",
+        "rank": 146,
+        "epi_score": 31.60,
+        "10_year_change": 0.20,
+        "description": "Guinea's commitment to reforestation, sustainable development, biodiversity conservation, and promoting environmental education and awareness showcase its determination to create a greener and more prosperous nation."
+    },
+    {
+        "country": "Fiji",
+        "rank": 147,
+        "epi_score": 31.30,
+        "10_year_change": -3.70,
+        "description": "Fiji's efforts in marine conservation, renewable energy, and climate adaptation reflect its dedication to preserving its stunning island ecosystems and promoting responsible living."
+    },
+    {
+        "country": "Kenya",
+        "rank": 148,
+        "epi_score": 30.80,
+        "10_year_change": -1.80,
+        "description": "Kenya's focus on wildlife conservation, renewable energy, and sustainable tourism showcases its commitment to preserving its diverse landscapes and promoting eco-friendly practices."
+    },
+    {
+        "country": "Laos",
+        "rank": 149,
+        "epi_score": 30.70,
+        "10_year_change": -1.30,
+        "description": "Laos' efforts in forest conservation, water management, and sustainable development showcase its determination to preserve its natural resources and promote a greener and more resilient nation."
+    },
+    {
+        "country": "Oman",
+        "rank": 149,
+        "epi_score": 30.70,
+        "10_year_change": 6.40,
+        "description": "Oman's commitment to marine protection, renewable energy, and sustainable development reflects its determination to create a vibrant and ecologically balanced nation on its desert landscapes."
+    },
+    {
+        "country": "Angola",
+        "rank": 151,
+        "epi_score": 30.50,
+        "10_year_change": 0.20,
+        "description": "Angola's focus on wildlife conservation, sustainable development, and renewable energy showcases its dedication to preserving its rich biodiversity and promoting eco-friendly practices."
+    },
+    {
+        "country": "Burundi",
+        "rank": 151,
+        "epi_score": 30.50,
+        "10_year_change": -13.00,
+        "description": "Burundi's efforts in reforestation, clean water access, and sustainable agriculture reflect its commitment to overcoming environmental challenges and promoting a healthier and more prosperous nation."
+    },
+    {
+        "country": "Cameroon",
+        "rank": 153,
+        "epi_score": 30.20,
+        "10_year_change": -2.00,
+        "description": "Cameroon's commitment to wildlife conservation, sustainable development, and eco-tourism showcases its determination to preserve its diverse landscapes and promote responsible natural resource management."
+    },
+    {
+        "country": "Cambodia",
+        "rank": 154,
+        "epi_score": 30.10,
+        "10_year_change": 2.00,
+        "description": "Cambodia's efforts in forest protection, renewable energy, and cultural heritage preservation showcase its dedication to preserving its natural beauty and promoting responsible environmental practices."
+    },
+    {
+        "country": "Algeria",
+        "rank": 155,
+        "epi_score": 29.60,
+        "10_year_change": -4.00,
+        "description": "Algeria's focus on renewable energy, desert reclamation, and sustainable development reflects its determination to create a more ecologically balanced and thriving nation on its vast landscapes."
+    },
+    {
+        "country": "Benin",
+        "rank": 155,
+        "epi_score": 29.60,
+        "10_year_change": -1.60,
+        "description": "Benin's commitment to sustainable agriculture, clean water access, and environmental education reflects its determination to promote eco-friendly practices and improve the well-being of its people."
+    },
+    {
+        "country": "Mongolia",
+        "rank": 155,
+        "epi_score": 29.60,
+        "10_year_change": -5.20,
+        "description": "Mongolia's efforts in desertification control, renewable energy, and biodiversity conservation showcase its dedication to preserving its unique landscapes and promoting sustainable development."
+    },
+    {
+        "country": "Philippines",
+        "rank": 158,
+        "epi_score": 28.90,
+        "10_year_change": -7.50,
+        "description": "The Philippines' focus on marine conservation, sustainable tourism, and waste reduction showcases its commitment to protecting its stunning coastal beauty and promoting eco-friendly practices."
+    },
+    {
+        "country": "Mali",
+        "rank": 159,
+        "epi_score": 28.50,
+        "10_year_change": -1.80,
+        "description": "Mali's commitment to reforestation, water conservation, and sustainable agriculture reflects its determination to overcome environmental challenges and promote a healthier and more prosperous nation."
+    },
+    {
+        "country": "China",
+        "rank": 160,
+        "epi_score": 28.40,
+        "10_year_change": 11.40,
+        "description": "China's efforts in renewable energy adoption, air quality improvement, and afforestation showcase its commitment to creating a more ecologically balanced and sustainable nation on its diverse landscapes."
+    },
+    {
+        "country": "Morocco",
+        "rank": 160,
+        "epi_score": 28.40,
+        "10_year_change": 2.60,
+        "description": "Morocco's focus on renewable energy, desert reclamation, and sustainable development reflects its determination to create a more ecologically balanced and prosperous nation on its historic landscapes."
+    },
+    {
+        "country": "Nepal",
+        "rank": 162,
+        "epi_score": 28.30,
+        "10_year_change": -10.30,
+        "description": "Nepal's commitment to wildlife conservation, renewable energy, and sustainable development reflects its determination to preserve its stunning mountain landscapes and promote eco-friendly practices."
+    },
+    {
+        "country": "Nigeria",
+        "rank": 162,
+        "epi_score": 28.30,
+        "10_year_change": -6.10,
+        "description": "Nigeria's efforts in afforestation, renewable energy, and waste reduction showcase its dedication to overcoming environmental challenges and promoting a more sustainable and prosperous nation."
+    },
+    {
+        "country": "Indonesia",
+        "rank": 164,
+        "epi_score": 28.20,
+        "10_year_change": 4.10,
+        "description": "Indonesia's focus on rainforest conservation, marine protection, and sustainable development showcases its commitment to preserving its rich biodiversity and promoting eco-friendly practices."
+    },
+    {
+        "country": "Chad",
+        "rank": 165,
+        "epi_score": 28.10,
+        "10_year_change": "NA",
+        "description": "Chad's efforts in desert reclamation, water management, and wildlife conservation reflect its determination to overcome environmental challenges and promote a more sustainable and prosperous nation."
+    },
+    {
+        "country": "Mauritania",
+        "rank": 165,
+        "epi_score": 28.10,
+        "10_year_change": -3.30,
+        "description": "Mauritania's commitment to marine protection, renewable energy, and desert reclamation showcases its dedication to creating an ecologically balanced and thriving nation on its arid landscapes."
+    },
+    {
+        "country": "Guatemala",
+        "rank": 167,
+        "epi_score": 28.00,
+        "10_year_change": -3.00,
+        "description": "Guatemala's focus on forest conservation, sustainable development, and eco-tourism showcases its commitment to preserving its diverse landscapes and promoting responsible natural resource management."
+    },
+    {
+        "country": "Madagascar",
+        "rank": 167,
+        "epi_score": 28.00,
+        "10_year_change": -5.40,
+        "description": "Madagascar's efforts in biodiversity conservation, reforestation, and sustainable development reflect its dedication to preserving its unique ecosystems and promoting eco-friendly practices."
+    },
+    {
+        "country": "Iraq",
+        "rank": 169,
+        "epi_score": 27.80,
+        "10_year_change": -5.30,
+        "description": "Iraq's commitment to water management, air quality improvement, and environmental education showcases its determination to overcome environmental challenges and promote a greener and more sustainable nation."
+    },
+    {
+        "country": "Ghana",
+        "rank": 170,
+        "epi_score": 27.70,
+        "10_year_change": -6.10,
+        "description": "Ghana's focus on forest conservation, renewable energy, and sustainable development reflects its determination to preserve its natural beauty and promote responsible environmental practices."
+    },
+    {
+        "country": "Sudan",
+        "rank": 171,
+        "epi_score": 27.60,
+        "10_year_change": 1.70,
+        "description": "Sudan's efforts in water management, wildlife conservation, and climate adaptation showcase its dedication to preserving its diverse landscapes and promoting a more resilient and prosperous nation."
+    },
+    {
+        "country": "Turkey",
+        "rank": 172,
+        "epi_score": 26.30,
+        "10_year_change": -0.50,
+        "description": "Turkey's commitment to renewable energy adoption, waste reduction, and sustainable development reflects its determination to create an environmentally-conscious and prosperous nation on its historic landscapes."
+    },
+    {
+        "country": "Haiti",
+        "rank": 173,
+        "epi_score": 26.10,
+        "10_year_change": 2.40,
+        "description": "Haiti's focus on reforestation, clean water access, and environmental education showcases its commitment to overcoming environmental challenges and promoting a greener and more resilient nation."
+    },
+    {
+        "country": "Liberia",
+        "rank": 174,
+        "epi_score": 24.90,
+        "10_year_change": -4.00,
+        "description": "Liberia's efforts in forest conservation, wildlife protection, and sustainable development reflect its determination to preserve its natural resources and promote responsible environmental practices."
+    },
+    {
+        "country": "Papua New Guinea",
+        "rank": 175,
+        "epi_score": 24.80,
+        "10_year_change": 0.20,
+        "description": "Papua New Guinea's commitment to biodiversity conservation, sustainable development, and cultural heritage preservation showcases its dedication to preserving its unique ecosystems and promoting eco-friendly practices."
+    },
+    {
+        "country": "Pakistan",
+        "rank": 176,
+        "epi_score": 24.60,
+        "10_year_change": 1.40,
+        "description": "Pakistan's focus on afforestation, renewable energy, and clean water access reflects its determination to create a more resilient and prosperous nation while preserving its diverse landscapes."
+    },
+    {
+        "country": "Bangladesh",
+        "rank": 177,
+        "epi_score": 23.10,
+        "10_year_change": -1.90,
+        "description": "Bangladesh's efforts in water management, air quality improvement, and sustainable development showcase its commitment to overcoming environmental challenges and promoting a more sustainable nation."
+    },
+    {
+        "country": "Viet Nam",
+        "rank": 178,
+        "epi_score": 20.10,
+        "10_year_change": -0.60,
+        "description": "Vietnam's commitment to afforestation, renewable energy, and sustainable development reflects its determination to create a greener and more prosperous nation while preserving its cultural heritage."
+    },
+    {
+        "country": "Myanmar",
+        "rank": 179,
+        "epi_score": 19.40,
+        "10_year_change": -3.80,
+        "description": "Myanmar's focus on wildlife conservation, forest protection, and sustainable development showcases its dedication to preserving its unique landscapes and promoting eco-friendly practices."
+    },
+    {
+        "country": "India",
+        "rank": 180,
+        "epi_score": 18.90,
+        "10_year_change": -0.60,
+        "description": "India's efforts in afforestation, renewable energy adoption, and waste reduction showcase its commitment to overcoming environmental challenges and promoting a more sustainable and prosperous nation."
+    }
+
+]

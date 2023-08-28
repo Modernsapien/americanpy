@@ -1,0 +1,178 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+/* Map container styles */
+#map-container {
+    height: 90vh;
+    width: 100%;
+
+}
+
+/* Leaflet control styles */
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+    display: flex;
+    align-items: center;
+    background-clip: padding-box;
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+    background-color: #fff;
+    border: 1px solid #080808;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Map buttons styles */
+.map-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: flex-end;
+    z-index: 999;
+}
+
+/* Map container layout */
+.map-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Leaflet map top control styles */
+.map .leaflet-top {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+/* Top bar styles */
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+
+/* Glass style */
+.glass {
+    position: relative;
+    top: 20px;
+    left: 15px;
+    height: 30px;
+}
+
+/* Leaflet bar part styles */
+.leaflet-bar-part {
+    display: none;
+}
+
+/* Reset button styles */
+.reset {
+    position: relative;
+    right: -100px;
+    bottom: 30px;
+    border-radius: 20%;
+    background-color: red;
+    scale: 140%;
+}
+
+/* GeoSearch styles */
+.geosearch {
+    position: relative;
+    width: 200px;
+    height: 40px;
+    border-radius: 10%;
+    display: none;
+}
+
+/* Zoom control styles */
+.leaflet-control-zoom {
+    background-color: white;
+}
+
+/* Key styles */
+.key {
+    position: absolute;
+    top: 600px;
+    left: -190px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 200px;
+}
+
+/* Key item styles */
+.key-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+/* Key color box styles */
+.key-color {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    display: inline-block;
+}
+
+/* Color definitions for EPI Score ranges */
+.navy {
+    background-color: #82E0AA;
+}
+
+.blue {
+    background-color: #2ECC71;
+}
+
+.light-blue {
+    background-color: #1E8449;
+}
+
+.keytitle {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .map-buttons {
+        margin-left: 10%;
+    }
+
+    .key {
+        position: static;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .top-bar {
+        height: auto;
+        padding: 5px;
+    }
+
+    .top-bar h1 {
+        font-size: 1rem;
+    }
+}
+

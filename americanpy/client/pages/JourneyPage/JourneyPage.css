@@ -1,0 +1,346 @@
+/* EcoFriendlySuggestions.css */
+
+/* Container for the eco-friendly suggestions component */
+.eco-friendly-suggestions {
+  padding: 70px;
+  border-radius: 10px;
+  box-shadow: inset 0 0 50px #c3e3f3db !important;
+  background-color: #eff2f5c3;
+  width: 80%;
+  margin: 30px auto;
+  font-family: 'Manrope', sans-serif;
+  color: #366491;
+
+}
+
+.journey-intro {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    color: #366491;
+    box-shadow: inset 0 0 50px #c3e3f3db !important;
+    background-color: #eff2f5c3;
+    padding: 40px;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 2.6rem;
+    margin-bottom: -4rem;
+    font-family: 'Manrope', sans-serif;
+    border-radius: 10px;
+    margin-top: 2.7rem;
+    margin-bottom: 110px;
+}
+
+
+/* Heading style */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #254d74;
+  font-family: 'Manrope', sans-serif;
+}
+
+/* Form style */
+form {
+  text-align: center;
+  max-width: 80%;
+  margin: 40px auto;
+  font-family: 'Manrope', sans-serif;
+
+}
+
+/* Destination input style */
+.destination-input {
+  display: block;
+  margin: 10px 0;
+  padding: 15px;
+  border: none;
+  background-color: #ffffffc3;
+  border-radius: 10px;
+  color: #366491;
+  font-family: 'Manrope', sans-serif;
+
+}
+
+/* "Get Suggestions" button style */
+.get-suggestions-button {
+  background-color: #ffffffc3;
+  color: #366491;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 40%;
+  margin: 10px 0;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Manrope', sans-serif;
+
+}
+
+.get-suggestions-button:hover {
+  opacity: 0.9;
+}
+
+/* Suggestion card style */
+.suggestion-card {
+  flex: 1;
+  width: calc(33.33% - 20px);
+  margin: 10px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1); /* Add the box shadow here */
+  background-color: #4da5f3ae;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: 'Manrope', sans-serif;
+}
+
+
+.suggestion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.suggestion-card h3 {
+  margin-top: 0;
+  color: #366491;
+}
+
+.suggestion-card p {
+  margin: 10px 0;
+  color: #555;
+  font-family: 'Manrope', sans-serif;
+
+}
+
+/* Total carbon emission style */
+.total-carbon-emission {
+  text-align: center;
+  margin-top: 20px;
+  color: #366491;
+  font-weight: bold;
+}
+
+/* Media queries and other existing styles */
+@media screen and (max-width: 600px) {
+  .suggestion-card {
+    width: 80%;
+  }
+}
+
+.response-container{
+  display: flex;
+}
+
+.background {
+background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1016%26quot%3b)' fill='none'%3e%3cpath d='M1560 560L0 560 L0 310.23Q35.63 273.86%2c 72 309.48Q118.07 235.55%2c 192 281.62Q282.38 252%2c 312 342.39Q356.94 315.33%2c 384 360.27Q419.92 276.19%2c 504 312.11Q534.86 270.97%2c 576 301.83Q627.93 233.76%2c 696 285.7Q770.56 240.25%2c 816 314.81Q869.92 248.74%2c 936 302.66Q1032.05 278.71%2c 1056 374.75Q1089.01 287.75%2c 1176 320.76Q1226.33 299.09%2c 1248 349.42Q1321.34 302.76%2c 1368 376.1Q1371.76 307.86%2c 1440 311.61Q1508.28 259.88%2c 1560 328.16z' fill='rgba(91%2c 156%2c 213%2c 1)'%3e%3c/path%3e%3cpath d='M1488 560L0 560 L0 447.76Q27.82 355.58%2c 120 383.4Q188.33 331.73%2c 240 400.05Q260.32 348.37%2c 312 368.69Q339.9 324.59%2c 384 352.48Q445.91 342.39%2c 456 404.31Q509.63 337.94%2c 576 391.57Q599.06 342.63%2c 648 365.68Q702.01 347.69%2c 720 401.71Q773.9 383.61%2c 792 437.5Q811.9 337.4%2c 912 357.3Q953.81 327.11%2c 984 368.92Q1052.31 365.23%2c 1056 433.53Q1090.13 347.65%2c 1176 381.78Q1230.03 315.8%2c 1296 369.83Q1372.78 326.61%2c 1416 403.39Q1444.77 360.16%2c 1488 388.93z' fill='rgba(125%2c 180%2c 216%2c 1)'%3e%3c/path%3e%3cpath d='M1560 560L0 560 L0 457.32Q65.97 451.29%2c 72 517.26Q90.08 463.34%2c 144 481.41Q185.42 402.83%2c 264 444.25Q335.73 395.98%2c 384 467.71Q421.56 385.27%2c 504 422.83Q580.13 378.96%2c 624 455.09Q706.03 417.12%2c 744 499.15Q813.17 448.32%2c 864 517.49Q864.18 445.67%2c 936 445.85Q990.25 380.11%2c 1056 434.36Q1121.19 427.55%2c 1128 492.74Q1155.89 448.63%2c 1200 476.52Q1244.83 401.35%2c 1320 446.18Q1414.47 420.65%2c 1440 515.12Q1459.65 414.77%2c 1560 434.42z' fill='rgba(140%2c 210%2c 246%2c 1)'%3e%3c/path%3e%3cpath d='M1536 560L0 560 L0 538.31Q48.84 515.14%2c 72 563.98Q77.86 497.84%2c 144 503.7Q186.06 473.75%2c 216 515.81Q277.99 505.79%2c 288 567.78Q330.85 538.63%2c 360 581.47Q366 515.47%2c 432 521.46Q480.55 450.01%2c 552 498.56Q616.75 491.31%2c 624 556.06Q645.35 505.41%2c 696 526.76Q718.3 477.06%2c 768 499.36Q859.77 471.13%2c 888 562.91Q913.12 516.03%2c 960 541.15Q988.54 497.69%2c 1032 526.23Q1093.9 516.13%2c 1104 578.03Q1129.01 531.04%2c 1176 556.05Q1229.43 489.48%2c 1296 542.92Q1337.08 464%2c 1416 505.07Q1468.88 437.95%2c 1536 490.84z' fill='rgba(176%2c 218%2c 255%2c 1)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1016'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+background-size: cover;
+height: 820px;
+};
+
+/* Add these styles to your CSS file */
+.suggestion-card h3 .fa-icon {
+  scale: 200%;
+  margin-top:50px;
+  color: white;
+  margin-right: 8px; /* Add some spacing between the icon and text */
+}
+
+.read-more-button {
+  background-color: #ffffffc3;
+  color: #366491;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+}
+
+.read-more-button:hover {
+  opacity: 0.9;
+}
+
+/* Add this to your JourneyPage.css */
+/* Loading Globe Icon */
+.get-suggestions-button .fa-globe {
+  font-size: 36px; /* Adjust the size as needed */
+  color: #366491; /* Change the color to your preference */
+}
+
+/* Loading Spinner Animation */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.get-suggestions-button .fa-spin {
+  animation: spin 1s infinite linear;
+}
+
+
+.get-suggestions-button.loading {
+  font-weight: bold;
+  color: #366491;
+  gap: 10px;
+  font-size: 1.5rem;
+}
+
+/* EcoFriendlySuggestions.css */
+
+/* DonateModal.css */
+
+/* Container for the donation modal */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background-color: #fff;
+  padding: 300px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin: 0 auto;
+  font-family: 'Manrope', sans-serif;
+}
+
+/* Input container style */
+.input-container {
+  margin-bottom: 15px;
+}
+
+/* Input label style */
+.input-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #366491;
+}
+
+/* Input style */
+.input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  color: #495057;
+  font-family: 'Manrope', sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Button style */
+.submitButton {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Manrope', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background-color: #0056b3;
+}
+
+/* Card input container style */
+.card-input-container {
+  display: flex;
+  flex-direction: column; /* Display inputs vertically */
+  gap: 15px; /* Add spacing between inputs */
+}
+
+/* Card input style */
+.card-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  color: #495057;
+  font-family: 'Manrope', sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+.card-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* CVV input style */
+.cvv-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  color: #495057;
+  font-family: 'Manrope', sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+.cvv-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Use Bootstrap classes for button styling */
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.button-container .submitButton {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Manrope', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.button-container .submitButton:hover {
+  background-color: #0056b3;
+}
+
+.donate-button{
+  position: relative;
+  left: 43%;
+  /* top: -280px; */
+  scale: 100%;
+  width: 14%;
+  /* margin-top: -100px !important; */
+}
+
+.jp-container-wrapper {
+  margin-top: -60px;
+}
+
+.donation-description{
+margin-top: 0;
+font-size: 1.2rem;
+}
+
+
+
